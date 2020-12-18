@@ -401,6 +401,8 @@
     <!-- App js -->
     <script src="assets/js/app.js"></script>
 
+
+    
     <script src="/assets/plugins/skycons/skycons.min.js"></script>
     <script src="/assets/plugins/raphael/raphael-min.js"></script>
     <script src="/assets/plugins/morris/morris.min.js"></script>
