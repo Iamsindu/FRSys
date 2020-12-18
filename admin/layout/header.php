@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -18,10 +18,10 @@
     <link href="../assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
 
-</head>
+</head> -->
 
-
-<body class="fixed-left">
+<!-- 
+<body class="fixed-left"> -->
 
     <!-- Loader -->
     <div id="preloader">
@@ -610,10 +610,10 @@
                                                             <canvas id="wind" width="35" height="35"></canvas>
                                                             <h6 class="text-white font-14">32°<i class="wi-degrees"></i></h6>
                                                         </div>                                                                                                                                               -->
-            </div>
+            <!-- </div> -->
             <!-- end row -->
             <!-- </div> -->
-        </div>
+        <!-- </div> -->
         <!-- end row -->
         <!-- </div>
                                     </div>
@@ -877,25 +877,25 @@
                         </div>< container -->
 
 
-    </div>
+    <!-- </div> -->
     <!-- Page content Wrapper -->
 
-    </div>
+    <!-- </div> -->
     <!-- content -->
 
-    <footer class="footer">
+    <!-- <footer class="footer">
         © 2018 Annex by Mannatthemes.
     </footer>
 
-    </div>
+    </div> -->
     <!-- End Right content here -->
 
-    </div>
+    <!-- </div> -->
     <!-- END wrapper -->
 
 
     <!-- jQuery  -->
-    <script src="../assets/js/jquery.min.js"></script>
+    <!-- <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/modernizr.min.js"></script>
@@ -907,15 +907,15 @@
     <script src="../assets/js/jquery.nicescroll.js"></script>
     <script src="../assets/js/jquery.scrollTo.min.js"></script>
 
-    <script src="../assets/plugins/skycons/skycons.min.js"></script>
-    <script src="../assets/plugins/raphael/raphael-min.js"></script>
-    <script src="../assets/plugins/morris/morris.min.js"></script>
+    <script src="/assets/plugins/skycons/skycons.min.js"></script>
+    <script src="/assets/plugins/raphael/raphael-min.js"></script>
+    <script src="/assets/plugins/morris/morris.min.js"></script>
 
-    <script src="../assets/pages/dashborad.js"></script>
+    <script src="/assets/pages/dashborad.js"></script> -->
 
     <!-- App js -->
-    <script src="../assets/js/app.js"></script>
-    <script>
+    <!-- <script src="/assets/js/app.js"></script> -->
+    <!-- <script> 
         /* BEGIN SVG WEATHER ICON */
         if (typeof Skycons !== 'undefined') {
             var icons = new Skycons({
@@ -955,4 +955,4 @@
 
 </body>
 
-</html>
+</html> -->
