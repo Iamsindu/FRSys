@@ -22,27 +22,28 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/assets/plugins/morris/morris.css" rel="stylesheet">
 </head>
 
 <body class="fixed-left">
     <!-- Loader -->
-    <div id="preloader">
+    <!-- <div id="preloader">
         <div id="status">
             <div class="spinner"></div>
         </div>
-    </div>
+    </div> -->
     <!-- Begin page -->
-    <div id="wrapper">
+    <!-- <div id="wrapper"> -->
         <!-- ========== Left Sidebar Start ========== -->
-        <div class="left side-menu">
+        <!-- <div class="left side-menu">
             <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
                 <i class="ion-close"></i>
-            </button>
+            </button> -->
             <!-- LOGO -->
-            <div class="topbar-left">
+            <!-- <div class="topbar-left">
                 <div class="text-center">
                     <a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Annex</a>
-                    <!-- <a href="index.html" class="logo"><img src="assets/images/logo.png" height="24" alt="logo"></a> -->
+                    <a href="index.html" class="logo"><img src="assets/images/logo.png" height="24" alt="logo"></a>
                 </div>
             </div>
             <div class="sidebar-inner slimscrollleft">
@@ -103,8 +104,8 @@
                                 <li><a href="form-summernote.html">Summernote</a></li>
                                 <li><a href="form-xeditable.html">Form Xeditable</a></li>
                             </ul>
-                        </li>
-                        <li class="has_sub">
+                        </li> -->
+                        <!-- <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-gauge"></i><span> Charts </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="charts-morris.html">Morris Chart</a></li>
@@ -158,19 +159,19 @@
                     </ul>
                 </div>
                 <div class="clearfix"></div>
-            </div> <!-- end sidebarinner -->
-        </div>
+            </div> end sidebarinner -->
+        <!-- </div> -->
         <!-- Left Sidebar End -->
         <!-- Start right Content here -->
-        <div class="content-page">
+        <!-- <div class="content-page"> -->
             <!-- Start content -->
-            <div class="content">
+            <!-- <div class="content"> -->
                 <!-- Top Bar Start -->
-                <div class="topbar">
+                <!-- <div class="topbar">
                     <nav class="navbar-custom">
-                        <ul class="list-inline float-right mb-0">
+                        <ul class="list-inline float-right mb-0"> -->
                             <!-- language-->
-                            <li class="list-inline-item dropdown notification-list hide-phone">
+                            <!-- <li class="list-inline-item dropdown notification-list hide-phone">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     English <img src="assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt="" />
                                 </a>
@@ -186,28 +187,28 @@
                                     <i class="ti-email noti-icon"></i>
                                     <span class="badge badge-danger noti-icon-badge">5</span>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
+                                <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg"> -->
                                     <!-- item-->
-                                    <div class="dropdown-item noti-title">
+                                    <!-- <div class="dropdown-item noti-title">
                                         <h5><span class="badge badge-danger float-right">745</span>Messages</h5>
-                                    </div>
+                                    </div> -->
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon"><img src="assets/images/users/avatar-2.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                         <p class="notify-details"><b>Charles M. Jones</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                                    </a>
+                                    </a> -->
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon"><img src="assets/images/users/avatar-3.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                         <p class="notify-details"><b>Thomas J. Mimms</b><small class="text-muted">You have 87 unread messages</small></p>
-                                    </a>
+                                    </a> -->
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon"><img src="assets/images/users/avatar-4.jpg" alt="user-img" class="img-fluid rounded-circle" /> </div>
                                         <p class="notify-details"><b>Luis M. Konrad</b><small class="text-muted">It is a long established fact that a reader will</small></p>
-                                    </a>
+                                    </a> -->
                                     <!-- All-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         View All
                                     </a>
                                 </div>
@@ -217,28 +218,28 @@
                                     <i class="ti-bell noti-icon"></i>
                                     <span class="badge badge-success noti-icon-badge">23</span>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
+                                <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg"> -->
                                     <!-- item-->
-                                    <div class="dropdown-item noti-title">
+                                    <!-- <div class="dropdown-item noti-title">
                                         <h5><span class="badge badge-danger float-right">87</span>Notification</h5>
-                                    </div>
+                                    </div> -->
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
                                         <p class="notify-details"><b>Your order is placed</b><small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
-                                    </a>
+                                    </a> -->
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon bg-success"><i class="mdi mdi-message"></i></div>
                                         <p class="notify-details"><b>New Message received</b><small class="text-muted">You have 87 unread messages</small></p>
-                                    </a>
+                                    </a> -->
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <div class="notify-icon bg-warning"><i class="mdi mdi-martini"></i></div>
                                         <p class="notify-details"><b>Your item is shipped</b><small class="text-muted">It is a long established fact that a reader will</small></p>
-                                    </a>
+                                    </a> -->
                                     <!-- All-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <!-- <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         View All
                                     </a>
                                 </div>
@@ -247,9 +248,9 @@
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     <img src="assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                <div class="dropdown-menu dropdown-menu-right profile-dropdown "> -->
                                     <!-- item-->
-                                    <div class="dropdown-item noti-title">
+                                    <!-- <div class="dropdown-item noti-title">
                                         <h5>Welcome</h5>
                                     </div>
                                     <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i> Profile</a>
@@ -276,8 +277,11 @@
                         </ul>
                         <div class="clearfix"></div>
                     </nav>
-                </div>
+                </div> -->
                 <!-- Top Bar End -->
+            <?php 
+            require_once 'layout/header.php';
+            ?>
                 <div class="page-content-wrapper ">
                     <div class="container-fluid">
                         <div class="row">
@@ -396,6 +400,52 @@
     <script src="assets/pages/form-advanced.js"></script>
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+
+    <script src="/assets/plugins/skycons/skycons.min.js"></script>
+    <script src="/assets/plugins/raphael/raphael-min.js"></script>
+    <script src="/assets/plugins/morris/morris.min.js"></script>
+
+    <script src="/assets/pages/dashborad.js"></script>
+
+    <!-- App js -->
+    <script src="/assets/js/app.js"></script>
+    <script>
+        /* BEGIN SVG WEATHER ICON */
+        if (typeof Skycons !== 'undefined') {
+            var icons = new Skycons({
+                    "color": "#fff"
+                }, {
+                    "resizeClear": true
+                }),
+                list = [
+                    "clear-day", "clear-night", "partly-cloudy-day",
+                    "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+                    "fog"
+                ],
+                i;
+
+            for (i = list.length; i--;)
+                icons.set(list[i], list[i]);
+            icons.play();
+        };
+
+        // scroll
+
+        $(document).ready(function() {
+
+            $("#boxscroll").niceScroll({
+                cursorborder: "",
+                cursorcolor: "#cecece",
+                boxzoom: true
+            });
+            $("#boxscroll2").niceScroll({
+                cursorborder: "",
+                cursorcolor: "#cecece",
+                boxzoom: true
+            });
+
+        });
+    </script>
 </body>
 
 </html>
