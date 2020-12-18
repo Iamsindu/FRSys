@@ -28,14 +28,14 @@
                 <div class="card-body">
 
                     <h3 class="text-center mt-0 m-b-15">
-                        <a href="index.html" class="logo logo-admin">
+                        <a href="index.php" class="logo logo-admin">
                             FRS ko logo
                             <!-- <img src="assets/images/logo.png" height="24" alt="logo"> -->
                         </a>
                     </h3>
 
                     <div class="p-3">
-                        <form class="form-horizontal m-t-20" action="index.html">
+                        <form class="form-horizontal m-t-20" action="index.php">
 
                             <div class="user-thumb text-center m-b-30">
                                 <img src="assets/images/users/avatar-1.jpg" class="rounded-circle img-thumbnail" alt="thumbnail">
@@ -55,7 +55,7 @@
 
                             <div class="form-group m-t-10 mb-0 row">
                                 <div class="col-12 m-t-20 text-center">
-                                    <a href="pages-login.html" class="text-muted">Not you?</a>
+                                    <a href="pages-login.php" class="text-muted">Not you?</a>
                                 </div>
                             </div>
                         </form>

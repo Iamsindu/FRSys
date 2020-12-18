@@ -31,7 +31,7 @@
                         <h1 class="">500</h1>
                         <h3 class="">Internal Server Error</h3><br>
 
-                        <a class="btn btn-danger mb-5 waves-effect waves-light" href="index.html">Back to Dashboard</a>
+                        <a class="btn btn-danger mb-5 waves-effect waves-light" href="index.php">Back to Dashboard</a>
                     </div>
 
                 </div>
