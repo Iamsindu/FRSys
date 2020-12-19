@@ -80,7 +80,7 @@
                         <li class="menu-title">Components</li>
 
                         <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-restaurant"></i> <span> Restaurant </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-cutlery"></i> <span> Restaurant </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="add_resturant.php">Add Restaurant</a></li>
                                 <li><a href="show_resturant.php">Show Restaurant</a></li>
@@ -112,7 +112,7 @@
                         </li>
 
                         <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-category"></i> <span> Category</span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-pencil"></i> <span> Category</span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="add_category.php">Add Category</a></li>
                                 <li><a href="show_category.php">Show Category </a></li>
@@ -125,7 +125,7 @@
                         </li>
 
                         <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-"></i><span> Discount </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-percent"></i><span> Discount </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="add_discount.php">Add Discount</a></li>
                                 <li><a href="show_discount.php">Show Discount</a></li>
@@ -135,7 +135,7 @@
                             </ul>
                         </li>
                         <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-table"></i><span>Add Items</span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-plus"></i><span>Add Items</span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="add_similar_items.php">Add Similar Item</a></li>
                                 <li><a href="add_special_item.php">Add Special Item</a></li>
@@ -143,7 +143,7 @@
                             </ul>
                         </li>
                         <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-bill"></i><span> Bill </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-table"></i><span> Bill </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="show-bill.php">Show Bill</a></li>
 
