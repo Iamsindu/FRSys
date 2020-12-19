@@ -21,7 +21,9 @@
     <body class="fixed-left">
 
         <!-- Loader -->
-        
+        <?php 
+            require_once 'layout/header.php';
+            ?>
                     <!-- Top Bar End -->
 
                     <div class="page-content-wrapper ">
