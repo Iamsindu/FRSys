@@ -33,7 +33,8 @@
     //require_once 'selector.php';
     //$a[2]=1;
     require_once 'layout/header.php';
-	//$admin=new admin;
+    //$admin=new admin; 
+    
 	$err=[];
 	if(isset($_POST['cmdsubmit']))
 	{

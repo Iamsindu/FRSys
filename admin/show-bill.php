@@ -28,8 +28,12 @@
 
         <!-- Loader -->
         <?php 
-            require_once 'layout/header.php';
-            ?>
+require_once 'layout/header.php';
+require_once 'admin.class.php';
+require_once 'common.class.php';
+$admin = new admin;
+$value[]=$admin->selectuser();
+ ?>
                     <!-- Top Bar End -->
 
                     <div class="page-content-wrapper ">

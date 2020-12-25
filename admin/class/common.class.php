@@ -3,7 +3,7 @@
 class common{
 	function __construct()
 	{
-		$this->con=new mysqli('localhost','root','','db_bakery');
+		$this->con=new mysqli('localhost','root','','foodorder');
 		if($this->con->connect_error)
 		{
 			die("Database Connection Error");

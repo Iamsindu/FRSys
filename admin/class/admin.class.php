@@ -1,15 +1,15 @@
 <?php 
 class admin extends common
 {
-	public $id,$username,$salt,$password;
+	public $admin_id,$username,$salt,$password,$email,$role,$date,$status;
 	public function selectadminbyusername()
 	{
-		$sql="select * from tbl_admin where username='$this->username'";
+		$sql="select * from admin where username='$this->username'";
 		return $this->select($sql);
 	}
 	public function insertuser()
 	{
-		$sql ="insert into tbl_admin(username,salt,paswd)values('$this->username','$this->salt','$this->password')";
+		$sql ="insert into admin(username,password,salt,role,email_id,date,status)values('$this->username','$this->password','$this->salt','$this->role','$this->email','$this->date','$this->status')";
 		return $this->insert($sql);
 	}
 } 

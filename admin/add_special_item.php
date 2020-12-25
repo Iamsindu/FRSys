@@ -29,8 +29,78 @@
 <body class="fixed-left">
     <!-- Loader -->
     <?php 
-            require_once 'layout/header.php';
-            ?>
+	require_once 'class/common.class.php';
+	require_once 'class/admin.class.php';
+	require_once 'layout/header.php';
+	$admin=new admin;
+	$err=[];
+	if(isset($_POST['submit']))
+	{
+		if(isset($_POST['name'])&& !empty($_POST['name']))
+		{
+			$admin->name = $_POST['name'];
+		}
+		else
+		{
+			$err[0]="Name Field cannot be empty";
+		}
+		if (isset($_POST['username'])&& !empty($_POST['username']))
+		 {
+			$admin->username= $_POST['username'];
+		}
+		else
+		{
+			$err[1]="Username must be Entered";
+		}
+		if (isset($_POST['email'])&& !empty($_POST['email']))
+		 {
+			$admin->email= $_POST['email'];
+		
+		}
+		else
+		{
+			$err[2]="Email must be entered";
+		}
+		if(isset($_POST['password'])&& !empty($_POST['password']))
+		{
+			$password= $_POST['password'];
+		}
+		else
+		{
+			$err[3]="Password cannot be empty";
+		}
+		if(isset($_POST['status']))
+		{
+			$admin->status= $_POST['status'];
+		}
+		else
+		{
+			$err[4]="default status will be Inactive";
+		}
+		if(isset($_POST['phone'])&& !empty($_POST['phone']))
+		{
+			$admin->phone= $_POST['phone'];
+		}
+		else
+		{
+			$err[5]="Phone number should be inserted";
+		}
+		if(count($err)==0)
+		{
+			$admin->salt = uniqid();
+			$admin->password= sha1($admin->salt.$password);
+			$ask =$admin->insertuser();
+			if($ask==1)
+			{
+				echo "<<script>alert('inserted successfully')</script>";
+			}	
+			else
+			{
+				echo "<<script>alert('Failed to insert')</script>";
+			}
+		}
+	}
+ ?>	
                 <!-- Top Bar End -->
                 <div class="page-content-wrapper ">
                     <div class="container-fluid">

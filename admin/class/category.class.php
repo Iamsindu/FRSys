@@ -1,20 +1,20 @@
  <?php 
 class category extends common
 {
-	public $id,$cat;
+	public $cat_id,$catname;
 	public function selectcategorybytype()
 	{
-		$sql="select * from category where category_name='$this->cat'";
+		$sql="select * from cat where catname='$this->catname'";
 		return $this->select($sql);
 	}
 	public function insertcategory()
 	{
-		$sql ="insert into category(category_name) values ('$this->cat')";
+		$sql ="insert into cat(catname) values ('$this->catname')";
 		return $this->insert($sql);
 	}
 	public function selectcategory()
 	{
-		$sql= "select * from category";
+		$sql= "select * from cat";
 		return $this->select($sql);
 	} 
 } 
