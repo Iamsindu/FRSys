@@ -1,15 +1,16 @@
  <?php 
 class resturant extends common
 {
-	public $id;
+	public $rest_id, $rest_name, $phone_no, $password, $email_id, $date, $status, $open_time, $close_time, $delivery, $photo_id, $sim_id ;
 	public function insertfood()
 	{
-		$sql ="insert into food(fname,dsc,price,vg_nvg,photo_id)values('$this->fname','$this->dsc','$this->price','$this->vg_nvg','$this->photo_id')";
+		$sql ="insert into resturant(rest_id,rest_name,phone_no,email_id,date,status,open_time,close_time,delivery)
+						=values('$this->rest_id','$this->rest_name','$this->phone_no','$this->email_id','$this->date', $this->status, $this->open_time, $this->close_time,$this->delivery)";
 		return $this->insert($sql);
 	}
-	public function selectfood()
+	public function selectresturant()
 	{
-		$sql= "select * from food";
+		$sql= "select * from resturant";
 		return $this->select($sql);
 	}
 } 
