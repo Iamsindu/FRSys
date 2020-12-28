@@ -29,66 +29,33 @@
     <!-- Loader -->
     <?php 
 	require_once 'class/common.class.php';
-	require_once 'class/admin.class.php';
+	require_once 'class/discount.class.php';
 	require_once 'layout/header.php';
-	$admin=new admin;
+	$discount=new discount;
 	$err=[];
-	if(isset($_POST['submit']))
+	if(isset($_POST['cmdsubmit']))
 	{
-		if(isset($_POST['name'])&& !empty($_POST['name']))
+		if(isset($_POST['rate'])&& !empty($_POST['rate']))
 		{
-			$admin->name = $_POST['name'];
+			$discount->rate = $_POST['rate'];
 		}
 		else
 		{
-			$err[0]="Name Field cannot be empty";
+			$err[0]="rate Field cannot be empty";
 		}
-		if (isset($_POST['username'])&& !empty($_POST['username']))
+		if (isset($_POST['special'])&& !empty($_POST['special']))
 		 {
-			$admin->username= $_POST['username'];
+			$discount->special= $_POST['special'];
 		}
 		else
 		{
-			$err[1]="Username must be Entered";
+			$err[1]="special must be Entered";
 		}
-		if (isset($_POST['email'])&& !empty($_POST['email']))
-		 {
-			$admin->email= $_POST['email'];
 		
-		}
-		else
-		{
-			$err[2]="Email must be entered";
-		}
-		if(isset($_POST['password'])&& !empty($_POST['password']))
-		{
-			$password= $_POST['password'];
-		}
-		else
-		{
-			$err[3]="Password cannot be empty";
-		}
-		if(isset($_POST['status']))
-		{
-			$admin->status= $_POST['status'];
-		}
-		else
-		{
-			$err[4]="default status will be Inactive";
-		}
-		if(isset($_POST['phone'])&& !empty($_POST['phone']))
-		{
-			$admin->phone= $_POST['phone'];
-		}
-		else
-		{
-			$err[5]="Phone number should be inserted";
-		}
 		if(count($err)==0)
 		{
-			$admin->salt = uniqid();
-			$admin->password= sha1($admin->salt.$password);
-			$ask =$admin->insertuser();
+			
+			$ask =$discount->insertdiscount();
 			if($ask==1)
 			{
 				echo "<<script>alert('inserted successfully')</script>";
@@ -122,7 +89,7 @@
                             <div class="col-lg-6">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#">
+                                        <form action="#" method="POST">
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Rate</h6>
                                                 <div class="input-group">
@@ -130,7 +97,7 @@
                                                                     <span class="input-group-text"><i class="mdi mdi-percent"></i></span>
                                                                    
                                                                 </div>
-                                                    <input  type="text" class="form-control" required placeholder="Discount rate" />
+                                                    <input  type="text" class="form-control" required placeholder="Discount rate" name="rate"/>
                                                     
                                                 </div>
                                             </div>
@@ -138,13 +105,13 @@
                                                 <h6 class="text-muted fw-400">Special Event</h6>
                                                 <div>
                                                     
-                                                    <input  type="text" class="form-control" required placeholder="Event" />
+                                                    <input  type="text" class="form-control" required placeholder="Event" name="special"/>
                                                    
                                                 </div>
                                             </div>
                                             <div class="form-group ">
                                                 <div>
-                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light" name="cmdsubmit">
                                                         Add Discount
                                                     </button>
                                                 </div>
