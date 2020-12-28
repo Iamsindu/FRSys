@@ -83,7 +83,9 @@ $admin = new admin;
 								$data = $admin->selectadmin();
 								$n=1;
 								foreach ($data as $value)
-								 {?>
+                                 { if($value->role!='User')
+                                    {
+                                     ?>
 								 	<tr>
 								 		<td><?php echo $n; $n++; ?></td>
 								 		<td><?php echo $value->username; ?></td>
@@ -99,7 +101,8 @@ $admin = new admin;
 											?>
 										  </td>
 								 	</tr>
-								<?php	
+                                <?php	
+                                    }
 								}
 							 ?>
                                                 <!-- <tr>
