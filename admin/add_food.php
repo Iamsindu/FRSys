@@ -31,64 +31,48 @@
 	require_once 'class/common.class.php';
 	require_once 'class/food.class.php';
 	require_once 'layout/header.php';
-	$admin=new admin;
+	$food=new food;
 	$err=[];
 	if(isset($_POST['submit']))
 	{
-		if(isset($_POST['name'])&& !empty($_POST['name']))
+        // echo "food".$_POST['fname']."price".$_POST['price']."vg_nvg".$_POST['vg_nvg']."dsc".$_POST['dsc'];
+		if(isset($_POST['fname'])&& !empty($_POST['fname']))
 		{
-			$admin->name = $_POST['name'];
+			$food->fname = $_POST['fname'];
 		}
 		else
 		{
 			$err[0]="Name Field cannot be empty";
 		}
-		if (isset($_POST['username'])&& !empty($_POST['username']))
+		if (isset($_POST['price'])&& !empty($_POST['price']))
 		 {
-			$admin->username= $_POST['username'];
+			$food->price= $_POST['price'];
 		}
 		else
 		{
-			$err[1]="Username must be Entered";
+			$err[1]="Price must be Entered";
 		}
-		if (isset($_POST['email'])&& !empty($_POST['email']))
+		if (isset($_POST['vg_nvg'])&& !empty($_POST['vg_nvg']))
 		 {
-			$admin->email= $_POST['email'];
+			$food->vg_nvg= $_POST['vg_nvg'];
 		
 		}
 		else
 		{
-			$err[2]="Email must be entered";
+			$err[2]="vg_nvg must be entered";
 		}
-		if(isset($_POST['password'])&& !empty($_POST['password']))
+		
+		if(isset($_POST['dsc'])&& !empty($_POST['dsc']))
 		{
-			$password= $_POST['password'];
-		}
-		else
-		{
-			$err[3]="Password cannot be empty";
-		}
-		if(isset($_POST['status']))
-		{
-			$admin->status= $_POST['status'];
+			$food->dsc= $_POST['dsc'];
 		}
 		else
 		{
-			$err[4]="default status will be Inactive";
-		}
-		if(isset($_POST['phone'])&& !empty($_POST['phone']))
-		{
-			$admin->phone= $_POST['phone'];
-		}
-		else
-		{
-			$err[5]="Phone number should be inserted";
+			$err[5]="Description should be inserted";
 		}
 		if(count($err)==0)
 		{
-			$admin->salt = uniqid();
-			$admin->password= sha1($admin->salt.$password);
-			$ask =$admin->insertuser();
+			$ask =$food->insertwithoutimg();
 			if($ask==1)
 			{
 				echo "<<script>alert('inserted successfully')</script>";
@@ -148,12 +132,12 @@
                                         </select>
                                         </div>
                                         
-                                       <div class="form-group">
+                                       <!-- <div class="form-group">
                                              <h6 class="text-muted fw-400">Upload Photos</h6>
                                             <div>
                                                  <input name="" type="file" multiple="multiple">
                                             </div>
-                                        </div>
+                                        </div> -->
                                               
                                         <!-- <div class="form-group">    
                                         <h6 class="text-muted fw-400">Resturant</h6>
@@ -166,17 +150,17 @@
                                         </select>
                                     </div> -->
                                     <div class="form-group">
-                                        <h6 class="text-muted fw-400">Category</h6>
+                                        <!-- <h6 class="text-muted fw-400">Category</h6>
                                         <select class="select2 mb-3 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose">
                                            
                                                 <option value="AK">Veg</option>
                                                 <option value="HI">Non-Veg</option>
                                            
-                                        </select>
+                                        </select> -->
                                        </div>
                                          <div class="form-group ">
                                                     <div>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light" name="submit">
                                                             Add Food
                                                         </button>
                                                     </div>
