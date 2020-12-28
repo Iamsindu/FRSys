@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <!-- Plugins css -->
-    <link href="assets/plugins/timepicker/tempusdominus-bootstrap-4.css" rel="stylesheet" />
+    <!-- <link href="assets/plugins/timepicker/tempusdominus-bootstrap-4.css" rel="stylesheet" />
     <link href="assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
     <link href="assets/plugins/clockpicker/jquery-clockpicker.min.css" rel="stylesheet" />
     <link href="assets/plugins/colorpicker/asColorPicker.min.css" rel="stylesheet" type="text/css" />
@@ -22,73 +22,63 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/assets/plugins/morris/morris.css" rel="stylesheet">
+    <link href="/assets/plugins/morris/morris.css" rel="stylesheet"> -->
 </head>
 
 <body class="fixed-left">
     <!-- Loader -->
     <?php 
 	require_once 'class/common.class.php';
-	require_once 'class/admin.class.php';
-	require_once 'layout/header.php';
-	$admin=new admin;
+	require_once 'class/fooddisc.class.php';
+	//require_once 'layout/header.php';
+	$fooddisc=new fooddisc;
 	$err=[];
-	if(isset($_POST['submit']))
+	if(isset($_POST['cmdsubmit']))
 	{
-		if(isset($_POST['name'])&& !empty($_POST['name']))
+        echo"hit";
+        echo $_POST['rel_date']."relesedat";
+        echo $_POST['exp_date']."expdate";
+		if(isset($_POST['food_id'])&& !empty($_POST['food_id']))
 		{
-			$admin->name = $_POST['name'];
+            echo $_POST['food_id'];
+			$fooddisc->food_id = $_POST['food_id'];
 		}
 		else
 		{
-			$err[0]="Name Field cannot be empty";
+			$err[0]="Food Field cannot be empty";
 		}
-		if (isset($_POST['username'])&& !empty($_POST['username']))
+		if (isset($_POST['dis_id'])&& !empty($_POST['dis_id']))
 		 {
-			$admin->username= $_POST['username'];
+            echo $_POST['dis_id']; 
+			$fooddisc->dis_id= $_POST['dis_id'];
 		}
 		else
 		{
-			$err[1]="Username must be Entered";
+			$err[1]="discount must be Entered";
 		}
-		if (isset($_POST['email'])&& !empty($_POST['email']))
+		if (isset($_POST['rel_date'])&& !empty($_POST['rel_date']))
 		 {
-			$admin->email= $_POST['email'];
+             echo $_POST['rel_date']."relesedat";
+			$foodidsc->rel_date= $_POST['rel_date'];
+		}
+		else
+		{
+			$err[2]="Release date must be entered";
+		}
 		
+		if(isset($_POST['exp_date'])&& !empty($_POST['exp_date']))
+		{
+            echo $_POST['exp_date']."expdate";
+			$fooddisc->exp_date= $_POST['exp_date'];
 		}
 		else
 		{
-			$err[2]="Email must be entered";
-		}
-		if(isset($_POST['password'])&& !empty($_POST['password']))
-		{
-			$password= $_POST['password'];
-		}
-		else
-		{
-			$err[3]="Password cannot be empty";
-		}
-		if(isset($_POST['status']))
-		{
-			$admin->status= $_POST['status'];
-		}
-		else
-		{
-			$err[4]="default status will be Inactive";
-		}
-		if(isset($_POST['phone'])&& !empty($_POST['phone']))
-		{
-			$admin->phone= $_POST['phone'];
-		}
-		else
-		{
-			$err[5]="Phone number should be inserted";
+			$err[5]="Expiry Date should be inserted";
 		}
 		if(count($err)==0)
 		{
-			$admin->salt = uniqid();
-			$admin->password= sha1($admin->salt.$password);
-			$ask =$admin->insertuser();
+			$foodidsc->date=date('Y-m-d H:i:s');
+			$ask =$foodidsc->insertfooddisc();
 			if($ask==1)
 			{
 				echo "<<script>alert('inserted successfully')</script>";
@@ -122,15 +112,15 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#">
+                                        <form action="#" method="POST">
                                              <div class="form-group">
                                                 <h6 class="text-muted fw-400">Food</h6>
-                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" >
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="food_id">
                                                     <option>Select</option>
-                                                    <option value="AK">French Fries</option>
-                                                    <option value="HI">Chowmin</option>
-                                                    <option value="HI">Momo</option>
-                                                    <option value="HI">Pizza</option>
+                                                    <option>French Fries</option>
+                                                    <option>Chowmin</option>
+                                                    <option>Momo</option>
+                                                    <option>Pizza</option>
                                                     <!-- <option value="evn">Event</option> -->
                                                 </select>
                                             </div>
@@ -139,22 +129,22 @@
 
                                                     <div>
                                                         <div class="input-daterange input-group" id="date-range">
-                                                            <input type="text" class="form-control" name="start" placeholder="Manufactured Date" />
-                                                            <input type="text" class="form-control" name="end" placeholder="Expiry Date" />
+                                                            <input type="text" class="form-control" placeholder="Manufactured Date" name="rel_date"/>
+                                                            <input type="text" class="form-control" placeholder="Expiry Date" name="exp_date"/>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                 <h6 class="text-muted fw-400">Discount</h6>
-                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" >
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="dis_id">
                                                     <option>Select</option>
-                                                    <option value="AK">5%</option>
-                                                    <option value="HI">15%</option>
+                                                    <option>5%</option>
+                                                    <option>15%</option>
                                                 </select>
                                             </div>
                                              <div class="form-group ">
                                                     <div>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light" name="cmdsubmit">
                                                             Add Food Discount
                                                         </button>
                                                     </div>
