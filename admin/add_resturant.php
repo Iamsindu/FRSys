@@ -28,11 +28,16 @@
 
 <body class="fixed-left">
     <!-- Loader -->
-    <?php 
+    
+    <?php
+    $i=1;     
 	require_once 'class/common.class.php';
-	require_once 'class/admin.class.php';
-	require_once 'layout/header.php';
-	$admin=new admin;
+	require_once 'class/resturant.class.php';
+	//require_once 'class/session.class.php';
+    //sessionhelper::checklogin();
+    //require_once 'selector.php';
+    //$a[2]=1;
+	$resturant=new resturant;
 	$err=[];
 	if(isset($_POST['submit']))
 	{
@@ -123,7 +128,7 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#">
+                                        <form action="#" method="POST">
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Resturant Name</h6>
                                                 <div>
