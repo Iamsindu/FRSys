@@ -9,7 +9,7 @@ class admin extends common
 	}
 	public function insertadmin()
 	{
-		$sql ="insert into admin(username,password,salt,role,email_id,date,status)values('$this->username','$this->password','$this->salt','$this->role','$this->email','$this->date','$this->status')";
+		$sql ="insert into admin(username,password,salt,role,email_id,date,status)values('$this->username','$this->password','$this->salt','$this->role','$this->email_id','$this->date','$this->status')";
 		return $this->insert($sql);
 	}
 } 

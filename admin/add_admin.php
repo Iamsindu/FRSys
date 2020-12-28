@@ -25,42 +25,79 @@
 </head>
 
 <body class="fixed-left">
-    <?php     
-	//require_once 'class/common.class.php';
-	//require_once 'class/admin.class.php';
+    <?php
+    $i=1;     
+	require_once 'class/common.class.php';
+	require_once 'class/admin.class.php';
 	//require_once 'class/session.class.php';
     //sessionhelper::checklogin();
     //require_once 'selector.php';
     //$a[2]=1;
+    $note=[];
     require_once 'layout/header.php';
-    //$admin=new admin; 
+    $admin=new admin; 
     
 	$err=[];
 	if(isset($_POST['cmdsubmit']))
 	{
+        
 		
 		if (isset($_POST['username'])&& !empty($_POST['username']))
 		 {
+            
 			$admin->username= $_POST['username'];
 		}
 		else
 		{
 			$err[1]="Username must be Entered";
-		}
-		
-		if(isset($_POST['password'])&& !empty($_POST['password']))
+        }
+        if(isset($_POST['password'])&& !empty($_POST['password']))
 		{
-			$password= $_POST['password'];
+            
+            $password= $_POST['password'];
+            if (preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $password )){
+            $note[1]="Your password is strong.";
+            } else {
+            $note[2]="Your password is not safe.";
+            }
 		}
 		else
 		{
 			$err[3]="Password cannot be empty";
 		}
+        if (isset($_POST['role'])&& !empty($_POST['role']))
+		 {
+            
+			$admin->role= $_POST['role'];
+		}
+		else
+		{
+			$err[4]="Role must be Entered";
+        }
+        if (isset($_POST['email_id'])&& !empty($_POST['email_id']))
+		 {
+            
+			$admin->email_id= $_POST['email_id'];
+		}
+		else
+		{
+			$err[5]="Email must be Entered";
+		}
+		if (isset($_POST['status'])&& !empty($_POST['status']))
+		 {
+            
+			$admin->status= $_POST['status'];
+		}
+		else
+		{
+			$err[6]="Status must be Entered";
+		}
 		if(count($err)==0)
 		{
-			$admin->salt = uniqid();
+            $admin->salt = uniqid();
+            $admin->date=date('Y-m-d H:i:s');
 			$admin->password= sha1($admin->salt.$password);
-			$ask =$admin->insertuser();
+			$ask =$admin->insertadmin();
 			if($ask==1)
 			{
 				echo "<<script>alert('inserted successfully')</script>";
@@ -93,7 +130,7 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#">
+                                        <form action="#" method="POST">
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Username</h6>
                                                 <div>
@@ -110,12 +147,18 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <h6 class="text-muted fw-400">Email</h6>
+                                                <div>
+                                                    <input type="email" name="email_id" class="form-control" required placeholder="Enter email" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <h6 class="text-muted fw-400">Role</h6>
-                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="role">
                                                     <option>Select</option>
-                                                    <option value="AK">Admin</option>
-                                                    <option value="HI">Editor</option>
-                                                    <option value="evn">User</option>
+                                                    <option>Admin</option>
+                                                    <option>Editor</option>
+                                                    <option>User</option>
                                                     <!--  <optgroup label="Pacific Time Zone">
                                                         <option value="CA">California</option>
                                                         <option value="NV">Nevada</option>
@@ -126,15 +169,15 @@
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Status</h6>
-                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;">
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="status">
                                                     <option>Select</option>
-                                                    <option value="AK">Active</option>
-                                                    <option value="HI">Inactive</option>
+                                                    <option>Active</option>
+                                                    <option>Inactive</option>
                                                 </select>
                                             </div>
                                             <div class="form-group ">
                                                 <div>
-                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                    <button type="submit" name="cmdsubmit" class="btn btn-primary waves-effect waves-light">
                                                         Add Admin
                                                     </button>
                                                 </div>
