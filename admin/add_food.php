@@ -29,7 +29,7 @@
     <!-- Loader -->
     <?php 
 	require_once 'class/common.class.php';
-	require_once 'class/admin.class.php';
+	require_once 'class/food.class.php';
 	require_once 'layout/header.php';
 	$admin=new admin;
 	$err=[];
@@ -122,26 +122,26 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#">
+                                        <form action="#" method="POST">
                                         <div class="form-group">
                                              <h6 class=" text-muted fw-400">Food Name</h6>
-                                            <input type="text" class="form-control" required placeholder="Food Name" />
+                                            <input type="text" class="form-control" required placeholder="Food Name" name="fname"/>
                                         </div>
                                         <div class="form-group">
                                              <h6 class=" text-muted fw-400">Description</h6>
                                             <div>
-                                                <textarea id="textarea" class="form-control" maxlength="225" rows="3" required placeholder="Add Detail about food only 225 chars."></textarea>
+                                                <textarea id="textarea" class="form-control" maxlength="225" rows="3" required placeholder="Add Detail about food only 225 chars." name="dsc"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <h6 class="text-muted fw-400">Price</h6>
                                             <div>
-                                                <input data-parsley-type="number" type="text" class="form-control" required placeholder="Item Price" />
+                                                <input data-parsley-type="number" type="text" class="form-control" required placeholder="Item Price" name="price" />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                         <h6 class="text-muted fw-400">Veg/Non-Veg</h6>
-                                        <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;">
+                                        <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" name="vg_nvg">
                                             <option>Select</option>
                                             <option value="1">Veg</option>
                                             <option value="0">Non Veg</option>
@@ -151,20 +151,20 @@
                                        <div class="form-group">
                                              <h6 class="text-muted fw-400">Upload Photos</h6>
                                             <div>
-                                                 <input name="file" type="file" multiple="multiple">
+                                                 <input name="" type="file" multiple="multiple">
                                             </div>
                                         </div>
                                               
-                                        <div class="form-group">    
+                                        <!-- <div class="form-group">    
                                         <h6 class="text-muted fw-400">Resturant</h6>
                                         <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;">
                                             <option>Select</option>
                                             
-                                                <option value="AK">Refresh Cafe</option>
-                                                <option value="HI">Signature Cafe</option>
-                                                <option value="HI">Lavish Lounge</option>
+                                                <option>Refresh Cafe</option>
+                                                <option>Signature Cafe</option>
+                                                <option>Lavish Lounge</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <h6 class="text-muted fw-400">Category</h6>
                                         <select class="select2 mb-3 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose">

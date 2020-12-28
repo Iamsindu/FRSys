@@ -29,10 +29,12 @@
         <!-- Loader -->
         <?php 
 require_once 'layout/header.php';
-require_once 'admin.class.php';
-require_once 'common.class.php';
+require_once 'class/common.class.php';
+require_once 'class/admin.class.php';
+//require_once 'class/session.class.php';
+//sessionhelper::checklogin();
+//require_once 'selector.php';
 $admin = new admin;
-$value[]=$admin->selectuser();
  ?>
                     <!-- Top Bar End -->
 
@@ -72,6 +74,7 @@ $value[]=$admin->selectuser();
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Name</th>
+                                                    <th>Email</th>
                                                     <th>Role</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
@@ -80,7 +83,37 @@ $value[]=$admin->selectuser();
             
             
                                                 <tbody>
-                                                <tr>
+                                                <?php 
+								$admin= new admin;
+								$data = $admin->selectadmin();
+								$n=1;
+								foreach ($data as $value)
+								 {if($value->role=='User')
+                                    {
+                                     ?>
+								 	<tr>
+								 		<td><?php echo $n; $n++; ?></td>
+								 		<td><?php echo $value->username; ?></td>
+								 	    <td><?php echo $value->email_id;?></td>
+                                         <td><?php 
+                                         
+                                         echo $value->role;
+                                         ?></td>
+                                         <td><?php echo $value->status;?></td>
+								 	    
+								 	    <td> <?php 
+														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->admin_id."'>Update</a>"."&nbsp"; 
+														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->admin_id."'>Delete</a>";
+													
+													
+											?>
+										  </td>
+								 	</tr>
+                                <?php
+                                    }	
+								}
+							 ?>
+                                                <!-- <tr>
                                                     <th scope="row">1</th>
                                                     <td>Sandip Pokhrel</td>
                                                     <td>Admin</td>
@@ -103,7 +136,7 @@ $value[]=$admin->selectuser();
                                                     <td>Active</td>
                                                     <td><button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
                                                     <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr>
+                                                </tr> -->
                                               
                                                
                                               
