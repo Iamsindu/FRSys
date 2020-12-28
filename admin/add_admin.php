@@ -135,6 +135,12 @@
                                                 <h6 class="text-muted fw-400">Username</h6>
                                                 <div>
                                                     <input type="text" name="username" class="form-control" required placeholder="Name" />
+                                                    <?php 
+                                                    if(isset($_POST['cmdsubmit']))
+                                                    {
+                                                    echo $err[1];
+                                                    }
+                                                    ?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
