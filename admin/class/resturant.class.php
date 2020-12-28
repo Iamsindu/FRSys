@@ -2,10 +2,10 @@
 class resturant extends common
 {
 	public $rest_id, $rest_name, $phone_no, $password, $email_id, $date, $status, $open_time, $close_time, $delivery, $photo_id, $sim_id ;
-	public function insertfood()
+	public function insertresturant()
 	{
-		$sql ="insert into resturant(rest_id,rest_name,phone_no,email_id,date,status,open_time,close_time,delivery)
-						=values('$this->rest_id','$this->rest_name','$this->phone_no','$this->email_id','$this->date', $this->status, $this->open_time, $this->close_time,$this->delivery)";
+		$sql ="insert into resturant(rest_id,rest_name,phone_no,email_id,date,status,delivery)
+						=values('$this->rest_id','$this->rest_name','$this->phone_no','$this->email_id','$this->date', $this->status,$this->delivery)";
 		return $this->insert($sql);
 	}
 	public function selectresturant()

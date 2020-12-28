@@ -29,10 +29,10 @@
 <body class="fixed-left">
     <!-- Loader -->
     
-    <?php
-    $i=1;     
+    <?php    
 	require_once 'class/common.class.php';
-	require_once 'class/resturant.class.php';
+    require_once 'class/resturant.class.php';
+    require_once 'layout/header.php';
 	//require_once 'class/session.class.php';
     //sessionhelper::checklogin();
     //require_once 'selector.php';
@@ -41,25 +41,25 @@
 	$err=[];
 	if(isset($_POST['submit']))
 	{
-		if(isset($_POST['name'])&& !empty($_POST['name']))
+		if(isset($_POST['rest_name'])&& !empty($_POST['rest_name']))
 		{
-			$admin->name = $_POST['name'];
+			$resturant->rest_name = $_POST['rest_name'];
 		}
 		else
 		{
-			$err[0]="Name Field cannot be empty";
+			$err[0]="Resturant Field cannot be empty";
 		}
-		if (isset($_POST['username'])&& !empty($_POST['username']))
+		if (isset($_POST['phone_no'])&& !empty($_POST['phone_no']))
 		 {
-			$admin->username= $_POST['username'];
+			$resturant->phone_no= $_POST['phone_no'];
 		}
 		else
 		{
-			$err[1]="Username must be Entered";
+			$err[1]="Phone Number must be Entered";
 		}
-		if (isset($_POST['email'])&& !empty($_POST['email']))
+		if (isset($_POST['email_id'])&& !empty($_POST['email_id']))
 		 {
-			$admin->email= $_POST['email'];
+			$resturant->email_id= $_POST['email_id'];
 		
 		}
 		else
@@ -76,25 +76,42 @@
 		}
 		if(isset($_POST['status']))
 		{
-			$admin->status= $_POST['status'];
+			$resturant->status= $_POST['status'];
 		}
 		else
 		{
 			$err[4]="default status will be Inactive";
 		}
-		if(isset($_POST['phone'])&& !empty($_POST['phone']))
+		// if(isset($_POST['open_time'])&& !empty($_POST['open_time']))
+		// {
+		// 	$resturant->open_time= $_POST['open_time'];
+		// }
+		// else
+		// {
+		// 	$err[5]="Opening time should be inserted";
+        // }
+        // if(isset($_POST['close_time'])&& !empty($_POST['close_time']))
+		// {
+		// 	$resturant->close_time= $_POST['close_time'];
+		// }
+		// else
+		// {
+		// 	$err[5]="Close time should be inserted";
+        // }
+        if(isset($_POST['delivery'])&& !empty($_POST['delivery']))
 		{
-			$admin->phone= $_POST['phone'];
+			$resturant->delivery= $_POST['delivery'];
 		}
 		else
 		{
-			$err[5]="Phone number should be inserted";
-		}
+			$err[5]="Delivery should be inserted";
+        }
 		if(count($err)==0)
 		{
-			$admin->salt = uniqid();
-			$admin->password= sha1($admin->salt.$password);
-			$ask =$admin->insertuser();
+            $resturant->date=date('Y-m-d H:i:s');
+			$resturant->salt = uniqid();
+			$resturant->password= sha1($resturant->salt.$password);
+			$ask =$resturant->insertresturant();
 			if($ask==1)
 			{
 				echo "<<script>alert('inserted successfully')</script>";
@@ -132,14 +149,14 @@
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Resturant Name</h6>
                                                 <div>
-                                                <input type="text" class="form-control" required placeholder="Resturant Name"/>
+                                                <input type="text" class="form-control" required placeholder="Resturant Name" name="rest_name"/>
                                             </div>
                                             </div>
                                             <div class="form-group">
                                                     <h6 class="text-muted fw-400">Password</h6>
                                                     <div>
                                                         <input type="password" id="pass2" class="form-control" required
-                                                                placeholder="Password"/>
+                                                                placeholder="Password" name="password"/>
                                                     </div>
                                                     <div class="m-t-10">
                                                         <input type="password" class="form-control" required
@@ -152,28 +169,28 @@
 
                                                     <div>
                                                         <input type="email" class="form-control" required
-                                                                parsley-type="email" placeholder="Enter a valid e-mail"/>
+                                                                parsley-type="email" placeholder="Enter a valid e-mail" name="email_id"/>
                                                     </div>
                                                 </div>
                                             <div class="form-group">
                                                <h6 class="text-muted fw-400">Phone no</h6>
                                                <div>
-                                                <input type="text" class="form-control" required data-parsley-type="number" data-parsley-length="[10]" placeholder="Valid 10 digit number" />
+                                                <input type="text" class="form-control" required   placeholder="number" name="phone_no"/>
                                             </div>
                                             </div>
                                              <div class="form-group">
                                                 <h6 class="text-muted fw-400">Status</h6>
-                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" >
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="status">
                                                     <option>Select</option>
-                                                    <option value="AK">Open</option>
-                                                    <option value="HI">Close</option>
-                                                    <option value="evn">Event</option>                                                  
+                                                    <option >Open</option>
+                                                    <option >Close</option>
+                                                    <option >Event</option>                                                  
                                                 </select>
                                             </div>
                                              <div class="form-group">
                                                 <h6 class="text-muted fw-400">Open Time</h6>
                                                 <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                                    <input type="text" class="form-control" value="01:35">
+                                                    <input type="text" class="form-control" value="01:35" name="open_time">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                                     </div>
@@ -182,7 +199,7 @@
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Closed Time</h6>
                                                 <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                                    <input type="text" class="form-control" value="18:35">
+                                                    <input type="text" class="form-control" value="18:35" name="close_time">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                                     </div>
@@ -190,10 +207,10 @@
                                             </div>
                                            <div class="form-group">
                                                 <h6 class="text-muted fw-400">Delivery</h6>
-                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" >
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="delivery">
                                                     <option>Select</option>
-                                                    <option value="AK">Yes</option>
-                                                    <option value="HI">No</option>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
                                                 </select>
                                             </div>
                                             <h6 class="text-muted fw-400">Location</h6>
@@ -221,15 +238,15 @@
                                     </div>
                                             
                                            
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <h6 class="text-muted fw-400">Upload Photos</h6>
                                                 <div>
                                                     <input name="file" type="file" multiple="multiple">
                                                 </div>
-                                            </div> 
+                                            </div>  -->
                                              <div class="form-group ">
                                                     <div>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light" name="submit">
                                                             Add Resturant
                                                         </button>
                                                     </div>
