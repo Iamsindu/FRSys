@@ -2,9 +2,9 @@
 class admin extends common
 {
 	public $admin_id,$username,$salt,$password,$email_id,$role,$date,$status;
-	public function selectadminbyusername()
+	public function selectadmin()
 	{
-		$sql="select * from admin where username='$this->username'";
+		$sql="select * from admin ";
 		return $this->select($sql);
 	}
 	public function insertadmin()

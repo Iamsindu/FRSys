@@ -23,10 +23,12 @@
         <!-- Loader -->
         <?php 
 require_once 'layout/header.php';
-require_once 'admin.class.php';
-require_once 'common.class.php';
-$admin = new admin;
-$value[]=$admin->selectuser();
+require_once 'class/common.class.php';
+require_once 'class/category.class.php';
+//require_once 'class/session.class.php';
+//sessionhelper::checklogin();
+//require_once 'selector.php';
+$category = new category;
  ?>
                     <!-- Top Bar End -->
 
@@ -72,7 +74,26 @@ $value[]=$admin->selectuser();
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
+                                                <?php 
+								$data = $category->selectcategory();
+								$n=1;
+								foreach ($data as $value)
+								 {?>
+								 	<tr>
+								 		<td><?php echo $n; $n++; ?></td>
+								 		<td><?php echo $value->catname; ?></td>
+								 	    <td> <?php 
+														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->cat_id."'>Update</a>"."&nbsp"; 
+														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->cat_id."'>Delete</a>";
+													
+													
+											?>
+										  </td>
+								 	</tr>
+								<?php	
+								}
+							 ?>
+                                                <!-- <tr>
                                                     <th scope="row">1</th>
                                                     <td>Veg</td>
                                                     <td> <button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
@@ -83,7 +104,7 @@ $value[]=$admin->selectuser();
                                                     <td>Non-Veg</td>
                                                     <td> <button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
                                                     <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td> 
-                                                </tr>
+                                                </tr> -->
                                                 </tbody>
                                             </table>
             

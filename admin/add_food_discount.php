@@ -81,11 +81,11 @@
 			$ask =$foodidsc->insertfooddisc();
 			if($ask==1)
 			{
-				echo "<<script>alert('inserted successfully')</script>";
+				echo "<script>alert('inserted successfully')</script>";
 			}	
 			else
 			{
-				echo "<<script>alert('Failed to insert')</script>";
+				echo "<script>alert('Failed to insert')</script>";
 			}
 		}
 	}
