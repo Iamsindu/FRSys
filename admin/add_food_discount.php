@@ -68,7 +68,7 @@
 		
 		if(isset($_POST['exp_date'])&& !empty($_POST['exp_date']))
 		{
-            echo $_POST['exp_date']."expdate";
+            
 			$fooddisc->exp_date= $_POST['exp_date'];
 		}
 		else
