@@ -27,77 +27,34 @@
 
 <body class="fixed-left">
     <!-- Loader -->
-    <?php 
-          
-            
+    <?php          
 	require_once 'class/common.class.php';
-	require_once 'class/admin.class.php';
+	require_once 'class/category.class.php';
 	require_once 'layout/header.php';
-	$admin=new admin;
+	$category=new category;
 	$err=[];
-	if(isset($_POST['submit']))
+	if(isset($_POST['cmdsubmit']))
 	{
-		if(isset($_POST['name'])&& !empty($_POST['name']))
+		if(isset($_POST['catname'])&& !empty($_POST['catname']))
 		{
-			$admin->name = $_POST['name'];
+			$category->catname = $_POST['catname'];
 		}
 		else
 		{
-			$err[0]="Name Field cannot be empty";
+			$err[0]="Category Field cannot be empty";
 		}
-		if (isset($_POST['username'])&& !empty($_POST['username']))
-		 {
-			$admin->username= $_POST['username'];
-		}
-		else
-		{
-			$err[1]="Username must be Entered";
-		}
-		if (isset($_POST['email'])&& !empty($_POST['email']))
-		 {
-			$admin->email= $_POST['email'];
 		
-		}
-		else
-		{
-			$err[2]="Email must be entered";
-		}
-		if(isset($_POST['password'])&& !empty($_POST['password']))
-		{
-			$password= $_POST['password'];
-		}
-		else
-		{
-			$err[3]="Password cannot be empty";
-		}
-		if(isset($_POST['status']))
-		{
-			$admin->status= $_POST['status'];
-		}
-		else
-		{
-			$err[4]="default status will be Inactive";
-		}
-		if(isset($_POST['phone'])&& !empty($_POST['phone']))
-		{
-			$admin->phone= $_POST['phone'];
-		}
-		else
-		{
-			$err[5]="Phone number should be inserted";
-		}
 		if(count($err)==0)
 		{
-			$admin->salt = uniqid();
-			$admin->password= sha1($admin->salt.$password);
-			$ask =$admin->insertuser();
+			
+			$ask =$category->insertcategory();
 			if($ask==1)
 			{
-				echo "<<script>alert('inserted successfully')</script>";
+				echo "<script>alert('inserted successfully')</script>";
 			}	
 			else
 			{
-				echo "<<script>alert('Failed to insert')</script>";
+				echo "<script>alert('Failed to insert')</script>";
 			}
 		}
 	}
@@ -125,16 +82,16 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#">
+                                        <form action="#" method="POST">
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Category Name</h6>
                                                 <div>
-                                                    <input type="text" class="form-control" required placeholder="Name" />
+                                                    <input type="text" class="form-control" required placeholder="Name" name="catname"/>
                                                 </div>
                                             </div>
                                             <div class="form-group ">
                                                 <div>
-                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                    <button type="submit" name="cmdsubmit" class="btn btn-primary waves-effect waves-light">
                                                         Add Category
                                                     </button>
                                                 </div>
