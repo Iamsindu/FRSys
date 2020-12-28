@@ -29,10 +29,12 @@
         <!-- Loader -->
         <?php 
 require_once 'layout/header.php';
-require_once 'admin.class.php';
-require_once 'common.class.php';
-$admin = new admin;
-$value[]=$admin->selectuser();
+require_once 'class/common.class.php';
+require_once 'class/food.class.php';
+//require_once 'class/session.class.php';
+//sessionhelper::checklogin();
+//require_once 'selector.php';
+$food = new food;
  ?>
                     <!-- Top Bar End -->
 
@@ -77,15 +79,38 @@ $value[]=$admin->selectuser();
                                                     <th>Food Name</th>
                                                     <th>Description</th>
                                                     <th>Price</th>
-                                                    <!-- <th>Veg/ Non-Veg</th> -->
-                                                    <th>Resturant Name</th>
+                                                    <th>Veg/ Non-Veg</th>
+                                                    <!-- <th>Resturant Name</th> -->
                                                     <th>Action</th>
                                                 </tr>
                                                 </thead>
             
             
                                                 <tbody>
-                                                <tr>
+                                                <?php 
+								$data = $food->selectfood();
+								$n=1;
+								foreach ($data as $value)
+								 {?>
+								 	<tr>
+								 		<td><?php echo $n; $n++; ?></td>
+								 		<td><?php echo $value->fname; ?></td>
+								 	    <td><?php echo $value->dsc;?></td>
+                                         <td><?php echo $value->price;?></td>
+                                         <td><?php echo $value->vg_nvg;?></td>
+								 	    
+								 	    <td> <?php 
+														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->food_id."'>Update</a>"."&nbsp"; 
+														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->food_id."'>Delete</a>";
+													
+													
+											?>
+										  </td>
+								 	</tr>
+								<?php	
+								}
+							 ?>
+                                                <!-- <tr>
                                                     <td>131</td>
                                                     <td>Tiger Nixon</td>
                                                     <td>Mithoo chaaa hai bross</td>
@@ -112,7 +137,7 @@ $value[]=$admin->selectuser();
                                                    <td><button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
                                                      <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
                                                 </tr>
-                                              
+                                               -->
                                                
                                               
                                                 </tbody>
