@@ -100,11 +100,11 @@
 			$ask =$admin->insertadmin();
 			if($ask==1)
 			{
-				echo "<<script>alert('inserted successfully')</script>";
+				echo "<script> alert('inserted successfully') </script>";
 			}	
 			else
 			{
-				echo "<<script>alert('Failed to adinsert')</script>";
+				echo "<script> alert('Failed to insert') </script>";
 			}
 		}
 	}
