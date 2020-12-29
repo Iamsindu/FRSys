@@ -135,12 +135,6 @@
                                                 <h6 class="text-muted fw-400">Username</h6>
                                                 <div>
                                                     <input type="text" name="username" class="form-control" required placeholder="Name" />
-                                                    <?php 
-                                                    if(isset($_POST['cmdsubmit']))
-                                                    {
-                                                    echo $err[1];
-                                                    }
-                                                    ?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -165,12 +159,6 @@
                                                     <option>Admin</option>
                                                     <option>Editor</option>
                                                     <option>User</option>
-                                                    <!--  <optgroup label="Pacific Time Zone">
-                                                        <option value="CA">California</option>
-                                                        <option value="NV">Nevada</option>
-                                                        <option value="OR">Oregon</option>
-                                                        <option value="WA">Washington</option>
-                                                    </optgroup> -->
                                                 </select>
                                             </div>
                                             <div class="form-group">
