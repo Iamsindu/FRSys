@@ -58,11 +58,9 @@
 		}
 		if (isset($_POST['rel_date'])&& !empty($_POST['rel_date']))
 		 {
-<<<<<<< HEAD
+
             //  echo $_POST['rel_date']."relesedat";
-=======
-             echo $_POST['rel_date']."relesedat";
->>>>>>> 6390bd2f3f47fa8af65e7bf09d7fbdff3d5369db
+
 			$fooddisc->rel_date= $_POST['rel_date'];
 		}
 		else
