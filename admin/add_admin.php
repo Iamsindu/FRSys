@@ -154,23 +154,17 @@
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Role</h6>
-                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="role">
-                                                    <option>Select</option>
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="role" required>
+                                                <option disabled selected>Select</option>
                                                     <option>Admin</option>
                                                     <option>Editor</option>
                                                     <option>User</option>
-                                                    <!--  <optgroup label="Pacific Time Zone">
-                                                        <option value="CA">California</option>
-                                                        <option value="NV">Nevada</option>
-                                                        <option value="OR">Oregon</option>
-                                                        <option value="WA">Washington</option>
-                                                    </optgroup> -->
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Status</h6>
-                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="status">
-                                                    <option>Select</option>
+                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="status" required >
+                                                    <option disabled selected>Select</option>
                                                     <option>Active</option>
                                                     <option>Inactive</option>
                                                 </select>
