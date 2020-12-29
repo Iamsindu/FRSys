@@ -31,6 +31,7 @@
 	require_once 'class/common.class.php';
     require_once 'class/food.class.php';
     require_once 'class/resturant.class.php';
+    require_once 'class/category.class.php';
 	require_once 'layout/header.php';
     $food=new food;
     
@@ -143,28 +144,32 @@
                                               
                                          <div class="form-group">    
                                         <h6 class="text-muted fw-400">Resturant</h6>
-                                        <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;">
-                                        <option disabled selected>Select</option>
+                                        <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" data-placeholder="Choose">
+                                        <!-- <option disabled selected>Select</option> -->
                                         <?php
                                         $resturant = new resturant;
                                         $data = $resturant->selectresturant_name();
                                         foreach ($data as $value)
                                  { ?>
-                                            <option><?php echo $value->rest_name; ?></option>
-                                         
+                                            <option><?php echo $value->rest_name; ?></option>   
                                 <?php  
 								}
-							    ?>
-                                            
+							    ?>      
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <h6 class="text-muted fw-400">Category</h6>
                                         <select class="select2 mb-3 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose">
-                                           
-                                                <option value="AK">Veg</option>
-                                                <option value="HI">Non-Veg</option>
-                                           
+                                        <!-- <option disabled selected>Select</option> -->
+                                        <?php
+                                        $category = new category;
+                                        $data = $category->selectcategory();
+                                        foreach ($data as $value)
+                                 { ?>
+                                            <option><?php echo $value->catname; ?></option>    
+                                <?php  
+								}
+							    ?>
                                         </select> 
                                        </div>
                                          <div class="form-group ">
