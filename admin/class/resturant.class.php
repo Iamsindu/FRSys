@@ -13,6 +13,11 @@ class resturant extends common
 		$sql= "select * from resturant";
 		return $this->select($sql);
 	}
+	public function selectresturant_name()
+	{
+		$sql= "select rest_name from resturant";
+		return $this->select($sql);
+	}
 } 
 ?>
 
