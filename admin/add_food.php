@@ -29,9 +29,11 @@
     <!-- Loader -->
     <?php 
 	require_once 'class/common.class.php';
-	require_once 'class/food.class.php';
+    require_once 'class/food.class.php';
+    require_once 'class/resturant.class.php';
 	require_once 'layout/header.php';
-	$food=new food;
+    $food=new food;
+    
 	$err=[];
 	if(isset($_POST['submit']))
 	{
@@ -132,31 +134,38 @@
                                         </select>
                                         </div>
                                         
-                                       <!-- <div class="form-group">
+                                       <div class="form-group">
                                              <h6 class="text-muted fw-400">Upload Photos</h6>
                                             <div>
                                                  <input name="" type="file" multiple="multiple">
                                             </div>
-                                        </div> -->
+                                        </div> 
                                               
-                                        <!-- <div class="form-group">    
+                                         <div class="form-group">    
                                         <h6 class="text-muted fw-400">Resturant</h6>
                                         <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;">
-                                            <option>Select</option>
+                                        <option disabled selected>Select</option>
+                                        <?php
+                                        $resturant = new resturant;
+                                        $data = $resturant->selectresturant_name();
+                                        foreach ($data as $value)
+                                 { ?>
+                                            <option><?php echo $value->rest_name; ?></option>
+                                         
+                                <?php  
+								}
+							    ?>
                                             
-                                                <option>Refresh Cafe</option>
-                                                <option>Signature Cafe</option>
-                                                <option>Lavish Lounge</option>
                                         </select>
-                                    </div> -->
+                                    </div>
                                     <div class="form-group">
-                                        <!-- <h6 class="text-muted fw-400">Category</h6>
+                                        <h6 class="text-muted fw-400">Category</h6>
                                         <select class="select2 mb-3 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose">
                                            
                                                 <option value="AK">Veg</option>
                                                 <option value="HI">Non-Veg</option>
                                            
-                                        </select> -->
+                                        </select> 
                                        </div>
                                          <div class="form-group ">
                                                     <div>
