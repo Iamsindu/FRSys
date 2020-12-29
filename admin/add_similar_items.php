@@ -122,7 +122,7 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#">
+                                        <form action="#" method="POST">
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">ID</h6>
                                                 <div>
