@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <!-- Plugins css -->
-    <!-- <link href="assets/plugins/timepicker/tempusdominus-bootstrap-4.css" rel="stylesheet" />
+    <link href="assets/plugins/timepicker/tempusdominus-bootstrap-4.css" rel="stylesheet" />
     <link href="assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
     <link href="assets/plugins/clockpicker/jquery-clockpicker.min.css" rel="stylesheet" />
     <link href="assets/plugins/colorpicker/asColorPicker.min.css" rel="stylesheet" type="text/css" />
@@ -22,7 +22,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/assets/plugins/morris/morris.css" rel="stylesheet"> -->
+    <link href="/assets/plugins/morris/morris.css" rel="stylesheet"> 
 </head>
 
 <body class="fixed-left">
@@ -30,17 +30,17 @@
     <?php 
 	require_once 'class/common.class.php';
 	require_once 'class/fooddisc.class.php';
-	//require_once 'layout/header.php';
+	require_once 'layout/header.php';
 	$fooddisc=new fooddisc;
 	$err=[];
 	if(isset($_POST['cmdsubmit']))
 	{
-        echo"hit";
-        echo $_POST['rel_date']."relesedat";
-        echo $_POST['exp_date']."expdate";
+        // echo"hit";
+        // echo $_POST['rel_date']."relesedat";
+        // echo $_POST['exp_date']."expdate";
 		if(isset($_POST['food_id'])&& !empty($_POST['food_id']))
 		{
-            echo $_POST['food_id'];
+            // echo $_POST['food_id'];
 			$fooddisc->food_id = $_POST['food_id'];
 		}
 		else
@@ -49,7 +49,7 @@
 		}
 		if (isset($_POST['dis_id'])&& !empty($_POST['dis_id']))
 		 {
-            echo $_POST['dis_id']; 
+            // echo $_POST['dis_id']; 
 			$fooddisc->dis_id= $_POST['dis_id'];
 		}
 		else
@@ -58,8 +58,8 @@
 		}
 		if (isset($_POST['rel_date'])&& !empty($_POST['rel_date']))
 		 {
-             echo $_POST['rel_date']."relesedat";
-			$foodidsc->rel_date= $_POST['rel_date'];
+            //  echo $_POST['rel_date']."relesedat";
+			$fooddisc->rel_date= $_POST['rel_date'];
 		}
 		else
 		{
@@ -77,8 +77,8 @@
 		}
 		if(count($err)==0)
 		{
-			$foodidsc->date=date('Y-m-d H:i:s');
-			$ask =$foodidsc->insertfooddisc();
+			$fooddisc->date=date('Y-m-d H:i:s');
+			$ask =$fooddisc->insertfooddisc();
 			if($ask==1)
 			{
 				echo "<script>alert('inserted successfully')</script>";
