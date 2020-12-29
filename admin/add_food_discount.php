@@ -59,7 +59,7 @@
 		if (isset($_POST['rel_date'])&& !empty($_POST['rel_date']))
 		 {
              echo $_POST['rel_date']."relesedat";
-			$foodidsc->rel_date= $_POST['rel_date'];
+			$fooddisc->rel_date= $_POST['rel_date'];
 		}
 		else
 		{
@@ -77,8 +77,8 @@
 		}
 		if(count($err)==0)
 		{
-			$foodidsc->date=date('Y-m-d H:i:s');
-			$ask =$foodidsc->insertfooddisc();
+			$fooddisc->date=date('Y-m-d H:i:s');
+			$ask =$fooddisc->insertfooddisc();
 			if($ask==1)
 			{
 				echo "<script>alert('inserted successfully')</script>";
