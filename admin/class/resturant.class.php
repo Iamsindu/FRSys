@@ -15,7 +15,7 @@ class resturant extends common
 	}
 	public function selectresturant_name()
 	{
-		$sql= "select rest_name from resturant";
+		$sql= "select rest_id rest_name from resturant";
 		return $this->select($sql);
 	}
 } 
