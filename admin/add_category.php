@@ -12,9 +12,7 @@
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <!-- Plugins css -->
     <link href="assets/plugins/timepicker/tempusdominus-bootstrap-4.css" rel="stylesheet" />
-    
     <link href="assets/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
-    
     <link href="assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
@@ -23,40 +21,45 @@
 </head>
 
 <body class="fixed-left">
-    <!-- Loader -->
     <?php          
 	require_once 'class/common.class.php';
 	require_once 'class/category.class.php';
 	require_once 'layout/header.php';
-	$category=new category;
-	$err=[];
-	if(isset($_POST['cmdsubmit']))
-	{
-		if(isset($_POST['catname'])&& !empty($_POST['catname']))
-		{
-			$category->catname = $_POST['catname'];
-		}
-		else
-		{
-			$err[0]="Category Field cannot be empty";
-		}
-		
-		if(count($err)==0)
-		{
-			
+    $category=new category;
+    
+    $err[0] = "";
+    $catname = "";
+	if(isset($_POST['cmdsubmit']))	{
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if(empty($_POST["catname"])) {
+                $err[0] = "Category name can't be empty";
+            } else {
+                $catname = test_input($_POST["catname"]);
+                if (!preg_match("/^[a-zA-Z ]*$/",$catname)) {
+                    $err[0] = "Only letters and whitespace are allowed";
+                }
+            }
+        }
+        
+        if($err[0]=="")  {
+            $data = $category->selectcategory();
+            $category->catname=$catname;
 			$ask =$category->insertcategory();
-			if($ask==1)
-			{
-				echo "<script>alert('inserted successfully')</script>";
-			}	
-			else
-			{
-				echo "<script>alert('Failed to insert')</script>";
+			if($ask==1){
+				echo "<script>alert('Category inserted successfully')</script>";
+			} else {
+				echo "<script>alert('Failed to insert category.')</script>";
 			}
 		}
-	}
- 
-            ?>
+    }
+    
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+    ?>
                 <!-- Top Bar End -->
                 <div class="page-content-wrapper ">
                     <div class="container-fluid">
@@ -79,11 +82,12 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#" method="POST">
+                                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Category Name</h6>
                                                 <div>
-                                                    <input type="text" class="form-control" required placeholder="Name" name="catname"/>
+                                                    <input type="text" class="form-control" placeholder="Name" name="catname" value="<?php echo $catname;?>"/>
+                                                    <span class="error"> <?php echo $err[0];?></span>
                                                 </div>
                                             </div>
                                             <div class="form-group ">
@@ -176,7 +180,6 @@
         };
 
         // scroll
-
         $(document).ready(function() {
 
             $("#boxscroll").niceScroll({
