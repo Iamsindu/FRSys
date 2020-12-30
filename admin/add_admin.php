@@ -97,6 +97,11 @@
         }
     }
 		if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="" && $err[5]=="")  {
+            $data = $admin->selectadmin();
+            foreach ($data as $value)
+            {
+                $comp = strcmp($username,$value->username);
+            }
             $admin->username = $username;
             $admin->email_id = $email_id;
             $admin->role =$role;
@@ -111,7 +116,14 @@
 			}	
 			else
 			{
-				echo "<script> alert('Failed to insert') </script>";
+                if($comp!=0)
+                {
+                    echo "<script> alert('Failed to insert') </script>";
+                }
+                else
+                {
+                    echo "<script> alert('Duplicate') </script>";
+                }
 			}
 		}
     }
