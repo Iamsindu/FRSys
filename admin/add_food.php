@@ -39,7 +39,8 @@
 	if(isset($_POST['submit']))
 	{
         // echo "food".$_POST['fname']."price".$_POST['price']."vg_nvg".$_POST['vg_nvg']."dsc".$_POST['dsc'];
-		if(isset($_POST['fname'])&& !empty($_POST['fname']))
+        //echo $_POST['rest_id']." ".$_POST['cat_id'];
+        if(isset($_POST['fname'])&& !empty($_POST['fname']))
 		{
 			$food->fname = $_POST['fname'];
 		}
@@ -144,14 +145,14 @@
                                               
                                          <div class="form-group">    
                                         <h6 class="text-muted fw-400">Resturant</h6>
-                                        <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" data-placeholder="Choose">
-                                        <!-- <option disabled selected>Select</option> -->
+                                        <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" name="rest_id">
+                                       <option disabled selected>Select</option>
                                         <?php
                                         $resturant = new resturant;
-                                        $data = $resturant->selectresturant_name();
+                                        $data = $resturant->selectresturant();
                                         foreach ($data as $value)
                                  { ?>
-                                            <option><?php echo $value->rest_name; ?></option>   
+                                            <option value="<?php echo $value->rest_id; ?>"><?php echo $value->rest_name; ?></option>   
                                 <?php  
 								}
 							    ?>      
@@ -159,14 +160,14 @@
                                     </div>
                                     <div class="form-group">
                                         <h6 class="text-muted fw-400">Category</h6>
-                                        <select class="select2 mb-3 select2-multiple" style="width: 100%" multiple="multiple" data-placeholder="Choose">
-                                        <!-- <option disabled selected>Select</option> -->
+                                        <select class="select2 mb-3 select2-multiple" style="width: 100%" multiple="multiple"  name="cat_id">
+                                        <option disabled selected>Select</option> 
                                         <?php
                                         $category = new category;
-                                        $data = $category->selectcategory();
-                                        foreach ($data as $value)
+                                        $datas = $category->selectcategory();
+                                        foreach ($datas as $values)
                                  { ?>
-                                            <option><?php echo $value->catname; ?></option>    
+                                            <option value="<?php echo $values->cat_id; ?>"><?php echo $values->catname; ?></option>    
                                 <?php  
 								}
 							    ?>
