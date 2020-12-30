@@ -9,7 +9,7 @@ class fooddisc extends common
 		return $this->insert($sql);
 	}
 	public function selectfooddisc()
-	{
+	{ 
 		$sql= "select * from disf";
 		return $this->select($sql);
 	} 

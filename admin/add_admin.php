@@ -26,7 +26,7 @@
 
 <body class="fixed-left">
     <?php
-        $i=1;     
+        // $i=1;     
 	    require_once 'class/common.class.php';
 	    require_once 'class/admin.class.php';
 	    //require_once 'class/session.class.php';
@@ -46,7 +46,6 @@
                     $err[1] = "Username is required";
                 } else {
                     $username = test_input($_POST["username"]);
-                    // check if name only contains letters and whitespace
                     if (!preg_match("/^[a-zA-Z]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/",$username)) {
                         $err[1] = "Must begin with letters and only _,- and letters are allowed";
                     }
@@ -66,7 +65,6 @@
                     $err[3] = "Email is required";
                 } else {
                     $email_id = test_input($_POST["email_id"]);
-                    // check if e-mail address is well-formed
                     if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
                         $err[3] = "Invalid format and please re-enter valid email";
                     }
@@ -134,6 +132,7 @@
                             </div>
                         </div>
                         <!-- end page title end breadcrumb -->
+                        
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
