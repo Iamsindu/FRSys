@@ -33,67 +33,113 @@
     //sessionhelper::checklogin();
     //require_once 'selector.php';
     //$a[2]=1;
-    $note=[];
+    // $note=[];
+    $nameErr = $passwordErr = $emailErr = $roleErr = $statusErr = "";
+    $username = $password = $email_id = $role = $status =  "";
+
     require_once 'layout/header.php';
     $admin=new admin; 
     
 	$err=[];
-	if(isset($_POST['cmdsubmit']))
-	{
-        
-		
-		if (isset($_POST['username'])&& !empty($_POST['username']))
-		 {
+	// if(isset($_POST['cmdsubmit'])){
+		// if (isset($_POST['username'])&& !empty($_POST['username']))
+		//  {
             
-			$admin->username= $_POST['username'];
-		}
-		else
-		{
-			$err[1]="Username must be Entered";
-        }
-        if(isset($_POST['password'])&& !empty($_POST['password']))
-		{
-            
-            $password= $_POST['password'];
-            if (preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $password )){
-            $note[1]="Your password is strong.";
-            } else {
-            $note[2]="Your password is not safe.";
+		// 	$admin->username= $_POST['username'];
+		// }
+		// else
+		// {
+		// 	$err[1]="Username must be Entered";
+        // }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (empty($_POST["username"])) {
+            $err[1] = "Username is required";
+        } else {
+            $username = test_input($_POST["username"]);
+            // check if name only contains letters and whitespace
+            if (!preg_match("/^[a-zA-Z]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/",$username)) {
+              $err[1] = "Must begin with letters and only _,- and letters are allowed";
             }
-		}
-		else
-		{
-			$err[3]="Password cannot be empty";
-		}
-        if (isset($_POST['role'])&& !empty($_POST['role']))
-		 {
-            
-			$admin->role= $_POST['role'];
-		}
-		else
-		{
-			$err[4]="Role must be Entered";
         }
-        if (isset($_POST['email_id'])&& !empty($_POST['email_id']))
-		 {
+          
+        
+        if(empty($_POST["password"])){
+            $err[2] = "Password can't be empty.";
+        } else {
+            $password = test_input($_POST["password"]);
+            if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$password)) {
+                $err[2] = "apply strong password please";
+            }
+        }
+        
+        if (empty($_POST["email_id"])) {
+            $err[3] = "Email is required";
+        } else {
+            $email_id = test_input($_POST["email_id"]);
+            // check if e-mail address is well-formed
+            if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
+                $err[3] = "Invalid format and please re-enter valid email";
+            }
+        }
+
+        if (empty($_POST["role"])) {
+            $err[4] = "Role is required";
+        } else {
+            $role = test_input($_POST["role"]);
+        }
+
+        if (empty($_POST["status"])) {
+            $err[5] = "Status is required";
+        } else {
+            $status = test_input($_POST["status"]);
+        }
+    }
+
+
+        // if(isset($_POST['password'])&& !empty($_POST['password']))
+		// {
             
-			$admin->email_id= $_POST['email_id'];
-		}
-		else
-		{
-			$err[5]="Email must be Entered";
-		}
-		if (isset($_POST['status'])&& !empty($_POST['status']))
-		 {
+        //     $password= $_POST['password'];
+        //     if (preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $password )){
+        //     $note[1]="Your password is strong.";
+        //     } else {
+        //     $note[2]="Your password is not safe.";
+        //     }
+		// }
+		// else
+		// {
+		// 	$err[3]="Password cannot be empty";
+		// }
+        // if (isset($_POST['role'])&& !empty($_POST['role']))
+		//  {
             
-			$admin->status= $_POST['status'];
-		}
-		else
-		{
-			$err[6]="Status must be Entered";
-		}
-		if(count($err)==0)
-		{
+		// 	$admin->role= $_POST['role'];
+		// }
+		// else
+		// {
+		// 	$err[4]="Role must be Entered";
+        // }
+        // if (isset($_POST['email_id'])&& !empty($_POST['email_id']))
+		//  {
+            
+		// 	$admin->email_id= $_POST['email_id'];
+		// }
+		// else
+		// {
+		// 	$err[5]="Email must be Entered";
+		// }
+	// 	if (isset($_POST['status'])&& !empty($_POST['status']))
+	// 	 {
+            
+	// 		$admin->status= $_POST['status'];
+	// 	}
+	// 	else
+	// 	{
+	// 		$err[6]="Status must be Entered";
+    // 	}
+   
+		if(count($err)==0)  {
             $admin->salt = uniqid();
             $admin->date=date('Y-m-d H:i:s');
 			$admin->password= sha1($admin->salt.$password);
@@ -107,7 +153,14 @@
 				echo "<script> alert('Failed to insert') </script>";
 			}
 		}
-	}
+    // }
+    
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
  ?>	
                 <div class="page-content-wrapper ">
                     <div class="container-fluid">
@@ -130,36 +183,41 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#" method="POST">
+                                        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Username</h6>
                                                 <div>
-                                                    <input type="text" name="username" class="form-control" required placeholder="Name" />
+                                                    <input type="text" name="username" value="<?php echo $username;?>" class="form-control" required placeholder="Name" />
+                                                    <span class="error"> <?php echo $err[1];?></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Password</h6>
                                                 <div>
-                                                    <input type="password" id="pass2" name="password" class="form-control" required placeholder="Password" />
+                                                    <input type="password" id="pass2" name="password" value="<?php echo $password;?>"  class="form-control" required placeholder="Password" />
+                                                    <span class="error"> <?php echo $err[2];?></span>
                                                 </div>
                                                 <div class="m-t-10">
-                                                    <input type="password" class="form-control" required data-parsley-equalto="#pass2" placeholder="Re-Type Password" />
+                                                    <input type="password" value="<?php echo $password;?>" class="form-control" required data-parsley-equalto="#pass2" placeholder="Re-Type Password" />
+                                                    <span class="error"> <?php echo $err[2];?></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Email</h6>
                                                 <div>
-                                                    <input type="email" name="email_id" class="form-control" required placeholder="Enter email" />
+                                                    <input type="email" name="email_id" value="<?php echo $email_id; ?>" class="form-control" required placeholder="Enter email" />
+                                                    <span class="error"> <?php echo $err[3];?></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Role</h6>
                                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="role" required>
-                                                <option disabled selected>Select</option>
-                                                    <option>Admin</option>
-                                                    <option>Editor</option>
-                                                    <option>User</option>
+                                                    <option disabled selected>Select</option>
+                                                    <option name="role" value="admin">Admin</option>
+                                                    <option name="role" value="editor">Editor</option>
+                                                    <option name="role" value="user">User</option>
                                                 </select>
+                                                <span class="error"> <?php echo $err[4]; ?> </span>  
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Status</h6>
