@@ -39,18 +39,8 @@
     require_once 'layout/header.php';
     $admin=new admin; 
     
-    //$err=[];
     $err[1]=$err[2]=$err[3]=$err[4]=$err[5]="";
-	// 
-		// if (isset($_POST['username'])&& !empty($_POST['username']))
-		//  {
-            
-		// 	$admin->username= $_POST['username'];
-		// }
-		// else
-		// {
-		// 	$err[1]="Username must be Entered";
-        // }
+	
         if(isset($_POST['cmdsubmit'])){
             echo "<br>"."hit";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
