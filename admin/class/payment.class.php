@@ -1,4 +1,4 @@
-<?php 
+<?php
 class payment extends common
 {
 	public $payment_id,$bill_id,$amount,$paymethod,$date;
