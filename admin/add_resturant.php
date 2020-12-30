@@ -27,101 +27,107 @@
 </head>
 
 <body class="fixed-left">
-    <!-- Loader -->
-    
     <?php    
-	require_once 'class/common.class.php';
+    require_once 'class/common.class.php';
     require_once 'class/resturant.class.php';
+
     require_once 'layout/header.php';
+
 	//require_once 'class/session.class.php';
     //sessionhelper::checklogin();
     //require_once 'selector.php';
     //$a[2]=1;
 	$resturant=new resturant;
-	$err=[];
+    
+    $err[1]=$err[2]=$err[3]=$err[4]=$err[5]=$err[6]="";
+    $rest_name = $password =  $phone_no = $email_id = $status = $delivery= "";
+    
 	if(isset($_POST['submit']))
 	{
-		if(isset($_POST['rest_name'])&& !empty($_POST['rest_name']))
-		{
-			$resturant->rest_name = $_POST['rest_name'];
-		}
-		else
-		{
-			$err[0]="Resturant Field cannot be empty";
-		}
-		if (isset($_POST['phone_no'])&& !empty($_POST['phone_no']))
-		 {
-			$resturant->phone_no= $_POST['phone_no'];
-		}
-		else
-		{
-			$err[1]="Phone Number must be Entered";
-		}
-		if (isset($_POST['email_id'])&& !empty($_POST['email_id']))
-		 {
-			$resturant->email_id= $_POST['email_id'];
-		
-		}
-		else
-		{
-			$err[2]="Email must be entered";
-		}
-		if(isset($_POST['password'])&& !empty($_POST['password']))
-		{
-			$password= $_POST['password'];
-		}
-		else
-		{
-			$err[3]="Password cannot be empty";
-		}
-		if(isset($_POST['status']))
-		{
-			$resturant->status= $_POST['status'];
-		}
-		else
-		{
-			$err[4]="default status will be Inactive";
-		}
-		// if(isset($_POST['open_time'])&& !empty($_POST['open_time']))
-		// {
-		// 	$resturant->open_time= $_POST['open_time'];
-		// }
-		// else
-		// {
-		// 	$err[5]="Opening time should be inserted";
-        // }
-        // if(isset($_POST['close_time'])&& !empty($_POST['close_time']))
-		// {
-		// 	$resturant->close_time= $_POST['close_time'];
-		// }
-		// else
-		// {
-		// 	$err[5]="Close time should be inserted";
-        // }
-        if(isset($_POST['delivery'])&& !empty($_POST['delivery']))
-		{
-			$resturant->delivery= $_POST['delivery'];
-		}
-		else
-		{
-			$err[5]="Delivery should be inserted";
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if(empty($_POST["rest_name"])) {
+                $err[1] = "Restaurant name can't be empty";
+            } else {
+                $rest_name = test_input($_POST["rest_name"]);
+                if (!preg_match("/^[a-zA-Z ]*$/",$rest_name)) {
+                    $err[1] = "Only letters and whitespace are allowed";
+                }
+            }
+
+            if(empty($_POST["password"])){
+                $err[2] = "Password can't be empty.";
+            } else {
+                $password = test_input($_POST["password"]);
+                if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$password)) {
+                    $err[2] = "apply strong password please";
+                }
+            }
+
+            if (empty($_POST["email_id"])) {
+                $err[3] = "Email is required";
+            } else {
+                $email_id = test_input($_POST["email_id"]);
+                if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
+                    $err[3] = "Invalid format and please re-enter valid email";
+                }
+            }
+
+            if (empty($_POST["phone_no"])) {  
+                $err[4]="Phone no is required";  
+            } else {  
+                $phone_no = test_input($_POST["phone_no"]);  
+                if (!preg_match ("/^[0-9]*$/", $phone_no) ) {  
+                    $err[4] = "Only numeric value is allowed.";  
+                }
+                if (strlen ($phone_no) != 10) {  
+                $err[4] = "Mobile no must contain 10 digits.";  
+                }
+            }  
+
+            if (empty($_POST["status"])) {
+                $err[5] = "Status is required";
+            } else {
+                $status = test_input($_POST["status"]);
+            }
+
+            if (empty($_POST["delivery"])) {
+                $err[6] = "Delivery option must be entered.";
+            } else {
+                $delivery = test_input($_POST["delivery"]);
+            }
+            
         }
-		if(count($err)==0)
-		{
+
+	
+		if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="" && $err[5]=="" && $err[6] == "")  {
+            $data=$resturant->selectresturant();
+            
+            $resturant->rest_name=$rest_name;
+            $resturant->email_id=$email_id;
+            $resturant->phone_no=$phone_no;
+            $resturant->status=$status;
+            $resturant->delivery=$delivery;
             $resturant->date=date('Y-m-d H:i:s');
 			$resturant->salt = uniqid();
 			$resturant->password= sha1($resturant->salt.$password);
 			$ask =$resturant->insertresturant();
 			if($ask==1)
 			{
-				echo "<<script>alert('inserted successfully')</script>";
+				echo "<script>alert('Resturant inserted successfully.')</script>";
 			}	
 			else
 			{
-				echo "<<script>alert('Failed to insert')</script>";
+				echo "<script>alert('Failed to insert resturant.')</script>";
 			}
 		}
-	}
+    }
+    
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
  ?>	
                 <!-- Top Bar End -->
                 <div class="page-content-wrapper ">
@@ -145,47 +151,48 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#" method="POST">
+                                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Resturant Name</h6>
                                                 <div>
-                                                <input type="text" class="form-control" required placeholder="Resturant Name" name="rest_name"/>
-                                            </div>
+                                                    <input type="text" class="form-control" placeholder="Resturant Name" name="rest_name" value="<?php echo $rest_name;?>"/>
+                                                    <span class="error"> <?php echo $err[1];?></span>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                     <h6 class="text-muted fw-400">Password</h6>
                                                     <div>
-                                                        <input type="password" id="pass2" class="form-control" required
-                                                                placeholder="Password" name="password"/>
+                                                        <input type="password" id="pass2" class="form-control" placeholder="Password" name="password" value="<?php echo $password;?>"/>
+                                                        <span class="error"> <?php echo $err[2];?></span>
                                                     </div>
                                                     <div class="m-t-10">
-                                                        <input type="password" class="form-control" required
-                                                                data-parsley-equalto="#pass2"
-                                                                placeholder="Re-Type Password"/>
+                                                        <input type="password" value="<?php echo $password;?>" class="form-control" data-parsley-equalto="#pass2" placeholder="Re-Type Password"/>
+                                                        <span class="error"> <?php echo $err[2];?></span>
                                                     </div>
                                                 </div>
                                             <div class="form-group">
                                                     <h6 class="text-muted fw-400">E-Mail</h6>
-
                                                     <div>
-                                                        <input type="email" class="form-control" required
-                                                                parsley-type="email" placeholder="Enter a valid e-mail" name="email_id"/>
+                                                        <input type="email"  value="<?php echo $email_id; ?>" class="form-control" parsley-type="email" placeholder="Enter a valid e-mail" name="email_id"/>
+                                                        <span class="error"> <?php echo $err[3];?></span>
                                                     </div>
                                                 </div>
                                             <div class="form-group">
                                                <h6 class="text-muted fw-400">Phone no</h6>
                                                <div>
-                                                <input type="text" class="form-control" required   placeholder="number" name="phone_no"/>
-                                            </div>
+                                                    <input type="text" class="form-control" value="<?php echo $phone_no; ?>"  placeholder="number" name="phone_no"/>
+                                                    <span class="error"> <?php echo $err[4];?></span>
+                                                </div>
                                             </div>
                                              <div class="form-group">
                                                 <h6 class="text-muted fw-400">Status</h6>
                                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="status">
-                                                    <option>Select</option>
+                                                    <option disabled selected>Select</option>
                                                     <option >Open</option>
                                                     <option >Close</option>
                                                     <option >Event</option>                                                  
                                                 </select>
+                                                <span class="error"> <?php echo $err[5]; ?> </span>
                                             </div>
                                              <div class="form-group">
                                                 <h6 class="text-muted fw-400">Open Time</h6>
@@ -208,10 +215,11 @@
                                            <div class="form-group">
                                                 <h6 class="text-muted fw-400">Delivery</h6>
                                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="delivery">
-                                                    <option>Select</option>
+                                                    <option disabled selected>Select</option>
                                                     <option>Yes</option>
                                                     <option>No</option>
                                                 </select>
+                                                <span class="error"> <?php echo $err[6]; ?> </span>
                                             </div>
                                             <h6 class="text-muted fw-400">Location</h6>
                                             <div class="row">
@@ -222,7 +230,7 @@
                                                 
                                                 <h6 class="text-muted fw-400">City</h6>
                                                 <div>
-                                                <input type="text" class="form-control" required placeholder="City"/>
+                                                <input type="text" class="form-control" placeholder="City"/>
                                             </div>
                                         </div>
                                     </div>
@@ -231,19 +239,12 @@
                                                 
                                                 <h6 class="text-muted fw-400">Street</h6>
                                                 <div>
-                                                <input type="text" class="form-control" required placeholder="Street"/>
+                                                <input type="text" class="form-control" placeholder="Street"/>
                                             </div>
                                             </div>
                                         </div>
                                     </div>
-                                            
-                                           
-                                            <!-- <div class="form-group">
-                                                <h6 class="text-muted fw-400">Upload Photos</h6>
-                                                <div>
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                            </div>  -->
+                                        
                                              <div class="form-group ">
                                                     <div>
                                                         <button type="submit" class="btn btn-primary waves-effect waves-light" name="submit">

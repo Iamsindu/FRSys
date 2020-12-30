@@ -26,10 +26,9 @@
 </head>
 
 <body class="fixed-left">
-    <!-- Loader -->
     <?php 
 	require_once 'class/common.class.php';
-	require_once 'class/fooddisc.class.php';
+	require_once 'class/discount_food.class.php';
 	require_once 'layout/header.php';
 	$fooddisc=new fooddisc;
 	$err=[];

@@ -23,10 +23,11 @@
         <!-- Loader -->
         <?php 
 require_once 'layout/header.php';
-require_once 'admin.class.php';
-require_once 'common.class.php';
-$admin = new admin;
-$value[]=$admin->selectuser();
+require_once 'class/common.class.php';
+require_once 'class/admin.class.php';
+require_once 'class/menu.class.php';
+$menu = new menu;
+$value[]=$menu->selectmenu();
  ?>
                     <!-- Top Bar End -->
 

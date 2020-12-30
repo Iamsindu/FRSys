@@ -10,8 +10,13 @@ class menu extends common
  	}
  	public function insertmenu()
  	{
-
-		$sql ="insert into menu(location_id,country,city,street)values('$this->location_id','$this->country','$this->city','$this->street')";
+		$sql ="insert into menu(menuname,dsc,photo_id)values('$this->menuname','$this->dsc','$this->photo_id')";
+ 		return $this->insert($sql);
+	}
+	 
+	public function insertwithoutimg()
+ 	{
+		$sql ="insert into menu(menuname,dsc)values('$this->menuname','$this->dsc')";
  		return $this->insert($sql);
  	}
 }

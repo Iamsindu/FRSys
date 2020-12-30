@@ -106,9 +106,8 @@
                                                 <h6 class="text-muted fw-400">Rate</h6>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                                    <span class="input-group-text"><i class="mdi mdi-percent"></i></span>
-                                                                   
-                                                                </div>
+                                                        <span class="input-group-text"><i class="mdi mdi-percent"></i></span>
+                                                    </div>
                                                     <input  type="text" class="form-control" placeholder="Discount rate" name="rate" style="width:80%" value="<?php echo $rate;?>"/> 
                                                     <span class="error"> <?php echo $err[1];?></span>
                                                 </div>

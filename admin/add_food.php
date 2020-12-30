@@ -26,67 +26,79 @@
 </head>
 
 <body class="fixed-left">
-    <!-- Loader -->
     <?php 
 	require_once 'class/common.class.php';
     require_once 'class/food.class.php';
     require_once 'class/resturant.class.php';
     require_once 'class/category.class.php';
 	require_once 'layout/header.php';
+    
     $food=new food;
     
-	$err=[];
+    $err[0] = $err[1]=$err[2]=$err[3]="";
+    $fname = $dsc = $price = $vg_nvg = "";
+    
 	if(isset($_POST['submit']))
 	{
-        // echo "food".$_POST['fname']."price".$_POST['price']."vg_nvg".$_POST['vg_nvg']."dsc".$_POST['dsc'];
-        //echo $_POST['rest_id']." ".$_POST['cat_id'];
-        if(isset($_POST['fname'])&& !empty($_POST['fname']))
-		{
-			$food->fname = $_POST['fname'];
-		}
-		else
-		{
-			$err[0]="Name Field cannot be empty";
-		}
-		if (isset($_POST['price'])&& !empty($_POST['price']))
-		 {
-			$food->price= $_POST['price'];
-		}
-		else
-		{
-			$err[1]="Price must be Entered";
-		}
-		if (isset($_POST['vg_nvg'])&& !empty($_POST['vg_nvg']))
-		 {
-			$food->vg_nvg= $_POST['vg_nvg'];
-		
-		}
-		else
-		{
-			$err[2]="vg_nvg must be entered";
-		}
-		
-		if(isset($_POST['dsc'])&& !empty($_POST['dsc']))
-		{
-			$food->dsc= $_POST['dsc'];
-		}
-		else
-		{
-			$err[5]="Description should be inserted";
-		}
-		if(count($err)==0)
-		{
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if(empty($_POST["fname"])) {
+                $err[0] = "Food name can't be empty";
+            } else {
+                $fname = test_input($_POST["fname"]);
+                if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
+                    $err[0] = "Only letters and whitespace are allowed";
+                }
+            }
+
+            if (empty($_POST["dsc"])) {
+                $err[1] = "Description is required.";
+            } else {
+                $dsc = test_input($_POST["dsc"]);
+            }
+
+            if(empty($_POST["price"])) {
+                $err[2] = "Price is required";
+            } else {
+                $price = test_input($_POST["price"]);
+                if (!preg_match("/^[0-9]*$/",$price)) {
+                    $err[2] = "Only numbers are allowed";
+                }
+                // if (strlen($price) != 6) {  
+                //     $err[2] = "Price must contain only 6 digits.";  
+                // }  
+            }
+
+            if (empty($_POST["vg_nvg"])) {
+                $err[3] = "This field can't be empty.";
+            } else {
+                $vg_nvg = test_input($_POST["vg_nvg"]);
+            }
+        }
+
+        if($err[0]=="" && $err[1]=="" && $err[2]=="" &&  $err[3]=="")  {
+            $data=$food->selectfood();
+            $food->fname=$fname;
+            $food->dsc=$dsc;
+            $food->price=$price;
+            $food->vg_nvg=$vg_nvg;            
 			$ask =$food->insertwithoutimg();
 			if($ask==1)
 			{
-				echo "<<script>alert('inserted successfully')</script>";
+				echo "<script>alert('Food inserted successfully.')</script>";
 			}	
 			else
 			{
-				echo "<<script>alert('Failed to insert')</script>";
+				echo "<script>alert('Failed to insert food.')</script>";
 			}
-		}
-	}
+        }
+    }
+    
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
  ?>	
                 <!-- Top Bar End -->
                 <div class="page-content-wrapper ">
@@ -110,30 +122,34 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#" method="POST">
+                                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                         <div class="form-group">
                                              <h6 class=" text-muted fw-400">Food Name</h6>
-                                            <input type="text" class="form-control" required placeholder="Food Name" name="fname"/>
+                                            <input type="text" class="form-control" placeholder="Food Name" name="fname" value="<?php echo $fname;?>"/>
+                                            <span class="error"> <?php echo $err[0];?></span>
                                         </div>
                                         <div class="form-group">
                                              <h6 class=" text-muted fw-400">Description</h6>
                                             <div>
-                                                <textarea id="textarea" class="form-control" maxlength="225" rows="3" required placeholder="Add Detail about food only 225 chars." name="dsc"></textarea>
+                                                <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Add Detail about food only 225 chars." name="dsc" value="<?php echo $dsc;?>"></textarea>
+                                                <span class="error"> <?php echo $err[1];?></span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <h6 class="text-muted fw-400">Price</h6>
                                             <div>
-                                                <input data-parsley-type="number" type="text" class="form-control" required placeholder="Item Price" name="price" />
+                                                <input type="text" class="form-control" placeholder="Item Price" name="price" value="<?php echo $price;?>"/>
+                                                <span class="error"> <?php echo $err[2];?></span>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                        <h6 class="text-muted fw-400">Veg/Non-Veg</h6>
-                                        <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" name="vg_nvg">
-                                            <option>Select</option>
-                                            <option value="1">Veg</option>
-                                            <option value="0">Non Veg</option>
-                                        </select>
+                                            <h6 class="text-muted fw-400">Veg/Non-Veg</h6>
+                                            <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" name="vg_nvg">
+                                                <option disabled selected>Select</option>
+                                                <option>Veg</option>
+                                                <option>Non Veg</option>
+                                            </select>
+                                            <span class="error"> <?php echo $err[3];?></span>
                                         </div>
                                         
                                        <div class="form-group">
@@ -143,36 +159,38 @@
                                             </div>
                                         </div> 
                                               
-                                         <div class="form-group">    
-                                        <h6 class="text-muted fw-400">Resturant</h6>
-                                        <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" name="rest_id">
-                                       <option disabled selected>Select</option>
-                                        <?php
-                                        $resturant = new resturant;
-                                        $data = $resturant->selectresturant();
-                                        foreach ($data as $value)
-                                 { ?>
-                                            <option value="<?php echo $value->rest_id; ?>"><?php echo $value->rest_name; ?></option>   
-                                <?php  
-								}
-							    ?>      
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <h6 class="text-muted fw-400">Category</h6>
-                                        <select class="select2 mb-3 select2-multiple" style="width: 100%" multiple="multiple"  name="cat_id">
-                                        <option disabled selected>Select</option> 
-                                        <?php
-                                        $category = new category;
-                                        $datas = $category->selectcategory();
-                                        foreach ($datas as $values)
-                                 { ?>
-                                            <option value="<?php echo $values->cat_id; ?>"><?php echo $values->catname; ?></option>    
-                                <?php  
-								}
-							    ?>
-                                        </select> 
-                                       </div>
+                                        <div class="form-group">    
+                                            <h6 class="text-muted fw-400">Resturant</h6>
+                                            <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" name="rest_id">
+                                                <option disabled selected>Select</option>
+                                                <?php
+                                                    $resturant = new resturant;
+                                                    $data = $resturant->selectresturant();
+                                                    foreach ($data as $value)
+                                                { ?>
+                                                <option value="<?php echo $value->rest_id; ?>"><?php echo $value->rest_name;?></option>   
+                                        
+                                                <?php  
+								                }
+                                                ?>      
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <h6 class="text-muted fw-400">Category</h6>
+                                            <select class="select2 mb-3 select2-multiple" style="width: 100%" multiple="multiple" name="cat_id">
+                                                <option disabled selected>Select</option> 
+                                                <?php
+                                                    $category = new category;
+                                                    $datas = $category->selectcategory();
+                                                    foreach ($datas as $values)
+                                                { ?>
+                                                <option value="<?php echo $values->cat_id; ?>"><?php echo $values->catname; ?></option>    
+                                        
+                                                <?php  
+								                    }
+							                    ?>
+                                            </select> 
+                                        </div>
                                          <div class="form-group ">
                                                     <div>
                                                         <button type="submit" class="btn btn-primary waves-effect waves-light" name="submit">

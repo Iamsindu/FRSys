@@ -79,8 +79,7 @@ $food = new food;
                                                     <th>Food Name</th>
                                                     <th>Description</th>
                                                     <th>Price</th>
-                                                    <th>Veg/ Non-Veg</th>
-                                                    <!-- <th>Resturant Name</th> -->
+                                                    <th>Veg/Non-Veg</th>
                                                     <th>Action</th>
                                                 </tr>
                                                 </thead>
@@ -91,25 +90,22 @@ $food = new food;
 								$data = $food->selectfood();
 								$n=1;
 								foreach ($data as $value)
-								 {?>
+								{?>
 								 	<tr>
 								 		<td><?php echo $n; $n++; ?></td>
 								 		<td><?php echo $value->fname; ?></td>
 								 	    <td><?php echo $value->dsc;?></td>
-                                         <td><?php echo $value->price;?></td>
-                                         <td><?php echo $value->vg_nvg;?></td>
-								 	    
-								 	    <td> <?php 
-														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->food_id."'>Update</a>"."&nbsp"; 
-														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->food_id."'>Delete</a>";
-													
-													
+                                        <td><?php echo $value->price;?></td>
+                                        <td><?php echo $value->vg_nvg;?></td>
+								 	    <td><?php 
+												echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->food_id."'>Update</a>"."&nbsp"; 
+												echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->food_id."'>Delete</a>";	
 											?>
-										  </td>
+										</td>
 								 	</tr>
 								<?php	
-								}
-							 ?>
+								    }
+							    ?>
                                                 <!-- <tr>
                                                     <td>131</td>
                                                     <td>Tiger Nixon</td>

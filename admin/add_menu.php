@@ -26,79 +26,58 @@
 </head>
 
 <body class="fixed-left">
-    <!-- Loader -->
     <?php 
 	require_once 'class/common.class.php';
-	require_once 'class/admin.class.php';
-	require_once 'layout/header.php';
-	$admin=new admin;
-	$err=[];
+    require_once 'class/admin.class.php';
+    require_once 'class/menu.class.php';
+    require_once 'layout/header.php';
+    
+    $menu = new menu;
+
+    $err[1]=$err[2]="";
+    $menuname=$dsc="";
+    
 	if(isset($_POST['submit']))
 	{
-		if(isset($_POST['name'])&& !empty($_POST['name']))
-		{
-			$admin->name = $_POST['name'];
-		}
-		else
-		{
-			$err[0]="Name Field cannot be empty";
-		}
-		if (isset($_POST['username'])&& !empty($_POST['username']))
-		 {
-			$admin->username= $_POST['username'];
-		}
-		else
-		{
-			$err[1]="Username must be Entered";
-		}
-		if (isset($_POST['email'])&& !empty($_POST['email']))
-		 {
-			$admin->email= $_POST['email'];
-		
-		}
-		else
-		{
-			$err[2]="Email must be entered";
-		}
-		if(isset($_POST['password'])&& !empty($_POST['password']))
-		{
-			$password= $_POST['password'];
-		}
-		else
-		{
-			$err[3]="Password cannot be empty";
-		}
-		if(isset($_POST['status']))
-		{
-			$admin->status= $_POST['status'];
-		}
-		else
-		{
-			$err[4]="default status will be Inactive";
-		}
-		if(isset($_POST['phone'])&& !empty($_POST['phone']))
-		{
-			$admin->phone= $_POST['phone'];
-		}
-		else
-		{
-			$err[5]="Phone number should be inserted";
-		}
-		if(count($err)==0)
-		{
-			$admin->salt = uniqid();
-			$admin->password= sha1($admin->salt.$password);
-			$ask =$admin->insertuser();
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if(empty($_POST["menuname"])) {
+                $err[1] = "Menu name can't be empty";
+            } else {
+                $menuname = test_input($_POST["menuname"]);
+                if (!preg_match("/^[a-zA-Z ]*$/",$menuname)) {
+                    $err[1] = "Only letters and whitespace are allowed";
+                }
+            } 
+
+            if (empty($_POST["dsc"])) {
+                $err[2] = "Description is required.";
+            } else {
+                $dsc = test_input($_POST["dsc"]);
+            }
+        }
+
+        if($err[1]=="" && $err[2]=="")  {
+            $data=$menu->selectmenu();
+            $menu->menuname=$menuname;
+            $menu->dsc=$dsc;
+            $ask=$menu->insertwithoutimg();
 			if($ask==1)
 			{
-				echo "<<script>alert('inserted successfully')</script>";
+				echo "<script>alert('Menu inserted successfully.')</script>";
 			}	
 			else
 			{
-				echo "<<script>alert('Failed to insert')</script>";
+				echo "<script>alert('Failed to insert menu.')</script>";
 			}
 		}
-	}
+    }
+    
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
  ?>	
                 <!-- Top Bar End -->
                 <div class="page-content-wrapper ">
@@ -122,23 +101,20 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#">
+                                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Name</h6>
                                                 <div>
-                                                <input type="text" class="form-control" required placeholder="Menu Name"/>
-                                            </div>
-                                            </div>
-                                         
-                                           
-                                            
-                                            
-                                          <div class="form-group">
+                                                    <input type="text" class="form-control" name="menuname" placeholder="Menu Name" value="<?php echo $menuname;?>"/>
+                                                    <span class="error"> <?php echo $err[1];?></span>
+                                                </div>
+                                            <div class="form-group">
                                                     <h6 class="text-muted fw-400">Description</h6>
                                                     <div>
-                                                        <textarea required class="form-control" rows="5"></textarea>
+                                                        <textarea class="form-control" name="dsc" rows="5" value="<?php echo $dsc;?>"></textarea>
+                                                        <span class="error"> <?php echo $err[2];?></span>
                                                     </div>
-                                                </div>                                            
+                                            </div>                                            
                                            
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Upload Photo</h6>
@@ -147,12 +123,12 @@
                                                 </div>
                                             </div> 
                                              <div class="form-group ">
-                                                    <div>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                            Add Menu
-                                                        </button>
-                                                    </div>
+                                                <div>
+                                                    <button type="submit" class="btn btn-primary waves-effect waves-light" name="submit">
+                                                        Add Menu
+                                                    </button>
                                                 </div>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
