@@ -34,14 +34,14 @@
     //require_once 'selector.php';
     //$a[2]=1;
     // $note=[];
-    $nameErr = $passwordErr = $emailErr = $roleErr = $statusErr = "";
     $username = $password = $email_id = $role = $status =  "";
 
     require_once 'layout/header.php';
     $admin=new admin; 
     
-	$err=[];
-	// if(isset($_POST['cmdsubmit'])){
+    //$err=[];
+    $err[1]=$err[2]=$err[3]=$err[4]=$err[5]="";
+	// 
 		// if (isset($_POST['username'])&& !empty($_POST['username']))
 		//  {
             
@@ -51,7 +51,8 @@
 		// {
 		// 	$err[1]="Username must be Entered";
         // }
-
+        if(isset($_POST['cmdsubmit'])){
+            echo "<br>"."hit";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["username"])) {
             $err[1] = "Username is required";
@@ -95,51 +96,11 @@
             $status = test_input($_POST["status"]);
         }
     }
-
-
-        // if(isset($_POST['password'])&& !empty($_POST['password']))
-		// {
-            
-        //     $password= $_POST['password'];
-        //     if (preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $password )){
-        //     $note[1]="Your password is strong.";
-        //     } else {
-        //     $note[2]="Your password is not safe.";
-        //     }
-		// }
-		// else
-		// {
-		// 	$err[3]="Password cannot be empty";
-		// }
-        // if (isset($_POST['role'])&& !empty($_POST['role']))
-		//  {
-            
-		// 	$admin->role= $_POST['role'];
-		// }
-		// else
-		// {
-		// 	$err[4]="Role must be Entered";
-        // }
-        // if (isset($_POST['email_id'])&& !empty($_POST['email_id']))
-		//  {
-            
-		// 	$admin->email_id= $_POST['email_id'];
-		// }
-		// else
-		// {
-		// 	$err[5]="Email must be Entered";
-		// }
-	// 	if (isset($_POST['status'])&& !empty($_POST['status']))
-	// 	 {
-            
-	// 		$admin->status= $_POST['status'];
-	// 	}
-	// 	else
-	// 	{
-	// 		$err[6]="Status must be Entered";
-    // 	}
-   
-		if(count($err)==0)  {
+		if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="" && $err[5]=="")  {
+            $admin->username = $username;
+            $admin->email_id = $email_id;
+            $admin->role =$role;
+            $admin->status = $status;
             $admin->salt = uniqid();
             $admin->date=date('Y-m-d H:i:s');
 			$admin->password= sha1($admin->salt.$password);
@@ -153,7 +114,7 @@
 				echo "<script> alert('Failed to insert') </script>";
 			}
 		}
-    // }
+    }
     
     function test_input($data) {
         $data = trim($data);
@@ -161,6 +122,7 @@
         $data = htmlspecialchars($data);
         return $data;
     }
+
  ?>	
                 <div class="page-content-wrapper ">
                     <div class="container-fluid">
@@ -213,9 +175,9 @@
                                                 <h6 class="text-muted fw-400">Role</h6>
                                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="role" required>
                                                     <option disabled selected>Select</option>
-                                                    <option name="role" value="admin">Admin</option>
-                                                    <option name="role" value="editor">Editor</option>
-                                                    <option name="role" value="user">User</option>
+                                                    <option>Admin</option>
+                                                    <option>Editor</option>
+                                                    <option>User</option>
                                                 </select>
                                                 <span class="error"> <?php echo $err[4]; ?> </span>  
                                             </div>
