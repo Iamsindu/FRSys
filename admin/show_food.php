@@ -96,7 +96,7 @@ $food = new food;
 								 		<td><?php echo $value->fname; ?></td>
 								 	    <td><?php echo $value->dsc;?></td>
                                         <td><?php echo $value->price;?></td>
-                                        <td><?php echo $value->vg_nvg;?></td>
+                                        <td><?php if($value->vg_nvg==1){echo 'Veg';}else{echo 'Non Veg';}?></td>
 								 	    <td><?php 
 												echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->food_id."'>Update</a>"."&nbsp"; 
 												echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->food_id."'>Delete</a>";	
