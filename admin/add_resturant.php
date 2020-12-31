@@ -216,8 +216,8 @@
                                                 <h6 class="text-muted fw-400">Delivery</h6>
                                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="delivery">
                                                     <option disabled selected>Select</option>
-                                                    <option>Yes</option>
-                                                    <option>No</option>
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
                                                 </select>
                                                 <span class="error"> <?php echo $err[6]; ?> </span>
                                             </div>

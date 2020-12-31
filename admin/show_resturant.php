@@ -85,7 +85,7 @@
 								 		                <td><?php echo $value->rest_name; ?></td>
 								 	                    <td><?php echo $value->email_id;?></td>
                                                         <td><?php echo $value->phone_no;?></td>
-                                                        <td><?php echo $value->delivery;?></td>
+                                                        <td><?php if($value->delivery==1){echo 'Yes';}else{echo 'No';} ?></td>
                                                         <td><?php echo $value->status;?></td>								 	    
 								 	                    <td> <?php 
 														    echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php'>Update</a>"."&nbsp"; 
