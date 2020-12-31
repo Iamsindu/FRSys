@@ -83,7 +83,7 @@ $admin = new admin;
 								$data = $admin->selectadmin();
 								$n=1;
 								foreach ($data as $value)
-                                 { if($value->role!='User')
+                                 { if($value->role!='User') 
                                     {
                                      ?>
 								 	<tr>
@@ -94,7 +94,7 @@ $admin = new admin;
                                          <td><?php echo $value->status;?></td>
 								 	    
 								 	    <td> <?php 
-														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->admin_id."'>Update</a>"."&nbsp"; 
+														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='add_admin.php?id=".$value->admin_id."'>Update</a>"."&nbsp"; 
 														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->admin_id."'>Delete</a>";
 													
 													

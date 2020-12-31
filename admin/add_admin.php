@@ -36,7 +36,7 @@
         require_once 'layout/header.php';
     
         $admin=new admin; 
-    
+        $admin->id=$_GET['id'];
         $username = $password = $email_id = $role = $status =  "";
         $err[1]=$err[2]=$err[3]=$err[4]=$err[5]="";
 	
@@ -59,6 +59,7 @@
                     $password = test_input($_POST["password"]);
                     if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$password)) {
                         $err[2] = "apply strong password please";
+                        $password="";
                     }
                 }
         
@@ -96,7 +97,24 @@
                 $admin->salt = uniqid();
                 $admin->date=date('Y-m-d H:i:s');
 			    $admin->password= sha1($admin->salt.$password);
-			    $ask =$admin->insertadmin();
+                if(!empty($admin->id))
+                {
+                    ask= $admin->updateadmin();
+                    if($ask==="Duplicate")
+			    	{
+			    		echo "<script>alert('Duplicate Entry')</script>";
+			    	}
+			    	else if($ask)
+			    	{
+			    		echo "<script>alert('Updated Sucessfully')</script>";
+			    	}
+			    	else
+			    	{
+			    		echo "<script>alert('Update Failed')</script>";
+			    	}
+                }
+                else{
+                $ask =$admin->insertadmin();
 			    if($ask==1){
 				    echo "<script> alert('Inserted admin Successfully') </script>";
 			    } else {
@@ -105,7 +123,8 @@
                     } else {
                         echo "<script> alert('Duplicate admin value. Please insert unique admin!') </script>";
                     }
-			    }
+                }
+            }
 		    }
         }
     
