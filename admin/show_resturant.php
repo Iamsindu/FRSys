@@ -25,15 +25,13 @@
 
 
     <body class="fixed-left">
-
-        <!-- Loader -->
         <?php 
-require_once 'layout/header.php';
-require_once 'class/common.class.php';
-require_once 'class/admin.class.php';
-$admin = new admin;
-$value[]=$admin-> selectuser();
- ?>
+        require_once 'class/common.class.php';
+        require_once 'class/resturant.class.php';
+        require_once 'layout/header.php';
+        
+        $resturant=new resturant;
+        ?>
                     <!-- Top Bar End -->
 
                     <div class="page-content-wrapper ">
@@ -75,14 +73,37 @@ $value[]=$admin-> selectuser();
                                                     <th>Phone Number</th>
                                                     <th>Delivery</th>
                                                     <th>Status</th>
-                                                    <th>Photo</th>
                                                     <th>Action</th>
                                                 </tr>
                                                 </thead>
             
                                                 <tbody>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
+                                                <tbody>
+                                                <?php 
+                                               
+								                $data = $resturant-> selectresturant();
+								                $n=1;
+                                                foreach ($data as $value)
+                                                {  ?>
+								 	                <tr>
+								 		                <td><?php echo $n; $n++; ?></td>
+								 		                <td><?php echo $value->rest_name; ?></td>
+								 	                    <td><?php echo $value->email_id;?></td>
+                                                        <td><?php echo $value->phone_no;?></td>
+                                                        <td><?php echo $value->delivery;?></td>
+                                                        <td><?php echo $value->status;?></td>								 	    
+								 	                    <td> <?php 
+														    echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->admin_id."'>Update</a>"."&nbsp"; 
+														    echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->admin_id."'>Delete</a>";
+													        ?>
+										                </td>
+								 	                </tr>
+                                                <?php	
+                                                    }
+							                    ?>
+
+                                                
+                                                    <!-- <td>Tiger Nixon</td>
                                                     <td>abc@gmail.com</td>
                                                     <td>98671519777</td>
                                                     <td>Yes</td>
@@ -100,17 +121,7 @@ $value[]=$admin-> selectuser();
                                                     <td>@hghvb</td>
                                                     <td><button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
                                                       <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>abc@gmail.com</td>
-                                                    <td>98671519777</td>
-                                                    <td>Yes</td>
-                                                    <td>Open</td>
-                                                    <td>@hghvb</td>
-                                                    <td><button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                      <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr>
+                                                </tr> -->
                                               
                                                
                                               
