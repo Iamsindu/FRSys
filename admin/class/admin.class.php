@@ -24,6 +24,6 @@ class admin extends common
 	 		$sql = "update admin set username = '$this->username',role = '$this->role',email_id = '$this->email_id',date = '$this->date',status = '$this->status' where admin_id='$this->admin_id'";
 	 	
 	 	return $this->update($sql);
-	 
+	 }
 } 
 ?>
