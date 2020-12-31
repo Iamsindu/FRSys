@@ -9,7 +9,7 @@ class bill_detail extends common
 	}
 	public function insertbill_detail()
 	{
-		$sql ="insert into bill_dtl(bdtl_id, bill_id, rest_id, food_id, quantity, price, date)values('$this->bdtl_id', '$this->bill_id', '$this->rest_id', '$this->food_id', '$this->quantity', '$this->price', '$this->date')";
+		$sql ="insert into bill_dtl(bill_id, rest_id, food_id, quantity, price, date)values('$this->bill_id', '$this->rest_id', '$this->food_id', '$this->quantity', '$this->price', '$this->date')";
 		return $this->insert($sql);
 	}
 } 

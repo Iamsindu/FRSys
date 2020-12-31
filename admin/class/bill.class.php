@@ -9,7 +9,7 @@ class bill extends common
 	}
 	public function insertbill()
 	{
-		$sql ="insert into bill(bill_id, user_id, date)values('$this->bill_id', '$this->user_id', '$this->date')";
+		$sql ="insert into bill(user_id, date)values('$this->user_id', '$this->date')";
 		return $this->insert($sql);
 	}
 } 
