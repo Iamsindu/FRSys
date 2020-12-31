@@ -26,72 +26,68 @@
 </head>
 
 <body class="fixed-left">
-    <?php 
-	require_once 'class/common.class.php';
-	require_once 'class/discount_food.class.php';
-	require_once 'layout/header.php';
-	$fooddisc=new fooddisc;
-	$err=[];
-	if(isset($_POST['cmdsubmit']))
-	{
-        // echo"hit";
-        // echo $_POST['rel_date']."relesedat";
-        // echo $_POST['exp_date']."expdate";
-		if(isset($_POST['food_id'])&& !empty($_POST['food_id']))
-		{
-            // echo $_POST['food_id'];
-			$fooddisc->food_id = $_POST['food_id'];
-		}
-		else
-		{
-			$err[0]="Food Field cannot be empty";
-		}
-		if (isset($_POST['dis_id'])&& !empty($_POST['dis_id']))
-		 {
-            // echo $_POST['dis_id']; 
-			$fooddisc->dis_id= $_POST['dis_id'];
-		}
-		else
-		{
-			$err[1]="discount must be Entered";
-		}
-		if (isset($_POST['rel_date'])&& !empty($_POST['rel_date']))
-		 {
+    <?php
+	    require_once 'class/common.class.php';
+        require_once 'class/discount_food.class.php';
+        require_once 'class/food.class.php';
+        require_once 'layout/header.php';
+    
+        $fooddisc=new fooddisc;
+    
+        $err[1]=$err[2]=$err[3]=$err[4]="";
+        $food_id = $dis_id = $rel_date = $exp_date = "";
 
-            //  echo $_POST['rel_date']."relesedat";
+        if(isset($_POST['cmdsubmit']))
+        {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if(empty($_POST["food_id"])) {
+                    $err[1] = "food id is required";
+                } else {
+                    $food_id = test_input($_POST["food_id"]);
+                }
 
-			$fooddisc->rel_date= $_POST['rel_date'];
-		}
-		else
-		{
-			$err[2]="Release date must be entered";
-		}
-		
-		if(isset($_POST['exp_date'])&& !empty($_POST['exp_date']))
-		{
-            
-			$fooddisc->exp_date= $_POST['exp_date'];
-		}
-		else
-		{
-			$err[5]="Expiry Date should be inserted";
-		}
-		if(count($err)==0)
-		{
-			$fooddisc->date=date('Y-m-d H:i:s');
-			$ask =$fooddisc->insertfooddisc();
-			if($ask==1)
-			{
-				echo "<script>alert('inserted successfully')</script>";
-			}	
-			else
-			{
-				echo "<script>alert('Failed to insert')</script>";
-			}
-		}
-	}
- ?>	
-                <!-- Top Bar End -->
+                if (empty($_POST["rel_date"])) {
+                    $err[2] = "rel_date is required";
+                } else {
+                    $rel_date = test_input($_POST["rel_date"]);
+                }
+
+                if (empty($_POST["exp_date"])) {
+                    $err[3] = "exp_date is required";
+                }  else {
+                    $exp_date = test_input($_POST["exp_date"]);
+                }
+
+                if (empty($_POST["dis_id"])) {
+                    $err[4] = "dis_id is required";
+                } else {
+                    $dis_id = test_input($_POST["dis_id"]);
+                }
+            }
+        
+            if($err[1]=="" && $err[2]=="" && $err[3]=="" && $err[4]=="")  {
+                $data= $fooddisc->selectfooddisc();
+                $fooddisc->food_id=$food_id;
+                $fooddisc->rel_date=$rel_date;
+                $fooddisc->exp_date=$exp_date;
+		        $fooddisc->date=date('Y-m-d H:i:s');
+                $fooddisc->dis_id=$dis_id;
+		        $ask =$fooddisc->insertfooddisc();
+			    if($ask==1)
+			    {
+				    echo "<script>alert('Food Discount added successfully')</script>";
+			    } else {
+				    echo "<script>alert('Failed to add food discount.')</script>";
+			    }
+            }
+        }
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+    ?>	
                 <div class="page-content-wrapper ">
                     <div class="container-fluid">
                         <div class="row">
@@ -108,40 +104,50 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end page title end breadcrumb -->
+                      
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#" method="POST">
+                                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                              <div class="form-group">
                                                 <h6 class="text-muted fw-400">Food</h6>
                                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="food_id">
-                                                    <option>Select</option>
-                                                    <option>French Fries</option>
-                                                    <option>Chowmin</option>
-                                                    <option>Momo</option>
-                                                    <option>Pizza</option>
-                                                    <!-- <option value="evn">Event</option> -->
+                                                    <option disabled selected>Select</option>
+                                                    <?php
+                                                        $food = new food;
+                                                        $datas = $food-> selectfood();
+                                                        foreach($datas as $values)
+                                                        { ?>
+                                                        <option value="<?php echo $values->food_id ?>"><?php echo $values-> fname; ?></option>
+                                                        <?php  
+								                        }
+							                        ?>
                                                 </select>
+                                                <span class="error"> <?php echo $err[1];?></span>
                                             </div>
                                            <div class="form-group">
                                                     <h6 class="text-muted fw-400">Valid Date</h6>
 
                                                     <div>
                                                         <div class="input-daterange input-group" id="date-range">
-                                                            <input type="text" class="form-control" placeholder="Manufactured Date" name="rel_date"/>
-                                                            <input type="text" class="form-control" placeholder="Expiry Date" name="exp_date"/>
+                                                            <input type="text" class="form-control" placeholder="Manufactured Date" name="rel_date"/> 
+                                                            <span class="error"> <?php echo $err[2];?></span>
+                                                            <input type="text" class="form-control" placeholder="Expiry Date" name="exp_date" />
+                                                            <span class="error"> <?php echo $err[3];?></span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                 <h6 class="text-muted fw-400">Discount</h6>
                                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="dis_id">
-                                                    <option>Select</option>
+                                                    <option disabled selected>Select</option>
                                                     <option>5%</option>
+                                                    <option>10%</option>
                                                     <option>15%</option>
+                                                    <option>20%</option>
                                                 </select>
+                                                <span class="error"> <?php echo $err[4];?></span>
                                             </div>
                                              <div class="form-group ">
                                                     <div>
