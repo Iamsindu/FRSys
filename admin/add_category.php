@@ -60,56 +60,58 @@
         return $data;
     }
     ?>
-                <!-- Top Bar End -->
-                <div class="page-content-wrapper ">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="page-title-box">
-                                    <div class="btn-group float-right">
-                                        <ol class="breadcrumb hide-phone p-0 m-0">
-                                            <li class="breadcrumb-item"><a href="#">FRS</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Category</a></li>
-                                            <li class="breadcrumb-item active">Add Category</li>
-                                        </ol>
-                                    </div>
-                                    <h4 class="page-title">Add Category</h4>
-                                </div>
-                            </div>
+    <!-- Top Bar End -->
+    <div class="page-content-wrapper ">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="btn-group float-right">
+                            <ol class="breadcrumb hide-phone p-0 m-0">
+                                <li class="breadcrumb-item"><a href="#">FRS</a></li>
+                                <li class="breadcrumb-item"><a href="#">Category</a></li>
+                                <li class="breadcrumb-item active">Add Category</li>
+                            </ol>
                         </div>
-                        <!-- end page title end breadcrumb -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-                                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                                            <div class="form-group">
-                                                <h6 class="text-muted fw-400">Category Name</h6>
-                                                <div>
-                                                    <input type="text" class="form-control" placeholder="Name" name="catname" value="<?php echo $catname;?>"/>
-                                                    <span class="error"> <?php echo $err[0];?></span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group ">
-                                                <div>
-                                                    <button type="submit" name="cmdsubmit" class="btn btn-primary waves-effect waves-light">
-                                                        Add Category
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
+                        <h4 class="page-title">Add Category</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title end breadcrumb -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card m-b-30">
+                        <div class="card-body">
+                            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                                <div class="form-group">
+                                    <h6 class="text-muted fw-400">Category Name</h6>
+                                    <div>
+                                        <input type="text" class="form-control" placeholder="Name" name="catname"
+                                            value="<?php echo $catname;?>" />
+                                        <span class="error"> <?php echo $err[0];?></span>
                                     </div>
                                 </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-                    </div><!-- container -->
-                </div> <!-- Page content Wrapper -->
-            </div> <!-- content -->
-            <footer class="footer">
-                © 2020 FRS BY VSCUBE
-            </footer>
-        </div>
-        <!-- End Right content here -->
+                                <div class="form-group ">
+                                    <div>
+                                        <button type="submit" name="cmdsubmit"
+                                            class="btn btn-primary waves-effect waves-light">
+                                            Add Category
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+        </div><!-- container -->
+    </div> <!-- Page content Wrapper -->
+    </div> <!-- content -->
+    <footer class="footer">
+        © 2020 FRS BY VSCUBE
+    </footer>
+    </div>
+    <!-- End Right content here -->
     </div>
     <!-- END wrapper -->
     <!-- jQuery  -->
@@ -136,13 +138,14 @@
     <script src="assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
     <script src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
-    <script src="assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+    <script src="assets/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js" type="text/javascript">
+    </script>
     <!-- Parsley js -->
     <script type="text/javascript" src="assets/plugins/parsleyjs/parsley.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('form').parsley();
-    });
+        $(document).ready(function () {
+            $('form').parsley();
+        });
     </script>
     <!-- Plugins Init js -->
     <script src="assets/pages/form-advanced.js"></script>
@@ -180,7 +183,7 @@
         };
 
         // scroll
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             $("#boxscroll").niceScroll({
                 cursorborder: "",
