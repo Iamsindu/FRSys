@@ -26,80 +26,73 @@
 </head>
 
 <body class="fixed-left">
-    <!-- Loader -->
     <?php 
-	require_once 'class/common.class.php';
-	require_once 'class/admin.class.php';
-	require_once 'layout/header.php';
-	$admin=new admin;
-	$err=[];
-	if(isset($_POST['submit']))
-	{
-		if(isset($_POST['name'])&& !empty($_POST['name']))
-		{
-			$admin->name = $_POST['name'];
-		}
-		else
-		{
-			$err[0]="Name Field cannot be empty";
-		}
-		if (isset($_POST['username'])&& !empty($_POST['username']))
-		 {
-			$admin->username= $_POST['username'];
-		}
-		else
-		{
-			$err[1]="Username must be Entered";
-		}
-		if (isset($_POST['email'])&& !empty($_POST['email']))
-		 {
-			$admin->email= $_POST['email'];
+	    require_once 'class/common.class.php';
+        require_once 'class/similar.class.php';
+	    require_once 'layout/header.php';
+        
+        $similar = new similar;
+        $sim_id = $food1 = $food2 = $food3 = $food4 ="";
+        $err[1]=$err[2]=$err[3]="";
+
+
+	    if(isset($_POST['submit']))
+	    {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if(empty($_POST["sim_id"])) {
+                    $err[1] = "ID is required";
+                } else {
+                    $sim_id = test_input($_POST["sim_id"]);
+                    if (!preg_match("/^[0-9 ]*$/",$sim_id)) {
+                        $err[1] = "Only numbers and whitespaces are allowed";
+                    } 
+                }
+
+                if(empty($_POST["food1"])) {
+                    $err[2] = "Item Name can't be empty";
+                } else {
+                    $food1 = test_input($_POST["food1"]);
+                    if (!preg_match("/^[a-zA-Z ]*$/",$food1)) {
+                        $err[2] = "Only letters and whitespace are allowed";
+                    }
+                }
+
+                if(empty($_POST["food2"])) {
+                    $err[3] = "Item Name can't be empty";
+                } else {
+                    $food2 = test_input($_POST["food2"]);
+                    if (!preg_match("/^[a-zA-Z ]*$/",$food2)) {
+                        $err[3] = "Only letters and whitespace are allowed";
+                    }
+                }
+            }
 		
-		}
-		else
-		{
-			$err[2]="Email must be entered";
-		}
-		if(isset($_POST['password'])&& !empty($_POST['password']))
-		{
-			$password= $_POST['password'];
-		}
-		else
-		{
-			$err[3]="Password cannot be empty";
-		}
-		if(isset($_POST['status']))
-		{
-			$admin->status= $_POST['status'];
-		}
-		else
-		{
-			$err[4]="default status will be Inactive";
-		}
-		if(isset($_POST['phone'])&& !empty($_POST['phone']))
-		{
-			$admin->phone= $_POST['phone'];
-		}
-		else
-		{
-			$err[5]="Phone number should be inserted";
-		}
-		if(count($err)==0)
-		{
-			$admin->salt = uniqid();
-			$admin->password= sha1($admin->salt.$password);
-			$ask =$admin->insertuser();
-			if($ask==1)
-			{
-				echo "<<script>alert('inserted successfully')</script>";
-			}	
-			else
-			{
-				echo "<<script>alert('Failed to insert')</script>";
-			}
-		}
-	}
- ?>	
+            if($err[1]=="" && $err[2]=="" && $err[3]=="")  
+            {
+                $data=$similar->selectsimilar();
+                $similar->sim_id=$sim_id;
+                $similar->food1=$food1;
+                $similar->food2=$food2;
+                $similar->food3=$food3;
+                $similar->food4=$food4;
+                $ask=$similar->insertsimilar();
+			    if($ask==1)
+			    {
+				    echo "<script>alert('Yay, Similar Items inserted successfully.')</script>";
+			    }	
+			    else
+			    {
+				    echo "<script>alert('Sorry! Failed to insert similar items.')</script>";
+			    }
+		    }
+        }
+        function test_input($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+    ?>	
                 <!-- Top Bar End -->
                 <div class="page-content-wrapper ">
                     <div class="container-fluid">
@@ -122,41 +115,44 @@
                             <div class="col-lg-12">
                                 <div class="card m-b-30">
                                     <div class="card-body">
-                                        <form action="#" method="POST">
+                                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">ID</h6>
                                                 <div>
-                                                    <input type="text" class="form-control" required placeholder="ID" />
+                                                    <input type="text" class="form-control" name="sim_id" value="<?php echo $sim_id;?>"/>
+                                                    <span class="error"> <?php echo $err[1];?></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Item Name : 1</h6>
                                                 <div>
-                                                    <input type="text" class="form-control" required placeholder="Name" />
+                                                    <input type="text" class="form-control" name="food1"  value="<?php echo $food1;?>"/>
+                                                    <span class="error"> <?php echo $err[2];?></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Item Name : 2</h6>
                                                 <div>
-                                                    <input type="text" class="form-control" required placeholder="Name" />
+                                                    <input type="text" class="form-control" name="food2"  value="<?php echo $food2;?>" />
+                                                    <span class="error"> <?php echo $err[3];?></span>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Item Name : 3</h6>
                                                 <div>
-                                                    <input type="text" class="form-control" required placeholder="Name" />
+                                                    <input type="text" class="form-control" name="food3" />
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <h6 class="text-muted fw-400">Item Name : 4</h6>
                                                 <div>
-                                                    <input type="text" class="form-control" required placeholder="Name" />
+                                                    <input type="text" class="form-control" name="food4" />
                                                 </div>
                                             </div>
                                             <div class="form-group ">
                                                 <div>
-                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                        Add Item
+                                                    <button type="submit"  name="submit" class="btn btn-primary waves-effect waves-light">
+                                                        Add Similar Items
                                                     </button>
                                                 </div>
                                             </div>
