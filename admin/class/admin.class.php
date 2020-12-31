@@ -19,11 +19,13 @@ class admin extends common
  	}
 	public function updateadmin()
  	{
-
- 		
-	 		$sql = "update admin set username = '$this->username',role = '$this->role',email_id = '$this->email_id',date = '$this->date',status = '$this->status' where admin_id='$this->admin_id'";
-	 	
+	 	$sql = "update admin set username = '$this->username',role = '$this->role',email_id = '$this->email_id',date = '$this->date',status = '$this->status' where admin_id='$this->admin_id'";
 	 	return $this->update($sql);
-	 }
+	}
+	public function deleteadmin()
+ 	{
+ 		$sql = "delete from admin where admin_id = '$this->admin_id' ";
+ 		return $this->delete($sql);
+ 	}
 } 
 ?>
