@@ -59,15 +59,11 @@
                                     <div class="card m-b-30">
                                         <div class="card-body">
             
-                                            <h4 class="mt-0 header-title">Listing all the resturants...</h4>
-                                            <!-- <p class="text-muted m-b-30 font-14">DataTables has most features enabled by
-                                                default, so all you need to do to use it with your own tables is to call
-                                                the construction function: <code>$().DataTable();</code>.
-                                            </p> -->
-            
+                                            <h4 class="mt-0 header-title">Listing all the resturants...</h4>            
                                             <table id="datatable" class="table table-bordered">
                                                 <thead>
                                                 <tr>
+                                                    <th>ID</th>
                                                     <th>Name</th>
                                                     <th>E-mail</th>
                                                     <th>Phone Number</th>
@@ -76,9 +72,8 @@
                                                     <th>Action</th>
                                                 </tr>
                                                 </thead>
-            
                                                 <tbody>
-                                                <tbody>
+                                                
                                                 <?php 
                                                
 								                $data = $resturant-> selectresturant();
@@ -93,38 +88,14 @@
                                                         <td><?php echo $value->delivery;?></td>
                                                         <td><?php echo $value->status;?></td>								 	    
 								 	                    <td> <?php 
-														    echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->admin_id."'>Update</a>"."&nbsp"; 
-														    echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->admin_id."'>Delete</a>";
+														    echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php'>Update</a>"."&nbsp"; 
+														    echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php'>Delete</a>";
 													        ?>
 										                </td>
 								 	                </tr>
                                                 <?php	
                                                     }
-							                    ?>
-
-                                                
-                                                    <!-- <td>Tiger Nixon</td>
-                                                    <td>abc@gmail.com</td>
-                                                    <td>98671519777</td>
-                                                    <td>Yes</td>
-                                                    <td>Open</td>
-                                                    <td>@hghvb</td>
-                                                    <td><button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                      <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>abc@gmail.com</td>
-                                                    <td>98671519777</td>
-                                                    <td>Yes</td>
-                                                    <td>Open</td>
-                                                    <td>@hghvb</td>
-                                                    <td><button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                      <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr> -->
-                                              
-                                               
-                                              
+							                    ?>             
                                                 </tbody>
                                             </table>
             

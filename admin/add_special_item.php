@@ -27,64 +27,27 @@
 </head>
 
 <body class="fixed-left">
-    <!-- Loader -->
     <?php 
-	require_once 'class/common.class.php';
-	require_once 'class/admin.class.php';
-	require_once 'layout/header.php';
-	$admin=new admin;
-	$err=[];
-	if(isset($_POST['submit']))
-	{
-		if(isset($_POST['name'])&& !empty($_POST['name']))
-		{
-			$admin->name = $_POST['name'];
-		}
-		else
-		{
-			$err[0]="Name Field cannot be empty";
-		}
-		if (isset($_POST['username'])&& !empty($_POST['username']))
-		 {
-			$admin->username= $_POST['username'];
-		}
-		else
-		{
-			$err[1]="Username must be Entered";
-		}
-		if (isset($_POST['email'])&& !empty($_POST['email']))
-		 {
-			$admin->email= $_POST['email'];
+	    require_once 'class/common.class.php';
+	    require_once 'class/special.class.php';
+        require_once 'layout/header.php';
+    
+	    $special=new special;
+
+        $err[1]=$err[2]="";
+	    if(isset($_POST['submit']))
+	    {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if(empty($_POST["food1"])) {
+                    $err[2] = "Item Name can't be empty";
+                } else {
+                    $food1 = test_input($_POST["food1"]);
+                    if (!preg_match("/^[a-zA-Z ]*$/",$food1)) {
+                        $err[2] = "Only letters and whitespace are allowed";
+                    }
+                }
+            }
 		
-		}
-		else
-		{
-			$err[2]="Email must be entered";
-		}
-		if(isset($_POST['password'])&& !empty($_POST['password']))
-		{
-			$password= $_POST['password'];
-		}
-		else
-		{
-			$err[3]="Password cannot be empty";
-		}
-		if(isset($_POST['status']))
-		{
-			$admin->status= $_POST['status'];
-		}
-		else
-		{
-			$err[4]="default status will be Inactive";
-		}
-		if(isset($_POST['phone'])&& !empty($_POST['phone']))
-		{
-			$admin->phone= $_POST['phone'];
-		}
-		else
-		{
-			$err[5]="Phone number should be inserted";
-		}
 		if(count($err)==0)
 		{
 			$admin->salt = uniqid();
@@ -99,7 +62,14 @@
 				echo "<<script>alert('Failed to insert')</script>";
 			}
 		}
-	}
+    }
+    
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
  ?>	
                 <!-- Top Bar End -->
                 <div class="page-content-wrapper ">
@@ -131,28 +101,21 @@
                                                     <option>Select</option>
                                                     <option value="AK">Momo</option>
                                                     <option value="HI">Chawin</option>
-                                                    <option value="evn">Thuppa</option>
-                                                   <!--  <optgroup label="Pacific Time Zone">
-                                                        <option value="CA">California</option>
-                                                        <option value="NV">Nevada</option>
-                                                        <option value="OR">Oregon</option>
-                                                        <option value="WA">Washington</option>
-                                                    </optgroup> -->
-                                                  
+                                                    <option value="evn">Thuppa</option>                                                  
                                                 </select>
                                             </div>
                                             
                                            <div class="form-group">
                                                    <h6 class="text-muted fw-400">Description</h6>
                                                     <div>
-                                                        <textarea required class="form-control" rows="5"></textarea>
+                                                        <textarea class="form-control" rows="5"></textarea>
                                                     </div>
                                                 </div>
                                            
                                           
                                              <div class="form-group ">
                                                     <div>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                        <button type="submit" name="submit" class="btn btn-primary waves-effect waves-light">
                                                             Add Special Item
                                                         </button>
                                                     </div>
