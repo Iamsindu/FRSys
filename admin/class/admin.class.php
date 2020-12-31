@@ -12,5 +12,18 @@ class admin extends common
 		$sql ="insert into admin(username,password,salt,role,email_id,date,status)values('$this->username','$this->password','$this->salt','$this->role','$this->email_id','$this->date','$this->status')";
 		return $this->insert($sql);
 	}
+	public function selectadminbyid()
+ 	{
+ 		$sql = "select * from admin where admin_id = '$this->admin_id' ";
+ 		return $this->select($sql);
+ 	}
+	public function updateadmin()
+ 	{
+
+ 		
+	 		$sql = "update admin set username = '$this->username',role = '$this->role',email_id = '$this->email_id',date = '$this->date',status = '$this->status' where admin_id='$this->admin_id'";
+	 	
+	 	return $this->update($sql);
+	 
 } 
 ?>
