@@ -72,6 +72,14 @@
                 $err[3] = "This field can't be empty.";
             } else {
                 $vg_nvg = test_input($_POST["vg_nvg"]);
+                if($vg_nvg=="Veg")
+                {
+                    $vg_nonvg=1;
+                }
+                else
+                {
+                    $vg_nonvg=0;
+                }
             }
         }
 
@@ -80,7 +88,7 @@
             $food->fname=$fname;
             $food->dsc=$dsc;
             $food->price=$price;
-            $food->vg_nvg=$vg_nvg;            
+            $food->vg_nvg=$vg_nonvg;            
 			$ask =$food->insertwithoutimg();
 			if($ask==1)
 			{
