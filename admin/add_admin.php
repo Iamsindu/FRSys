@@ -41,7 +41,6 @@
         $data = $admin->selectadminbyid();
         $username = $data[0]->username;
         $email_id = $data[0]->email_id;
-
         }
         $err[1]=$err[2]=$err[3]=$err[4]=$err[5]="";
 	
