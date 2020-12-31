@@ -17,18 +17,16 @@
 
     </head>
 
-
     <body class="fixed-left">
 
         <!-- Loader -->
         <?php 
-require_once 'layout/header.php';
-require_once 'class/common.class.php';
-require_once 'class/admin.class.php';
-require_once 'class/menu.class.php';
-$menu = new menu;
-$value[]=$menu->selectmenu();
- ?>
+        require_once 'layout/header.php';
+        require_once 'class/common.class.php';
+        require_once 'class/admin.class.php';
+        require_once 'class/menu.class.php';
+        $menu = new menu;
+    ?>
                     <!-- Top Bar End -->
 
                     <div class="page-content-wrapper ">
@@ -55,13 +53,7 @@ $value[]=$menu->selectmenu();
                                 <div class="col-12">
                                     <div class="card m-b-30">
                                         <div class="card-body">
-            
-                                            <h4 class="mt-0 header-title">Show Menu Table</h4>
-                                            <!-- <p class="text-muted m-b-30 font-14">
-                                                Use <code>.table-striped</code> to add zebra-striping to any table row
-                                                within the <code>&lt;tbody&gt;</code>.
-                                            </p> -->
-            
+                                            <h4 class="mt-0 header-title">Show Menu Table</h4>            
                                             <table class="table table-hover">
                                                 <thead>
                                                  <tr>
@@ -73,30 +65,26 @@ $value[]=$menu->selectmenu();
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                    <td> <button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                        <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                    <td> <button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                        <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry the Bird</td>
-                                                    <td>LHFASVFJ</td>
-                                                    <td>@twitter</td>
-                                                    <td> <button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                        <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td> 
-                                                </tr>
+                                                <?php 
+                                                    $data=$menu->selectmenu();
+                                                    $n=1;
+                                                    foreach ($data as $value)
+                                                    {  ?>
+                                                    <tr>
+								 		                <td><?php echo $n; $n++; ?></td>
+								 		                <td><?php echo $value->menuname; ?></td>
+								 	                    <td><?php echo $value->dsc;?></td>
+                                                        <td><?php echo $value->photo_id;?></td>							 	    
+								 	                    <td> <?php 
+														    echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php'>Update</a>"."&nbsp"; 
+														    echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php'>Delete</a>";
+													        ?>
+										                </td>
+								 	                </tr>
+                                                <?php	
+                                                    }
+							                    ?>
+
                                                 </tbody>
                                             </table>
             
