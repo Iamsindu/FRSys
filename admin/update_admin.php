@@ -36,12 +36,7 @@
         require_once 'layout/header.php';
         $username = $password = $email_id = $role = $status =  "";
         $admin=new admin; 
-        if(isset($_GET['id'])){
         $admin->admin_id=$_GET['id'];
-        $data = $admin->selectadminbyid();
-        $username = $data[0]->username;
-        $email_id = $data[0]->email_id;
-        }
         $err[1]=$err[2]=$err[3]=$err[4]=$err[5]="";
         // echo $username."username",$email_id."email";
         // echo $admin->admin_id."id";
@@ -102,14 +97,13 @@
                 $admin->salt = uniqid();
                 $admin->date=date('Y-m-d H:i:s');
 			    $admin->password= sha1($admin->salt.$password);
-                if(!empty($admin->admin_id))
-                {
+                
                     $ask= $admin->updateadmin();
-                    if($ask==="Duplicate")
+                    if($ask=="Duplicate")
 			    	{
 			    		echo "<script>alert('Duplicate Entry')</script>";
 			    	}
-			    	else if($ask)
+			    	else if($ask==1)
 			    	{
 			    		echo "<script>alert('Updated Sucessfully')</script>";
 			    	}
@@ -117,19 +111,7 @@
 			    	{
 			    		echo "<script>alert('Update Failed')</script>";
 			    	}
-                }
-                else{
-                $ask =$admin->insertadmin();
-			    if($ask==1){
-				    echo "<script> alert('Inserted admin Successfully') </script>";
-			    } else {
-                    if($comp!=0) {
-                        echo "<script> alert('Sorry! Failed to insert admin.') </script>";
-                    } else {
-                        echo "<script> alert('Duplicate admin value. Please insert unique admin!') </script>";
-                    }
-                }
-            }
+                
 		    }
         }
     
@@ -139,6 +121,7 @@
             $data = htmlspecialchars($data);
             return $data;
         }
+        $data = $admin->selectadminbyid();
     ?>
     <div class="page-content-wrapper ">
         <div class="container-fluid">
@@ -149,18 +132,13 @@
                             <ol class="breadcrumb hide-phone p-0 m-0">
                                 <li class="breadcrumb-item"><a href="#">FRS</a></li>
                                 <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                               <?php if(!empty($admin->admin_id)) {?>
+                              
                                 <li class="breadcrumb-item active">Update Admin</li>
-                                <?php } else{?>
-                                <li class="breadcrumb-item active">Add Admin</li>
-                                <?php }?>
+                               
                             </ol>
                         </div>
-                        <?php if(!empty($admin->admin_id)) {?>
                             <h4 class="page-title"> Update Admin</h4>
-                                <?php } else{?>
-                                    <h4 class="page-title"> Add Admin</h4>
-                                <?php }?>
+                                
                         
                     </div>
                 </div>
@@ -175,7 +153,7 @@
                                 <div class="form-group">
                                     <h6 class="text-muted fw-400">Username</h6>
                                     <div>
-                                        <input type="text" name="username" value="<?php echo $username;?>"
+                                        <input type="text" name="username" value="<?php echo $data[0]->username;?>"
                                             class="form-control" placeholder="Name" />
                                         <span class="error"> <?php echo $err[1];?></span>
                                     </div>
@@ -197,7 +175,7 @@
                                 <div class="form-group">
                                     <h6 class="text-muted fw-400">Email</h6>
                                     <div>
-                                        <input type="email" name="email_id" value="<?php echo $email_id; ?>"
+                                        <input type="email" name="email_id" value="<?php echo $data[0]->email_id; ?>"
                                             class="form-control" placeholder="Enter email" />
                                         <span class="error"> <?php echo $err[3];?></span>
                                     </div>
@@ -207,9 +185,13 @@
                                     <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
                                         name="role">
                                         <option disabled selected>Select</option>
-                                        <option>Admin</option>
-                                        <option>Editor</option>
-                                        <option>User</option>
+                                        <?php if($data[0]->role=='Admin'){ ?>
+                                        <option selected >Admin</option>
+                                        <?php } elseif($data[0]->role=='Editor'){ ?>
+                                        <option selected>Editor</option>
+                                        <?php } else { ?>
+                                        <option selected>User</option>
+                                        <?php }?>
                                     </select>
                                     <span class="error"> <?php echo $err[4]; ?> </span>
                                 </div>
