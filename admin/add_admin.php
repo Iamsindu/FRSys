@@ -36,7 +36,7 @@
         require_once 'layout/header.php';
         $username = $password = $email_id = $role = $status =  "";
         $admin=new admin; 
-        if($_GET['admin_id']){
+        if(isset($_GET['admin_id'])){
         $admin->admin_id=$_GET['admin_id'];
         $data = $admin->selectadminbyid();
         $username = $data[0]->username;
