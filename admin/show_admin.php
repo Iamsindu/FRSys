@@ -95,7 +95,7 @@ $admin = new admin;
 								 	    
 								 	    <td> <?php 
 														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='add_admin.php?id=".$value->admin_id."'>Update</a>"."&nbsp"; 
-														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->admin_id."'>Delete</a>";
+														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_admin.php?id=".$value->admin_id."'>Delete</a>";
 													
 													
 											?>
@@ -105,38 +105,6 @@ $admin = new admin;
                                     }
 								}
 							 ?>
-                                                <!-- <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Sandip Pokhrel</td>
-                                                    <td>Admin</td>
-                                                    <td>Active</td>
-                                                    <td><button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                    <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Sagar Khatri</td>
-                                                    <td>Editor</td>
-                                                    <td>Inactive</td>
-                                                    <td> <button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                    <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Sindhu Aryal</td>
-                                                    <td>Editor</td>
-                                                    <td>Inactive</td>
-                                                    <td> <button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                    <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">4</th>
-                                                    <td>Vikas Panthi</td>
-                                                    <td>User</td>
-                                                    <td>Inactive</td>
-                                                    <td> <button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                    <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr> -->
                                                 </tbody>
                                             </table>
             
