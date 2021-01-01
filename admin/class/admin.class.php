@@ -1,7 +1,7 @@
 <?php 
 class admin extends common
 {
-	public $admin_id,$username,$salt,$password,$email_id,$role,$date,$status;
+	public $admin_id,$username,$salt,$password,$email_id,$role,$date,$status,$id;
 	public function selectadmin()
 	{
 		$sql="select * from admin ";
@@ -14,14 +14,25 @@ class admin extends common
 	}
 	public function selectadminbyid()
  	{
- 		$sql = "select * from admin where admin_id = '$this->admin_id' ";
+ 		$sql = "select * from admin where admin_id = '$this->admin_id'";
  		return $this->select($sql);
  	}
-	public function updateadmin()
- 	{
-	 	$sql = "update admin set username = '$this->username',password = '$this->password',salt = '$this->salt',role = '$this->role',email_id = '$this->email_id',date = '$this->date',status = '$this->status' where admin_id='$this->admin_id'";
-	 	return $this->update($sql);
-	}
+	 public function updateadmin()
+	 {
+		 echo $this->username,$this->email_id,$this->admin_id;
+		 $sql = "update admin set username = '$this->username', email_id = '$this->email_id' where admin_id = '$this->admin_id'";
+		 return $this->update($sql);
+	 }
+	 public function updatelastlogin()
+	 {
+		 $sql = "update tbl_admin set last_login = '$this->last_login' where username = '$this->username'";
+		 $this->update($sql);
+	 }
+	 public function updateadminwithpassword()
+	 {
+		 $sql = "update tbl_admin set username = '$this->username', email_id= '$this->email_id', password = '$this->password' where admin_id = '$this->admin_id'";
+		 return $this->update($sql);
+	 }
 	public function deleteadmin()
  	{
  		$sql = "delete from admin where admin_id = '$this->admin_id' ";
