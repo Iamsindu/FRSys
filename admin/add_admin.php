@@ -36,14 +36,15 @@
         require_once 'layout/header.php';
         $username = $password = $email_id = $role = $status =  "";
         $admin=new admin; 
-        if(isset($_GET['admin_id'])){
-        $admin->admin_id=$_GET['admin_id'];
+        if(isset($_GET['id'])){
+        $admin->admin_id=$_GET['id'];
         $data = $admin->selectadminbyid();
         $username = $data[0]->username;
         $email_id = $data[0]->email_id;
         }
         $err[1]=$err[2]=$err[3]=$err[4]=$err[5]="";
-	
+        // echo $username."username",$email_id."email";
+        // echo $admin->admin_id."id";
         if(isset($_POST['cmdsubmit'])){
             // echo "<br>"."hit";
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
