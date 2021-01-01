@@ -19,36 +19,33 @@ class food extends common
  	{
 
 		$sql ="insert into food(fname,dsc,price,vg_nvg,photo_id)values('$this->fname','$this->dsc','$this->price','$this->vg_nvg','$this->photo_id')";
- 		
  		return $this->insert($sql);
  	}
 
  	public function insertwithoutimg()
  	{
 		$sql ="insert into food(fname,dsc,price,vg_nvg)values('$this->fname','$this->dsc','$this->price','$this->vg_nvg')";
- 	
  		return $this->insert($sql);
  	}
 
  	public function deletefood()
  	{
- 		$sql = "delete from food where id = '$this->id' ";
+ 		$sql = "delete from food where food_id = '$this->food_id' ";
  		return $this->delete($sql);
  	}
 
  	public function updatefood()
  	{
-
- 		if(!empty($this->picture))
+ 		if(!empty($this->photo_id))
  		{
- 			$sql = "update food set name = '$this->name',price = '$this->price',cat_name = '$this->cat',picture = '$this->picture',disc = '$this->disc' where id='$this->id'";
+ 			$sql = "update food set fname ='$this->fname',dsc='$this->dsc',price='$this->price',vg_nvg='$this->vg_nvg', photo_id = '$this->photo_id' where food_id = '$this->food_id'";
  		}
 	 	else	
 	 	{
-	 		$sql = "update tbl_product set name = '$this->name',price = '$this->price',cat_name = '$this->cat',disc = '$this->disc' where id='$this->id'";
+	 		$sql = "update food set fname = '$this->fname', dsc= '$this->dsc',price='$this->price', vg_nvg = '$this->vg_nvg' where food_id = '$this->food_id'";
 	 	}
 	 	return $this->update($sql);
-	 }
+	}
 
 }
 ?>
