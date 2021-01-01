@@ -11,14 +11,9 @@ class food_category extends common
  	public function insertfood_category()
  	{
 
-		$sql ="insert into foodcat(foodcat_id,food_id,cat_id)values('$this->foodcat_id','$this->food_id','$this->cat_id')";
+		$sql ="insert into foodcat(food_id,cat_id)values('$this->food_id','$this->cat_id')";
  		
  		return $this->insert($sql);
  	}
-
- 
-
- 	
-
 }
 ?>

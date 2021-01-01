@@ -10,8 +10,7 @@ class location extends common
  	}
  	public function insertlocation()
  	{
-
-		$sql ="insert into location(location_id,country,city,street)values('$this->location_id','$this->country','$this->city','$this->street')";
+		$sql ="insert into location(country,city,street)values('$this->country','$this->city','$this->street')";
  		return $this->insert($sql);
  	}
 }

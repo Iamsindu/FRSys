@@ -1,7 +1,7 @@
 <?php 
 class dissimilar extends common
 {
-	public $dis_id,$food_id,$rest_id;
+	public $diss_id,$food_id,$rest_id;
 	
 	public function insertdissimilar()
 	{

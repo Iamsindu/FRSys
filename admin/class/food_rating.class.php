@@ -10,9 +10,7 @@ class food_rating extends common
  	}
  	public function insertfood_rating()
  	{
-
-		$sql ="insert into frate(frate_id,food_id,user_id,rating,date)values('$this->frate_id','$this->food_id','$this->user_id','$this->rating','$this->date')";
- 		
+		$sql ="insert into frate(food_id,user_id,rating,date)values('$this->food_id','$this->user_id','$this->rating','$this->date')";
  		return $this->insert($sql);
  	}
 }

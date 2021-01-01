@@ -10,7 +10,7 @@ class payment extends common
  	}
  	public function insertpayment()
  	{
-		$sql ="insert into payment(payment_id,bill_id,amount,paymethod,date)values('$this->payment_id','$this->bill_id','$this->amount','$this->paymethod','$this->date')";
+		$sql ="insert into payment(bill_id,amount,paymethod,date)values('$this->bill_id','$this->amount','$this->paymethod','$this->date')";
  		return $this->insert($sql);
  	}
 }

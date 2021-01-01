@@ -10,9 +10,7 @@ class food_review extends common
  	}
  	public function insertfood_review()
  	{
-
-		$sql ="insert into freview(frate_id,user_id,food_id,dsc,date)values('$this->frate_id','$this->user_id','$this->food_id','$this->dsc','$this->date')";
- 		
+		$sql ="insert into freview(user_id,food_id,dsc,date)values('$this->user_id','$this->food_id','$this->dsc','$this->date')";
  		return $this->insert($sql);
  	}
 }
