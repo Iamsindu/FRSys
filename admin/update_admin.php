@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
     <!-- Plugins css -->
-    <link href="assets/plugins/timepicker/tempusdominus-bootstrap-4.css" rel="stylesheet" />
+    <!-- <link href="assets/plugins/timepicker/tempusdominus-bootstrap-4.css" rel="stylesheet" />
     <link href="assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
     <link href="assets/plugins/clockpicker/jquery-clockpicker.min.css" rel="stylesheet" />
     <link href="assets/plugins/colorpicker/asColorPicker.min.css" rel="stylesheet" type="text/css" />
@@ -22,7 +22,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/assets/plugins/morris/morris.css" rel="stylesheet">
+    <link href="/assets/plugins/morris/morris.css" rel="stylesheet"> -->
 </head>
 
 <body class="fixed-left">
@@ -33,15 +33,18 @@
 	    //require_once 'class/session.class.php';
         //sessionhelper::checklogin();
         //require_once 'selector.php';
-        require_once 'layout/header.php';
+        //require_once 'layout/header.php';
         $username = $password = $email_id = $role = $status =  "";
         $admin=new admin; 
+        if(isset($_GET['id'])){
         $admin->admin_id=$_GET['id'];
+        }
         $err[1]=$err[2]=$err[3]=$err[4]=$err[5]="";
-        // echo $username."username",$email_id."email";
-        // echo $admin->admin_id."id";
+        echo $username."username",$email_id."email";
+        echo $admin->admin_id."id";
         if(isset($_POST['cmdsubmit'])){
-            // echo "<br>"."hit";
+            echo "<br>"."hit";
+            echo $admin->admin_id;
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (empty($_POST["username"])) {
                     $err[1] = "Username is required";
@@ -93,11 +96,11 @@
                 $admin->username = $username;
                 $admin->email_id = $email_id;
                 $admin->role =$role;
-                $admin->status = $status;
+                $admin->status = $status; 
                 $admin->salt = uniqid();
                 $admin->date=date('Y-m-d H:i:s');
 			    $admin->password= sha1($admin->salt.$password);
-                
+                echo $admin->username,$admin->email_id,$admin->role,$admin->status,$admin->admin_id;
                     $ask= $admin->updateadmin();
                     if($ask=="Duplicate")
 			    	{
