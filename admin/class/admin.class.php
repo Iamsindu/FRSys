@@ -19,8 +19,7 @@ class admin extends common
  	}
 	 public function updateadmin()
 	 {
-		 echo $this->username,$this->email_id,$this->admin_id;
-		 $sql = "update admin set username = '$this->username', email_id = '$this->email_id' where admin_id = '$this->admin_id'";
+		 $sql = "update admin set username = '$this->username', email_id = '$this->email_id', role = '$this->role', status = '$this->status' where admin_id = '$this->admin_id'";
 		 return $this->update($sql);
 	 }
 	 public function updatelastlogin()

@@ -34,16 +34,59 @@
         //sessionhelper::checklogin();
         //require_once 'selector.php';
         require_once 'layout/header.php';
+        $username = $password = $email_id = $role = $status =  "";
         $admin=new admin; 
         $admin->admin_id = $_GET['id'];
         // echo $username."username",$email_id."email";
         // echo $admin->admin_id."id";
+        function test_input($info) {
+            $info = trim($info);
+            $info = stripslashes($info);
+            $info = htmlspecialchars($info);
+            return $info;
+        }
         if(isset($_POST['cmdsubmit'])){
             // echo "<br>"."hit";
-           
-                $admin->username = $_POST['username'];
-                $admin->email_id = $_POST['email_id'];
+            
                 
+                    $username = test_input($_POST["username"]);
+                    if (!preg_match("/^[a-zA-Z]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/",$username)) {
+                        $err[1] = "Must begin with letters and only _,- and letters are allowed";
+                    }
+                
+          
+        
+               
+                    $password = test_input($_POST["password"]);
+                    if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$password)) {
+                        $err[2] = "apply strong password please";
+                        $password="";
+                    }
+                
+        
+               
+                    $email_id = test_input($_POST["email_id"]);
+                    if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
+                        $err[3] = "Invalid format and please re-enter valid email";
+                    }
+                
+
+                if (empty($_POST["role"])) {
+                    $err[4] = "Role is required";
+                } else {
+                    $role = test_input($_POST["role"]);
+                }
+
+                if (empty($_POST["status"])) {
+                    $err[5] = "Status is required";
+                } else {
+                    $status = test_input($_POST["status"]);
+                }
+            
+                $admin->username = $username;
+                $admin->email_id = $email_id;
+                $admin->role =$role;
+                $admin->status = $status;
                 
                 if (isset($_POST['password'])&& !empty($_POST['password']))
                 {
