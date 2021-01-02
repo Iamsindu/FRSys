@@ -174,9 +174,19 @@
                                     <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
                                         name="role">
                                         <option disabled selected>Select</option>
+                                        <?php if($value->role=='User'){ ?>
                                         <option>Admin</option>
                                         <option>Editor</option>
-                                        <option>User</option>
+                                        <option selected>User</option>
+                                        <?php } elseif($value->role=='Admin'){  ?>
+                                        <option selected>Admin</option>
+                                        <option>Editor</option>
+                                        <optionx>User</option>
+                                        <?php }else{ ?>
+                                        <option>Admin</option>
+                                        <option selected>Editor</option>
+                                        <optionx>User</option>
+                                        <?php } ?>
                                     </select>
                                     <span class="error"> <?php echo $err[3];?></span>
                                 </div>
@@ -185,8 +195,13 @@
                                     <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
                                         name="status">
                                         <option disabled selected>Select</option>
-                                        <option>Active</option>
+                                        <?php if($value->status=='Active'){ ?>
+                                        <option selected>Active</option>
                                         <option>Inactive</option>
+                                        <?php } else{ ?>
+                                        <option selected>Inactive</option>
+                                        <option>Active</option>
+                                        <?php }  ?>
                                     </select>
                                     <span class="error"> <?php echo $err[4];?></span>
                                 </div>
