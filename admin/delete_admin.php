@@ -1,15 +1,10 @@
-
-    
 <?php
     require_once 'class/common.class.php';
     require_once 'class/admin.class.php';
 	$admin = new admin;
-	
     if(isset($_GET['id']))
     {
-    	
 		$admin->admin_id = $_GET['id'];
-		
     	$ask = $admin->deleteadmin();
     	if($ask == 1)
     	{
