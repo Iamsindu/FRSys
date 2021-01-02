@@ -36,71 +36,62 @@
         require_once 'layout/header.php';
         $username = $password = $email_id = $role = $status =  "";
         $admin=new admin; 
+
+        $err[1]=$err[2]=$err[3]=$err[4]="";
+
         $admin->admin_id = $_GET['id'];
-        // echo $username."username",$email_id."email";
-        // echo $admin->admin_id."id";
+
         function test_input($info) {
             $info = trim($info);
             $info = stripslashes($info);
             $info = htmlspecialchars($info);
             return $info;
         }
-        if(isset($_POST['cmdsubmit'])){
-            // echo "<br>"."hit";
-            
-                
+
+        if(isset($_POST['cmdsubmit']))
+        {           
+            if ($_SERVER["REQUEST_METHOD"] == "POST") 
+            {
+                if (empty($_POST["username"])) {
+                    $err[1] = "Username is required";
+                } else {
                     $username = test_input($_POST["username"]);
                     if (!preg_match("/^[a-zA-Z]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/",$username)) {
                         $err[1] = "Must begin with letters and only _,- and letters are allowed";
                     }
-                
-          
-        
-               
-                    $password = test_input($_POST["password"]);
-                    if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$password)) {
-                        $err[2] = "apply strong password please";
-                        $password="";
-                    }
-                
-        
-               
+                }
+
+                if (empty($_POST["email_id"])) {
+                    $err[2] = "Email is required";
+                } else {
                     $email_id = test_input($_POST["email_id"]);
                     if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
-                        $err[3] = "Invalid format and please re-enter valid email";
+                        $err[2] = "Invalid format and please re-enter valid email";
                     }
-                
+                }
 
                 if (empty($_POST["role"])) {
-                    $err[4] = "Role is required";
+                    $err[3] = "Role is required";
                 } else {
                     $role = test_input($_POST["role"]);
                 }
 
                 if (empty($_POST["status"])) {
-                    $err[5] = "Status is required";
+                    $err[4] = "Status is required";
                 } else {
                     $status = test_input($_POST["status"]);
                 }
-            
+
+            }
+                
+            if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="")  
+            {
+                $data = $admin->selectadmin();
                 $admin->username = $username;
                 $admin->email_id = $email_id;
                 $admin->role =$role;
                 $admin->status = $status;
-                
-                if (isset($_POST['password'])&& !empty($_POST['password']))
-                {
-                    $password = $_POST['password'];
-                    $salt = uniqid();
-                    $admin->salt = $salt;
-                    $admin->password = sha1($admin->salt.$password);
-                    $ask = $admin->updateadminwithpassword();
-                }
-                else
-                {
-                    
-                    $ask = $admin->updateadmin();
-                }
+                $ask = $admin->updateadmin();
                 if($ask==="Duplicate")
                 {
                     echo "<script>alert('Duplicate Entry')</script>";
@@ -111,11 +102,11 @@
                 }
                 else
                 {
-                    echo "<script>alert('Update Unsucessfully')</script>";
-                }
-            
+                    echo "<script>alert('Sorry, Can't be updated.')</script>";
+                } 
 		    
-        }
+            }
+        }   
         $data = $admin->selectadminbyid();
         foreach ($data as $value) {
        
@@ -130,12 +121,12 @@
                                 <li class="breadcrumb-item"><a href="#">FRS</a></li>
                                 <li class="breadcrumb-item"><a href="#">Admin</a></li>
                                
-                                <li class="breadcrumb-item active">Add Admin</li>
+                                <li class="breadcrumb-item active">Update Admin</li>
                                 
                             </ol>
                         </div>
                        
-                                    <h4 class="page-title"> Add Admin</h4>
+                                    <h4 class="page-title">Update Admin</h4>
                               
                         
                     </div>
@@ -153,10 +144,10 @@
                                     <div>
                                         <input type="text" name="username" value="<?php echo $value->username;?>"
                                             class="form-control" placeholder="Name" />
-                                        <span class="error"> </span>
+                                            <span class="error"> <?php echo $err[1];?></span>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <h6 class="text-muted fw-400">Password</h6>
                                     <div>
                                         <input type="password" id="pass2" name="password"
@@ -169,13 +160,13 @@
                                             data-parsley-equalto="#pass2" placeholder="Re-Type Password" />
                                         <span class="error"> </span>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <h6 class="text-muted fw-400">Email</h6>
                                     <div>
                                         <input type="email" name="email_id" value="<?php echo $value->email_id; ?>"
                                             class="form-control" placeholder="Enter email" />
-                                        <span class="error"></span>
+                                            <span class="error"> <?php echo $err[2];?></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -187,7 +178,7 @@
                                         <option>Editor</option>
                                         <option>User</option>
                                     </select>
-                                    <span class="error">  </span>
+                                    <span class="error"> <?php echo $err[3];?></span>
                                 </div>
                                 <div class="form-group">
                                     <h6 class="text-muted fw-400">Status</h6>
@@ -197,7 +188,7 @@
                                         <option>Active</option>
                                         <option>Inactive</option>
                                     </select>
-                                    <span class="error">  </span>
+                                    <span class="error"> <?php echo $err[4];?></span>
                                 </div>
                                 <div class="form-group ">
                                     <div>
@@ -309,5 +300,4 @@
         });
     </script>
 </body>
-
 </html>

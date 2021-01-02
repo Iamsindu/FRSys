@@ -107,7 +107,6 @@
                         echo "<script> alert('Duplicate admin value. Please insert unique admin!') </script>";
                     }
                 }
-            
 		    }
         }
     
