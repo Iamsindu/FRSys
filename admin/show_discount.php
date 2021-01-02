@@ -7,12 +7,9 @@ require_once 'class/discount.class.php';
 //require_once 'selector.php';
 $discount = new discount;
  ?>
-                    <!-- Top Bar End -->
 
                     <div class="page-content-wrapper ">
-
                         <div class="container-fluid">
-
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="page-title-box">
@@ -27,45 +24,36 @@ $discount = new discount;
                                     </div>
                                 </div>
                             </div>
-                            <!-- end page title end breadcrumb -->
-
-                        
             
-            
-                             <div class="row">
+                            <div class="row">
                                 <div class="col-12">
                                     <div class="card m-b-30">
                                         <div class="card-body">
             
                                             <h4 class="mt-0 header-title">Show Discount</h4>
-                                            <!-- <p class="text-muted m-b-30 font-14">
-                                                Use <code>.table-striped</code> to add zebra-striping to any table row
-                                                within the <code>&lt;tbody&gt;</code>.
-                                            </p> -->
-            
                                             <table class="table table-hover">
                                                 <thead>
-                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Rate</th>
-                                                    <th>Special Event</th>
-                                                    <th>Action</th>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Rate</th>
+                                                        <th>Special Event</th>
+                                                        <th>Action</th>
                                                   </tr>
                                                 </thead>
                                                 <tbody>
                                                 <?php 
-								$data = $discount->selectdiscount();
-								$n=1;
-								foreach ($data as $value)
-								 {?>
+								                    $data = $discount->selectdiscount();
+								                    $n=1;
+								                    foreach ($data as $value)
+								                { ?>
 								 	<tr>
 								 		<td><?php echo $n; $n++; ?></td>
 								 		<td><?php echo $value->rate; ?></td>
 								 	    <td><?php echo $value->special;?></td>
 								 	    
 								 	    <td> <?php 
-														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->dis_id."'>Update</a>"."&nbsp"; 
-														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->dis_id."'>Delete</a>";
+														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_discount.php?id=".$value->dis_id."'>Update</a>"."&nbsp"; 
+														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_discount.php?id=".$value->dis_id."'>Delete</a>";
 													
 													
 											?>
