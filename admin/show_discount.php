@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>FRS- FOOD RECOMMENDATION SYSTEM</title>
-        <meta content="Admin Dashboard" name="description" />
-        <meta content="Mannatthemes" name="author" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-
-    </head>
-
-
-    <body class="fixed-left">
-
-        <!-- Loader -->
-        <?php 
+<?php 
 require_once 'layout/header.php';
 require_once 'class/common.class.php';
 require_once 'class/discount.class.php';
@@ -128,32 +105,6 @@ $discount = new discount;
 
                 </div> <!-- content -->
 
-                <footer class="footer">
-                    © 2020 FRS BY VSCUBE
-                </footer>
-
-            </div>
-            <!-- End Right content here -->
-
-        </div>
-        <!-- END wrapper -->
-
-
-        <!-- jQuery  -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="assets/js/modernizr.min.js"></script>
-        <script src="assets/js/detect.js"></script>
-        <script src="assets/js/fastclick.js"></script>
-        <script src="assets/js/jquery.slimscroll.js"></script>
-        <script src="assets/js/jquery.blockUI.js"></script>
-        <script src="assets/js/waves.js"></script>
-        <script src="assets/js/jquery.nicescroll.js"></script>
-        <script src="assets/js/jquery.scrollTo.min.js"></script>
-
-        <!-- App js -->
-        <script src="assets/js/app.js"></script>
-
-    </body>
-</html>
+                <?php 
+            require_once 'layout/footer.php';
+            ?>

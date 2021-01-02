@@ -1,5 +1,3 @@
-
-    
 <?php
     require_once 'class/common.class.php';
     require_once 'class/admin.class.php';
