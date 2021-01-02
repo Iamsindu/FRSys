@@ -75,11 +75,11 @@
             }
             else if($ask)
 			{
-				echo "<script>alert('Food inserted successfully.')</script>";
+				echo "<script>alert('Food updated successfully.')</script>";
 			}	
 			else
 			{
-				echo "<script>alert('Failed to insert food.')</script>";
+				echo "<script>alert('Failed to update food.')</script>";
 			}
         }
     }

@@ -48,11 +48,11 @@
             }
             else if($ask)
 			{
-				echo "<script>alert('Menu inserted successfully.')</script>";
+				echo "<script>alert('Menu updated successfully.')</script>";
 			}	
 			else
 			{
-				echo "<script>alert('Failed to insert menu.')</script>";
+				echo "<script>alert('Failed to update menu.')</script>";
 			}
 		}
     }
