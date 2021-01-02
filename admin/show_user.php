@@ -102,10 +102,8 @@ $admin = new admin;
                                          <td><?php echo $value->status;?></td>
 								 	    
 								 	    <td> <?php 
-														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->admin_id."'>Update</a>"."&nbsp"; 
-														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->admin_id."'>Delete</a>";
-													
-													
+											    echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_user.php?id=".$value->admin_id."'>Update</a>"."&nbsp"; 
+											    echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_user.php?id=".$value->admin_id."'>Delete</a>";
 											?>
 										  </td>
 								 	</tr>

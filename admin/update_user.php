@@ -34,10 +34,9 @@
         //sessionhelper::checklogin();
         //require_once 'selector.php';
         require_once 'layout/header.php';
-
+        $username = $password = $email_id = $role = $status =  "";
         $admin=new admin; 
 
-        $username = $password = $email_id = $role = $status =  "";
         $err[1]=$err[2]=$err[3]=$err[4]="";
 
         $admin->admin_id = $_GET['id'];
@@ -82,11 +81,12 @@
                 } else {
                     $status = test_input($_POST["status"]);
                 }
+
             }
                 
             if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="")  
             {
-                // $data = $admin->selectadmin();
+                $data = $admin->selectadmin();
                 $admin->username = $username;
                 $admin->email_id = $email_id;
                 $admin->role =$role;
@@ -104,11 +104,12 @@
                 {
                     echo "<script>alert('Sorry, Can't be updated.')</script>";
                 } 
+		    
             }
-        }
-
+        }   
         $data = $admin->selectadminbyid();
         foreach ($data as $value) {
+       
     ?>
     <div class="page-content-wrapper ">
         <div class="container-fluid">
@@ -118,14 +119,14 @@
                         <div class="btn-group float-right">
                             <ol class="breadcrumb hide-phone p-0 m-0">
                                 <li class="breadcrumb-item"><a href="#">FRS</a></li>
-                                <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                                <li class="breadcrumb-item"><a href="#">User</a></li>
                                
-                                <li class="breadcrumb-item active">Update Admin</li>
+                                <li class="breadcrumb-item active">Update User</li>
                                 
                             </ol>
                         </div>
                        
-                                    <h4 class="page-title">Update Admin</h4>
+                                    <h4 class="page-title">Update User</h4>
                               
                         
                     </div>
@@ -182,8 +183,8 @@
                                         <option>Editor</option>
                                         <option>User</option>
                                         <?php }else{ ?>
-                                        <option>Admin</option>
                                         <option selected>Editor</option>
+                                        <option>Admin</option>
                                         <option>User</option>
                                         <?php } ?>
                                     </select>
@@ -208,7 +209,7 @@
                                     <div>
                                         <button type="submit" name="cmdsubmit"
                                             class="btn btn-primary waves-effect waves-light">
-                                            Update Admin
+                                            Update User
                                         </button>
                                     </div>
                                 </div>

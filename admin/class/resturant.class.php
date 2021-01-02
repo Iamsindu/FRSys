@@ -20,9 +20,9 @@ class resturant extends common
 		return $this->select($sql);
 	}
 	
-	public function selectresturant_name()
+	public function selectresturantbyid()
 	{
-		$sql= "select rest_id rest_name from resturant";
+		$sql= "select * from resturant where rest_id='$this->rest_id'";
 		return $this->select($sql);
 	}
 

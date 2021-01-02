@@ -8,12 +8,12 @@
     	$ask = $admin->deleteadmin();
     	if($ask == 1)
     	{
-    		 echo "<script>alert('Admin Deleted Successfully.')</script>";
+    		 echo "<script>alert('User Deleted Successfully.')</script>";
     	}
     	else
     	{
-    		 echo "<script>alert('Failed to delete admin.')</script>";
+    		 echo "<script>alert('Failed to delete user.')</script>";
     	}
     }
 ?>
-<script> window.location="show_admin.php" </script>
+<script> window.location="show_user.php" </script>
