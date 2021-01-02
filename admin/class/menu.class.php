@@ -7,7 +7,14 @@ class menu extends common
  		$sql = "select * from menu";
  		$data= $this->select($sql);
  		return $data; 
-	 }
+	}
+
+	public function selectmenubyid()
+ 	{
+ 		$sql = "select * from menu where menu_id = '$this->menu_id' ";
+ 		return $this->select($sql);
+ 	}
+
 	 
  	public function insertmenu()
  	{
@@ -25,11 +32,14 @@ class menu extends common
  	{
  		if(!empty($this->photo_id))
  		{
- 			$sql = "update menu set menuname ='$this->menuname', dsc='$this->dsc', rest_id='$this->rest_id', photo_id = '$this->photo_id' where menu_id = '$this->menu_id'";
+			 $sql = "update menu set menuname ='$this->menuname', dsc='$this->dsc', photo_id = '$this->photo_id' where menu_id = '$this->menu_id'";
+			//  rest_id='$this->rest_id',
  		}
 	 	else	
 	 	{
-	 		$sql = "update menu set menuname ='$this->menuname', dsc='$this->dsc', rest_id='$this->rest_id' where menu_id = '$this->menu_id'";
+			 $sql = "update menu set menuname ='$this->menuname', dsc='$this->dsc' where menu_id = '$this->menu_id'";
+			//  rest_id='$this->rest_id' 
+
 	 	}
 	 	return $this->update($sql);
 	}

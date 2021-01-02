@@ -54,8 +54,8 @@
 								 	                    <td><?php echo $value->dsc;?></td>
                                                         <td><?php echo $value->photo_id;?></td>							 	    
 								 	                    <td> <?php 
-														    echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php'>Update</a>"."&nbsp"; 
-														    echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php'>Delete</a>";
+														    echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_menu.php?id=".$value->menu_id."'>Update</a>"."&nbsp"; 
+														    echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_menu.php?id=".$value->menu_id."'>Delete</a>";
 													        ?>
 										                </td>
 								 	                </tr>
