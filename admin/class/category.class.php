@@ -18,7 +18,7 @@ class category extends common
  	{
  		$sql = "select * from cat where cat_id = '$this->cat_id' ";
  		return $this->select($sql);
-	 }
+	}
 	 
 	public function updatecategory()
  	{

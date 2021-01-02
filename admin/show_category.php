@@ -28,20 +28,12 @@ $category = new category;
                                 </div>
                             </div>
                             <!-- end page title end breadcrumb -->
-
-                        
-            
             
                              <div class="row">
                                 <div class="col-12">
                                     <div class="card m-b-30">
                                         <div class="card-body">
                                             <h4 class="mt-0 header-title">List of all Categories.</h4>
-                                            <!-- <p class="text-muted m-b-30 font-14">
-                                                Use <code>.table-striped</code> to add zebra-striping to any table row
-                                                within the <code>&lt;tbody&gt;</code>.
-                                            </p> -->
-            
                                             <table class="table table-hover">
                                                 <thead>
                                                  <tr>
@@ -55,33 +47,17 @@ $category = new category;
 								$data = $category->selectcategory();
 								$n=1;
 								foreach ($data as $value)
-								 {?>
+								{ ?>
 								 	<tr>
 								 		<td><?php echo $n; $n++; ?></td>
 								 		<td><?php echo $value->catname; ?></td>
 								 	    <td> <?php 
-														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update.php?id=".$value->cat_id."'>Update</a>"."&nbsp"; 
-														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete.php?id=".$value->cat_id."'>Delete</a>";
-													
-													
+														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_category.php?id=".$value->cat_id."'>Update</a>"."&nbsp"; 
+														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_category.php?id=".$value->cat_id."'>Delete</a>";
 											?>
-										  </td>
+										</td>
 								 	</tr>
-								<?php	
-								}
-							 ?>
-                                                <!-- <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Veg</td>
-                                                    <td> <button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                    <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Non-Veg</td>
-                                                    <td> <button type="button" class="btn btn-outline-info waves-effect waves-light">Update</button>
-                                                    <button type="button" class="btn btn-outline-danger waves-effect waves-light">Delete</button></td> 
-                                                </tr> -->
+								<?php	} ?>
                                                 </tbody>
                                             </table>
             
@@ -89,16 +65,9 @@ $category = new category;
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
-            
-            
-                                           
-
                         </div><!-- container -->
-
                     </div> <!-- Page content Wrapper -->
-
                 </div> <!-- content -->
-
-                <?php 
-            require_once 'layout/footer.php';
-            ?>
+<?php 
+    require_once 'layout/footer.php';
+?>
