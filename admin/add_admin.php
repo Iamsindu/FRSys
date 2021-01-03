@@ -12,6 +12,7 @@
         // echo $username."username",$email_id."email";
         // echo $admin->admin_id."id";
         if(isset($_POST['cmdsubmit'])){
+            // header ("Location: show_admin.php");
             // echo "<br>"."hit";
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (empty($_POST["username"])) {
@@ -71,7 +72,8 @@
                 
                 $ask =$admin->insertadmin();
 			    if($ask==1){
-				    echo "<script> alert('Inserted admin Successfully') </script>";
+                    echo "<script> alert('Inserted admin Successfully') </script>";
+                    header ("Location: show_admin.php");
 			    } else {
                     if($comp!=0) {
                         echo "<script> alert('Sorry! Failed to insert admin.') </script>";
@@ -168,7 +170,8 @@
                                 <div class="form-group ">
                                     <div>
                                         <button type="submit" name="cmdsubmit"
-                                            class="btn btn-primary waves-effect waves-light">
+                                            class="btn btn-primary waves-effect waves-light" >
+                                            <!-- href="show_admin.php" -->
                                             Add Admin
                                         </button>
                                     </div>
