@@ -75,7 +75,8 @@
             }
             else if($ask)
 			{
-				echo "<script>alert('Food updated successfully.')</script>";
+                echo "<script>alert('Food updated successfully.')</script>";
+                echo '<script> window.location="show_food.php" </script>';
 			}	
 			else
 			{

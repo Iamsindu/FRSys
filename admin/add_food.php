@@ -9,10 +9,18 @@
     
     $err[0] = $err[1]=$err[2]=$err[3]="";
     $fname = $dsc = $price = $vg_nvg = "";
+
+    function test_input($info) {
+        $info = trim($info);
+        $info = stripslashes($info);
+        $info = htmlspecialchars($info);
+        return $info;
+    }
     
 	if(isset($_POST['submit']))
 	{
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") 
+        {
             if(empty($_POST["fname"])) {
                 $err[0] = "Food name can't be empty";
             } else {
@@ -30,14 +38,13 @@
 
             if(empty($_POST["price"])) {
                 $err[2] = "Price is required";
-            } else {
+            } else 
+            {
                 $price = test_input($_POST["price"]);
-                if (!preg_match("/^[0-9]*$/",$price)) {
+                if (!preg_match("/^[0-9]*$/",$price)) 
+                {
                     $err[2] = "Only numbers are allowed";
                 }
-                // if (strlen($price) != 6) {  
-                //     $err[2] = "Price must contain only 6 digits.";  
-                // }  
             }
 
             if (empty($_POST["vg_nvg"])) {
@@ -55,7 +62,8 @@
             }
         }
 
-        if($err[0]=="" && $err[1]=="" && $err[2]=="" &&  $err[3]=="")  {
+        if($err[0]=="" && $err[1]=="" && $err[2]=="" &&  $err[3]=="")  
+        {
             $data=$food->selectfood();
             $food->fname=$fname;
             $food->dsc=$dsc;
@@ -64,20 +72,14 @@
 			$ask =$food->insertwithoutimg();
 			if($ask==1)
 			{
-				echo "<script>alert('Food inserted successfully.')</script>";
+                echo "<script>alert('Food inserted successfully.')</script>";
+                echo '<script> window.location="show_food.php" </script>';
 			}	
 			else
 			{
 				echo "<script>alert('Failed to insert food.')</script>";
 			}
         }
-    }
-    
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
     }
  ?>	
                 <!-- Top Bar End -->

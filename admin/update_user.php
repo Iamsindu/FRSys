@@ -70,11 +70,12 @@
                 }
                 else if($ask)
                 {
-                    echo "<script>alert('Updated Sucessfully')</script>";
+                    echo "<script>alert('Updated user Sucessfully')</script>";
+                    echo '<script> window.location="show_user.php" </script>';
                 }
                 else
                 {
-                    echo "<script>alert('Sorry, Can't be updated.')</script>";
+                    echo "<script>alert('Sorry, User can't be updated.')</script>";
                 } 
 		    
             }

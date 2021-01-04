@@ -7,6 +7,14 @@
 	    $special=new special;
 
         $err[1]=$err[2]="";
+
+        function test_input($info) {
+            $info = trim($info);
+            $info = stripslashes($info);
+            $info = htmlspecialchars($info);
+            return $info;
+        }
+        
 	    if(isset($_POST['submit']))
 	    {
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -34,13 +42,6 @@
 				echo "<<script>alert('Failed to insert')</script>";
 			}
 		}
-    }
-    
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
     }
  ?>	
                 <!-- Top Bar End -->

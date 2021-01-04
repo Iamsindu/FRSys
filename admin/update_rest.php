@@ -83,7 +83,8 @@
             }
             else if($ask)
 			{
-				echo "<script>alert('Resturant updated successfully.')</script>";
+                echo "<script>alert('Resturant updated successfully.')</script>";
+                echo '<script> window.location="show_resturant.php" </script>';
 			}	
 			else
 			{

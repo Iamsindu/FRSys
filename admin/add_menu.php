@@ -8,6 +8,13 @@
 
     $err[1]=$err[2]="";
     $menuname=$dsc="";
+
+    function test_input($info) {
+        $info = trim($info);
+        $info = stripslashes($info);
+        $info = htmlspecialchars($info);
+        return $info;
+    }
     
 	if(isset($_POST['submit']))
 	{
@@ -35,20 +42,14 @@
             $ask=$menu->insertwithoutimg();
 			if($ask==1)
 			{
-				echo "<script>alert('Menu inserted successfully.')</script>";
+                echo "<script>alert('Menu inserted successfully.')</script>";
+                echo '<script> window.location="show_menu.php" </script>';
 			}	
 			else
 			{
 				echo "<script>alert('Failed to insert menu.')</script>";
 			}
 		}
-    }
-    
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
     }
  ?>	
                 <!-- Top Bar End -->

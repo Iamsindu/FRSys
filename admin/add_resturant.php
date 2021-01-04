@@ -12,6 +12,13 @@
     
     $err[1]=$err[2]=$err[3]=$err[4]=$err[5]=$err[6]="";
     $rest_name = $password =  $phone_no = $email_id = $status = $delivery= "";
+
+    function test_input($info) {
+        $info = trim($info);
+        $info = stripslashes($info);
+        $info = htmlspecialchars($info);
+        return $info;
+    }
     
 	if(isset($_POST['submit']))
 	{
@@ -84,20 +91,14 @@
 			$ask =$resturant->insertresturant();
 			if($ask==1)
 			{
-				echo "<script>alert('Resturant inserted successfully.')</script>";
+                echo "<script>alert('Resturant inserted successfully.')</script>";
+                echo '<script> window.location="show_resturant.php" </script>';
 			}	
 			else
 			{
 				echo "<script>alert('Failed to insert resturant.')</script>";
 			}
 		}
-    }
-    
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
     }
  ?>	
                 <!-- Top Bar End -->

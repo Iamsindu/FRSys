@@ -7,6 +7,12 @@
         $sim_id = $food1 = $food2 = $food3 = $food4 ="";
         $err[1]=$err[2]=$err[3]="";
 
+        function test_input($info) {
+            $info = trim($info);
+            $info = stripslashes($info);
+            $info = htmlspecialchars($info);
+            return $info;
+        }
 
 	    if(isset($_POST['submit']))
 	    {
@@ -57,12 +63,6 @@
 				    echo "<script>alert('Sorry! Failed to insert similar items.')</script>";
 			    }
 		    }
-        }
-        function test_input($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
         }
     ?>	
                 <!-- Top Bar End -->

@@ -71,6 +71,7 @@
                 else if($ask)
                 {
                     echo "<script>alert('Updated Sucessfully')</script>";
+                    echo '<script> window.location="show_admin.php" </script>';
                 }
                 else
                 {
