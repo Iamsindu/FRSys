@@ -1,6 +1,7 @@
  <?php
 	    require_once 'class/common.class.php';
         require_once 'class/discount_food.class.php';
+        require_once 'class/discount.class.php';
         require_once 'class/food.class.php';
         require_once 'layout/header.php';
     
@@ -91,7 +92,7 @@
                                                         $datas = $food-> selectfood();
                                                         foreach($datas as $values)
                                                         { ?>
-                                                        <option value="<?php echo $values->food_id ?>"><?php echo $values-> fname; ?></option>
+                                                        <option value="<?php echo $values->food_id ?>"><?php echo $values->fname; ?></option>
                                                         <?php  
 								                        }
 							                        ?>
@@ -110,17 +111,24 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
                                                 <h6 class="text-muted fw-400">Discount</h6>
+                                                <div class="form-group">
+                                                
                                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="dis_id">
                                                     <option disabled selected>Select</option>
-                                                    <option>5%</option>
-                                                    <option>10%</option>
-                                                    <option>15%</option>
-                                                    <option>20%</option>
+                                                    <?php
+                                                        $discount = new discount;
+                                                        $info = $discount-> selectdiscount();
+                                                        foreach($info as $values)
+                                                        { ?>
+                                                        <option value="<?php echo $values->dis_id ?>"><?php echo $values->rate; ?></option>
+                                                        <?php  
+								                        }
+							                        ?>
                                                 </select>
                                                 <span class="error"> <?php echo $err[4];?></span>
                                             </div>
+                                           
                                              <div class="form-group ">
                                                     <div>
                                                         <button type="submit" class="btn btn-primary waves-effect waves-light" name="cmdsubmit">
