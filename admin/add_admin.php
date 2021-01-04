@@ -73,7 +73,7 @@
                 $ask =$admin->insertadmin();
 			    if($ask==1){
                     echo "<script> alert('Inserted admin Successfully') </script>";
-                    header ("Location: show_admin.php");
+                    echo '<script> window.location="show_admin.php" </script>';
 			    } else {
                     if($comp!=0) {
                         echo "<script> alert('Sorry! Failed to insert admin.') </script>";
