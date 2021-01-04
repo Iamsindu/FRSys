@@ -48,7 +48,8 @@
             }
             else if($ask)
 			{
-				echo "<script>alert('Menu updated successfully.')</script>";
+                echo "<script>alert('Menu updated successfully.')</script>";
+                echo '<script> window.location="show_menu.php" </script>';
 			}	
 			else
 			{

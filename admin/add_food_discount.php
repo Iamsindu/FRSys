@@ -9,6 +9,13 @@
         $err[1]=$err[2]=$err[3]=$err[4]="";
         $food_id = $dis_id = $rel_date = $exp_date = "";
 
+        function test_input($info) {
+            $info = trim($info);
+            $info = stripslashes($info);
+            $info = htmlspecialchars($info);
+            return $info;
+        }
+
         if(isset($_POST['cmdsubmit']))
         {
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -37,7 +44,8 @@
                 }
             }
         
-            if($err[1]=="" && $err[2]=="" && $err[3]=="" && $err[4]=="")  {
+            if($err[1]=="" && $err[2]=="" && $err[3]=="" && $err[4]=="")  
+            {
                 $data= $fooddisc->selectfooddisc();
                 $fooddisc->food_id=$food_id;
                 $fooddisc->rel_date=$rel_date;
@@ -47,17 +55,11 @@
 		        $ask =$fooddisc->insertfooddisc();
 			    if($ask==1)
 			    {
-				    echo "<script>alert('Food Discount added successfully')</script>";
+                    echo "<script>alert('Food Discount added successfully')</script>";
 			    } else {
 				    echo "<script>alert('Failed to add food discount.')</script>";
 			    }
             }
-        }
-        function test_input($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
         }
     ?>	
                 <div class="page-content-wrapper ">

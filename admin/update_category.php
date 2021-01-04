@@ -40,7 +40,8 @@
             }
             else if($ask)
             {
-				echo "<script>alert('Category updated successfully')</script>";
+                echo "<script>alert('Category updated successfully')</script>";
+                echo '<script> window.location="show_category.php" </script>';
             } 
             else 
             {

@@ -55,6 +55,7 @@
             else if($ask)
             {
                 echo "<script> alert('Discount updated successfully') </script>";
+                echo '<script> window.location="show_discount.php" </script>';
             } 
             else {
                 echo "<script> alert('Failed to update discount.') </script>";    

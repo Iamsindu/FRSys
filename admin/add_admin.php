@@ -11,6 +11,14 @@
         $err[1]=$err[2]=$err[3]=$err[4]=$err[5]="";
         // echo $username."username",$email_id."email";
         // echo $admin->admin_id."id";
+
+        function test_input($info) {
+            $info = trim($info);
+            $info = stripslashes($info);
+            $info = htmlspecialchars($info);
+            return $info;
+        }
+        
         if(isset($_POST['cmdsubmit'])){
             // header ("Location: show_admin.php");
             // echo "<br>"."hit";
@@ -82,13 +90,6 @@
                     }
                 }
 		    }
-        }
-    
-        function test_input($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
         }
     ?>
     <div class="page-content-wrapper ">
