@@ -2,7 +2,6 @@
 	require_once 'class/common.class.php';
     require_once 'class/food.class.php';
     require_once 'class/resturant.class.php';
-    require_once 'class/category.class.php';
 	require_once 'layout/header.php';
     
     $food=new food;
@@ -157,22 +156,8 @@
                                                 ?>      
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <h6 class="text-muted fw-400">Category</h6>
-                                            <select class="select2 mb-3 select2-multiple" style="width: 100%" multiple="multiple" name="cat_id">
-                                                <option disabled selected>Select</option> 
-                                                <?php
-                                                    $category = new category;
-                                                    $datas = $category->selectcategory();
-                                                    foreach ($datas as $values)
-                                                { ?>
-                                                <option value="<?php echo $values->cat_id; ?>"><?php echo $values->catname; ?></option>    
                                         
-                                                <?php  
-								                    }
-							                    ?>
-                                            </select> 
-                                        </div>
+                                       
                                          <div class="form-group ">
                                                     <div>
                                                         <button type="submit" class="btn btn-primary waves-effect waves-light" name="submit">
