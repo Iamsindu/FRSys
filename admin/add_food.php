@@ -1,7 +1,6 @@
 <?php 
 	require_once 'class/common.class.php';
     require_once 'class/food.class.php';
-    require_once 'class/resturant.class.php';
 	require_once 'layout/header.php';
     
     $food=new food;
@@ -140,7 +139,7 @@
                                             </div>
                                         </div> 
                                               
-                                        <div class="form-group">    
+                                        <!-- <div class="form-group">    
                                             <h6 class="text-muted fw-400">Resturant</h6>
                                             <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" name="rest_id">
                                                 <option disabled selected>Select</option>
@@ -155,7 +154,7 @@
 								                }
                                                 ?>      
                                             </select>
-                                        </div>
+                                        </div> -->
                                         
                                        
                                          <div class="form-group ">
