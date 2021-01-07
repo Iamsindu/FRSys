@@ -17,6 +17,10 @@
         <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
         <!-- Responsive datatable examples -->
         <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+        <!-- Dropzone css -->
+        <link href="assets/plugins/dropzone/dist/dropzone.css" rel="stylesheet" type="text/css">
+        <link href="assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
     <!-- Plugins css -->
     <link href="assets/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
     <link href="assets/plugins/clockpicker/jquery-clockpicker.min.css" rel="stylesheet" />
@@ -33,11 +37,11 @@
 <body class="fixed-left"> 
 
     <!-- Loader -->
-     <div id="preloader">
+     <!-- <div id="preloader">
         <div id="status">
             <div class="spinner"></div>
         </div>
-    </div> 
+    </div>  -->
 
     <!-- Begin page -->
     <div id="wrapper">

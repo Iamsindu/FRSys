@@ -53,6 +53,10 @@
          <!-- Datatable init js -->
          <script src="assets/pages/datatables.init.js"></script>
 
+         <!-- Dropzone js -->
+        <script src="assets/plugins/dropzone/dist/dropzone.js"></script>
+        <script src="assets/plugins/dropify/js/dropify.min.js"></script>
+
     <!-- App js -->
     <script src="assets/js/app.js"></script>
 
@@ -65,7 +69,7 @@
   
 
     <script src="/assets/pages/dashborad.js"></script>
-
+    <script type="text/javascript" src="assets/plugins/parsleyjs/parsley.min.js"></script>
     <!-- App js -->
     <script src="/assets/js/app.js"></script>
     <script>
