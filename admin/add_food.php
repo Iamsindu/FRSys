@@ -1,10 +1,11 @@
 <?php 
 	require_once 'class/common.class.php';
     require_once 'class/food.class.php';
+    require_once 'class/photo.class.php';
 	require_once 'layout/header.php';
     
     $food=new food;
-    
+    $photo= new photo;
     $err[0] = $err[1]=$err[2]=$err[3]="";
     $fname = $dsc = $price = $vg_nvg = "";
 
@@ -58,6 +59,31 @@
                     $vg_nonvg=0;
                 }
             }
+        }
+        $targetDir = "images/"; 
+        $allowTypes = array('jpg','png','jpeg','gif');
+        //$statusMsg = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = ''; 
+        $fileNames = array_filter($_FILES['files']['name']); 
+        if(!empty($fileNames)){ 
+            foreach($_FILES['files']['name'] as $key=>$val){ 
+                // File upload path 
+                $fileName = basename($_FILES['files']['name'][$key]); 
+                $targetFilePath = $targetDir . $fileName;
+                
+                // Check whether file type is valid
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
+                if(in_array($fileType, $allowTypes)){ 
+                    // Upload file to server 
+                    if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
+                        // Image db insert sql
+                       $photo."1"
+                    }else{ 
+                        $errorUpload .= $_FILES['files']['name'][$key].' | '; 
+                    } 
+                }else{ 
+                    $errorUploadType .= $_FILES['files']['name'][$key].' | '; 
+                } 
+            } 
         }
 
         if($err[0]=="" && $err[1]=="" && $err[2]=="" &&  $err[3]=="")  
@@ -135,9 +161,9 @@
                                        <div class="form-group">
                                              <h6 class="text-muted fw-400">Upload Photos</h6>
                                             <div>
-                                                 <input name="" type="file" multiple="multiple">
+                                                 <input name="files[]" type="file" multiple="multiple">
                                             </div>
-                                        </div> 
+                                        </div>
                                               
                                         <!-- <div class="form-group">    
                                             <h6 class="text-muted fw-400">Resturant</h6>

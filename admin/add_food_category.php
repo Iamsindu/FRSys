@@ -22,7 +22,7 @@
         
 			if($ask==1){
                 echo "<script>alert('Category inserted successfully')</script>";
-                // echo '<script> window.location="show_category.php" </script>';
+                echo '<script> window.location="show_category.php" </script>';
 			} else {
 				echo "<script>alert('Failed to insert category.')</script>";
             }
