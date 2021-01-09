@@ -1,2 +1,0 @@
-# FRSys
-Food Recommendation System
