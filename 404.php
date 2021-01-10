@@ -24,7 +24,7 @@
     <link href="css/style.css" rel="stylesheet">
 
     <!-- SPECIFIC CSS -->
-    <link href="css/contacts.css" rel="stylesheet">
+    <link href="css/error.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
@@ -40,7 +40,7 @@
 				<img src="img/logo.svg" width="140" height="35" alt="" class="logo_normal">
 				<img src="img/logo_sticky.svg" width="140" height="35" alt="" class="logo_sticky">
 			</a>
-		</div>
+		</div>		
 		<ul id="top_menu">
 			<li><a href="#sign-in-dialog" id="sign-in" class="login">Sign In</a></li>
 			<li><a href="wishlist.php" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
@@ -61,55 +61,34 @@
 				<li><a href="grid-listing-filterscol.php"> Restaurant </a></li>
 				<li><a href="blog.php"> Blog </a></li>
 				<li><a href="contacts.php"> Contact </a></li>
-				<!-- <li class="submenu">
-					<a href="index.php" class="show-submenu">Home</a>
-					<ul>
-						<li><a href="index.php">Default</a></li>
-						<li><a href="index-2.php">Video Background</a></li>
-						<li><a href="index-3.php">Slider</a></li>
-						<li><a href="index-4.php">GDPR Cookie Bar EU Law</a></li>
-					</ul>
-				</li> -->
-				
-				<!-- <li class="submenu">
-					<a href="#0" class="show-submenu">Listing</a>
-					<ul>
-						<li class="third-level"><a href="#0">List pages</a>
-							<ul>
-								<li><a href="grid-listing-filterscol.php">List default</a></li>
-								<li><a href="grid-listing-filterscol-map.php">List with map</a></li>
-								<li><a href="grid-listing-filterscol-full-width.php">List full width</a></li>
-								<li><a href="grid-listing-filterscol-full-masonry.php">List Masonry Filter</a></li>
-							</ul>
-						</li>
-						<li><a href="detail-restaurant.php">Detail page 1</a></li>
-						<li><a href="detail-restaurant-2.php">Detail page 2</a></li>
-						<li><a href="submit-restaurant.php">Submit Restaurant</a></li>
-						<li><a href="wishlist.php">Wishlist</a></li>
-						<li><a href="admin_section/index.php" target="_blank">Admin Section</a></li>
-						
-					</ul>
-				</li> -->
-				<!-- <li class="submenu">
-					<a href="#0" class="show-submenu">Other Pages</a>
-					<ul>
-						<li><a href="404.php">404 Error</a></li>
-						<li><a href="confirm.php">Confirm Booking</a></li>
-						<li><a href="help.php">Help and Faq</a></li>
-						<li><a href="blog.php">Blog</a></li>
-						<li><a href="booking.php">Booking</a></li>
-						<li><a href="leave-review.php">Leave a review</a></li>
-						<li><a href="contacts.php">Contacts</a></li>
-						<li><a href="coming_soon/index.php">Coming Soon</a></li>
-						<li><a href="account.php">Sign Up</a></li>
-						<li><a href="icon-pack-1.php">Icon Pack 1</a></li>
-						<li><a href="icon-pack-2.php">Icon Pack 2</a></li>
-					</ul>
-				</li> -->
-				<!-- <li><a href="submit-restaurant.php">Submit</a></li>
-				<li><a href="#0">Buy this template</a></li> -->
 			</ul>
 		</nav>
 	</div>
 	</header>
 	<!-- /header -->
+	
+	<main>
+		<div id="error_page">
+			<div class="container">
+				<div class="row justify-content-center text-center">
+					<div class="col-xl-7 col-lg-9">
+						<figure><img src="img/404.svg" alt="" class="img-fluid"></figure>
+						<p>We're sorry, but the page you were looking for doesn't exist.</p>
+						<form>
+							<div class="search_bar">
+								<input type="text" class="form-control" placeholder="What are you looking for?">
+								<input type="submit" value="Search">
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /error -->		
+	</main>
+	<!-- /main -->
+<?php
+	require_once 'layout/footer.php';
+?>

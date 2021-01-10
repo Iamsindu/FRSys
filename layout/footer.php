@@ -5,12 +5,12 @@
 					<h3 data-target="#collapse_1">Quick Links</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_1">
 						<ul>
-							<li><a href="about.html">About us</a></li>
-							<li><a href="help.html">Add your restaurant</a></li>
-							<li><a href="help.html">Help</a></li>
-							<li><a href="account.html">My account</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contacts.html">Contacts</a></li>
+							<li><a href="about.php">About us</a></li>
+							<li><a href="help.php">Add your restaurant</a></li>
+							<li><a href="help.php">Help</a></li>
+							<li><a href="account.php">My account</a></li>
+							<li><a href="blog.php">Blog</a></li>
+							<li><a href="contacts.php">Contacts</a></li>
 						</ul>
 					</div>
 				</div>
@@ -18,10 +18,10 @@
 					<h3 data-target="#collapse_2">Categories</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_2">
 						<ul>
-							<li><a href="listing-grid-1-full.html">Top Categories</a></li>
-							<li><a href="listing-grid-2-full.html">Best Rated</a></li>
-							<li><a href="listing-grid-1-full.html">Best Price</a></li>
-							<li><a href="listing-grid-3.html">Latest Submissions</a></li>
+							<li><a href="listing-grid-1-full.php">Top Categories</a></li>
+							<li><a href="listing-grid-2-full.php">Best Rated</a></li>
+							<li><a href="listing-grid-1-full.php">Best Price</a></li>
+							<li><a href="listing-grid-3.php">Latest Submissions</a></li>
 						</ul>
 					</div>
 				</div>
@@ -132,7 +132,7 @@
 				</div>
 				<div class="text-center">
 					<input type="submit" value="Log In" class="btn_1 full-width mb_5">
-					Don’t have an account? <a href="account.html">Sign up</a>
+					Don’t have an account? <a href="account.php">Sign up</a>
 				</div>
 				<div id="forgot_pw">
 					<div class="form-group">

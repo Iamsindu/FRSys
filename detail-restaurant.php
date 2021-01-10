@@ -33,13 +33,13 @@
 	<header class="header_in clearfix">
 		<div class="container">
 		<div id="logo">
-			<a href="index.html">
+			<a href="index.php">
 				<img src="img/logo_sticky.svg" width="140" height="35" alt="">
 			</a>
 		</div>
 		<ul id="top_menu">
 			<li><a href="#sign-in-dialog" id="sign-in" class="login">Sign In</a></li>
-			<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+			<li><a href="wishlist.php" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
 		</ul>
 		<!-- /top_menu -->
 		<a href="#0" class="open_close">
@@ -50,16 +50,16 @@
 				<a href="#0" class="open_close">
 					<i class="icon_close"></i><span>Menu</span>
 				</a>
-				<a href="index.html"><img src="img/logo.svg" width="140" height="35" alt=""></a>
+				<a href="index.php"><img src="img/logo.svg" width="140" height="35" alt=""></a>
 			</div>
 			<ul>
 				<li class="submenu">
 					<a href="#0" class="show-submenu">Home</a>
 					<ul>
-						<li><a href="index.html">Default</a></li>
-						<li><a href="index-2.html">Video Background</a></li>
-						<li><a href="index-3.html">Slider</a></li>
-						<li><a href="index-4.html">GDPR Cookie Bar EU Law</a></li>
+						<li><a href="index.php">Default</a></li>
+						<li><a href="index-2.php">Video Background</a></li>
+						<li><a href="index-3.php">Slider</a></li>
+						<li><a href="index-4.php">GDPR Cookie Bar EU Law</a></li>
 					</ul>
 				</li>
 				<li class="submenu">
@@ -67,37 +67,37 @@
 					<ul>
 						<li class="third-level"><a href="#0">List pages</a>
 							<ul>
-								<li><a href="grid-listing-filterscol.html">List default</a></li>
-								<li><a href="grid-listing-filterscol-map.html">List with map</a></li>
-								<li><a href="grid-listing-filterscol-full-width.html">List full width</a></li>
-								<li><a href="grid-listing-filterscol-full-masonry.html">List Masonry Filter</a></li>
+								<li><a href="grid-listing-filterscol.php">List default</a></li>
+								<li><a href="grid-listing-filterscol-map.php">List with map</a></li>
+								<li><a href="grid-listing-filterscol-full-width.php">List full width</a></li>
+								<li><a href="grid-listing-filterscol-full-masonry.php">List Masonry Filter</a></li>
 							</ul>
 						</li>
-						<li><a href="detail-restaurant.html">Detail page 1</a></li>
-						<li><a href="detail-restaurant-2.html">Detail page 2</a></li>
-						<li><a href="submit-restaurant.html">Submit Restaurant</a></li>
-						<li><a href="wishlist.html">Wishlist</a></li>
-						<li><a href="admin_section/index.html" target="_blank">Admin Section</a></li>
+						<li><a href="detail-restaurant.php">Detail page 1</a></li>
+						<li><a href="detail-restaurant-2.php">Detail page 2</a></li>
+						<li><a href="submit-restaurant.php">Submit Restaurant</a></li>
+						<li><a href="wishlist.php">Wishlist</a></li>
+						<li><a href="admin_section/index.php" target="_blank">Admin Section</a></li>
 						
 					</ul>
 				</li>
 				<li class="submenu">
 					<a href="#0" class="show-submenu">Other Pages</a>
 					<ul>
-						<li><a href="404.html">404 Error</a></li>
-						<li><a href="confirm.html">Confirm Booking</a></li>
-						<li><a href="help.html">Help and Faq</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="booking.html">Booking</a></li>
-						<li><a href="leave-review.html">Leave a review</a></li>
-						<li><a href="contacts.html">Contacts</a></li>
-						<li><a href="coming_soon/index.html">Coming Soon</a></li>
-						<li><a href="account.html">Sign Up</a></li>
-						<li><a href="icon-pack-1.html">Icon Pack 1</a></li>
-						<li><a href="icon-pack-2.html">Icon Pack 2</a></li>
+						<li><a href="404.php">404 Error</a></li>
+						<li><a href="confirm.php">Confirm Booking</a></li>
+						<li><a href="help.php">Help and Faq</a></li>
+						<li><a href="blog.php">Blog</a></li>
+						<li><a href="booking.php">Booking</a></li>
+						<li><a href="leave-review.php">Leave a review</a></li>
+						<li><a href="contacts.php">Contacts</a></li>
+						<li><a href="coming_soon/index.php">Coming Soon</a></li>
+						<li><a href="account.php">Sign Up</a></li>
+						<li><a href="icon-pack-1.php">Icon Pack 1</a></li>
+						<li><a href="icon-pack-2.php">Icon Pack 2</a></li>
 					</ul>
 				</li>
-				<li><a href="submit-restaurant.html">Submit</a></li>
+				<li><a href="submit-restaurant.php">Submit</a></li>
 				<li><a href="#0">Buy this template</a></li>
 			</ul>
 		</nav>
@@ -471,7 +471,7 @@
 		                                    <!-- /review_card -->
 		                                </div>
 		                                <!-- /reviews -->
-		                                <div class="text-right"><a href="leave-review.html" class="btn_1">Leave a review</a></div>
+		                                <div class="text-right"><a href="leave-review.php" class="btn_1">Leave a review</a></div>
 		                            </div>
 		                        </div>
 		                    </div>
@@ -574,7 +574,7 @@
 		                        </div>
 		                    </div>
 		                    <!-- /dropdown -->
-		                    <a href="booking.html" class="btn_1 full-width mb_5">Reserve Now</a>
+		                    <a href="booking.php" class="btn_1 full-width mb_5">Reserve Now</a>
 		                   <div class="text-center"><small>No money charged on this steps</small></div>
 		                </div>
 		            </div>
@@ -601,12 +601,12 @@
 					<h3 data-target="#collapse_1">Quick Links</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_1">
 						<ul>
-							<li><a href="about.html">About us</a></li>
-							<li><a href="help.html">Add your restaurant</a></li>
-							<li><a href="help.html">Help</a></li>
-							<li><a href="account.html">My account</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contacts.html">Contacts</a></li>
+							<li><a href="about.php">About us</a></li>
+							<li><a href="help.php">Add your restaurant</a></li>
+							<li><a href="help.php">Help</a></li>
+							<li><a href="account.php">My account</a></li>
+							<li><a href="blog.php">Blog</a></li>
+							<li><a href="contacts.php">Contacts</a></li>
 						</ul>
 					</div>
 				</div>
@@ -614,10 +614,10 @@
 					<h3 data-target="#collapse_2">Categories</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_2">
 						<ul>
-							<li><a href="listing-grid-1-full.html">Top Categories</a></li>
-							<li><a href="listing-grid-2-full.html">Best Rated</a></li>
-							<li><a href="listing-grid-1-full.html">Best Price</a></li>
-							<li><a href="listing-grid-3.html">Latest Submissions</a></li>
+							<li><a href="listing-grid-1-full.php">Top Categories</a></li>
+							<li><a href="listing-grid-2-full.php">Best Rated</a></li>
+							<li><a href="listing-grid-1-full.php">Best Price</a></li>
+							<li><a href="listing-grid-3.php">Latest Submissions</a></li>
 						</ul>
 					</div>
 				</div>
@@ -728,7 +728,7 @@
 				</div>
 				<div class="text-center">
 					<input type="submit" value="Log In" class="btn_1 full-width mb_5">
-					Don’t have an account? <a href="account.html">Sign up</a>
+					Don’t have an account? <a href="account.php">Sign up</a>
 				</div>
 				<div id="forgot_pw">
 					<div class="form-group">

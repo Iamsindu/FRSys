@@ -24,7 +24,7 @@
     <link href="css/style.css" rel="stylesheet">
 
     <!-- SPECIFIC CSS -->
-    <link href="css/contacts.css" rel="stylesheet">
+    <link href="css/blog.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
@@ -33,12 +33,11 @@
 
 <body>
 				
-	<header class="header clearfix element_to_stick">
+	<header class="header_in clearfix">
 		<div class="container">
 		<div id="logo">
 			<a href="index.php">
-				<img src="img/logo.svg" width="140" height="35" alt="" class="logo_normal">
-				<img src="img/logo_sticky.svg" width="140" height="35" alt="" class="logo_sticky">
+				<img src="img/logo_sticky.svg" width="140" height="35" alt="">
 			</a>
 		</div>
 		<ul id="top_menu">
@@ -57,21 +56,20 @@
 				<a href="index.php"><img src="img/logo.svg" width="140" height="35" alt=""></a>
 			</div>
 			<ul>
-				<li><a href="index.php"> Home </a></li>
+                <li><a href="index.php"> Home </a></li>
 				<li><a href="grid-listing-filterscol.php"> Restaurant </a></li>
 				<li><a href="blog.php"> Blog </a></li>
 				<li><a href="contacts.php"> Contact </a></li>
 				<!-- <li class="submenu">
-					<a href="index.php" class="show-submenu">Home</a>
+					<a href="#0" class="show-submenu">Home</a>
 					<ul>
 						<li><a href="index.php">Default</a></li>
 						<li><a href="index-2.php">Video Background</a></li>
 						<li><a href="index-3.php">Slider</a></li>
 						<li><a href="index-4.php">GDPR Cookie Bar EU Law</a></li>
 					</ul>
-				</li> -->
-				
-				<!-- <li class="submenu">
+				</li>
+				<li class="submenu">
 					<a href="#0" class="show-submenu">Listing</a>
 					<ul>
 						<li class="third-level"><a href="#0">List pages</a>
@@ -89,8 +87,8 @@
 						<li><a href="admin_section/index.php" target="_blank">Admin Section</a></li>
 						
 					</ul>
-				</li> -->
-				<!-- <li class="submenu">
+				</li>
+				<li class="submenu">
 					<a href="#0" class="show-submenu">Other Pages</a>
 					<ul>
 						<li><a href="404.php">404 Error</a></li>
@@ -105,8 +103,8 @@
 						<li><a href="icon-pack-1.php">Icon Pack 1</a></li>
 						<li><a href="icon-pack-2.php">Icon Pack 2</a></li>
 					</ul>
-				</li> -->
-				<!-- <li><a href="submit-restaurant.php">Submit</a></li>
+				</li>
+				<li><a href="submit-restaurant.php">Submit</a></li>
 				<li><a href="#0">Buy this template</a></li> -->
 			</ul>
 		</nav>
