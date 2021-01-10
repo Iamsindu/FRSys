@@ -27,8 +27,23 @@
     <link href="css/contacts.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-    <link href="css/custom.css" rel="stylesheet">
-
+	<link href="css/custom.css" rel="stylesheet">
+	
+	<link href="css/home.css" rel="stylesheet">
+	<link href="css/help.css" rel="stylesheet">
+	<link href="css/error.css" rel="stylesheet">
+	<link href="css/submit.css" rel="stylesheet">
+	<link href="css/review.css" rel="stylesheet">
+	<link href="css/listing.css" rel="stylesheet">
+	<link href="css/contacts.css" rel="stylesheet">
+	<link href="css/detail-page.css" rel="stylesheet">
+	<!-- <link href="css/icons.min.css" rel="stylesheet"> -->
+	<!-- <link href="css/jquery-ui.css" rel="stylesheet"> -->
+	<!-- <link href="css/bootstrap.css" rel="stylesheet"> -->
+	<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+	<link href="css/booking-sign_up.css" rel="stylesheet">
+	<!-- <link href="css/bootstrap_customized.css" rel="stylesheet"> -->
+	
 </head>
 
 <body>
