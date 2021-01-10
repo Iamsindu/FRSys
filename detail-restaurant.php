@@ -930,7 +930,7 @@
 		                        </div>
 		                    </div>
 		                    <!-- /dropdown -->
-		                    <a href="booking-delivery-2.php" class="btn_1 full-width mb_5">Order Now</a>
+		                    <a href="booking-delivery.php" class="btn_1 full-width mb_5">Order Now</a>
 		                   <div class="text-center"><small>No money charged on this steps</small></div>
 		                </div>
 		            </div>

@@ -152,7 +152,11 @@
 	<!-- COMMON SCRIPTS -->
     <script src="js/common_scripts.min.js"></script>
     <script src="js/common_func.js"></script>
-    <script src="assets/validate.js"></script>
+	<script src="assets/validate.js"></script>
+	
+	<!-- SPECIFIC SCRIPTS -->
+	<script src="js/sticky_sidebar.min.js"></script>
+    <script src="js/specific_listing.js"></script>
 
 </body>
 </html>
