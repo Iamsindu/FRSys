@@ -275,7 +275,7 @@
 						<small>foogra</small>
 						<h3>More than 3000 Restaurants</h3>
 						<p>Book a table easly at the best price</p>
-						<a href="grid-listing-filterscol.php" class="btn_1">View All</a>
+						<a href="resturant.php" class="btn_1">View All</a>
 					</div>
 				</div>
 				<!-- /wrapper -->
@@ -395,7 +395,7 @@
 				</div>
 			</div>
 			<!-- /row -->
-			<p class="text-center d-block d-md-block d-lg-none"><a href="grid-listing-filterscol.php" class="btn_1">View All</a></p>
+			<p class="text-center d-block d-md-block d-lg-none"><a href="resturant.php" class="btn_1">View All</a></p>
 			<!-- /button visibile on tablet/mobile only -->
 		</div>
 		<!-- /container -->
