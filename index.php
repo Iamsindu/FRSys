@@ -36,14 +36,14 @@
 	<header class="header clearfix element_to_stick">
 		<div class="container">
 		<div id="logo">
-			<a href="index.html">
+			<a href="index.php">
 				<img src="img/logo.svg" width="140" height="35" alt="" class="logo_normal">
 				<img src="img/logo_sticky.svg" width="140" height="35" alt="" class="logo_sticky">
 			</a>
 		</div>
 		<ul id="top_menu">
 			<li><a href="#sign-in-dialog" id="sign-in" class="login">Sign In</a></li>
-			<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+			<li><a href="wishlist.php" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
 		</ul>
 		<!-- /top_menu -->
 		<a href="#0" class="open_close">
@@ -54,55 +54,13 @@
 				<a href="#0" class="open_close">
 					<i class="icon_close"></i><span>Menu</span>
 				</a>
-				<a href="index.html"><img src="img/logo.svg" width="140" height="35" alt=""></a>
+				<a href="index.php"><img src="img/logo.svg" width="140" height="35" alt=""></a>
 			</div>
 			<ul>
-				<li class="submenu">
-					<a href="#0" class="show-submenu">Home</a>
-					<ul>
-						<li><a href="index.html">Default</a></li>
-						<li><a href="index-2.html">Video Background</a></li>
-						<li><a href="index-3.html">Slider</a></li>
-						<li><a href="index-4.html">GDPR Cookie Bar EU Law</a></li>
-					</ul>
-				</li>
-				<li class="submenu">
-					<a href="#0" class="show-submenu">Listing</a>
-					<ul>
-						<li class="third-level"><a href="#0">List pages</a>
-							<ul>
-								<li><a href="grid-listing-filterscol.html">List default</a></li>
-								<li><a href="grid-listing-filterscol-map.html">List with map</a></li>
-								<li><a href="grid-listing-filterscol-full-width.html">List full width</a></li>
-								<li><a href="grid-listing-filterscol-full-masonry.html">List Masonry Filter</a></li>
-							</ul>
-						</li>
-						<li><a href="detail-restaurant.html">Detail page 1</a></li>
-						<li><a href="detail-restaurant-2.html">Detail page 2</a></li>
-						<li><a href="submit-restaurant.html">Submit Restaurant</a></li>
-						<li><a href="wishlist.html">Wishlist</a></li>
-						<li><a href="admin_section/index.html" target="_blank">Admin Section</a></li>
-						
-					</ul>
-				</li>
-				<li class="submenu">
-					<a href="#0" class="show-submenu">Other Pages</a>
-					<ul>
-						<li><a href="404.html">404 Error</a></li>
-						<li><a href="confirm.html">Confirm Booking</a></li>
-						<li><a href="help.html">Help and Faq</a></li>
-						<li><a href="blog.html">Blog</a></li>
-						<li><a href="booking.html">Booking</a></li>
-						<li><a href="leave-review.html">Leave a review</a></li>
-						<li><a href="contacts.html">Contacts</a></li>
-						<li><a href="coming_soon/index.html">Coming Soon</a></li>
-						<li><a href="account.html">Sign Up</a></li>
-						<li><a href="icon-pack-1.html">Icon Pack 1</a></li>
-						<li><a href="icon-pack-2.html">Icon Pack 2</a></li>
-					</ul>
-				</li>
-				<li><a href="submit-restaurant.html">Submit</a></li>
-				<li><a href="#0">Buy this template</a></li>
+				<li><a href="index.php"> Home </a></li>
+				<li><a href="grid-listing-filterscol.php"> Restaurant </a></li>
+				<li><a href="blog.php"> Blog </a></li>
+				<li><a href="contacts.php"> Contact </a></li>
 			</ul>
 		</nav>
 	</div>
@@ -117,7 +75,7 @@
 						<div class="col-xl-9 col-lg-10 col-md-8">
 							<h1>Discover &amp; Book</h1>
 							<p>The best restaurants at the best price</p>
-							<form method="post" action="grid-listings-filterscol.html">
+							<form method="post" action="grid-listings-filterscol.php">
 								<div class="row no-gutters custom-search-input">
 									<div class="col-lg-4">
 										<div class="form-group">
@@ -231,7 +189,7 @@
 			            <figure>
 			                <span class="ribbon off">-30%</span>
 			                <img src="img/lazy-placeholder.png" data-src="img/location_1.jpg" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.html" class="strip_info">
+			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Pizza</small>
 			                    <div class="item_title">
 			                        <h3>Da Alfredo</h3>
@@ -252,7 +210,7 @@
 			            <figure>
 			                <span class="ribbon off">-40%</span>
 			                <img src="img/lazy-placeholder.png" data-src="img/location_2.jpg" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.html" class="strip_info">
+			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Burghers</small>
 			                    <div class="item_title">
 			                        <h3>Best Burghers</h3>
@@ -273,7 +231,7 @@
 			            <figure>
 			                <span class="ribbon off">-30%</span>
 			                <img src="img/lazy-placeholder.png" data-src="img/location_3.jpg" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.html" class="strip_info">
+			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Vegetarian</small>
 			                    <div class="item_title">
 			                        <h3>Vego Life</h3>
@@ -294,7 +252,7 @@
 			            <figure>
 			                <span class="ribbon off">-25%</span>
 			                <img src="img/lazy-placeholder.png" data-src="img/location_4.jpg" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.html" class="strip_info">
+			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Japanese</small>
 			                    <div class="item_title">
 			                        <h3>Sushi Temple</h3>
@@ -315,7 +273,7 @@
 			            <figure>
 			                <span class="ribbon off">-30%</span>
 			                <img src="img/lazy-placeholder.png" data-src="img/location_5.jpg" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.html" class="strip_info">
+			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Pizza</small>
 			                    <div class="item_title">
 			                        <h3>Auto Pizza</h3>
@@ -336,7 +294,7 @@
 			            <figure>
 			                <span class="ribbon off">-15%</span>
 			                <img src="img/lazy-placeholder.png" data-src="img/location_6.jpg" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.html" class="strip_info">
+			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Burghers</small>
 			                    <div class="item_title">
 			                        <h3>Alliance</h3>
@@ -357,7 +315,7 @@
 			            <figure>
 			                <span class="ribbon off">-30%</span>
 			                <img src="img/lazy-placeholder.png" data-src="img/location_7.jpg" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.html" class="strip_info">
+			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Chinese</small>
 			                    <div class="item_title">
 			                        <h3>Alliance</h3>
@@ -382,7 +340,7 @@
 						<small>foogra</small>
 						<h3>More than 3000 Restaurants</h3>
 						<p>Book a table easly at the best price</p>
-						<a href="grid-listing-filterscol.html" class="btn_1">View All</a>
+						<a href="grid-listing-filterscol.php" class="btn_1">View All</a>
 					</div>
 				</div>
 				<!-- /wrapper -->
@@ -402,7 +360,7 @@
 					<div class="list_home">
 						<ul>
 							<li>
-								<a href="detail-restaurant.html">
+								<a href="detail-restaurant.php">
 									<figure>
 										<img src="img/location_list_placeholder.png" data-src="img/location_list_1.jpg" alt="" class="lazy">
 									</figure>
@@ -417,7 +375,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="detail-restaurant.html">
+								<a href="detail-restaurant.php">
 									<figure>
 										<img src="img/location_list_placeholder.png" data-src="img/location_list_2.jpg" alt="" class="lazy">
 									</figure>
@@ -432,7 +390,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="detail-restaurant.html">
+								<a href="detail-restaurant.php">
 									<figure>
 										<img src="img/location_list_placeholder.png" data-src="img/location_list_3.jpg" alt="" class="lazy">
 									</figure>
@@ -453,7 +411,7 @@
 					<div class="list_home">
 						<ul>
 							<li>
-								<a href="detail-restaurant.html">
+								<a href="detail-restaurant.php">
 									<figure>
 										<img src="img/location_list_placeholder.png" data-src="img/location_list_4.jpg" alt="" class="lazy">
 									</figure>
@@ -468,7 +426,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="detail-restaurant.html">
+								<a href="detail-restaurant.php">
 									<figure>
 										<img src="img/location_list_placeholder.png" data-src="img/location_list_5.jpg" alt="" class="lazy">
 									</figure>
@@ -483,7 +441,7 @@
 								</a>
 							</li>
 							<li>
-								<a href="detail-restaurant.html">
+								<a href="detail-restaurant.php">
 									<figure>
 										<img src="img/location_list_placeholder.png" data-src="img/location_list_6.jpg" alt="" class="lazy">
 									</figure>
@@ -502,7 +460,7 @@
 				</div>
 			</div>
 			<!-- /row -->
-			<p class="text-center d-block d-md-block d-lg-none"><a href="grid-listing-filterscol.html" class="btn_1">View All</a></p>
+			<p class="text-center d-block d-md-block d-lg-none"><a href="grid-listing-filterscol.php" class="btn_1">View All</a></p>
 			<!-- /button visibile on tablet/mobile only -->
 		</div>
 		<!-- /container -->
@@ -513,7 +471,7 @@
 		            <div class="box_1">
 		                <h3>Are you a Restaurant Owner?</h3>
 		                <p>Join Us to increase your online visibility. You'll have access to even more customers who are looking to enjoy your tasty dishes at home.</p>
-		                <a href="submit-restaurant.html" class="btn_1">Read more</a>
+		                <a href="submit-restaurant.php" class="btn_1">Read more</a>
 		            </div>
 		        </div>
     		</div>
@@ -523,161 +481,6 @@
 	</main>
 	<!-- /main -->
 
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<h3 data-target="#collapse_1">Quick Links</h3>
-					<div class="collapse dont-collapse-sm links" id="collapse_1">
-						<ul>
-							<li><a href="about.html">About us</a></li>
-							<li><a href="help.html">Add your restaurant</a></li>
-							<li><a href="help.html">Help</a></li>
-							<li><a href="account.html">My account</a></li>
-							<li><a href="blog.html">Blog</a></li>
-							<li><a href="contacts.html">Contacts</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3 data-target="#collapse_2">Categories</h3>
-					<div class="collapse dont-collapse-sm links" id="collapse_2">
-						<ul>
-							<li><a href="listing-grid-1-full.html">Top Categories</a></li>
-							<li><a href="listing-grid-2-full.html">Best Rated</a></li>
-							<li><a href="listing-grid-1-full.html">Best Price</a></li>
-							<li><a href="listing-grid-3.html">Latest Submissions</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-						<h3 data-target="#collapse_3">Contacts</h3>
-					<div class="collapse dont-collapse-sm contacts" id="collapse_3">
-						<ul>
-							<li><i class="icon_house_alt"></i>97845 Baker st. 567<br>Los Angeles - US</li>
-							<li><i class="icon_mobile"></i>+94 423-23-221</li>
-							<li><i class="icon_mail_alt"></i><a href="#0">info@domain.com</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-						<h3 data-target="#collapse_4">Keep in touch</h3>
-					<div class="collapse dont-collapse-sm" id="collapse_4">
-						<div id="newsletter">
-							<div id="message-newsletter"></div>
-							<form method="post" action="assets/newsletter.php" name="newsletter_form" id="newsletter_form">
-								<div class="form-group">
-									<input type="email" name="email_newsletter" id="email_newsletter" class="form-control" placeholder="Your email">
-									<button type="submit" id="submit-newsletter"><i class="arrow_carrot-right"></i></button>
-								</div>
-							</form>
-						</div>
-						<div class="follow_us">
-							<h5>Follow Us</h5>
-							<ul>
-								<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/twitter_icon.svg" alt="" class="lazy"></a></li>
-								<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/facebook_icon.svg" alt="" class="lazy"></a></li>
-								<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/instagram_icon.svg" alt="" class="lazy"></a></li>
-								<li><a href="#0"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/youtube_icon.svg" alt="" class="lazy"></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-			<hr>
-			<div class="row add_bottom_25">
-				<div class="col-lg-6">
-					<ul class="footer-selector clearfix">
-						<li>
-							<div class="styled-select lang-selector">
-								<select>
-									<option value="English" selected>English</option>
-									<option value="French">French</option>
-									<option value="Spanish">Spanish</option>
-									<option value="Russian">Russian</option>
-								</select>
-							</div>
-						</li>
-						<li>
-							<div class="styled-select currency-selector">
-								<select>
-									<option value="US Dollars" selected>US Dollars</option>
-									<option value="Euro">Euro</option>
-								</select>
-							</div>
-						</li>
-						<li><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/cards_all.svg" alt="" width="198" height="30" class="lazy"></li>
-					</ul>
-				</div>
-				<div class="col-lg-6">
-					<ul class="additional_links">
-						<li><a href="#0">Terms and conditions</a></li>
-						<li><a href="#0">Privacy</a></li>
-						<li><span>© 2019 Foogra</span></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!--/footer-->
-
-	<div id="toTop"></div><!-- Back to top button -->
-	
-	<div class="layer"></div><!-- Opacity Mask Menu Mobile -->
-	
-	<!-- Sign In Modal -->
-	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
-		<div class="modal_header">
-			<h3>Sign In</h3>
-		</div>
-		<form>
-			<div class="sign-in-wrapper">
-				<a href="#0" class="social_bt facebook">Login with Facebook</a>
-				<a href="#0" class="social_bt google">Login with Google</a>
-				<div class="divider"><span>Or</span></div>
-				<div class="form-group">
-					<label>Email</label>
-					<input type="email" class="form-control" name="email" id="email">
-					<i class="icon_mail_alt"></i>
-				</div>
-				<div class="form-group">
-					<label>Password</label>
-					<input type="password" class="form-control" name="password" id="password" value="">
-					<i class="icon_lock_alt"></i>
-				</div>
-				<div class="clearfix add_bottom_15">
-					<div class="checkboxes float-left">
-						<label class="container_check">Remember me
-						  <input type="checkbox">
-						  <span class="checkmark"></span>
-						</label>
-					</div>
-					<div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
-				</div>
-				<div class="text-center">
-					<input type="submit" value="Log In" class="btn_1 full-width mb_5">
-					Don’t have an account? <a href="account.html">Sign up</a>
-				</div>
-				<div id="forgot_pw">
-					<div class="form-group">
-						<label>Please confirm login email below</label>
-						<input type="email" class="form-control" name="email_forgot" id="email_forgot">
-						<i class="icon_mail_alt"></i>
-					</div>
-					<p>You will receive an email containing a link allowing you to reset your password to a new preferred one.</p>
-					<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
-				</div>
-			</div>
-		</form>
-		<!--form -->
-	</div>
-	<!-- /Sign In Modal -->
-	
-	<!-- COMMON SCRIPTS -->
-    <script src="js/common_scripts.min.js"></script>
-    <script src="js/common_func.js"></script>
-    <script src="assets/validate.js"></script>
-
-</body>
-</html>
+<?php 
+	require_once 'layout/footer.php';
+?>
