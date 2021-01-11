@@ -17,7 +17,12 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
 
     <!-- GOOGLE WEB FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" as="fetch" crossorigin="anonymous">
+    <script type="text/javascript">
+    !function(e,n,t){"use strict";var o="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap",r="__3perf_googleFonts_c2536";function c(e){(n.head||n.body).appendChild(e)}function a(){var e=n.createElement("link");e.href=o,e.rel="stylesheet",c(e)}function f(e){if(!n.getElementById(r)){var t=n.createElement("style");t.id=r,c(t)}n.getElementById(r).innerHTML=e}e.FontFace&&e.FontFace.prototype.hasOwnProperty("display")?(t[r]&&f(t[r]),fetch(o).then(function(e){return e.text()}).then(function(e){return e.replace(/@font-face {/g,"@font-face{font-display:swap;")}).then(function(e){return t[r]=e}).then(f).catch(a)):a()}(window,document,localStorage);
+    </script>
 
     <!-- BASE CSS -->
     <link href="css/bootstrap_customized.min.css" rel="stylesheet">
@@ -28,6 +33,8 @@
 
     <!-- YOUR CUSTOM CSS -->
 	<link href="css/custom.css" rel="stylesheet">
+	
+	<link href="css/about.css" rel="stylesheet">
 	
 	<link href="css/home.css" rel="stylesheet">
 	<link href="css/help.css" rel="stylesheet">
@@ -74,7 +81,7 @@
 			</div>
 			<ul>
 				<li><a href="index.php"> Home </a></li>
-				<li><a href="resturant.php"> Restaurant </a></li>
+				<li><a href="restaurant.php"> Restaurant </a></li>
 				<li><a href="blog.php"> Blog </a></li>
 				<li><a href="contacts.php"> Contact </a></li>
 				<!-- <li class="submenu">
@@ -92,7 +99,7 @@
 					<ul>
 						<li class="third-level"><a href="#0">List pages</a>
 							<ul>
-								<li><a href="resturant.php">List default</a></li>
+								<li><a href="restaurant.php">List default</a></li>
 								<li><a href="grid-listing-filterscol-map.php">List with map</a></li>
 								<li><a href="grid-listing-filterscol-full-width.php">List full width</a></li>
 								<li><a href="grid-listing-filterscol-full-masonry.php">List Masonry Filter</a></li>

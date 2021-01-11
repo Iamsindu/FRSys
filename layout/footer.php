@@ -5,23 +5,20 @@
 					<h3 data-target="#collapse_1">Quick Links</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_1">
 						<ul>
-							<li><a href="about.php">About us</a></li>
-							<li><a href="help.php">Add your restaurant</a></li>
-							<li><a href="help.php">Help</a></li>
-							<li><a href="account.php">My account</a></li>
+							<li><a href="#">About us</a></li>
+							<li><a href="submit-restaurant.php">Add your restaurant</a></li>
 							<li><a href="blog.php">Blog</a></li>
-							<li><a href="contacts.php">Contacts</a></li>
+							<li><a href="#"> Our Team</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<h3 data-target="#collapse_2">Categories</h3>
+					<h3 data-target="#collapse_2">GET HELP</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_2">
 						<ul>
-							<li><a href="listing-grid-1-full.php">Top Categories</a></li>
-							<li><a href="listing-grid-2-full.php">Best Rated</a></li>
-							<li><a href="listing-grid-1-full.php">Best Price</a></li>
-							<li><a href="listing-grid-3.php">Latest Submissions</a></li>
+							<li><a href="help.php">FAQs</a></li>
+							<li><a href="contacts.php">Contacts</a></li>
+							<li><a href="#">Top Categories</a></li>
 						</ul>
 					</div>
 				</div>
@@ -156,7 +153,34 @@
 	
 	<!-- SPECIFIC SCRIPTS -->
 	<script src="js/sticky_sidebar.min.js"></script>
-    <script src="js/specific_listing.js"></script>
+	<script src="js/specific_listing.js"></script>
+	<script src="js/specific_detail.js"></script>
+	<script>
+		/* drodown options prevent close */
+		$('.dropdown-options .dropdown-menu').on("click",function(e) {e.stopPropagation();});
+		/* remove items order sum */
+		$('.main ul li a').on('click', function (c) {
+			$(this).parent().fadeOut('slow', function (c) {});
+		});
+		/* Close Dropdown options on add cart button click + add to cart message */
+		$(".dropdown-menu a.btn_1").on('click',function() {
+		    $(this).closest(".dropdown-menu").prev().dropdown("toggle");
+		    $('#message').fadeIn('slow', function(){
+               $('#message').delay(1000).fadeOut(); 
+            });
+		});
+		$(".options > a").on('click',function() {
+		    $('#message').fadeIn('slow', function(){
+               $('#message').delay(1000).fadeOut(); 
+            });
+		});
+	</script>
+	
+	<script>
+		$('.wish_bt').on('click', function (c) {
+			$(this).parent().parent().parent().parent().fadeOut('slow', function (c) {});
+		});
+	</script>
 
 </body>
 </html>

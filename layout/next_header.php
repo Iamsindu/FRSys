@@ -44,11 +44,11 @@
     <link href="css/booking-sign_up.css" rel="stylesheet">
 	<link href="css/detail-page-delivery.css" rel="stylesheet">
 
-	<link href="css/bootstrap.css" rel="stylesheet">
+	<!-- <link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/icons.css" rel="stylesheet">
 	<link href="css/icons.min.css" rel="stylesheet">
-	<link href="css/bootstrap_customized.css" rel="stylesheet">
+	<link href="css/bootstrap_customized.css" rel="stylesheet"> -->
 	
 
 </head>
@@ -79,7 +79,7 @@
 			</div>
 			<ul>
                 <li><a href="index.php"> Home </a></li>
-				<li><a href="resturant.php"> Restaurant </a></li>
+				<li><a href="restaurant.php"> Restaurant </a></li>
 				<li><a href="blog.php"> Blog </a></li>
 				<li><a href="contacts.php"> Contact </a></li>
 				<!-- <li class="submenu">
@@ -96,7 +96,7 @@
 					<ul>
 						<li class="third-level"><a href="#0">List pages</a>
 							<ul>
-								<li><a href="resturant.php">List default</a></li>
+								<li><a href="restaurant.php">List default</a></li>
 								<li><a href="grid-listing-filterscol-map.php">List with map</a></li>
 								<li><a href="grid-listing-filterscol-full-width.php">List full width</a></li>
 								<li><a href="grid-listing-filterscol-full-masonry.php">List Masonry Filter</a></li>
