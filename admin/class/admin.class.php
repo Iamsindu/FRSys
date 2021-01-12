@@ -1,7 +1,7 @@
 <?php 
 class admin extends common
 {
-	public $admin_id,$username,$salt,$password,$email_id,$role,$date,$status;
+	public $admin_id,$username,$password,$salt,$role,$email_id,$last_login,$status;
 	public function selectadmin()
 	{
 		$sql="select * from admin ";
@@ -10,7 +10,7 @@ class admin extends common
 
 	public function insertadmin()
 	{
-		$sql ="insert into admin(username,password,salt,role,email_id,date,status)values('$this->username','$this->password','$this->salt','$this->role','$this->email_id','$this->date','$this->status')";
+		$sql ="insert into admin(username,password,salt,role,email_id,last_login,status)values('$this->username','$this->password','$this->salt','$this->role','$this->email_id','$this->last_login','$this->status')";
 		return $this->insert($sql);
 	}
 

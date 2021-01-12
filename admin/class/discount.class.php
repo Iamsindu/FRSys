@@ -1,7 +1,7 @@
 <?php 
 class discount extends common
 {
-	public $dis_id,$rate,$special;
+	public $discount_id,$discount,$rest_id,$rels_date,$exp_date,$event;
 	public function selectdiscount()
 	{
 		$sql= "select * from discount";
@@ -10,25 +10,25 @@ class discount extends common
 
 	public function selectdiscountbyid()
 	{
-		$sql= "select * from discount where dis_id='$this->dis_id'";
+		$sql= "select * from discount where discount_id='$this->discount_id'";
 		return $this->select($sql);
 	}
 	
 	public function insertdiscount()
 	{
-		$sql ="insert into discount(rate,special) values ('$this->rate','$this->special')";
+		$sql ="insert into discount(discount,rest_id,rels_date,exp_date,event) values ('$this->discount','$this->rest_id','$this->rels_date','$this->exp_date','$this->event')";
 		return $this->insert($sql);
 	}
 
 	public function updatediscount()
  	{
-	 	$sql = "update discount set rate='$this->rate', special='$this->special' where dis_id='$this->dis_id'";
+	 	$sql = "update discount set discount='$this->discount', rels_date='$this->rels_date', exp_date='$this->exp_date', event='$this->event' where discount_id='$this->discount_id'";
 	 	return $this->update($sql);
 	}
 	
 	public function deletediscount()
  	{
- 		$sql = "delete from discount where dis_id = '$this->dis_id' ";
+ 		$sql = "delete from discount where discount_id = '$this->discount_id' ";
  		return $this->delete($sql);
  	}
 } 

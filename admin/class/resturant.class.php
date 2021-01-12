@@ -1,49 +1,122 @@
  <?php 
 class resturant extends common
 {
-	public $rest_id, $rest_name, $phone_no, $password,$salt, $email_id, $date, $status, $open_time, $close_time, $delivery, $photo_id, $sim_id ;
-	public function insertresturant()
+	public $rest_id, $rest_name, $phone_no, $email_id, $status, $open_time, $close_time, $delivery,$dsc;
+	public $location_id, $city, $street;
+	public $rphoto_id, $photo;
+	public $restcat_id,$cat_id;
+	public $rowner_id, $admin_id;
+
+//////////////////// Restaurant database///////////////	
+	public function insertrestaurant()
 	{
-		$sql ="insert into resturant(rest_name,phone_no,password,salt,email_id,date,status,open_time,close_time,delivery,photo_id,sim_id)values('$this->rest_name','$this->phone_no','$this->password','$this->salt','$this->email_id','$this->date','$this->status','$this->open_time','$this->close_time','$this->delivery','$this->photo_id','$this->sim_id')";
+		$sql ="insert into restaurant(rest_name,phone_no,email_id,status,open_time,close_time,delivery,dsc)values('$this->rest_name','$this->phone_no','$this->email_id','$this->status','$this->open_time','$this->close_time','$this->delivery','$this->dsc')";
 		return $this->insert($sql);
 	}
 
-	public function insertresturant_withouimg()
+	public function selectrestaurant()
 	{
-		$sql ="insert into resturant(rest_name,phone_no,password,salt,email_id,date,status,open_time,close_time,delivery)values('$this->rest_name','$this->phone_no','$this->password','$this->salt','$this->email_id','$this->date','$this->status','$this->open_time','$this->close_time','$this->delivery')";
-		return $this->insert($sql);
-	}
-
-	public function selectresturant()
-	{
-		$sql= "select * from resturant";
+		$sql= "select * from restaurant";
 		return $this->select($sql);
 	}
 	
-	public function selectresturantbyid()
+	public function selectrestaurantbyid()
 	{
-		$sql= "select * from resturant where rest_id='$this->rest_id'";
+		$sql= "select * from restaurant where rest_id='$this->rest_id'";
 		return $this->select($sql);
 	}
 
-	public function updateresturant()
+	public function updaterestaurant()
  	{
- 		if(!empty($this->photo_id))
- 		{
- 			$sql = "update resturant set rest_name ='$this->rest_name', phone_no='$this->phone_no', email_id='$this->email_id',  status='$this->status', open_time='$this->open_time', close_time='$this->close_time', delivery='$this->delivery', photo_id='$this->photo_id' where rest_id = '$this->rest_id'";
- 		}
-	 	else	
-	 	{
-	 		$sql = "update resturant set rest_name = '$this->rest_name', phone_no='$this->phone_no', email_id='$this->email_id', status='$this->status', open_time='$this->open_time', close_time='$this->close_time', delivery='$this->delivery'  where rest_id = '$this->rest_id'";
-	 	}
+ 		$sql = "update restaurant set rest_name ='$this->rest_name', phone_no='$this->phone_no', email_id='$this->email_id',  status='$this->status', open_time='$this->open_time', close_time='$this->close_time', delivery='$this->delivery', dsc='$this->dsc' where rest_id = '$this->rest_id'";
 	 	return $this->update($sql);
 	}
 
-	public function deleteresturant()
+	public function deleterestaurant()
  	{
- 		$sql = "delete from resturant where rest_id = '$this->rest_id' ";
+ 		$sql = "delete from restaurant where rest_id = '$this->rest_id' ";
  		return $this->delete($sql);
+	}
+	 
+////////////////// Restaurant location //////////////	 
+ 	public function selectlocation_byid()
+ 	{
+ 		$sql = "select * from location where rest_id='$this->rest_id'";
+ 		return $this->select($sql);  
  	}
+ 	public function insertlocation()
+ 	{
+		$sql ="insert into location(city,street,rest_id)values('$this->city','$this->street','$this->rest_id')";
+ 		return $this->insert($sql);
+	}
+	public function updatelocation()
+ 	{
+ 		$sql = "update location set city ='$this->city', streets='$this->streets' where rest_id = '$this->rest_id'";
+	 	return $this->update($sql);
+	}
+
+	public function deletelocation()
+ 	{
+ 		$sql = "delete from location where rest_id = '$this->rest_id' ";
+ 		return $this->delete($sql);
+	}
+
+/////////////////// Restaurant Photo Database //////////////////
+	public function selectphoto_byid()
+ 	{
+ 		$sql = "select * from rphoto where rest_id='$this->rest_id'";
+ 		return $this->select($sql);  
+ 	}
+ 	public function insert_restphoto()
+ 	{
+		$sql ="insert into rphoto(rest_id,photo)values('$this->rest_id','$this->photo')";
+ 		return $this->insert($sql);
+	}
+	 
+	public function delete_restphoto()
+ 	{
+ 		$sql = "delete from rphoto where rest_id = '$this->rest_id' ";
+ 		return $this->delete($sql);
+	}
+
+////////////// Restaurant Category Database ///////////////
+
+	public function selectrcat_byid()
+ 	{
+ 		$sql = "select * from restcat where rest_id='$this->rest_id'";
+ 		return $this->select($sql);  
+ 	}
+ 	public function insert_restcat()
+ 	{
+		$sql ="insert into restcat(rest_id,cat_id)values('$this->rest_id','$this->cat_id')";
+ 		return $this->insert($sql);
+	}
+	 
+	public function delete_restcat()
+ 	{
+ 		$sql = "delete from restcat where rest_id = '$this->rest_id' ";
+ 		return $this->delete($sql);
+	}
+
+/////////////////////// Restaurant Owner Database ///////////////////////
+
+	public function selectowner_byadmin()
+ 	{
+ 		$sql = "select * from rest_owner where admin_id='$this->admin_id'";
+ 		return $this->select($sql);  
+ 	}
+ 	public function insert_restowner()
+ 	{
+		$sql ="insert into rest_owner(admin_id,rest_id)values('$this->admin_id','$this->rest_id')";
+ 		return $this->insert($sql);
+	}
+	 
+	public function delete_restowner()
+ 	{
+ 		$sql = "delete from rest_owner where admin_id = '$this->admin_id' ";
+ 		return $this->delete($sql);
+	}
+
 } 
 ?>
 

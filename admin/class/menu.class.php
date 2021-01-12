@@ -1,46 +1,28 @@
 <?php 
 class menu extends common
 {
-	public $menu_id,$menuname,$dsc,$rest_id,$photo_id;
+	public $menu_id,$food_id,$rest_id,$cat_id,$price,$date,$dsc;
  	public function selectmenu()
  	{
  		$sql = "select * from menu";
- 		$data= $this->select($sql);
- 		return $data; 
+ 		return $this->select($sql); 
 	}
 
 	public function selectmenubyid()
  	{
- 		$sql = "select * from menu where menu_id = '$this->menu_id' ";
+ 		$sql = "select * from menu where rest_id = '$this->rest_id' ";
  		return $this->select($sql);
  	}
-
 	 
  	public function insertmenu()
  	{
-		$sql ="insert into menu(menuname,dsc,rest_id,photo_id)values('$this->menuname','$this->dsc','$this->rest_id','$this->photo_id')";
- 		return $this->insert($sql);
-	}
-
-	public function insertwithoutimg()
- 	{
-		$sql ="insert into menu(menuname,dsc,rest_id)values('$this->menuname','$this->dsc','$this->rest_id')";
+		$sql ="insert into menu(food_id,rest_id,cat_id,price,date,dsc)values('$this->food_id','$this->rest_id','$this->cat_id','$this->price','$this->date','$this->dsc')";
  		return $this->insert($sql);
 	}
 
 	public function updatemenu()
  	{
- 		if(!empty($this->photo_id))
- 		{
-			 $sql = "update menu set menuname ='$this->menuname', dsc='$this->dsc', photo_id = '$this->photo_id' where menu_id = '$this->menu_id'";
-			//  rest_id='$this->rest_id',
- 		}
-	 	else	
-	 	{
-			 $sql = "update menu set menuname ='$this->menuname', dsc='$this->dsc' where menu_id = '$this->menu_id'";
-			//  rest_id='$this->rest_id' 
-
-	 	}
+		$sql = "update menu set food_id ='$this->food_id', dsc='$this->dsc', price = '$this->price', date = '$this->date' where menu_id = '$this->menu_id'";	
 	 	return $this->update($sql);
 	}
 
@@ -48,7 +30,6 @@ class menu extends common
  	{
  		$sql = "delete from menu where menu_id = '$this->menu_id' ";
  		return $this->delete($sql);
-	}
-	 
+	} 
 }
 ?>
