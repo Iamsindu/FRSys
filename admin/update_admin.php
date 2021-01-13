@@ -83,117 +83,104 @@
         $data = $admin->selectadminbyid();
         foreach ($data as $value) {
     ?>
-    <div class="page-content-wrapper ">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="page-title-box">
-                        <div class="btn-group float-right">
-                            <ol class="breadcrumb hide-phone p-0 m-0">
-                                <li class="breadcrumb-item"><a href="#">FRS</a></li>
-                                <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                               
-                                <li class="breadcrumb-item active">Update Admin</li>
-                                
-                            </ol>
-                        </div>
-                       
-                                    <h4 class="page-title">Update Admin</h4>
-                              
-                        
+<div class="page-content-wrapper ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group float-right">
+                        <ol class="breadcrumb hide-phone p-0 m-0">
+                            <li class="breadcrumb-item"><a href="#">FRS</a></li>
+                            <li class="breadcrumb-item"><a href="#">Admin</a></li>
+
+                            <li class="breadcrumb-item active">Update Admin</li>
+
+                        </ol>
                     </div>
+
+                    <h4 class="page-title">Update Admin</h4>
+
+
                 </div>
             </div>
-            <!-- end page title end breadcrumb -->
+        </div>
+        <!-- end page title end breadcrumb -->
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card m-b-30">
-                        <div class="card-body">
-                            <form method="post" action="">
-                                <div class="form-group">
-                                    <h6 class="text-muted fw-400">Username</h6>
-                                    <div>
-                                        <input type="text" name="username" value="<?php echo $value->username;?>"
-                                            class="form-control" placeholder="Name" />
-                                            <span class="error"> <?php echo $err[1];?></span>
-                                    </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card m-b-30">
+                    <div class="card-body">
+                        <form method="post" action="">
+                            <div class="form-group">
+                                <h6 class="text-muted fw-400">Username</h6>
+                                <div>
+                                    <input type="text" name="username" value="<?php echo $value->username;?>"
+                                        class="form-control" placeholder="Name" />
+                                    <span class="error"> <?php echo $err[1];?></span>
                                 </div>
-                                <!-- <div class="form-group">
-                                    <h6 class="text-muted fw-400">Password</h6>
-                                    <div>
-                                        <input type="password" id="pass2" name="password"
-                                            value="" class="form-control"
-                                            placeholder="Password" />
-                                        <span class="error"></span>
-                                    </div>
-                                    <div class="m-t-10">
-                                        <input type="password" value="" class="form-control"
-                                            data-parsley-equalto="#pass2" placeholder="Re-Type Password" />
-                                        <span class="error"> </span>
-                                    </div>
-                                </div> -->
-                                <div class="form-group">
-                                    <h6 class="text-muted fw-400">Email</h6>
-                                    <div>
-                                        <input type="email" name="email_id" value="<?php echo $value->email_id; ?>"
-                                            class="form-control" placeholder="Enter email" />
-                                            <span class="error"> <?php echo $err[2];?></span>
-                                    </div>
+                            </div>
+
+                            <div class="form-group">
+                                <h6 class="text-muted fw-400">Email</h6>
+                                <div>
+                                    <input type="email" name="email_id" value="<?php echo $value->email_id; ?>"
+                                        class="form-control" placeholder="Enter email" />
+                                    <span class="error"> <?php echo $err[2];?></span>
                                 </div>
-                                <div class="form-group">
-                                    <h6 class="text-muted fw-400">Role</h6>
-                                    <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
-                                        name="role">
-                                        <option disabled selected>Select</option>
-                                        <?php if($value->role=='User'){ ?>
-                                        <option selected>User</option>
-                                        <option>Admin</option>
-                                        <option>Editor</option>
-                                        <?php } elseif($value->role=='Admin'){  ?>
-                                        <option selected>Admin</option>
-                                        <option>Editor</option>
-                                        <option>User</option>
-                                        <?php }else{ ?>
-                                        <option>Admin</option>
-                                        <option selected>Editor</option>
-                                        <option>User</option>
-                                        <?php } ?>
-                                    </select>
-                                    <span class="error"> <?php echo $err[3];?></span>
+                            </div>
+                            <div class="form-group">
+                                <h6 class="text-muted fw-400">Role</h6>
+                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
+                                    name="role">
+                                    <option disabled selected>Select</option>
+                                    <?php if($value->role=='User'){ ?>
+                                    <option selected>User</option>
+                                    <option>Admin</option>
+                                    <option>Editor</option>
+                                    <?php } elseif($value->role=='Admin'){  ?>
+                                    <option selected>Admin</option>
+                                    <option>Editor</option>
+                                    <option>User</option>
+                                    <?php }else{ ?>
+                                    <option>Admin</option>
+                                    <option selected>Editor</option>
+                                    <option>User</option>
+                                    <?php } ?>
+                                </select>
+                                <span class="error"> <?php echo $err[3];?></span>
+                            </div>
+                            <div class="form-group">
+                                <h6 class="text-muted fw-400">Status</h6>
+                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
+                                    name="status">
+                                    <option disabled selected>Select</option>
+                                    <?php if($value->status=='Active'){ ?>
+                                    <option selected>Active</option>
+                                    <option>Inactive</option>
+                                    <?php } else{ ?>
+                                    <option selected>Inactive</option>
+                                    <option>Active</option>
+                                    <?php }  ?>
+                                </select>
+                                <span class="error"> <?php echo $err[4];?></span>
+                            </div>
+                            <div class="form-group ">
+                                <div>
+                                    <button type="submit" name="cmdsubmit"
+                                        class="btn btn-primary waves-effect waves-light">
+                                        Update Admin
+                                    </button>
                                 </div>
-                                <div class="form-group">
-                                    <h6 class="text-muted fw-400">Status</h6>
-                                    <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
-                                        name="status">
-                                        <option disabled selected>Select</option>
-                                        <?php if($value->status=='Active'){ ?>
-                                        <option selected>Active</option>
-                                        <option>Inactive</option>
-                                        <?php } else{ ?>
-                                        <option selected>Inactive</option>
-                                        <option>Active</option>
-                                        <?php }  ?>
-                                    </select>
-                                    <span class="error"> <?php echo $err[4];?></span>
-                                </div>
-                                <div class="form-group ">
-                                    <div>
-                                        <button type="submit" name="cmdsubmit"
-                                            class="btn btn-primary waves-effect waves-light">
-                                            Update Admin
-                                        </button>
-                                    </div>
-                                </div>
-                                <?php } ?>
-                            </form>
-                        </div>
+                            </div>
+                            <?php } ?>
+                        </form>
                     </div>
-                </div> <!-- end col -->
-            </div> <!-- end row -->
-        </div><!-- container -->
-    </div> <!-- Page content Wrapper -->
-    </div> <!-- content -->
-    <?php 
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+    </div><!-- container -->
+</div> <!-- Page content Wrapper -->
+</div> <!-- content -->
+<?php 
             require_once 'layout/footer.php';
             ?>

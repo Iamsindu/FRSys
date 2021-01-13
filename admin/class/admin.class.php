@@ -10,7 +10,7 @@ class admin extends common
 
 	public function insertadmin()
 	{
-		$sql ="insert into admin(username,password,salt,role,email_id,last_login,status)values('$this->username','$this->password','$this->salt','$this->role','$this->email_id','$this->last_login','$this->status')";
+		$sql ="insert into admin(username,password,salt,role,email_id,status)values('$this->username','$this->password','$this->salt','$this->role','$this->email_id','$this->status')";
 		return $this->insert($sql);
 	}
 
