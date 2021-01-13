@@ -4,7 +4,7 @@ class category extends common
 	public $cat_id,$catname,$dsc;
 	public function insertcategory()
 	{
-		$sql ="insert into cat(catname) values ('$this->catname')";
+		$sql ="insert into cat(catname,dsc) values ('$this->catname','$this->dsc')";
 		return $this->insert($sql);
 	}
 

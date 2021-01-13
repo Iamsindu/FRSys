@@ -5,34 +5,26 @@
     
     $category=new category;
     
-    $catname = "";
+    $catname = $dsc="";
     $err[0] = "";
 
     $category->cat_id = $_GET['id'];
 
-    function test_input($info) {
-        $info = trim($info);
-        $info = stripslashes($info);
-        $info = htmlspecialchars($info);
-        return $info;
-    }
+   
 
     if(isset($_POST['cmdsubmit']))	
     {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if(empty($_POST["catname"])) {
-                $err[0] = "Category name can't be empty";
-            } else {
-                $catname = test_input($_POST["catname"]);
+                $catname = $_POST["catname"];
                 if (!preg_match("/^[a-zA-Z ]*$/",$catname)) {
                     $err[0] = "Only letters and whitespace are allowed";
                 }
-            }
-        }
+          $dsc = $_POST["dsc"]; 
+        
         
         if($err[0]=="")  
         {
             $category->catname=$catname;
+            $category->dsc=$dsc;
 			$ask=$category->updatecategory();
             if($ask==="Duplicate")
             {
@@ -84,6 +76,13 @@
                                         <span class="error"> <?php echo $err[0];?></span>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                             <h6 class=" text-muted fw-400">Description</h6>
+                                            <div>
+                                                <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Add Detail about food only 225 chars." name="dsc"><?php echo $value->dsc;?></textarea>
+                                                <span class="error"></span>
+                                            </div>
+                                        </div>
                                 <div class="form-group ">
                                     <div>
                                         <button type="submit" name="cmdsubmit"
