@@ -51,7 +51,7 @@
 		if($askk==1)
 		{
             echo "<script>alert('Photo inserted successfully.')</script>";
-           // echo '<script> window.location.href = "add_resturant_location.php?id='.$rest_name.'"; </script>';
+           echo '<script> window.location.href = "show_resturant.php"; </script>';
 		}	
 		else
 		{
@@ -107,7 +107,7 @@
                                  <div>
                                      <button type="submit" class="btn btn-primary waves-effect waves-light"
                                          name="submit">
-                                         Add Category
+                                         Add Photo
                                      </button>
                                  </div>
                              </div>

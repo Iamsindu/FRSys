@@ -34,6 +34,9 @@
     </script>
     <!-- Plugins Init js -->
     <script src="assets/pages/form-advanced.js"></script>
+     <!-- Magnific popup -->
+     <script src="assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="assets/pages/lightbox.js"></script>
     <!-- Required datatable js -->
     <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
          <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>

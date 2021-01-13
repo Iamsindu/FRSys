@@ -171,7 +171,7 @@
 						</div>
 					</div>
 				</aside>
-
+			
 				<div class="col-lg-9">
 					<div class="row">
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">

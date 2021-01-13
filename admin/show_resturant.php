@@ -2,9 +2,8 @@
         require_once 'class/common.class.php';
         require_once 'class/resturant.class.php';
         require_once 'layout/header.php';
-        
         $resturant=new resturant;
-        ?>
+?>
                     <!-- Top Bar End -->
 
                     <div class="page-content-wrapper ">
@@ -42,6 +41,8 @@
                                                     <th>Phone Number</th>
                                                     <th>Delivery</th>
                                                     <th>Status</th>
+                                                    <th>Open Time</th>
+                                                    <th>Close Time</th>
                                                     <th>Action</th>
                                                 </tr>
                                                 </thead>
@@ -49,7 +50,7 @@
                                                 
                                                 <?php 
                                                
-								                $data = $resturant-> selectresturant();
+								                $data = $resturant->selectrestaurant();
 								                $n=1;
                                                 foreach ($data as $value)
                                                 {  ?>
@@ -59,7 +60,7 @@
 								 	                    <td><?php echo $value->email_id;?></td>
                                                         <td><?php echo $value->phone_no;?></td>
                                                         <td><?php if($value->delivery==1){echo 'Yes';}else{echo 'No';} ?></td>
-                                                        <td><?php echo $value->status;?></td>								 	    
+                                                        <td><?php echo $value->status;?></td>				<td><?php echo $value->open_time;?></td>				 <td><?php echo $value->close_time;?></td>	    
 								 	                    <td> <?php 
 														        echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_rest.php?id=".$value->rest_id."'>Update</a>"."&nbsp"; 
 														        echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_rest.php?id=".$value->rest_id."'>Delete</a>";
