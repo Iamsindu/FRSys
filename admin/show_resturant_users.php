@@ -1,8 +1,10 @@
 <?php 
         require_once 'class/common.class.php';
         require_once 'class/resturant.class.php';
+        require_once 'class/category.class.php';
         require_once 'layout/header.php';
         $resturant=new resturant;
+        $category =  new category;
         $resturant->rest_id=3;
 ?>
                     <!-- Top Bar End -->
@@ -27,68 +29,12 @@
                             </div>
                             <!-- end page title end breadcrumb -->
 
-                            <!-- <div class="row">
-                                <div class="col-12">
-                                    <div class="card m-b-30">
-                                        <div class="card-body">
-            
-                                            <h4 class="mt-0 header-title">Listing all the resturants...</h4>            
-                                            <table id="datatable" class="table table-bordered">
-                                                <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>E-mail</th>
-                                                    <th>Phone Number</th>
-                                                    <th>Delivery</th>
-                                                    <th>Status</th>
-                                                    <th>Open Time</th>
-                                                    <th>Close Time</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody> -->
-                                                
-                                                <?php 
-                                               
-								                //$data = $resturant->selectrestaurant();
-								                //$n=1;
-                                                //foreach ($data as $value)
-                                                //{  ?>
-								 	                <tr>
-								 		                <!-- <td><?php //echo $n; $n++; ?></td>
-								 		                <td><?php //echo $value->rest_name; ?></td>
-								 	                    <td><?php //echo $value->email_id;?></td>
-                                                        <td><?php //echo $value->phone_no;?></td>
-                                                        <td><?php //if($value->delivery==1){echo 'Yes';}else{echo 'No';} ?></td>
-                                                        <td><?php //echo $value->status;?></td>				<td><?php //echo $value->open_time;?></td>				 <td><?php //echo $value->close_time;?></td>	    
-								 	                    <td> <?php 
-														        //echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_rest.php?id=".$value->rest_id."'>Update</a>"."&nbsp"; 
-														        //echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_rest.php?id=".$value->rest_id."'>Delete</a>";
-													        ?>
-										                </td> -->
-								 	                <!-- </tr>
-                                                <?php	
-                                                   // }
-							                    ?>             
-                                                </tbody>
-                                            </table>
-            
-                                        </div>
-                                    </div>
-                                </div> end col 
-                            </div> -->
+                           
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card m-b-30">
                                         <div class="card-body">
-            
-                                            <h4 class="mt-0 header-title">Basic example</h4>
-                                            <p class="text-muted m-b-30 font-14">For basic styling—light padding and
-                                                only horizontal dividers—add the base class <code>.table</code> to any
-                                                <code>&lt;table&gt;</code>.
-                                            </p>
-            
+                                            <h4 class="mt-0 header-title">Resturant Info</h4>
                                             <table class="table">
                                                 <thead>
                                                 <tr>
@@ -146,26 +92,63 @@
                                 <div class="col-lg-12">
                                     <div class="card m-b-30">
                                         <div class="card-body">
-                                        <h4 class="mt-0 header-title">Lightbox gallery</h4>
-                                                <p class="text-muted m-b-30 font-14">In this example lazy-loading of images is enabled for the next image based on move direction. </p>
+                                        <h4 class="mt-0 header-title">Gallery</h4>
+                                        <?php 
+                                            echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_rest.php?id=".$resturant->rest_id."'>Update</a>"."&nbsp";       
+                                        ?>    
+                                                <p></p>
                 
                                                 <div class="popup-gallery">
                                                 <?php
-                                                $data = $resturant->selectphoto_byid();
-                                                foreach ($data as $value){  ?>
+                                                $data1 = $resturant->selectphoto_byid();
+                                                foreach ($data1 as $value1){  ?>
                                                     <?php 
-                                                    echo'<a class="pull-left" href="images/'.$value->photo.'" title="'.$value->photo.'">'; 
+                                                    echo'<a class="pull-left" href="images/'.$value1->photo.'" title="'.$value1->photo.'">'; 
                                                     ?>
                                                         <div class="img-fluid">
-                                                           <?php echo '<img src="images/'.$value->photo.'" width="275">'; ?>
+                                                           <?php echo '<img src="images/'.$value1->photo.'" width="275">'; ?>
                                                         </div>
                                                     </a>
                                                     <?php } ?>
-                                                </div>       
+                                                </div> 
+                                                  
                                         </div>
                                     </div>
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="card m-b-30">
+                                    <div class="card-body">
+                                    <h4 class="mt-0 header-title">Category</h4>
+                                    <div class="button-items">
+                                        <?php $datas = $resturant->selectrcat_byid();
+                                                foreach ($datas as $values){
+                                                    $category->cat_id=$values->cat_id;
+                                                    $info=$category->selectcategorybyid();
+                                                    foreach($info as $cat_name) {
+                                                     ?>
+                                        <button type="button" class="btn btn-primary waves-effect waves-light" disabled><?php echo $cat_name->catname; ?></button>
+                                        <?php } } ?>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card m-b-30">
+                                    <div class="card-body">
+                                    <h4 class="mt-0 header-title">Action</h4>
+                                    <div class="button-items">
+                                    <?php 
+                                            echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_rest.php?id=".$resturant->rest_id."'>Update</a>"."&nbsp";       
+                                        ?>
+                                        
+                                       
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div><!-- container -->
 

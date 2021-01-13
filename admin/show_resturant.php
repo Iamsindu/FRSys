@@ -62,7 +62,7 @@
                                                         <td><?php if($value->delivery==1){echo 'Yes';}else{echo 'No';} ?></td>
                                                         <td><?php echo $value->status;?></td>				<td><?php echo $value->open_time;?></td>				 <td><?php echo $value->close_time;?></td>	    
 								 	                    <td> <?php 
-														        echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_rest.php?id=".$value->rest_id."'>Update</a>"."&nbsp"; 
+														        echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_resturant.php?id=".$value->rest_id."'>Update</a>"."&nbsp"; 
 														        echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_rest.php?id=".$value->rest_id."'>Delete</a>";
 													        ?>
 										                </td>
