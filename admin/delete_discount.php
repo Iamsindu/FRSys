@@ -7,7 +7,7 @@
 
     if(isset($_GET['id']))
     {
-		$discount->dis_id = $_GET['id'];
+		$discount->discount_id = $_GET['id'];
     	$ask =$discount->deletediscount();
     	if($ask == 1)
     	{

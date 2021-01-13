@@ -35,8 +35,10 @@ $discount = new discount;
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
-                                                        <th>Rate</th>
-                                                        <th>Special Event</th>
+                                                        <th>Discount (%)</th>
+                                                        <th>Event</th>
+                                                        <th>Release Date</th>
+                                                        <th>Expiry Date</th>
                                                         <th>Action</th>
                                                   </tr>
                                                 </thead>
@@ -48,12 +50,13 @@ $discount = new discount;
 								                { ?>
 								 	<tr>
 								 		<td><?php echo $n; $n++; ?></td>
-								 		<td><?php echo $value->rate; ?></td>
-								 	    <td><?php echo $value->special;?></td>
-								 	    
+								 		<td><?php echo $value->discount; ?></td>
+								 	    <td><?php echo $value->event;?></td>
+                                         <td><?php echo $value->rels_date;?></td>
+                                         <td><?php echo $value->exp_date;?></td>
 								 	    <td> <?php 
-														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_discount.php?id=".$value->dis_id."'>Update</a>"."&nbsp"; 
-														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_discount.php?id=".$value->dis_id."'>Delete</a>";
+														echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_discount.php?id=".$value->discount_id."'>Update</a>"."&nbsp"; 
+														echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_discount.php?id=".$value->discount_id."'>Delete</a>";
 													
 													
 											?>

@@ -16,7 +16,7 @@ class discount extends common
 	
 	public function insertdiscount()
 	{
-		$sql ="insert into discount(discount,rest_id,rels_date,exp_date,event) values ('$this->discount','$this->rest_id','$this->rels_date','$this->exp_date','$this->event')";
+		$sql ="insert into discount(discount,rels_date,exp_date,event) values ('$this->discount','$this->rels_date','$this->exp_date','$this->event')";
 		return $this->insert($sql);
 	}
 
