@@ -15,35 +15,38 @@
     
 	if(isset($_POST['submit']))
 	{ 
+        $extension=array("jpeg","jpg","png","gif");
+       
+        // Count total files
+        $countfiles = count($_FILES['file']['name']);
         $resturant->rest_id=$_POST['rest_id'];
-        $targetDir = "images/"; 
-        $allowTypes = array('jpg','png','jpeg','gif');
-        //$statusMsg = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = ''; 
-        $fileNames = array_filter($_FILES['files']['name']); 
-        if(!empty($fileNames)){ 
-            foreach($_FILES['files']['name'] as $key=>$val)
-            { 
-                // File upload path 
-                $fileName = basename($_FILES['files']['name'][$key]); 
-                $targetFilePath = $targetDir . $fileName;
-                
-                // Check whether file type is valid
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                if(in_array($fileType, $allowTypes)){ 
-                    // Upload file to server 
-                    if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
-                        // Image db insert sql
-                        $askk =$resturant->insert_restphoto();
-                    // }else{ 
-                    //     $errorUpload .= $_FILES['files']['name'][$key].' | '; 
-                    // } 
-                // }else{ 
-                //     $errorUploadType .= $_FILES['files']['name'][$key].' | '; 
-                // } 
-            } 
+        // Looping all files
+        for($i=0;$i<$countfiles;$i++){
+            $filename = $_FILES['file']['name'][$i];
+            $ext=pathinfo($filename,PATHINFO_EXTENSION);
+            // Upload file
+            if(in_array($ext,$extension)) {
+                if(!file_exists("images/".$file_name)) {
+                    move_uploaded_file($_FILES['file']['tmp_name'][$i],'images/'.$filename);
+                    $resturant->photo=$filename;
+                    $askk=$resturant->insert_restphoto();
+                }
+                else
+                {
+                    $file_name=basename($filename,$ext);
+                    $newFileName=$file_name.date("Y-m-d",time()).".".$ext;
+                    move_uploaded_file($_FILES['file']['tmp_name'][$i],'images/'.$newFileName);
+                    $resturant->photo=$newFileName;
+                    $askk=$resturant->insert_restphoto();
+                }
+            }
+            else
+            {
+                echo "<script>alert('File Exension Not Supported')</script>";
+                die();
+            }
+            
         }
-    }
-    }
           
 		if($askk==1)
 		{
@@ -54,8 +57,8 @@
 		{
 			echo "<script>alert('Failed to insert Category')</script>";
 		}
-		
-    }
+    }	
+    
  ?>
  <!-- Top Bar End -->
  <div class="page-content-wrapper ">
@@ -79,7 +82,7 @@
              <div class="col-lg-12">
                  <div class="card m-b-30">
                      <div class="card-body">
-                         <form method="POST" action="">
+                         <form method="POST" action="" enctype='multipart/form-data'>
                              <div class="form-group">
                                  <h6 class="text-muted fw-400">Resturant Name</h6>
                                  <div>
@@ -96,7 +99,7 @@
                             <div class="form-group">
                                              <h6 class="text-muted fw-400">Upload Photos</h6>
                                             <div>
-                                                 <input name="files[]" type="file" multiple="multiple">
+                                            <input type="file" name="file[]" id="file" multiple>
                                             </div>
                             </div>
                              
