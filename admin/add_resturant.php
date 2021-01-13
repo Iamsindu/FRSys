@@ -69,6 +69,12 @@
                 $delivery = test_input($_POST["delivery"]);
             }
 
+            if (empty($_POST["take_away"])) {
+                $err[8] = "Take Away option must be entered.";
+            } else {
+                $takeaway = test_input($_POST["take_away"]);
+            }
+
             if (empty($_POST["dsc"])) {
                 $err[6] = "Description must be entered.";
             } else {
@@ -85,6 +91,7 @@
             $resturant->phone_no=$phone_no;
             $resturant->status=$status;
             $resturant->delivery=$delivery;
+            $resturant->takeaway=$takeaway;
             $open_time=date_create($open_time);
             $close_time=date_create($close_time);
             $resturant->open_time=date_format($open_time,"H:i:s");
@@ -190,6 +197,16 @@
                                      <option value="2">No</option>
                                  </select>
                                  <span class="error"> <?php echo $err[6]; ?> </span>
+                             </div>
+                             <div class="form-group">
+                                 <h6 class="text-muted fw-400">Take Away</h6>
+                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
+                                     name="take_away">
+                                     <option disabled selected>Select</option>
+                                     <option value="1">Yes</option>
+                                     <option value="2">No</option>
+                                 </select>
+                                 <span class="error"> <?php echo $err[8]; ?> </span>
                              </div>
                              <div class="form-group">
                                  <h6 class="text-muted fw-400">Discription</h6>
