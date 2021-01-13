@@ -1,7 +1,6 @@
  <?php    
     require_once 'class/common.class.php';
     require_once 'class/resturant.class.php';
-
     require_once 'layout/header.php';
 
 	//require_once 'class/session.class.php';
@@ -10,8 +9,8 @@
     //$a[2]=1;
 	$resturant=new resturant;
     
-    $err[1]=$err[2]=$err[3]=$err[4]=$err[5]=$err[6]="";
-    $rest_name = $password =  $phone_no = $email_id = $status = $delivery= "";
+    $err[1]=$err[2]=$err[3]=$err[4]=$err[5]=$err[6]=$err[7]="";
+    $rest_name =  $phone_no = $email_id = $status = $open_time= $close_time= $delivery= $dsc="";
 
     function test_input($info) {
         $info = trim($info);
@@ -29,15 +28,6 @@
                 $rest_name = test_input($_POST["rest_name"]);
                 if (!preg_match("/^[a-zA-Z ]*$/",$rest_name)) {
                     $err[1] = "Only letters and whitespace are allowed";
-                }
-            }
-
-            if(empty($_POST["password"])){
-                $err[2] = "Password can't be empty.";
-            } else {
-                $password = test_input($_POST["password"]);
-                if (!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#",$password)) {
-                    $err[2] = "apply strong password please";
                 }
             }
 
@@ -68,31 +58,43 @@
                 $status = test_input($_POST["status"]);
             }
 
+           
+            $open_time = $_POST["open_time"];
+            $close_time = $_POST["close_time"];
+            
+
             if (empty($_POST["delivery"])) {
                 $err[6] = "Delivery option must be entered.";
             } else {
                 $delivery = test_input($_POST["delivery"]);
             }
+
+            if (empty($_POST["dsc"])) {
+                $err[6] = "Description must be entered.";
+            } else {
+                $dsc = test_input($_POST["dsc"]);
+            }
             
         }
 
 	
-		if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="" && $err[5]=="" && $err[6] == "")  {
-            $data=$resturant->selectresturant();
+		if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="" && $err[5]=="" && $err[6] == "" && $err[7]=="")  {
             
             $resturant->rest_name=$rest_name;
             $resturant->email_id=$email_id;
             $resturant->phone_no=$phone_no;
             $resturant->status=$status;
             $resturant->delivery=$delivery;
-            $resturant->date=date('Y-m-d H:i:s');
-			$resturant->salt = uniqid();
-			$resturant->password= sha1($resturant->salt.$password);
-			$ask =$resturant->insertresturant();
+            $open_time=date_create($open_time);
+            $close_time=date_create($close_time);
+            $resturant->open_time=date_format($open_time,"H:i:s");
+            $resturant->close_time=date_format($close_time,"H:i:s");
+            $resturant->dsc=$dsc;
+			$ask =$resturant->insertrestaurant();
 			if($ask==1)
 			{
                 echo "<script>alert('Resturant inserted successfully.')</script>";
-                echo '<script> window.location="show_resturant.php" </script>';
+                echo '<script> window.location.href = "add_resturant_category.php?id='.$rest_name.'"; </script>';
 			}	
 			else
 			{
@@ -100,138 +102,120 @@
 			}
 		}
     }
- ?>	
-                <!-- Top Bar End -->
-                <div class="page-content-wrapper ">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="page-title-box">
-                                    <div class="btn-group float-right">
-                                        <ol class="breadcrumb hide-phone p-0 m-0">
-                                            <li class="breadcrumb-item"><a href="#">FRS</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Resturant</a></li>
-                                            <li class="breadcrumb-item active">Add Resturant</li>
-                                        </ol>
-                                    </div>
-                                    <h4 class="page-title">Add Resturant</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end page title end breadcrumb -->
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card m-b-30">
-                                    <div class="card-body">
-                                        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                                            <div class="form-group">
-                                                <h6 class="text-muted fw-400">Resturant Name</h6>
-                                                <div>
-                                                    <input type="text" class="form-control" placeholder="Resturant Name" name="rest_name" value="<?php echo $rest_name;?>"/>
-                                                    <span class="error"> <?php echo $err[1];?></span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                    <h6 class="text-muted fw-400">Password</h6>
-                                                    <div>
-                                                        <input type="password" id="pass2" class="form-control" placeholder="Password" name="password" value="<?php echo $password;?>"/>
-                                                        <span class="error"> <?php echo $err[2];?></span>
-                                                    </div>
-                                                    <div class="m-t-10">
-                                                        <input type="password" value="<?php echo $password;?>" class="form-control" data-parsley-equalto="#pass2" placeholder="Re-Type Password"/>
-                                                        <span class="error"> <?php echo $err[2];?></span>
-                                                    </div>
-                                                </div>
-                                            <div class="form-group">
-                                                    <h6 class="text-muted fw-400">E-Mail</h6>
-                                                    <div>
-                                                        <input type="email"  value="<?php echo $email_id; ?>" class="form-control" parsley-type="email" placeholder="Enter a valid e-mail" name="email_id"/>
-                                                        <span class="error"> <?php echo $err[3];?></span>
-                                                    </div>
-                                                </div>
-                                            <div class="form-group">
-                                               <h6 class="text-muted fw-400">Phone no</h6>
-                                               <div>
-                                                    <input type="text" class="form-control" value="<?php echo $phone_no; ?>"  placeholder="number" name="phone_no"/>
-                                                    <span class="error"> <?php echo $err[4];?></span>
-                                                </div>
-                                            </div>
-                                             <div class="form-group">
-                                                <h6 class="text-muted fw-400">Status</h6>
-                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="status">
-                                                    <option disabled selected>Select</option>
-                                                    <option >Open</option>
-                                                    <option >Close</option>
-                                                    <option >Event</option>                                                  
-                                                </select>
-                                                <span class="error"> <?php echo $err[5]; ?> </span>
-                                            </div>
-                                             <div class="form-group">
-                                                <h6 class="text-muted fw-400">Open Time</h6>
-                                                <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                                    <input type="text" class="form-control" value="01:35" name="open_time">
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <h6 class="text-muted fw-400">Closed Time</h6>
-                                                <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                                    <input type="text" class="form-control" value="18:35" name="close_time">
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                           <div class="form-group">
-                                                <h6 class="text-muted fw-400">Delivery</h6>
-                                                <select class="select2 form-control custom-select" style="width: 100%; height:36px;" name="delivery">
-                                                    <option disabled selected>Select</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="0">No</option>
-                                                </select>
-                                                <span class="error"> <?php echo $err[6]; ?> </span>
-                                            </div>
-                                            <h6 class="text-muted fw-400">Location</h6>
-                                            <div class="row">
-                                                 
-                                                <div class="col-md-6">
-                                           
-                                          <div class="form-group">
-                                                
-                                                <h6 class="text-muted fw-400">City</h6>
-                                                <div>
-                                                <input type="text" class="form-control" placeholder="City"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                            <div class="form-group">
-                                                
-                                                <h6 class="text-muted fw-400">Street</h6>
-                                                <div>
-                                                <input type="text" class="form-control" placeholder="Street"/>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                        
-                                             <div class="form-group ">
-                                                    <div>
-                                                        <button type="submit" class="btn btn-primary waves-effect waves-light" name="submit">
-                                                            Add Resturant
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-                    </div><!-- container -->
-                </div> <!-- Page content Wrapper -->
-            </div> <!-- content -->
-            <?php 
+ ?>
+ <!-- Top Bar End -->
+ <div class="page-content-wrapper ">
+     <div class="container-fluid">
+         <div class="row">
+             <div class="col-sm-12">
+                 <div class="page-title-box">
+                     <div class="btn-group float-right">
+                         <ol class="breadcrumb hide-phone p-0 m-0">
+                             <li class="breadcrumb-item"><a href="#">FRS</a></li>
+                             <li class="breadcrumb-item"><a href="#">Resturant</a></li>
+                             <li class="breadcrumb-item active">Add Resturant</li>
+                         </ol>
+                     </div>
+                     <h4 class="page-title">Add Resturant</h4>
+                 </div>
+             </div>
+         </div>
+         <!-- end page title end breadcrumb -->
+         <div class="row">
+             <div class="col-lg-12">
+                 <div class="card m-b-30">
+                     <div class="card-body">
+                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                             <div class="form-group">
+                                 <h6 class="text-muted fw-400">Resturant Name</h6>
+                                 <div>
+                                     <input type="text" class="form-control" placeholder="Resturant Name"
+                                         name="rest_name" value="<?php echo $rest_name;?>" />
+                                     <span class="error"> <?php echo $err[1];?></span>
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <h6 class="text-muted fw-400">E-Mail</h6>
+                                 <div>
+                                     <input type="email" value="<?php echo $email_id; ?>" class="form-control"
+                                         parsley-type="email" placeholder="Enter a valid e-mail" name="email_id" />
+                                     <span class="error"> <?php echo $err[3];?></span>
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <h6 class="text-muted fw-400">Phone no</h6>
+                                 <div>
+                                     <input type="text" class="form-control" value="<?php echo $phone_no; ?>"
+                                         placeholder="number" name="phone_no" />
+                                     <span class="error"> <?php echo $err[4];?></span>
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <h6 class="text-muted fw-400">Status</h6>
+                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
+                                     name="status">
+                                     <option disabled selected>Select</option>
+                                     <option>Open</option>
+                                     <option>Close</option>
+                                     <option>Event</option>
+                                 </select>
+                                 <span class="error"> <?php echo $err[5]; ?> </span>
+                             </div>
+                             <div class="form-group">
+                                 <h6 class="text-muted fw-400">Open Time</h6>
+                                 <div class="input-group clockpicker " data-placement="bottom" data-align="top"
+                                     data-autoclose="true">
+                                     <input type="text" class="form-control" value="01:35" name="open_time">
+                                     <div class="input-group-append">
+                                         <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <h6 class="text-muted fw-400">Closed Time</h6>
+                                 <div class="input-group clockpicker " data-placement="bottom" data-align="top"
+                                     data-autoclose="true">
+                                     <input type="text" class="form-control" value="18:35" name="close_time">
+                                     <div class="input-group-append">
+                                         <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <h6 class="text-muted fw-400">Delivery</h6>
+                                 <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
+                                     name="delivery">
+                                     <option disabled selected>Select</option>
+                                     <option value="1">Yes</option>
+                                     <option value="2">No</option>
+                                 </select>
+                                 <span class="error"> <?php echo $err[6]; ?> </span>
+                             </div>
+                             <div class="form-group">
+                                 <h6 class="text-muted fw-400">Discription</h6>
+                                 <div>
+                                     <textarea id="textarea" class="form-control" maxlength="225" rows="3"
+                                         placeholder="Add Detail about food only 225 chars." name="dsc"
+                                         value=""></textarea>
+                                     <span class="error"> <?php echo $err[7];?></span>
+                                 </div>
+                             </div>
+                             <div class="form-group ">
+                                 <div>
+                                     <button type="submit" class="btn btn-primary waves-effect waves-light"
+                                         name="submit">
+                                         Add Resturant
+                                     </button>
+                                 </div>
+                             </div>
+                         </form>
+                     </div>
+                 </div>
+             </div> <!-- end col -->
+         </div> <!-- end row -->
+     </div><!-- container -->
+ </div> <!-- Page content Wrapper -->
+ </div> <!-- content -->
+ <?php 
     require_once 'layout/footer.php';
     ?>

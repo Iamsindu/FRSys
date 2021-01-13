@@ -25,6 +25,11 @@ class resturant extends common
 		$sql= "select * from restaurant where rest_id='$this->rest_id'";
 		return $this->select($sql);
 	}
+	public function selectrestaurantbyname()
+	{
+		$sql= "select * from restaurant where rest_name='$this->rest_name'";
+		return $this->select($sql);
+	}
 
 	public function updaterestaurant()
  	{
@@ -85,7 +90,8 @@ class resturant extends common
  	{
  		$sql = "select * from restcat where rest_id='$this->rest_id'";
  		return $this->select($sql);  
- 	}
+	 }
+	 
  	public function insert_restcat()
  	{
 		$sql ="insert into restcat(rest_id,cat_id)values('$this->rest_id','$this->cat_id')";
