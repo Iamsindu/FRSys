@@ -1,6 +1,7 @@
 <?php
 	require_once 'layout/header.php';
 ?>
+
 	<main>
 		<div id="error_page">
 			<div class="container">
@@ -16,13 +17,10 @@
 						</form>
 					</div>
 				</div>
-				<!-- /row -->
 			</div>
-			<!-- /container -->
 		</div>
-		<!-- /error -->		
 	</main>
-	<!-- /main -->
+
 <?php
 	require_once 'layout/footer.php';
 ?>
