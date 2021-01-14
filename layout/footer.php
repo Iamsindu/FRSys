@@ -65,9 +65,9 @@
 							<div class="styled-select lang-selector">
 								<select>
 									<option value="English" selected>English</option>
-									<option value="French">French</option>
+									<!-- <option value="French">French</option>
 									<option value="Spanish">Spanish</option>
-									<option value="Russian">Russian</option>
+									<option value="Russian">Russian</option> -->
 								</select>
 							</div>
 						</li>

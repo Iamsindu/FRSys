@@ -10,8 +10,8 @@
 		    			<div class="breadcrumbs blog">
 				            <ul>
 				                <li><a href="#">Home</a></li>
-				                <li><a href="#">Category</a></li>
-				                <li>Page active</li>
+				                <!-- <li><a href="#">Category</a></li> -->
+				                <li>blog</li>
 				            </ul>
 		       	 		</div>
 		    		</div>
@@ -21,8 +21,7 @@
 							<input type="submit" value="Search">
 						</div>
 		    		</div>
-		    	</div>
-		    	<!-- /row -->		       
+		    	</div>		       
 		    </div>
 		</div>
 		<!-- /page_header -->
