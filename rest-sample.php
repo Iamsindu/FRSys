@@ -1,7 +1,9 @@
 <?php
 	require_once 'layout/next_header.php';
-	$resturant=new resturant;
+	require_once 'admin/class/common.class.php';
+	require_once 'admin/class/resturant.class.php';
 
+	$resturant=new resturant;
 	$datas = $restaurant->selecttables();
 	foreach($datas as $values)
 	{
