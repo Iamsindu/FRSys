@@ -189,13 +189,13 @@
 							        <a href="detail-restaurant.php" class="strip_info">
 							            <small>Pizza</small>
 							            <div class="item_title">
-							                <h3><?php echo $rest_name;?></h3>
-							                <small>27 Old Gloucester St</small>
+							                <h3><?php echo $values->rest_name; ?></h3>
+							                <small></small>
 							            </div>
 							        </a>
 							    </figure>
 							    <ul>
-							        <li><span class="take yes">Take away</span> <span class="deliv yes">Delivery</span></li>
+							        <li><span class="take <?php echo $values->takeaway; ?>">Take away</span> <span class="deliv no">Delivery</span></li>
 							        <li>
 							        	<div class="score"><strong>8.9</strong></div>
 							        </li>

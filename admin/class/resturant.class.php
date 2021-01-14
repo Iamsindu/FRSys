@@ -1,7 +1,7 @@
  <?php 
 class resturant extends common
 {
-	public $rest_id, $rest_name, $phone_no, $email_id, $status, $open_time, $close_time, $delivery,$dsc;
+	public $rest_id, $rest_name, $phone_no, $email_id, $status, $open_time, $close_time, $delivery,$takeaway,$dsc;
 	public $location_id, $city, $street;
 	public $rphoto_id, $photo;
 	public $restcat_id,$cat_id;
@@ -10,7 +10,7 @@ class resturant extends common
 //////////////////// Restaurant database///////////////	
 	public function insertrestaurant()
 	{
-		$sql ="insert into restaurant(rest_name,phone_no,email_id,status,open_time,close_time,delivery,dsc)values('$this->rest_name','$this->phone_no','$this->email_id','$this->status','$this->open_time','$this->close_time','$this->delivery','$this->dsc')";
+		$sql ="insert into restaurant(rest_name,phone_no,email_id,status,open_time,close_time,delivery,takeaway,dsc)values('$this->rest_name','$this->phone_no','$this->email_id','$this->status','$this->open_time','$this->close_time','$this->delivery', '$this->takeaways','$this->dsc')";
 		return $this->insert($sql);
 	}
 
@@ -126,12 +126,13 @@ class resturant extends common
 
 	public function selecttables()
 	{
-		$sql = "SELECT restaurant.*, location.*, rating.*, discount.*, rphoto.*
-		FROM restaurant
-		FULL OUTER JOIN location ON restcat.rest_id = rest_id
-		FULL OUTER JOIN rating ON rest_food.rest_id = rest_id
-		FULL OUTER JOIN rphoto ON rphoto.rest_id = rest_id
-		ORDER BY restaurant.rest_name" ;
+	// 	$sql = "SELECT restaurant.*, location.*, rating.*, discount.*, rphoto.*
+	// 	FROM restaurant
+	// 	FULL OUTER JOIN location ON restcat.rest_id = restaurant.rest_id
+	// 	FULL OUTER JOIN rating ON rest_food.rest_id = restaurant.rest_id
+	// 	FULL OUTER JOIN rphoto ON rphoto.rest_id = restaurant.rest_id
+	// 	ORDER BY restaurant.rest_name" ;
+		$sql = "select * from restaurant";
 		return $this->select($sql);
 	}
 } 
