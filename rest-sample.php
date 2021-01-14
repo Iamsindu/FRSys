@@ -4,7 +4,7 @@
 	require_once 'admin/class/resturant.class.php';
 
 	$resturant=new resturant;
-	$datas = $restaurant->selecttables();
+	$datas = $resturant->selecttables();
 	foreach($datas as $values)
 	{
 ?>
