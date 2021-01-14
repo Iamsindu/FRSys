@@ -33,7 +33,7 @@ class resturant extends common
 
 	public function updaterestaurant()
  	{
- 		$sql = "update restaurant set rest_name ='$this->rest_name', phone_no='$this->phone_no', email_id='$this->email_id',  status='$this->status', open_time='$this->open_time', close_time='$this->close_time', delivery='$this->delivery', dsc='$this->dsc' where rest_id = '$this->rest_id'";
+ 		$sql = "update restaurant set rest_name ='$this->rest_name', phone_no='$this->phone_no', email_id='$this->email_id',  status='$this->status', open_time='$this->open_time', close_time='$this->close_time', delivery='$this->delivery', dsc='$this->dsc', takeaway='$this->takeaway' where rest_id = '$this->rest_id'";
 	 	return $this->update($sql);
 	}
 

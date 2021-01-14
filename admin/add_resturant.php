@@ -9,7 +9,7 @@
     //$a[2]=1;
 	$resturant=new resturant;
     
-    $err[1]=$err[2]=$err[3]=$err[4]=$err[5]=$err[6]=$err[7]="";
+    $err[1]=$err[2]=$err[3]=$err[4]=$err[5]=$err[6]=$err[7]=$err[8]="";
     $rest_name =  $phone_no = $email_id = $status = $open_time= $close_time= $delivery= $dsc="";
 
     function test_input($info) {
