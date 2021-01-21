@@ -1,7 +1,7 @@
  <?php 
 class category extends common
 {
-	public $cat_id,$catname,$dsc;
+	public $cat_id,$catname,$dsc,$caty_id;
 	public function insertcategory()
 	{
 		$sql ="insert into cat(catname,dsc) values ('$this->catname','$this->dsc')";
@@ -26,10 +26,5 @@ class category extends common
 	 	return $this->update($sql);
 	}
 	
-	public function deletecategory()
- 	{
- 		$sql = "delete from cat where cat_id = '$this->cat_id' ";
- 		return $this->delete($sql);
- 	}
 } 
 ?>
