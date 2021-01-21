@@ -5,7 +5,7 @@
     if(isset($_GET['id']))
     {
 		$resturant->rest_id = $_GET['id'];
-    	$ask =$resturant->deleteresturant();
+    	$ask =$resturant->deleterestaurant();
     	if($ask == 1)
     	{
     		 echo "<script>alert('Resturant Deleted Successfully.')</script>";

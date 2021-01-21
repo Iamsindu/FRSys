@@ -4,7 +4,7 @@ class resturant extends common
 	public $rest_id, $rest_name, $phone_no, $email_id, $status, $open_time, $close_time, $delivery,$dsc;
 	public $location_id, $city, $street;
 	public $rphoto_id, $photo;
-	public $restcat_id,$cat_id;
+	public $restcat_id,$cat_id,$catyy_id;
 	public $rowner_id, $admin_id;
 
 //////////////////// Restaurant database///////////////	
@@ -23,6 +23,11 @@ class resturant extends common
 	public function selectrestaurantbyid()
 	{
 		$sql= "select * from restaurant where rest_id='$this->rest_id'";
+		return $this->select($sql);
+	}
+	public function select_restname()
+	{
+		$sql= "select rest_name from restaurant where rest_id='$this->rest_id'";
 		return $this->select($sql);
 	}
 	public function selectrestaurantbyname()
@@ -56,7 +61,7 @@ class resturant extends common
 	}
 	public function updatelocation()
  	{
- 		$sql = "update location set city ='$this->city', streets='$this->streets' where rest_id = '$this->rest_id'";
+ 		$sql = "update location set city ='$this->city', street='$this->street' where rest_id = '$this->rest_id'";
 	 	return $this->update($sql);
 	}
 
@@ -90,7 +95,7 @@ class resturant extends common
  	{
  		$sql = "select * from restcat where rest_id='$this->rest_id'";
  		return $this->select($sql);  
-	 }
+	}
 	 
  	public function insert_restcat()
  	{
@@ -100,9 +105,10 @@ class resturant extends common
 	 
 	public function delete_restcat()
  	{
- 		$sql = "delete from restcat where rest_id = '$this->rest_id' ";
+ 		$sql = "delete from restcat where rest_id = '$this->rest_id'";
  		return $this->delete($sql);
 	}
+	
 
 /////////////////////// Restaurant Owner Database ///////////////////////
 
@@ -128,9 +134,9 @@ class resturant extends common
 	{
 		$sql = "SELECT restaurant.*, location.*, rating.*, discount.*, rphoto.*
 		FROM restaurant
-		FULL OUTER JOIN location ON restcat.rest_id = rest_id
-		FULL OUTER JOIN rating ON rest_food.rest_id = rest_id
-		FULL OUTER JOIN rphoto ON rphoto.rest_id = rest_id
+		FULL OUTER JOIN location ON restcat.rest_id = restaurant.rest_id
+		FULL OUTER JOIN rating ON rest_food.rest_id = restaurant.rest_id
+		FULL OUTER JOIN rphoto ON rphoto.rest_id = restaurant.rest_id
 		ORDER BY restaurant.rest_name" ;
 		return $this->select($sql);
 	}
