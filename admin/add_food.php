@@ -1,13 +1,11 @@
 <?php 
 	require_once 'class/common.class.php';
     require_once 'class/food.class.php';
-    require_once 'class/photo.class.php';
 	require_once 'layout/header.php';
     
     $food=new food;
-    $photo= new photo;
-    $err[0] = $err[1]=$err[2]=$err[3]="";
-    $fname = $dsc = $price = $vg_nvg = "";
+    $err[0] = $err[1]=$err[3]="";
+    $fname = $dsc  = $vg_nvg = "";
 
     function test_input($info) {
         $info = trim($info);
@@ -35,16 +33,16 @@
                 $dsc = test_input($_POST["dsc"]);
             }
 
-            if(empty($_POST["price"])) {
-                $err[2] = "Price is required";
-            } else 
-            {
-                $price = test_input($_POST["price"]);
-                if (!preg_match("/^[0-9]*$/",$price)) 
-                {
-                    $err[2] = "Only numbers are allowed";
-                }
-            }
+            // if(empty($_POST["price"])) {
+            //     $err[2] = "Price is required";
+            // } else 
+            // {
+            //     $price = test_input($_POST["price"]);
+            //     if (!preg_match("/^[0-9]*$/",$price)) 
+            //     {
+            //         $err[2] = "Only numbers are allowed";
+            //     }
+            // }
 
             if (empty($_POST["vg_nvg"])) {
                 $err[3] = "This field can't be empty.";
@@ -60,44 +58,18 @@
                 }
             }
         }
-        $targetDir = "images/"; 
-        $allowTypes = array('jpg','png','jpeg','gif');
-        //$statusMsg = $errorMsg = $insertValuesSQL = $errorUpload = $errorUploadType = ''; 
-        $fileNames = array_filter($_FILES['files']['name']); 
-        if(!empty($fileNames)){ 
-            foreach($_FILES['files']['name'] as $key=>$val){ 
-                // File upload path 
-                $fileName = basename($_FILES['files']['name'][$key]); 
-                $targetFilePath = $targetDir . $fileName;
-                
-                // Check whether file type is valid
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION); 
-                if(in_array($fileType, $allowTypes)){ 
-                    // Upload file to server 
-                    if(move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath)){ 
-                        // Image db insert sql
-                       $photo."1"
-                    }else{ 
-                        $errorUpload .= $_FILES['files']['name'][$key].' | '; 
-                    } 
-                }else{ 
-                    $errorUploadType .= $_FILES['files']['name'][$key].' | '; 
-                } 
-            } 
-        }
-
-        if($err[0]=="" && $err[1]=="" && $err[2]=="" &&  $err[3]=="")  
+        if($err[0]=="" && $err[1]=="" &&  $err[3]=="")  
         {
-            $data=$food->selectfood();
+            
             $food->fname=$fname;
             $food->dsc=$dsc;
-            $food->price=$price;
-            $food->vg_nvg=$vg_nonvg;            
-			$ask =$food->insertwithoutimg();
+            $food->vg_nvg=$vg_nonvg;
+            $food->date = date('Y-m-d H:i:s');          
+			$ask =$food->insertfood();
 			if($ask==1)
 			{
                 echo "<script>alert('Food inserted successfully.')</script>";
-                echo '<script> window.location="show_food.php" </script>';
+                echo '<script> window.location.href = "add_food_category.php?id='.$fname.'"; </script>';
 			}	
 			else
 			{
@@ -142,13 +114,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <h6 class="text-muted fw-400">Price</h6>
-                                            <div>
-                                                <input type="text" class="form-control" placeholder="Item Price" name="price" value="<?php echo $price;?>"/>
-                                                <span class="error"> <?php echo $err[2];?></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
                                             <h6 class="text-muted fw-400">Veg/Non-Veg</h6>
                                             <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" name="vg_nvg">
                                                 <option disabled selected>Select</option>
@@ -158,31 +123,6 @@
                                             <span class="error"> <?php echo $err[3];?></span>
                                         </div>
                                         
-                                       <div class="form-group">
-                                             <h6 class="text-muted fw-400">Upload Photos</h6>
-                                            <div>
-                                                 <input name="files[]" type="file" multiple="multiple">
-                                            </div>
-                                        </div>
-                                              
-                                        <!-- <div class="form-group">    
-                                            <h6 class="text-muted fw-400">Resturant</h6>
-                                            <select class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;" name="rest_id">
-                                                <option disabled selected>Select</option>
-                                                <?php
-                                                    $resturant = new resturant;
-                                                    $data = $resturant->selectresturant();
-                                                    foreach ($data as $value)
-                                                { ?>
-                                                <option value="<?php echo $value->rest_id; ?>"><?php echo $value->rest_name;?></option>   
-                                        
-                                                <?php  
-								                }
-                                                ?>      
-                                            </select>
-                                        </div> -->
-                                        
-                                       
                                          <div class="form-group ">
                                                     <div>
                                                         <button type="submit" class="btn btn-primary waves-effect waves-light" name="submit">

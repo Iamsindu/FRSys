@@ -1,5 +1,5 @@
  <!-- Loader -->
-        <?php 
+ <?php 
             require_once 'layout/header.php';
             ?>
                     <!-- Top Bar End -->

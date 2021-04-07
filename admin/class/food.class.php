@@ -18,6 +18,12 @@ class food extends common
  	{
  		$sql = "select * from food where food_id = '$this->food_id' ";
  		return $this->select($sql);
+	 }
+	 
+	 public function selectfoodbyname()
+ 	{
+ 		$sql = "select * from food where fname = '$this->fname' ";
+ 		return $this->select($sql);
  	}
 
  	public function insertfood()
