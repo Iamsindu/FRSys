@@ -190,7 +190,7 @@
 							            <small>Pizza</small>
 							            <div class="item_title">
 							                <h3><?php echo $values->rest_name; ?></h3>
-							                <small></small>
+							                <small><?php echo $values->city; ?></small>
 							            </div>
 							        </a>
 							    </figure>
