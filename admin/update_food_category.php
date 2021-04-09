@@ -8,10 +8,11 @@
     $fcategory=new food;
     $resturant = new resturant;
     $category =  new category;
-    $fcategory->fname = $_GET['id'];
-    $fname=$fcategory->fname;
+    $fcategory->food_id = $_GET['id'];
+    //$fname=$fcategory->fname;
     //$resturant->rest_id = $_SESSION['rest_id'];
     $resturant->rest_id = 2;
+    $fcategory->delete_foodcategory();
     
 	if(isset($_POST['cmdsubmit']))	{
         
@@ -25,8 +26,8 @@
                 $ask=$fcategory->insert_food_category();
            }       
            //$fcategory->rest_id = $_SESSION['rest_id'];
-           $fcategory->rest_id = 2;
-           $askk=$fcategory->insert_restfood();
+        //    $fcategory->rest_id = 2;
+        //    $askk=$fcategory->insert_restfood();
         
 			if($ask==1 && $askk == 1){
                 echo "<script>alert('Category inserted successfully')</script>";

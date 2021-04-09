@@ -73,8 +73,49 @@
                                                     <td colspan="2"><b>Action<b></td>
                                                     <td colspan="7">
                                                     <?php 
-                                                               echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_rest.php?id=".$value->rest_id."'>Update</a>"."&nbsp"; 
+                                                               echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_resturant.php?id=".$value->rest_id."'>Update</a>"."&nbsp"; 
                                                                echo "<a class='btn btn-outline-danger waves-effect waves-light' href='delete_rest.php?id=".$value->rest_id."'>Delete</a>";
+                                                           ?>
+                                                           </td>
+                                                </tr>
+                                                <?php	
+                                                   }
+                                               ?> 
+                                                </tbody>
+                                            </table>
+            
+                                        </div>
+                                    </div>
+                                </div> <!-- end col -->
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card m-b-30">
+                                        <div class="card-body">
+                                            <h4 class="mt-0 header-title">location</h4>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>City</th>
+                                                    <th>Street</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php 
+                                               
+                                               $data = $resturant->selectlocation_byid();
+                                               foreach ($data as $value)
+                                               {  ?>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td><?php echo $value->city; ?></td>
+                                                        <td><?php echo $value->street;?></td>
+                                                   
+                                                    <td>
+                                                    <?php 
+                                                               echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_resturant_location.php?id=".$value->rest_id."'>Update</a>"."&nbsp";
                                                            ?>
                                                            </td>
                                                 </tr>
@@ -94,7 +135,7 @@
                                         <div class="card-body">
                                         <h4 class="mt-0 header-title">Gallery</h4>
                                         <?php 
-                                            echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_rest.php?id=".$resturant->rest_id."'>Update</a>"."&nbsp";       
+                                            echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_resturant_photo.php?id=".$resturant->rest_id."'>Update</a>"."&nbsp";       
                                         ?>    
                                                 <p></p>
                 
@@ -140,7 +181,7 @@
                                     <h4 class="mt-0 header-title">Action</h4>
                                     <div class="button-items">
                                     <?php 
-                                            echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_rest.php?id=".$resturant->rest_id."'>Update</a>"."&nbsp";       
+                                            echo "<a  class='btn btn-outline-info waves-effect waves-light' href='update_resturant_category.php?id=".$resturant->rest_id."'>Update</a>"."&nbsp";       
                                         ?>
                                         
                                        

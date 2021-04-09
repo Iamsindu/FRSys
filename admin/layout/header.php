@@ -106,6 +106,7 @@
                             <ul class="list-unstyled">
                                 <li><a href="add_resturant.php">Add Restaurant</a></li>
                                 <li><a href="show_resturant.php">Show Restaurant</a></li>
+                                <li><a href="show_resturant_users.php">Show Users Restaurant</a></li>
                             </ul>
                         </li>
 

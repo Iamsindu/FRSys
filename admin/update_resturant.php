@@ -10,47 +10,41 @@
     $resturant=new resturant;
     $resturant->rest_id = $_GET['id'];
     
-    $err[1]=$err[2]=$err[3]=$err[4]=$err[5]=$err[6]=$err[7]=$err[8]="";
+    $err[1]=$err[2]=$err[3]=$err[4]=$err[5]=$err[6]="";
     
 
     
 	if(isset($_POST['submit']))
 	{
        
-            if(empty($_POST["rest_name"])) {
-                $err[1] = "Restaurant name can't be empty";
-            } else {
-                $rest_name = test_input($_POST["rest_name"]);
+            
+                $rest_name = $_POST["rest_name"];
                 if (!preg_match("/^[a-zA-Z ]*$/",$rest_name)) {
                     $err[1] = "Only letters and whitespace are allowed";
                 }
-            }
+            
 
-            if (empty($_POST["email_id"])) {
-                $err[3] = "Email is required";
-            } else {
-                $email_id = test_input($_POST["email_id"]);
+            
+                $email_id = $_POST["email_id"];
                 if (!filter_var($email_id, FILTER_VALIDATE_EMAIL)) {
-                    $err[3] = "Invalid format and please re-enter valid email";
+                    $err[2] = "Invalid format and please re-enter valid email";
                 }
-            }
+            
 
-            if (empty($_POST["phone_no"])) {  
-                $err[4]="Phone no is required";  
-            } else {  
-                $phone_no = test_input($_POST["phone_no"]);  
+             
+                $phone_no = $_POST["phone_no"];  
                 if (!preg_match ("/^[0-9]*$/", $phone_no) ) {  
-                    $err[4] = "Only numeric value is allowed.";  
+                    $err[3] = "Only numeric value is allowed.";  
                 }
                 if (strlen ($phone_no) != 10) {  
-                $err[4] = "Mobile no must contain 10 digits.";  
+                $err[3] = "Mobile no must contain 10 digits.";  
                 }
-            }  
+             
 
             if (empty($_POST["status"])) {
-                $err[5] = "Status is required";
+                $err[4] = "Status is required";
             } else {
-                $status = test_input($_POST["status"]);
+                $status = $_POST["status"];
             }
 
            
@@ -59,27 +53,25 @@
             
 
             if (empty($_POST["delivery"])) {
-                $err[6] = "Delivery option must be entered.";
+                $err[5] = "Delivery option must be entered.";
             } else {
-                $delivery = test_input($_POST["delivery"]);
+                $delivery = $_POST["delivery"];
             }
 
             if (empty($_POST["take_away"])) {
-                $err[8] = "Take Away option must be entered.";
+                $err[6] = "Take Away option must be entered.";
             } else {
-                $takeaway = test_input($_POST["take_away"]);
+                $takeaway = $_POST["take_away"];
             }
 
-            if (empty($_POST["dsc"])) {
-                $err[6] = "Description must be entered.";
-            } else {
-                $dsc = test_input($_POST["dsc"]);
-            }
+            
+                $dsc = $_POST["dsc"];
+            
             
         
 
 	
-		if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="" && $err[5]=="" && $err[6] == "" && $err[7]=="")  {
+		if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="" && $err[5]=="")  {
             
             $resturant->rest_name=$rest_name;
             $resturant->email_id=$email_id;
@@ -96,7 +88,14 @@
 			if($ask==1)
 			{
                 echo "<script>alert('Resturant Updated successfully.')</script>";
-                //echo '<script> window.location.href = "add_resturant_category.php?id='.$rest_name.'"; </script>';
+                // if($resturant->rest_id == $_SESSION['admin'])
+                // {
+                //     echo '<script> window.location.href = "show_resturant_users.php"; </script>'; 
+                // }
+                // else{
+                //     echo '<script> window.location.href = "show_resturant.php"; </script>';
+                // }
+                
 			}	
 			else
 			{
@@ -143,7 +142,7 @@
                                  <div>
                                      <input type="email" value="<?php echo $value->email_id; ?>" class="form-control"
                                          parsley-type="email" placeholder="Enter a valid e-mail" name="email_id" />
-                                     <span class="error"> <?php echo $err[3];?></span>
+                                     <span class="error"> <?php echo $err[2];?></span>
                                  </div>
                              </div>
                              <div class="form-group">
@@ -151,7 +150,7 @@
                                  <div>
                                      <input type="text" class="form-control" value="<?php echo $value->phone_no; ?>"
                                          placeholder="number" name="phone_no" />
-                                     <span class="error"> <?php echo $err[4];?></span>
+                                     <span class="error"> <?php echo $err[3];?></span>
                                  </div>
                              </div>
                              <div class="form-group">
@@ -163,7 +162,7 @@
                                      <option>Close</option>
                                      <option>Event</option>
                                  </select>
-                                 <span class="error"> <?php echo $err[5]; ?> </span>
+                                 <span class="error"> <?php echo $err[4]; ?> </span>
                              </div>
                              <div class="form-group">
                                  <h6 class="text-muted fw-400">Open Time</h6>
@@ -193,7 +192,7 @@
                                      <option value="1">Yes</option>
                                      <option value="2">No</option>
                                  </select>
-                                 <span class="error"> <?php echo $err[6]; ?> </span>
+                                 <span class="error"> <?php echo $err[5]; ?> </span>
                              </div>
                              <div class="form-group">
                                  <h6 class="text-muted fw-400">Take Away</h6>
@@ -203,7 +202,7 @@
                                      <option value="1">Yes</option>
                                      <option value="2">No</option>
                                  </select>
-                                 <span class="error"> <?php echo $err[8]; ?> </span>
+                                 <span class="error"> <?php echo $err[6]; ?> </span>
                              </div>
                              <div class="form-group">
                                  <h6 class="text-muted fw-400">Discription</h6>
@@ -211,14 +210,14 @@
                                      <textarea id="textarea" class="form-control" maxlength="225" rows="3"
                                          placeholder="Add Detail about food only 225 chars." name="dsc"
                                          ><?php echo $value->dsc; ?></textarea>
-                                     <span class="error"> <?php echo $err[7];?></span>
+                                     <span class="error"> </span>
                                  </div>
                              </div>
                              <div class="form-group ">
                                  <div>
                                      <button type="submit" class="btn btn-primary waves-effect waves-light"
                                          name="submit">
-                                         Add Resturant
+                                         Update Resturant
                                      </button>
                                  </div>
                              </div>

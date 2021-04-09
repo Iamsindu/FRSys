@@ -1,9 +1,62 @@
+<?php 
+    require_once 'class/common.class.php';
+    require_once 'class/admin.class.php';
+    require_once 'class/session.class.php';
+    sessionhelper::checklogin();
+    $admin=new admin;
+    $err=[];
+    if(isset($_POST['login']))
+    {
+        if (isset($_POST['adminname'])&& !empty($_POST['adminname']))
+         {
+            $admin->adminname= $_POST['adminname'];
+        }
+        else
+        {
+            $err[0]="adminname Cannot be blank";
+        }
+        if(isset($_POST['password'])&& !empty($_POST['password']))
+        {
+            $password= $_POST['password'];
+        }
+        else
+        {
+            $err[1]="Password cannot be blank";
+        }
+        if(count($err)==0)
+        {
+            $res=$admin->selectadminbyadminname();
+            if(!count($res))
+            {
+                $err[2]="adminname/Password doesnot match";
+            }
+            else
+            {
+             $salt=$res[0]->salt;
+             $ipassword=$res[0]->password;
+             $newpassword=sha1($salt.$admin->password);
+             if($newpassword=$ipassword)
+              {
+                sessionhelper::set('admin',$admin->adminname);
+                sessionhelper::set('dbid',$res[0]->id);
+                 echo "<script> window.location='index.php' </script>";
+                
+              } 
+             else
+             {
+                echo "<script>alert('adminname doesnot match')</script>";
+             }
+        }
+        }
+        }
+    
+ ?> 
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, admin-scalable=0, minimal-ui">
         <title>FRS - Food Recommendation System </title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Mannatthemes" name="author" />
@@ -39,7 +92,7 @@
 
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <input class="form-control" type="text" required="" placeholder="Username" name="username">
+                                    <input class="form-control" type="text" required="" placeholder="adminname" name="adminname">
                                 </div>
                             </div>
 

@@ -5,6 +5,9 @@
     if(isset($_GET['id']))
     {
 		$food->food_id = $_GET['id'];
+		$food->deletephoto();
+		$food->delete_foodcategory();
+		$food->delete_restfood();
     	$ask =$food->deletefood();
     	if($ask == 1)
     	{

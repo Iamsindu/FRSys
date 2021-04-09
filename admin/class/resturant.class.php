@@ -126,12 +126,6 @@ class resturant extends common
 
 	public function selecttables()
 	{
-	// 	$sql = "SELECT restaurant.*, location.*, rating.*, discount.*, rphoto.*
-	// 	FROM restaurant
-	// 	FULL OUTER JOIN location ON restcat.rest_id = restaurant.rest_id
-	// 	FULL OUTER JOIN rating ON rest_food.rest_id = restaurant.rest_id
-	// 	FULL OUTER JOIN rphoto ON rphoto.rest_id = restaurant.rest_id
-	// 	ORDER BY restaurant.rest_name" ;
 		$sql = "select * from restaurant";
 		return $this->select($sql);
 	}

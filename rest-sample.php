@@ -189,8 +189,13 @@
 							        <a href="detail-restaurant.php" class="strip_info">
 							            <small>Pizza</small>
 							            <div class="item_title">
+<<<<<<< HEAD
 							                <h3><?php echo $values->rest_name; ?></h3>
 							                <small><?php echo $values->city; ?></small>
+=======
+							                <h3><?php echo $values->rest_name;?></h3>
+							                <small>27 Old Gloucester St</small>
+>>>>>>> c0c9005850a85c8a2502e310b81bbc0af7e898e8
 							            </div>
 							        </a>
 							    </figure>
