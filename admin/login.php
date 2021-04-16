@@ -35,7 +35,7 @@
              $salt=$res[0]->salt;
              $ipassword=$res[0]->password;
              $newpassword=sha1($salt.$admin->password);
-             if($newpassword=$ipassword)
+             if($newpassword=$ipassword)    
               {
                 sessionhelper::set('admin',$admin->adminname);
                 sessionhelper::set('dbid',$res[0]->id);
