@@ -25,14 +25,14 @@ class sessionhelper
 		{
 			header('location:index.php');
 		}
-		else if(!isset($_SESSION['editor']))
-		{
-			header('location:index2.php');
-		}
-		else if(!isset($_SESSION['user']))
-		{
-			header('location:index3.php');
-		}
+		// else if(!isset($_SESSION['editor']))
+		// {
+		// 	header('location:index2.php');
+		// }
+		// else if(!isset($_SESSION['user']))
+		// {
+		// 	header('location:index3.php');
+		// }
 	}
 
 	static function end()

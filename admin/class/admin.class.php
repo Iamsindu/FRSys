@@ -19,6 +19,11 @@ class admin extends common
  		$sql = "select * from admin where admin_id = '$this->admin_id'";
  		return $this->select($sql);
 	}
+	public function selectadminbyname()
+ 	{
+ 		$sql = "select * from admin where username = '$this->username'";
+ 		return $this->select($sql);
+	}
 	 
 	public function updateadmin()
 	{
