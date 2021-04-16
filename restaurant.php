@@ -176,10 +176,10 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							    	<span class="ribbon off">-30%</span>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_2.png" class="img-fluid lazy" alt="">
+							    	<!-- <span class="ribbon off">-30%</span> -->
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-1.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Pizza</small>
+							            <!-- <small>Pizza</small> -->
 							            <div class="item_title">
 							                <h3>Da Alfredo</h3>
 							                <small>27 Old Gloucester St</small>
@@ -198,10 +198,10 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							    	<span class="ribbon off">-40%</span>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_2.jpg" class="img-fluid lazy" alt="">
+							    	<!-- <span class="ribbon off">-40%</span> -->
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-2.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Burghers</small>
+							            <!-- <small>Burghers</small> -->
 							            <div class="item_title">
 							                <h3>Best Burghers</h3>
 							                <small>27 Old Gloucester St</small>
@@ -220,9 +220,9 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_3.jpg" class="img-fluid lazy" alt="">
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-3.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Vegetarian</small>
+							            <!-- <small>Vegetarian</small> -->
 							            <div class="item_title">
 							                <h3>Vego Life</h3>
 							                <small>27 Old Gloucester St</small>
@@ -241,10 +241,10 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							    	<span class="ribbon off">-25%</span>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_4.jpg" class="img-fluid lazy" alt="">
+							    	<!-- <span class="ribbon off">-25%</span> -->
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-4.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Japanese</small>
+							            <!-- <small>Japanese</small> -->
 							            <div class="item_title">
 							                <h3>Sushi Temple</h3>
 							                <small>27 Old Gloucester St</small>
@@ -263,10 +263,10 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							    	<span class="ribbon off">-30%</span>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_5.jpg" class="img-fluid lazy" alt="">
+							    	<!-- <span class="ribbon off">-30%</span> -->
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-5.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Pizza</small>
+							            <!-- <small>Pizza</small> -->
 							            <div class="item_title">
 							                <h3>Auto Pizza</h3>
 							                <small>27 Old Gloucester St</small>
@@ -285,9 +285,9 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_6.jpg" class="img-fluid lazy" alt="">
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-6.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Burghers</small>
+							            <!-- <small>Burghers</small> -->
 							            <div class="item_title">
 							                <h3>Alliance</h3>
 							                <small>27 Old Gloucester St</small>
@@ -306,10 +306,10 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							    	<span class="ribbon off">-30%</span>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_7.jpg" class="img-fluid lazy" alt="">
+							    	<!-- <span class="ribbon off">-30%</span> -->
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-13.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Chinese</small>
+							            <!-- <small>Chinese</small> -->
 							            <div class="item_title">
 							                <h3>Alliance</h3>
 							                <small>27 Old Gloucester St</small>
@@ -328,9 +328,9 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_8.jpg" class="img-fluid lazy" alt="">
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-12.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Sushi</small>
+							            <!-- <small>Sushi</small> -->
 							            <div class="item_title">
 							                <h3>Dragon Tower</h3>
 							                <small>27 Old Gloucester St</small>
@@ -349,7 +349,7 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_9.jpg" class="img-fluid lazy" alt="">
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-11.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
 							            <small>Mexican</small>
 							            <div class="item_title">
@@ -370,9 +370,9 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_10.jpg" class="img-fluid lazy" alt="">
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-10.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Bakery</small>
+							            <!-- <small>Bakery</small> -->
 							            <div class="item_title">
 							                <h3>Monnalisa</h3>
 							                <small>27 Old Gloucester St</small>
@@ -391,9 +391,9 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_11.jpg" class="img-fluid lazy" alt="">
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-9.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Mexican</small>
+							            <!-- <small>Mexican</small> -->
 							            <div class="item_title">
 							                <h3>Guachamole</h3>
 							                <small>135 Newtownards Road</small>
@@ -412,9 +412,9 @@
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_12.jpg" class="img-fluid lazy" alt="">
+							        <img data-src="img/food/item-8.jpg" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Chinese</small>
+							            <!-- <small>Chinese</small> -->
 							            <div class="item_title">
 							                <h3>Pechino Express</h3>
 							                <small>27 Old Gloucester St</small>
