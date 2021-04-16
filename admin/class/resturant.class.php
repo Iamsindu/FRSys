@@ -129,5 +129,10 @@ class resturant extends common
 		$sql = "select * from restaurant";
 		return $this->select($sql);
 	}
+
+	public function searchrest(){
+		$sql = "select * from restaurant where rest_name='$this->rest_name' ";
+		return $this->select($sql);
+	}
 } 
 ?>

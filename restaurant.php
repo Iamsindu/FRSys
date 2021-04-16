@@ -28,7 +28,7 @@
 		<!-- /page_header -->
 		<div class="container margin_30_40">			
 			<div class="row">
-				<aside class="col-lg-3" id="sidebar_fixed">
+				<!-- <aside class="col-lg-3" id="sidebar_fixed">
 					<div class="clearfix">
 					<div class="sort_select">
 							<select name="sort" id="sort">
@@ -91,9 +91,7 @@
 								    </li>
 								</ul>
 							</div>
-							<!-- /filter_type -->
 						</div>
-						<!-- /filter_type -->
 						<div class="filter_type">
 							<h4><a href="#filter_2" data-toggle="collapse" class="closed">Rating</a></h4>
 							<div class="collapse" id="filter_2">
@@ -125,7 +123,7 @@
 								</ul>
 							</div>
 						</div>
-						<!-- /filter_type -->
+						
 						<div class="filter_type">
 							<h4><a href="#filter_3" data-toggle="collapse" class="closed">Distance</a></h4>
 							<div class="collapse" id="filter_3">
@@ -133,7 +131,7 @@
 								<div class="add_bottom_15"><input type="range" min="10" max="100" step="10" value="30" data-orientation="horizontal"></div>
 							</div>
 						</div>
-						<!-- /filter_type -->
+
 						<div class="filter_type">
 							<h4><a href="#filter_4" data-toggle="collapse" class="closed">Price</a></h4>
 							<div class="collapse" id="filter_4">
@@ -165,14 +163,15 @@
 									</ul>
 							</div>
 						</div>
-						<!-- /filter_type -->
 						<div class="buttons">
 							<a href="#0" class="btn_1 full-width">Filter</a>
 						</div>
 					</div>
-				</aside>
+				</aside> -->
+
+				
 			
-				<div class="col-lg-9">
+				<div class="col-lg-12">
 					<div class="row">
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
