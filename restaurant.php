@@ -177,7 +177,7 @@
 							<div class="strip">
 							    <figure>
 							    	<span class="ribbon off">-30%</span>
-							        <img src="img/lazy-placeholder.png" data-src="img/location_1.jpg" class="img-fluid lazy" alt="">
+							        <img src="img/lazy-placeholder.png" data-src="img/location_2.png" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php" class="strip_info">
 							            <small>Pizza</small>
 							            <div class="item_title">

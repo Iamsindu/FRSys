@@ -12,18 +12,18 @@
 							<p>The best restaurants at the best price</p>
 							<form method="post" action="grid-listings-filterscol.php">
 								<div class="row no-gutters custom-search-input">
-									<div class="col-lg-4">
+									<div class="col-lg-10">
 										<div class="form-group">
 											<input class="form-control" type="text" placeholder="What are you looking for...">
 											<i class="icon_search"></i>
 										</div>
 									</div>
-									<div class="col-lg-6">
+									<!-- <div class="col-lg-6">
 										<div class="form-group">
 											<input class="form-control no_border_r" type="text" placeholder="Address, neighborhood...">
 											<i class="icon_pin_alt"></i>
 										</div>
-									</div>
+									</div> -->
 									<div class="col-lg-2">
 										<input type="submit" value="Search">
 									</div>
@@ -43,7 +43,7 @@
 				<div class="main_title center">
 					<span><em></em></span>
 					<h2>Popular Categories</h2>
-					<p>Cum doctus civibus efficiantur in imperdiet deterruisset</p>
+					<p>The most popular categories available on our system.</p>
 				</div>
 				<!-- /main_title -->
 				<div class="owl-carousel owl-theme categories_carousel">
@@ -114,7 +114,7 @@
 			<div class="main_title">
 				<span><em></em></span>
 				<h2>Popular Restaurants</h2>
-				<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+				<p>The most popular restaurants listed on our systems.</p>
 				<a href="#0">View All</a>
 			</div>
 
@@ -123,7 +123,7 @@
 			        <div class="strip">
 			            <figure>
 			                <span class="ribbon off">-30%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_1.jpg" class="owl-lazy" alt="">
+			                <img src="img/lazy-placeholder.png" data-src="img/location_2.png" class="owl-lazy" alt="">
 			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Pizza</small>
 			                    <div class="item_title">
@@ -144,7 +144,7 @@
 			        <div class="strip">
 			            <figure>
 			                <span class="ribbon off">-40%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_2.jpg" class="owl-lazy" alt="">
+			                <img src="img/lazy-placeholder.png" data-src="img/location_3.png" class="owl-lazy" alt="">
 			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Burghers</small>
 			                    <div class="item_title">
@@ -165,7 +165,7 @@
 			        <div class="strip">
 			            <figure>
 			                <span class="ribbon off">-30%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_3.jpg" class="owl-lazy" alt="">
+			                <img src="img/lazy-placeholder.png" data-src="img/location_4.png" class="owl-lazy" alt="">
 			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Vegetarian</small>
 			                    <div class="item_title">
@@ -186,7 +186,7 @@
 			        <div class="strip">
 			            <figure>
 			                <span class="ribbon off">-25%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_4.jpg" class="owl-lazy" alt="">
+			                <img src="img/lazy-placeholder.png" data-src="img/location_2.png" class="owl-lazy" alt="">
 			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Japanese</small>
 			                    <div class="item_title">
@@ -207,7 +207,7 @@
 			        <div class="strip">
 			            <figure>
 			                <span class="ribbon off">-30%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_5.jpg" class="owl-lazy" alt="">
+			                <img src="img/lazy-placeholder.png" data-src="img/location_3.jpg" class="owl-lazy" alt="">
 			                <a href="detail-restaurant.php" class="strip_info">
 			                    <small>Pizza</small>
 			                    <div class="item_title">
@@ -399,19 +399,6 @@
 			<!-- /button visibile on tablet/mobile only -->
 		</div>
 		<!-- /container -->
-
-		<div class="call_section lazy" data-bg="url(img/bg_call_section.jpg)">
-		    <div class="container clearfix">
-		        <div class="col-lg-5 col-md-6 float-right wow">
-		            <div class="box_1">
-		                <h3>Are you a Restaurant Owner?</h3>
-		                <p>Join Us to increase your online visibility. You'll have access to even more customers who are looking to enjoy your tasty dishes at home.</p>
-		                <a href="submit-restaurant.php" class="btn_1">Read more</a>
-		            </div>
-		        </div>
-    		</div>
-    	</div>
-   		<!--/call_section-->
 		
 	</main>
 	<!-- /main -->

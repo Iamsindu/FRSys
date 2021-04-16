@@ -6,7 +6,7 @@
 					<div class="collapse dont-collapse-sm links" id="collapse_1">
 						<ul>
 							<li><a href="#">About us</a></li>
-							<li><a href="submit-restaurant.php">Add your restaurant</a></li>
+							<li><a href="#">Add your restaurant</a></li>
 							<li><a href="blog.php">Blog</a></li>
 							<li><a href="#"> Our Team</a></li>
 						</ul>
@@ -16,7 +16,7 @@
 					<h3 data-target="#collapse_2">GET HELP</h3>
 					<div class="collapse dont-collapse-sm links" id="collapse_2">
 						<ul>
-							<li><a href="help.php">FAQs</a></li>
+							<li><a href="#">FAQs</a></li>
 							<li><a href="contacts.php">Contacts</a></li>
 							<li><a href="#">Top Categories</a></li>
 						</ul>
@@ -26,9 +26,9 @@
 						<h3 data-target="#collapse_3">Contacts</h3>
 					<div class="collapse dont-collapse-sm contacts" id="collapse_3">
 						<ul>
-							<li><i class="icon_house_alt"></i>97845 Baker st. 567<br>Los Angeles - US</li>
-							<li><i class="icon_mobile"></i>+94 423-23-221</li>
-							<li><i class="icon_mail_alt"></i><a href="#0">info@domain.com</a></li>
+							<li><i class="icon_house_alt"></i>Butwal Multiple Campus <br>Butwal</li>
+							<li><i class="icon_mobile"></i>+94 21-121-121</li>
+							<li><i class="icon_mail_alt"></i><a href="#0">frsys@gmail.com</a></li>
 						</ul>
 					</div>
 				</div>
@@ -56,40 +56,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- /row-->
-			<hr>
-			<div class="row add_bottom_25">
-				<div class="col-lg-6">
-					<ul class="footer-selector clearfix">
-						<li>
-							<div class="styled-select lang-selector">
-								<select>
-									<option value="English" selected>English</option>
-									<!-- <option value="French">French</option>
-									<option value="Spanish">Spanish</option>
-									<option value="Russian">Russian</option> -->
-								</select>
-							</div>
-						</li>
-						<li>
-							<div class="styled-select currency-selector">
-								<select>
-									<option value="US Dollars" selected>US Dollars</option>
-									<option value="Euro">Euro</option>
-								</select>
-							</div>
-						</li>
-						<li><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="img/cards_all.svg" alt="" width="198" height="30" class="lazy"></li>
-					</ul>
-				</div>
-				<div class="col-lg-6">
-					<ul class="additional_links">
-						<li><a href="#0">Terms and conditions</a></li>
-						<li><a href="#0">Privacy</a></li>
-						<li><span>© 2019 Foogra</span></li>
-					</ul>
-				</div>
-			</div>
+			
 		</div>
 	</footer>
 	<!--/footer-->
