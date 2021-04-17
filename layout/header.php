@@ -44,8 +44,8 @@
 		<div class="container">
 		<div id="logo">
 			<a href="index.php">
-				<img src="../img/frs.svg" width="140" height="35" alt="" class="logo_normal">
-				<img src="../img/logo_sticky.svg" width="140" height="35" alt="" class="logo_sticky">
+				<img src="img/logos.svg" width="140" height="35" alt="" class="logo_normal">
+				<img src="./img/logo_sticky.svg" width="140" height="35" alt="" class="logo_sticky">
 			</a>
 		</div>
 		<ul id="top_menu">
