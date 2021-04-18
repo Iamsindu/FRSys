@@ -1,15 +1,20 @@
 <?php
-	//require_once 'layout/next_header.php';
-	If(isset($_POST['submit'])) {
+	require_once 'layout/next_header.php';
+	require_once 'admin/class/top_search.class.php';
+	require_once("recommend.php");
+	require_once("rating_list.php");
+	$re = new Recommend();
+	$top = new total;
+	// If(isset($_POST['submit'])) {
 
-		if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	// 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
-			echo $_POST['search_query'];
-			echo "<br>";
+	// 		echo $_POST['search_query'];
+	// 		echo "<br>";
 	
-		}
-	}
-	echo $_GET['id'];
+	// 	}
+	// }
+	// echo $_GET['id'];
 ?>
 
 	<main>
@@ -41,73 +46,47 @@
 			<div class="row">
 				<aside class="col-lg-3" id="sidebar_fixed">
 					<div class="clearfix">
-					<div class="sort_select">
+					<!-- <div class="sort_select">
 							<select name="sort" id="sort">
-                                <option value="popularity" selected="selected">Popular Search</option>
-                                <!-- <option value="rating">Sort by Average rating</option>
-                                <option value="date">Sort by newness</option>
-                                <option value="price">Sort by Price: low to high</option>
-                                <option value="price-desc">Sort by Price: high to low</option> -->
+                                <option value="popularity" selected="selected" disabled>Popular Search</option>
+                               
 							</select>
-						</div>
+						</div> -->
 						<!-- <a href="#0" class="open_filters btn_filters"><i class="icon_adjust-vert"></i><span>Filters</span></a> -->
 					</div>
 					<div class="filter_col">
 						<div class="inner_bt"><a href="#" class="open_filters"><i class="icon_close"></i></a></div>
 						<div class="filter_type">
-							<!-- <h4><a href="#filter_1" data-toggle="collapse" class="opened">Categories</a></h4> -->
-							<!-- <div class="collapse show" id="filter_1"> -->
+							<h4><a href="#filter_1" data-toggle="collapse" class="opened">Popular Search</a></h4>
+							<div class="collapse show" id="filter_1"> 
 								<ul>
-								    <li>
-								        <!-- <label class="container_check">Pizza - Italian <small>12</small>
-								            <!-- <input type="checkbox">
-								            <span class="checkmark"></span> -->
+								<?php 
+										$data = $top->total();
+										foreach ($data as $value)
+										{ ?>
+									<li>
+								       
+									<label>
 											<div class="buttons">
-												<a href="#0" class="btn_1">Chilly Chicken</a>
+												<a href="#0" class="btn_1 "><?php echo $value->search; ?></a>
 											</div>
+								        </label> 
 								        <!-- </label> -->
 								    </li>
-									<li>
-								        <!-- <label class="container_check">Pizza - Italian <small>12</small>
+									<?php } ?> 
+								
+									 <!--<li>
+								        <label class="container_check">Pizza - Italian <small>12</small>
 								            <!-- <input type="checkbox">
-								            <span class="checkmark"></span> -->
-											<br>
-											<div class="buttons">
-												<a href="#0" class="btn_1">Momo</a>
-											</div>
-								        <!-- </label> -->
-								    </li>
-									<li>
-								        <!-- <label class="container_check">Pizza - Italian <small>12</small>
-								            <!-- <input type="checkbox">
-								            <span class="checkmark"></span> -->
-											<br>
-											<div class="buttons">
-												<a href="#0" class="btn_1 ">Burgers</a>
-											</div>
-								        <!-- </label> -->
-								    </li>
-									<li>
-								        <!-- <label class="container_check">Pizza - Italian <small>12</small>
-								            <!-- <input type="checkbox">
-								            <span class="checkmark"></span> -->
-											<br>
-											<div class="buttons">
-												<a href="#0" class="btn_1 ">Pizza</a>
-											</div>
-								        <!-- </label> -->
-								    </li>
-									<li>
-								        <!-- <label class="container_check">Pizza - Italian <small>12</small>
-								            <!-- <input type="checkbox">
-								            <span class="checkmark"></span> -->
+								            <span class="checkmark"></span> 
 											<br>
 											<div class="buttons">
 												<a href="#0" class="btn_1 ">Chicken Soup</a>
 											</div>
-								        <!-- </label> -->
-								    </li>
+								        <!-- </label> 
+								    </li>-->
 								</ul>
+							</div>
 								    <!-- <li>
 								        <label class="container_check">Japanese - Sushi <small>24</small>
 								            <input type="checkbox">
@@ -228,6 +207,13 @@
 			
 				<div class="col-lg-9">
 					<div class="row">
+						<?php
+						
+						
+						
+						
+						print_r($re->getRecommendations($books, "john")); 
+						 ?>
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
