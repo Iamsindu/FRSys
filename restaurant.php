@@ -1,9 +1,10 @@
 <?php
 	require_once 'layout/next_header.php';
+	require_once 'admin/class/common.class.php';
 	require_once 'admin/class/top_search.class.php';
-	require_once("recommend.php");
+	require_once 'admin/class/resturant.class.php';
+	$rest = new resturant;
 	require_once("rating_list.php");
-	$re = new Recommend();
 	$top = new total;
 	// If(isset($_POST['submit'])) {
 
@@ -208,11 +209,12 @@
 				<div class="col-lg-9">
 					<div class="row">
 						<?php
+						foreach ($re as $gift => $rating) {
+							//print_r($gift);
+						 
+							$rest->r_id=$gift;
+							$data = $rest->selectrest();
 						
-						
-						
-						
-						print_r($re->getRecommendations($books, "john")); 
 						 ?>
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
@@ -235,6 +237,7 @@
 							    </ul>
 							</div>
 						</div>
+						<?php } ?>
 						<!-- /strip grid -->
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">

@@ -1,6 +1,6 @@
 <?php
 	
-	require_once 'admin/class/common.class.php';
+	
 	
 	class total extends common
 {

@@ -6,6 +6,19 @@ class resturant extends common
 	public $rphoto_id, $photo;
 	public $restcat_id,$cat_id;
 	public $rowner_id, $admin_id;
+	public $r_id, $r_name, $category, $location, $rating;
+	public $search;
+	public function selectrest()
+	{
+		$sql= "select * from rest where r_id='$this->r_id'";
+		return $this->select($sql);
+	}
+
+	public function selectrestsearch()
+	{
+		$sql= "select * from rsearch where r_id='$this->r_id' and search='$this->search'";
+		return $this->select($sql);
+	}
 
 //////////////////// Restaurant database///////////////	
 	public function insertrestaurant()
