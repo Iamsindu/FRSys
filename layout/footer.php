@@ -32,7 +32,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
+				<!-- <div class="col-lg-3 col-md-6">
 						<h3 data-target="#collapse_4">Keep in touch</h3>
 					<div class="collapse dont-collapse-sm" id="collapse_4">
 						<div id="newsletter">
@@ -54,7 +54,7 @@
 							</ul>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			
 		</div>
@@ -72,9 +72,9 @@
 		</div>
 		<form>
 			<div class="sign-in-wrapper">
-				<a href="#0" class="social_bt facebook">Login with Facebook</a>
-				<a href="#0" class="social_bt google">Login with Google</a>
-				<div class="divider"><span>Or</span></div>
+				<!-- <a href="#0" class="social_bt facebook">Login with Facebook</a>
+				<a href="#0" class="social_bt google">Login with Google</a> -->
+				<!-- <div class="divider"><span>Or</span></div> -->
 				<div class="form-group">
 					<label>Email</label>
 					<input type="email" class="form-control" name="email" id="email">
@@ -86,12 +86,12 @@
 					<i class="ti-lock"></i>
 				</div>
 				<div class="clearfix add_bottom_15">
-					<div class="checkboxes float-left">
+					<!-- <div class="checkboxes float-left">
 						<label class="container_check">Remember me
 						  <input type="checkbox">
 						  <span class="checkmark"></span>
 						</label>
-					</div>
+					</div> -->
 					<div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
 				</div>
 				<div class="text-center">

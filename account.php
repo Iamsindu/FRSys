@@ -27,7 +27,10 @@
 		            		<input class="form-control" placeholder="Email Address">
 		            		<i class="icon_mail"></i>
 		            	</div>
-
+						<div class="form-group">
+		            		<input class="form-control" placeholder="Contact">
+		            		<i class="icon_phone"></i>
+		            	</div>
 		            	<div class="form-group add_bottom_15">
 		            		<input class="form-control" placeholder="Password" id="password_sign" name="password_sign">
 		            		<i class="icon_lock"></i>

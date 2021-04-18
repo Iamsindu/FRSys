@@ -1,5 +1,8 @@
 <?php
 	require_once 'layout/header.php';
+	require_once 'admin/class/common.class.php';
+	require_once 'admin/class/popular.class.php';
+	$popular = new popular;
 ?>
 	
 	<main>
@@ -10,11 +13,11 @@
 						<div class="col-xl-9 col-lg-10 col-md-8">
 							<h1>Discover &amp; Book</h1>
 							<p>The best restaurants at the best price</p>
-							<form method="post" action="grid-listings-filterscol.php">
+							<form method="post" action="restaurant.php">
 								<div class="row no-gutters custom-search-input">
 									<div class="col-lg-10">
 										<div class="form-group">
-											<input class="form-control" type="text" placeholder="What are you looking for...">
+											<input class="form-control" type="text" placeholder="What are you looking for..." name="search_query">
 											<i class="icon_search"></i>
 										</div>
 									</div>
@@ -25,7 +28,7 @@
 										</div>
 									</div> -->
 									<div class="col-lg-2">
-										<input type="submit" value="Search">
+										<input type="submit" value="Search" name ="submit">
 									</div>
 								</div>
 								<!-- /row -->
@@ -48,59 +51,51 @@
 				<!-- /main_title -->
 				<div class="owl-carousel owl-theme categories_carousel">
 					<div class="item">
-						<a href="#0">
-							<span>98</span>
-							<i class="icon-food_icon_pizza"></i>
-							<h3>Pizza - Italian</h3>
-							<small>Avg price $40</small>
+						<a href='restaurant.php?id=Coffee'>
+							<!-- <span>98</span> -->
+							<i class="icon-food_icon_coffee"></i>
+							<h3>Coffee</h3>
+							<!-- <small>Avg price $40</small> -->
 						</a>
 					</div>
 					<div class="item">
-						<a href="#0">
-							<span>87</span>
-							<i class="icon-food_icon_sushi"></i>
-							<h3>Japanese - Sushi</h3>
-							<small>Avg price $50</small>
+					<a href='restaurant.php?id=See Food'>
+							<!-- <span>87</span> -->
+							<i class="icon-food_icon_fish_2"></i>
+							<h3>See Food</h3>
+							<!-- <small>Avg price $50</small> -->
 						</a>
 					</div>
 					<div class="item">
-						<a href="#0">
-							<span>96</span>
+						<a href='restaurant.php?id=Burger'>
+							<!-- <span>96</span> -->
 							<i class="icon-food_icon_burgher"></i>
-							<h3>Burghers</h3>
-							<small>Avg price $55</small>
+							<h3>Burgers</h3>
+							<!-- <small>Avg price $55</small> -->
 						</a>
 					</div>
 					<div class="item">
-						<a href="#0">
-							<span>78</span>
+					<a href='restaurant.php?id=Vegetarian'>
+							<!-- <span>78</span> -->
 							<i class="icon-food_icon_vegetarian"></i>
 							<h3>Vegetarian</h3>
-							<small>Avg price $40</small>
+							<!-- <small>Avg price $40</small> -->
 						</a>
 					</div>
 					<div class="item">
-						<a href="#0">
-							<span>65</span>
+						<a href='restaurant.php?id=Bakery'>
+							<!-- <span>65</span> -->
 							<i class="icon-food_icon_cake_2"></i>
 							<h3>Bakery</h3>
-							<small>Avg price $60</small>
+							<!-- <small>Avg price $60</small> -->
 						</a>
 					</div>
 					<div class="item">
-						<a href="#0">
-							<span>65</span>
+						<a href='restaurant.php?id=Chinese'>
+							<!-- <span>65</span> -->
 							<i class="icon-food_icon_chinese"></i>
 							<h3>Chinese</h3>
-							<small>Avg price $40</small>
-						</a>
-					</div>
-					<div class="item">
-						<a href="#0">
-							<span>65</span>
-							<i class="icon-food_icon_burrito"></i>
-							<h3>Mexican</h3>
-							<small>Avg price $35</small>
+							<!-- <small>Avg price $40</small> -->
 						</a>
 					</div>
 				</div>
@@ -115,157 +110,42 @@
 				<span><em></em></span>
 				<h2>Popular Restaurants</h2>
 				<p>The most popular restaurants listed on our systems.</p>
-				<a href="#0">View All</a>
+				<!-- <a href="#0">View All</a> -->
 			</div>
 
 			<div class="owl-carousel owl-theme carousel_4">
+			<?php 
+                                               
+			  $data = $popular->selectpopular();
+			 foreach ($data as $value)
+			 {  ?>
 			    <div class="item">
 			        <div class="strip">
 			            <figure>
-			                <span class="ribbon off">-30%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_2.png" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.php" class="strip_info">
-			                    <small>Pizza</small>
+			                
+			                <img src="img/lazy-placeholder.png" data-src="<?php echo $value->photo; ?>" class="owl-lazy" alt="">
+			                <a href="detail-restaurant.php?id=<?php echo $value->popular_id; ?>" class="strip_info">
+			                    <small><?php echo $value->category ?></small>
 			                    <div class="item_title">
-			                        <h3>Da Alfredo</h3>
-			                        <small>27 Old Gloucester St</small>
+			                        <h3><?php echo $value->foodname ?></h3>
+			                        <small><?php echo $value->loaction ?></small>
 			                    </div>
 			                </a>
 			            </figure>
 			            <ul>
+							<?php if($value->o_c=="open"){?>
 			                <li><span class="loc_open">Now Open</span></li>
+							<?php } else { ?>
+								<li><span class="loc_closed">Closed</span></li>
+								<?php } ?>
 			                <li>
-			                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div>
+			                    <div class="score"><span style="top:-5px !important;">Rating</span><em></em><strong style="font-size:1.5rem !important;"><?php echo $value->rating; ?></strong></div>
 			                </li>
 			            </ul>
 			        </div>
 			    </div>
-			    <div class="item">
-			        <div class="strip">
-			            <figure>
-			                <span class="ribbon off">-40%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_3.png" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.php" class="strip_info">
-			                    <small>Burghers</small>
-			                    <div class="item_title">
-			                        <h3>Best Burghers</h3>
-			                        <small>27 Old Gloucester St</small>
-			                    </div>
-			                </a>
-			            </figure>
-			            <ul>
-			                <li><span class="loc_open">Now Open</span></li>
-			                <li>
-			                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.5</strong></div>
-			                </li>
-			            </ul>
-			        </div>
-			    </div>
-			    <div class="item">
-			        <div class="strip">
-			            <figure>
-			                <span class="ribbon off">-30%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_4.png" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.php" class="strip_info">
-			                    <small>Vegetarian</small>
-			                    <div class="item_title">
-			                        <h3>Vego Life</h3>
-			                        <small>27 Old Gloucester St</small>
-			                    </div>
-			                </a>
-			            </figure>
-			            <ul>
-			                <li><span class="loc_open">Now Open</span></li>
-			                <li>
-			                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>7.5</strong></div>
-			                </li>
-			            </ul>
-			        </div>
-			    </div>
-			    <div class="item">
-			        <div class="strip">
-			            <figure>
-			                <span class="ribbon off">-25%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_2.png" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.php" class="strip_info">
-			                    <small>Japanese</small>
-			                    <div class="item_title">
-			                        <h3>Sushi Temple</h3>
-			                        <small>27 Old Gloucester St</small>
-			                    </div>
-			                </a>
-			            </figure>
-			            <ul>
-			                <li><span class="loc_open">Now Open</span></li>
-			                <li>
-			                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>9.5</strong></div>
-			                </li>
-			            </ul>
-			        </div>
-			    </div>
-			    <div class="item">
-			        <div class="strip">
-			            <figure>
-			                <span class="ribbon off">-30%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_3.jpg" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.php" class="strip_info">
-			                    <small>Pizza</small>
-			                    <div class="item_title">
-			                        <h3>Auto Pizza</h3>
-			                        <small>27 Old Gloucester St</small>
-			                    </div>
-			                </a>
-			            </figure>
-			            <ul>
-			                <li><span class="loc_open">Now Open</span></li>
-			                <li>
-			                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>7.0</strong></div>
-			                </li>
-			            </ul>
-			        </div>
-			    </div>
-			    <div class="item">
-			        <div class="strip">
-			            <figure>
-			                <span class="ribbon off">-15%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_6.jpg" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.php" class="strip_info">
-			                    <small>Burghers</small>
-			                    <div class="item_title">
-			                        <h3>Alliance</h3>
-			                        <small>27 Old Gloucester St</small>
-			                    </div>
-			                </a>
-			            </figure>
-			            <ul>
-			                <li><span class="loc_open">Now Open</span></li>
-			                <li>
-			                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div>
-			                </li>
-			            </ul>
-			        </div>
-			    </div>
-			    <div class="item">
-			        <div class="strip">
-			            <figure>
-			                <span class="ribbon off">-30%</span>
-			                <img src="img/lazy-placeholder.png" data-src="img/location_7.jpg" class="owl-lazy" alt="">
-			                <a href="detail-restaurant.php" class="strip_info">
-			                    <small>Chinese</small>
-			                    <div class="item_title">
-			                        <h3>Alliance</h3>
-			                        <small>27 Old Gloucester St</small>
-			                    </div>
-			                </a>
-			            </figure>
-			            <ul>
-			                <li><span class="loc_closed">Now Closed</span></li>
-			                <li>
-			                    <div class="score"><span>Superb<em>350 Reviews</em></span><strong>8.9</strong></div>
-			                </li>
-			            </ul>
-			        </div>
-			    </div>
+				<?php } ?>
+			   
 			</div>
 			<!-- /carousel -->
 
@@ -294,22 +174,28 @@
 				<div class="col-md-6">
 					<div class="list_home">
 						<ul>
+						<?php 
+                                               
+							 $data = $popular->selectpopulars();
+							foreach ($data as $value)
+							 {  ?>
 							<li>
-								<a href="detail-restaurant.php">
+								<a href="detail-restaurant.php?id=<?php $value->popular_id; ?>">
 									<figure>
-										<img src="img/location_list_placeholder.png" data-src="img/location_list_1.jpg" alt="" class="lazy">
+										<img src="img/location_list_placeholder.png" data-src="<?php echo $value->photo; ?>" alt="" class="lazy">
 									</figure>
-									<div class="score"><strong>9.5</strong></div>
-									<em>Italian</em>
-									<h3>La Monnalisa</h3>
-									<small>8 Patriot Square E2 9NF</small>
+									<div class="score"><strong><?php echo $value->rating?></strong></div>
+									<em><?php echo $value->category?></em>
+									<h3><?php echo $value->foodname?></h3>
+									<small><?php echo $value->loaction?></small>
 									<ul>
-										<li><span class="ribbon off">-30%</span></li>
-										<li>Average price $35</li>
+										<!-- <li><span class="ribbon off">-30%</span></li>
+										<li>Average price $35</li> -->
 									</ul>
 								</a>
 							</li>
-							<li>
+							<?php } ?>
+							<!-- <li>
 								<a href="detail-restaurant.php">
 									<figure>
 										<img src="img/location_list_placeholder.png" data-src="img/location_list_2.jpg" alt="" class="lazy">
@@ -338,58 +224,35 @@
 										<li>Average price $20</li>
 									</ul>
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="list_home">
 						<ul>
-							<li>
-								<a href="detail-restaurant.php">
-									<figure>
-										<img src="img/location_list_placeholder.png" data-src="img/location_list_4.jpg" alt="" class="lazy">
-									</figure>
-									<div class="score"><strong>9.5</strong></div>
-									<em>Vegetarian</em>
-									<h3>Mr. Pepper</h3>
-									<small>27 Old Gloucester St, 4563</small>
-									<ul>
-										<li><span class="ribbon off">-30%</span></li>
-										<li>Average price $20</li>
-									</ul>
-								</a>
-							</li>
-							<li>
-								<a href="detail-restaurant.php">
-									<figure>
-										<img src="img/location_list_placeholder.png" data-src="img/location_list_5.jpg" alt="" class="lazy">
-									</figure>
-									<div class="score"><strong>8.0</strong></div>
-									<em>Chinese</em>
-									<h3>Dragon Tower</h3>
-									<small>22 Hertsmere Rd E14 4ED</small>
-									<ul>
-										<li><span class="ribbon off">-50%</span></li>
-										<li>Average price $35</li>
-									</ul>
-								</a>
-							</li>
-							<li>
-								<a href="detail-restaurant.php">
-									<figure>
-										<img src="img/location_list_placeholder.png" data-src="img/location_list_6.jpg" alt="" class="lazy">
-									</figure>
-									<div class="score"><strong>8.5</strong></div>
-									<em>Pizza - Italian</em>
-									<h3>Bella Napoli</h3>
-									<small>135 Newtownards Road BT4</small>
-									<ul>
-										<li><span class="ribbon off">-45%</span></li>
-										<li>Average price $25</li>
-									</ul>
-								</a>
-							</li>
+						<?php 
+                                               
+											   $data = $popular->selectpop();
+											  foreach ($data as $value)
+											   {  ?>
+											  <li>
+												  <a href="detail-restaurant.php?id=<?php $value->popular_id; ?>">
+													  <figure>
+														  <img src="img/location_list_placeholder.png" data-src="<?php echo $value->photo; ?>" alt="" class="lazy">
+													  </figure>
+													  <div class="score"><strong><?php echo $value->rating?></strong></div>
+													  <em><?php echo $value->category?></em>
+													  <h3><?php echo $value->foodname?></h3>
+													  <small><?php echo $value->loaction?></small>
+													  <ul>
+														  <!-- <li><span class="ribbon off">-30%</span></li>
+														  <li>Average price $35</li> -->
+													  </ul>
+												  </a>
+											  </li>
+											  <?php } ?>
+							
 						</ul>
 					</div>
 				</div>
