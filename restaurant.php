@@ -3,8 +3,9 @@
 	require_once 'admin/class/common.class.php';
 	require_once 'admin/class/top_search.class.php';
 	require_once 'admin/class/resturant.class.php';
+	require_once 'rating_list.php';
 	$rest = new resturant;
-	require_once("rating_list.php");
+	
 	$top = new total;
 	// If(isset($_POST['submit'])) {
 
@@ -17,6 +18,20 @@
 	// }
 	// echo $_GET['id'];
 ?>
+<style>
+	a.btn_1.gray,
+.btn_1.gray {
+  background: #f0f0f0 !important;
+  color: #111 !important ;
+  transition: all 0.3s ease-in-out !important;
+}
+
+a.btn_1.gray:hover,
+.btn_1.gray:hover {
+  background-color: #589442 !important;
+  color: #f0f0f0 !important ;
+}
+</style>
 
 	<main>
 		<div class="page_header element_to_stick">
@@ -60,20 +75,20 @@
 						<div class="filter_type">
 							<h4><a href="#filter_1" data-toggle="collapse" class="opened">Popular Search</a></h4>
 							<div class="collapse show" id="filter_1"> 
-								<ul>
+								
 								<?php 
 										$data = $top->total();
 										foreach ($data as $value)
 										{ ?>
-									<li>
+									
 								       
 									<label>
 											<div class="buttons">
-												<a href="#0" class="btn_1 "><?php echo $value->search; ?></a>
+												<a href="#0" class="btn_1 gray"><?php echo $value->search; ?></a>
 											</div>
 								        </label> 
 								        <!-- </label> -->
-								    </li>
+								    
 									<?php } ?> 
 								
 									 <!--<li>
@@ -86,7 +101,7 @@
 											</div>
 								        <!-- </label> 
 								    </li>-->
-								</ul>
+								
 							</div>
 								    <!-- <li>
 								        <label class="container_check">Japanese - Sushi <small>24</small>
@@ -125,41 +140,29 @@
 								        </label>
 								    </li>
 								</ul>
-							<!-- </div> -->
-						<!-- </div>
+							<!-- </div>
+						<!-- </div> -->
 						<div class="filter_type">
-							<h4><a href="#filter_2" data-toggle="collapse" class="closed">Rating</a></h4>
+							<h4><a href="#filter_2" data-toggle="collapse" class="closed">Top Rated Resturants</a></h4>
 							<div class="collapse" id="filter_2">
-								<ul>
-								    <li>
-								        <label class="container_check">Superb 9+ <small>06</small>
-								            <input type="checkbox">
-								            <span class="checkmark"></span>
-								        </label>
-								    </li>
-								    <li>
-								        <label class="container_check">Very Good 8+ <small>12</small>
-								            <input type="checkbox">
-								            <span class="checkmark"></span>
-								        </label>
-								    </li>
-								    <li>
-								        <label class="container_check">Good 7+ <small>17</small>
-								            <input type="checkbox">
-								            <span class="checkmark"></span>
-								        </label>
-								    </li>
-								    <li>
-								        <label class="container_check">Pleasant 6+ <small>43</small>
-								            <input type="checkbox">
-								            <span class="checkmark"></span>
-								        </label>
-								    </li>
-								</ul>
+							<?php 
+										$dat = $rest->topp();
+										foreach ($dat as $val)
+										{ ?>
+									
+								       
+									<label>
+											<div class="buttons">
+												<a href="#0" class="btn_1 gray"><?php echo $val->r_name; ?></a>
+											</div>
+								        </label> 
+								        <!-- </label> -->
+								    
+									<?php } ?> 
 							</div>
 						</div>
 						
-						<div class="filter_type">
+						<!--<div class="filter_type">
 							<h4><a href="#filter_3" data-toggle="collapse" class="closed">Distance</a></h4>
 							<div class="collapse" id="filter_3">
                                 <div class="distance"> Radius around selected destination <span></span> km</div>
@@ -209,279 +212,84 @@
 				<div class="col-lg-9">
 					<div class="row">
 						<?php
-						foreach ($re as $gift => $rating) {
+						foreach ($result as $gift => $rating) {
 							//print_r($gift);
 						 
-							$rest->r_id=$gift;
+							$rest->r_name=$gift;
 							$data = $rest->selectrest();
-						
+							foreach($data as $value)
+						{ 	$has1 = $top->check1($value->r_id,'burger');
+							$has2 = $top->check2($value->r_id,'yomari');
+						   if ($has2 || $has1)
+						   { ?>
+							<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+								<div class="strip">
+							    <figure>
+							    	<!-- <span class="ribbon off">-30%</span> -->
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-1.jpg" class="img-fluid lazy" alt="">
+							        <a href="detail-restaurant.php?id=<?php echo $value->r_id;?>" class="strip_info">
+							            <small><?php echo $value->category; ?></small>
+							            <div class="item_title">
+							                <h3><?php echo $value->r_name; ?></h3>
+							                <small><?php echo $value->location; ?></small>
+							            </div>
+							        </a>
+							    </figure>
+							    <ul>
+								<?php if($value->status=='OPEN') {?>
+							        <li><span class="take yes">Take away</span> <span class="deliv yes">Delivery</span></li>
+									<?php } else{ ?>
+										<li><span class="take yes">Take away</span> <span class="deliv no">Delivery</span></li>
+										<?php } ?>
+							        <li>
+							        	<div class="score"><strong><?php echo $value->rating*2; ?></strong></div>
+							        </li>
+							    </ul>
+								</div>
+							</div>
+						  <?php }
+						   else{ } }
+						   foreach($data as $value)
+						   { 	$has1 = $top->check1($value->r_id,'burger');
+							   $has2 = $top->check2($value->r_id,'yomari');
+							  if ($has2 || $has1)
+							  { } else{
+						  
 						 ?>
 						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 							<div class="strip">
 							    <figure>
 							    	<!-- <span class="ribbon off">-30%</span> -->
 							        <img src="img/lazy-placeholder.png" data-src="img/food/item-1.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Momo</small>
+							        <a href="detail-restaurant.php?id=<?php echo $value->r_id;?>" class="strip_info">
+							            <small><?php echo $value->category; ?></small>
 							            <div class="item_title">
-							                <h3>Hungry High</h3>
-							                <small>Tinukune Butwal</small>
+							                <h3><?php echo $value->r_name; ?></h3>
+							                <small><?php echo $value->location; ?></small>
 							            </div>
 							        </a>
 							    </figure>
 							    <ul>
+								<?php if($value->status=='OPEN') {?>
 							        <li><span class="take yes">Take away</span> <span class="deliv yes">Delivery</span></li>
+									<?php } else{ ?>
+										<li><span class="take yes">Take away</span> <span class="deliv no">Delivery</span></li>
+										<?php } ?>
 							        <li>
-							        	<div class="score"><strong>8.9</strong></div>
+							        	<div class="score"><strong><?php echo $value->rating*2; ?></strong></div>
 							        </li>
 							    </ul>
 							</div>
 						</div>
-						<?php } ?>
+						<?php } } }
+						
+								 ?>
 						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							    	<!-- <span class="ribbon off">-40%</span> -->
-							        <img src="img/lazy-placeholder.png" data-src="img/food/momo1.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-									<small>Momo</small>
-							            <!-- <small>Burghers</small> -->
-							            <div class="item_title">
-							                <h3>Daddy's Café</h3>
-							                <small>Devinagar Butwal</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							        <li><span class="take no">Take away</span> <span class="deliv yes">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>9.5</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
-						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/food/momo2.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-									<small>Momo</small>
-							            <!-- <small>Vegetarian</small> -->
-							            <div class="item_title">
-							                <h3>Momo Sansar</h3>
-							                <small>New Buspark Butwal</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							       <li><span class="take yes">Take away</span> <span class="deliv no">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>7.5</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
-						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							    	<!-- <span class="ribbon off">-25%</span> -->
-							        <img src="img/lazy-placeholder.png" data-src="img/food/item-4.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-									<small>Momo</small>
-							            <!-- <small>Japanese</small> -->
-							            <div class="item_title">
-							                <h3>Chautari Khanpin</h3>
-							                <small>Devinagar Butwal</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							         <li><span class="take no">Take away</span> <span class="deliv no">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>9.5</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
-						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							    	<!-- <span class="ribbon off">-30%</span> -->
-							        <img src="img/lazy-placeholder.png" data-src="img/food/momo4.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-									<small>Momo</small>
-							            <!-- <small>Pizza</small> -->
-							            <div class="item_title">
-							                <h3>Hide Out</h3>
-							                <small>Golpark Butwal</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							         <li><span class="take yes">Take away</span> <span class="deliv no">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>7.0</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
-						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/food/item-6.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-							            <!-- <small>Burghers</small> -->
-										<small>Momo</small>
-							            <div class="item_title">
-							                <h3>Lime & Lemon Café</h3>
-							                <small>Sukkhanagar Butwal</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							         <li><span class="take no">Take away</span> <span class="deliv yes">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>8.9</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
-						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							    	<!-- <span class="ribbon off">-30%</span> -->
-							        <img src="img/lazy-placeholder.png" data-src="img/food/item-13.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-							            <!-- <small>Chinese</small> -->
-							            <div class="item_title">
-							                <h3>Alliance</h3>
-							                <small>27 Old Gloucester St</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							        <li><span class="take no">Take away</span> <span class="deliv yes">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>8.9</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
-						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/food/item-12.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-							            <!-- <small>Sushi</small> -->
-							            <div class="item_title">
-							                <h3>Dragon Tower</h3>
-							                <small>27 Old Gloucester St</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							        <li><span class="take yes">Take away</span> <span class="deliv no">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>8.9</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
-						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/food/item-11.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-							            <small>Mexican</small>
-							            <div class="item_title">
-							                <h3>El Paso Tacos</h3>
-							                <small>27 Old Gloucester St</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							        <li><span class="take yes">Take away</span> <span class="deliv yes">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>8.9</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
-						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/food/item-10.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-							            <!-- <small>Bakery</small> -->
-							            <div class="item_title">
-							                <h3>Monnalisa</h3>
-							                <small>27 Old Gloucester St</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							        <li><span class="take yes">Take away</span> <span class="deliv yes">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>8.9</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
-						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							        <img src="img/lazy-placeholder.png" data-src="img/food/item-9.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-							            <!-- <small>Mexican</small> -->
-							            <div class="item_title">
-							                <h3>Guachamole</h3>
-							                <small>135 Newtownards Road</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							        <li><span class="take yes">Take away</span> <span class="deliv yes">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>8.9</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
-						<!-- /strip grid -->
-						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-							<div class="strip">
-							    <figure>
-							        <img data-src="img/food/item-8.jpg" class="img-fluid lazy" alt="">
-							        <a href="detail-restaurant.php" class="strip_info">
-							            <!-- <small>Chinese</small> -->
-							            <div class="item_title">
-							                <h3>Pechino Express</h3>
-							                <small>27 Old Gloucester St</small>
-							            </div>
-							        </a>
-							    </figure>
-							    <ul>
-							        <li><span class="take no">Take away</span> <span class="deliv yes">Delivery</span></li>
-							        <li>
-							        	<div class="score"><strong>8.9</strong></div>
-							        </li>
-							    </ul>
-							</div>
-						</div>
+						
 						<!-- /strip grid -->
 					</div>
 					<!-- /row -->
-					<div class="pagination_fg">
+					<!-- <div class="pagination_fg">
 					  <a href="#">&laquo;</a>
 					  <a href="#" class="active">1</a>
 					  <a href="#">2</a>
@@ -489,7 +297,7 @@
 					  <a href="#">4</a>
 					  <a href="#">5</a>
 					  <a href="#">&raquo;</a>
-					</div>
+					</div> -->
 				</div>
 				<!-- /col -->
 			</div>		

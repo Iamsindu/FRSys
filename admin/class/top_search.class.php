@@ -4,10 +4,21 @@
 	
 	class total extends common
 {
+	public $id;
+	public function check1($id,$val)
+	{
+		$sql="SELECT food_name from rest_food where r_id='$id' and category = '$val'";
+		return $this->select($sql);
+	}
+	public function check2($id,$val)
+	{
+		$sql="SELECT category from rest_food where r_id='$id' and category = '$val'";
+		return $this->select($sql);
+	}
 	
 	public function total()
 	{
-		$sql="SELECT search, COUNT(*) AS Repetition from search group by search order by Repetition DESC limit 7;";
+		$sql="SELECT search, COUNT(*) AS Repetition from search group by search order by Repetition DESC limit 10;";
 		return $this->select($sql);
 	}
 

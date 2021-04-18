@@ -34,6 +34,8 @@ class common{
 		}
 		return $data;
 	}
+	
+
 	function update($sql)
 	{
 		if($this->con->query($sql))

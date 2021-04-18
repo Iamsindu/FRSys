@@ -10,7 +10,17 @@ class resturant extends common
 	public $search;
 	public function selectrest()
 	{
-		$sql= "select * from rest where r_id='$this->r_id'";
+		$sql= "select * from rest where r_name='$this->r_name'";
+		return $this->select($sql);
+	}
+	public function topp()
+	{
+		$sql= "select * from rest order by rating Desc limit 6";
+		return $this->select($sql);
+	}
+	public function selectrestname()
+	{
+		$sql= "select r_name from rest where r_id='$this->r_id'";
 		return $this->select($sql);
 	}
 
