@@ -25,6 +25,7 @@
     <!-- BASE CSS -->
     <link href="css/bootstrap_customized.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+	<link href="css/icon.css" rel="stylesheet">
 
     <!-- SPECIFIC CSS -->
 	<link href="css/home.css" rel="stylesheet">
@@ -50,22 +51,8 @@
 		</div>
 		<ul id="top_menu">
 			<!-- <li><a href="login.php" id="sign-in" class="login">Sign In</a></li> -->
-			<li class="list-inline-item dropdown notification-list">
-                <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="img/Profile/name2.jpg" alt="user" class="rounded-circle" width="128" height="128">
-                  </a>
-               <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                                    <!-- item-->
-                  <div class="dropdown-item noti-title">
-                 <h5>Welcome</h5>
-                 </div>
-                                    
-                                    
-                 <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="logout.php"><i class="mdi mdi-logout m-r-5 text-muted"></i>
-                        Logout</a>
-                  </div>
-                </li>
+			
+			<!-- <li><a href="logout.php"   title="User" >User</a></li> -->
 			<li><a href="wishlist.php" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
 		</ul>
 		<!-- /top_menu -->
@@ -85,6 +72,7 @@
 				<li><a href="restaurant.php"> Restaurant </a></li>
 				<li><a href="blog.php"> Blog </a></li>
 				<li><a href="contacts.php"> Contact </a></li>
+				<li><a href="logout.php"> User </a></li>
 			</ul>
 		</nav>
 	</div>

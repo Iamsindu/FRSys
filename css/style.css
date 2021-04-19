@@ -2595,13 +2595,13 @@ ul#top_menu li a.wishlist_bt_top {
 @media (max-width: 991px) {
 
   ul#top_menu li a.login,
-  ul#top_menu li a.wishlist_bt_top {
+  ul#top_menu li a.wishlist_bt_top{
     top: 2px
   }
 }
 
 ul#top_menu li a.login:before,
-ul#top_menu li a.wishlist_bt_top:before {
+ul#top_menu li a.wishlist_bt_top:before{
   font-family: 'Glyphter';
   font-size: 21px;
   font-size: 1.3125rem;
@@ -2614,18 +2614,20 @@ ul#top_menu li a.wishlist_bt_top:before {
 }
 
 .sticky ul#top_menu li a.login:before,
-.sticky ul#top_menu li a.wishlist_bt_top:before {
+.sticky ul#top_menu li a.wishlist_bt_top:before{
   color: #444
 }
 
-ul#top_menu li a.wishlist_bt_top {
+ul#top_menu li a.wishlist_bt_top{
   text-indent: -9999px;
   overflow: hidden
 }
 
 ul#top_menu li a.wishlist_bt_top:before {
-  content: '\0043'
+  content: '\0041'
 }
+
+
 
 ul#top_menu li a.login {
   text-indent: -9999px;
