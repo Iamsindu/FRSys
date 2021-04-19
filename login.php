@@ -160,6 +160,7 @@
                             </div>
                         </div>
 						</form>
+                            Don't have an account yet? Please <a href="account.php"> Register</a>
 
 		            </div>
 		            </div>

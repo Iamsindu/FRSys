@@ -19,7 +19,7 @@
 								<div class="row no-gutters custom-search-input">
 									<div class="col-lg-10">
 										<div class="form-group">
-											<input class="form-control" type="text" placeholder="What are you looking for..." name="search_query">
+											<input class="form-control" type="text" placeholder="What are you looking for..." name="search_query" required>
 											<i class="icon_search"></i>
 										</div>
 									</div>
@@ -130,7 +130,7 @@
 			                    <small><?php echo $value->category ?></small>
 			                    <div class="item_title">
 			                        <h3><?php echo $value->foodname ?></h3>
-			                        <small><?php echo $value->loaction ?></small>
+			                        <small><?php echo $value->location ?></small>
 			                    </div>
 			                </a>
 			            </figure>
@@ -155,8 +155,8 @@
 				<div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.2)">
 					<div>
 						<small>foogra</small>
-						<h3>More than 3000 Restaurants</h3>
-						<p>Book a table easly at the best price</p>
+						<h3>More than 1000 Restaurants</h3>
+						<p>Order foods easily from our restaurants.</p>
 						<a href="resturant.php" class="btn_1">View All</a>
 					</div>
 				</div>
