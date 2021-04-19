@@ -120,35 +120,48 @@
 						<a href="#" class="social_bt google">Sign up with Google</a>
 						<div class="divider"><span>Or</span></div> -->
 		                <!-- <h6>Personal details</h6> -->
-						<form method="POST">
+						<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 		                <div class="form-group">
-		            		<input class="form-control" type="text" placeholder="Name" name="name">
-		            			<!-- <i class="icon_pencil"></i> -->
+						<input type="text" name="name" value="<?php echo $name;?>"
+                                         class="form-control" placeholder="Name" />
+                            <span class="error"> <?php echo $err[1];?></span>
 		            	</div>
 
 						<div class="form-group">
-		            		<input class="form-control" type="email" placeholder="Email Address" name="email_id">
+							<input type="email" name="email_id" value="<?php echo $email_id; ?>"
+                                         class="form-control" placeholder="Enter email" />
+                            <span class="error"> <?php echo $err[3];?></span>
 		            		<!-- <i class="icon_mail"></i> -->
 		            	</div>
 
 						<div class="form-group">
-		            		<input class="form-control" type="text" placeholder="Username" name="username">
+							<input type="text" name="username" value="<?php echo $username;?>"
+                                         class="form-control" placeholder="Username" />
+                            <span class="error"> <?php echo $err[2];?></span>
 		            			<!-- <i class="icon_pencil"></i> -->
 		            	</div>
 
 						<div class="form-group">
-		            		<input class="form-control" type="number" placeholder="Contact" name="phone_no">
+							<input type="number" name="phone_no" value="<?php echo $phone_no;?>"
+                                         class="form-control" placeholder="Contact" />
+                            <span class="error"> <?php echo $err[4];?></span>
 		            		<!-- <i class="icon_phone"></i> -->
 		            	</div>
 		            	<div class="form-group add_bottom_15">
-		            		<input class="form-control" type="password" placeholder="Password" id="password_sign" name="password">
+							<input type="password" id="pass2" name="password" value="<?php echo $password;?>"
+                                    class="form-control" placeholder="Password" />
+                            <span class="error"> <?php echo $err[5];?></span>
 		            		<!-- <i class="icon_lock"></i> -->
 		            	</div>
 						<div class="form-group add_bottom_15">
-		            		<input class="form-control" type="text" placeholder="City" name="city">
+						<input type="text" name="city" value="<?php echo $city;?>"
+                                         class="form-control" placeholder="City" />
+                            <span class="error"> <?php echo $err[6];?></span>
 		            	</div>
 						<div class="form-group add_bottom_15">
-		            		<input class="form-control" type="text" placeholder="Street" name="street">
+		            	<input type="text" name="street" value="<?php echo $street;?>"
+                                         class="form-control" placeholder="Street" />
+                            <span class="error"> <?php echo $err[7];?></span>
 		            	</div>
 						
 						<div class="form-group text-center row m-t-20">

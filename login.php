@@ -87,7 +87,7 @@
 		        	<div class="sign_up">
 		                <div class="head">
 		                    <div class="title">
-		                    <h3>Sign Up</h3>
+		                    <h3>Sign In</h3>
 		                </div>
 		            </div>
 
@@ -96,27 +96,27 @@
 						<a href="#" class="social_bt google">Sign up with Google</a>
 						<div class="divider"><span>Or</span></div> -->
 		                <!-- <h6>Personal details</h6> -->
-		                <div class="form-group">
+		                <!-- <div class="form-group">
 		            		<input class="form-control" placeholder="First and Last Name" name="name">
 		            			<i class="icon_pencil"></i>
-		            	</div>
+		            	</div> -->
 
 		            	<div class="form-group">
-		            		<input class="form-control" placeholder="Email Address" name="email_id">
-		            		<i class="icon_mail"></i>
+		            		<input class="form-control" placeholder="Username" name="username">
+		            		<i class="icon_pencil"></i>
 		            	</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 		            		<input class="form-control" placeholder="Contact" name="phone_no">
 		            		<i class="icon_phone"></i>
-		            	</div>
+		            	</div> -->
 		            	<div class="form-group add_bottom_15">
-		            		<input class="form-control" placeholder="Password" id="password_sign" name="password">
+		            		<input class="form-control" placeholder="Password" name="password">
 		            		<i class="icon_lock"></i>
 		            	</div>
 						
 						<div class="form-group text-center row m-t-20">
                             <div class="col-12">
-                                <input class="btn_1 full-width mb_5" type="submit" name="signup" value="Sign Up Now" >
+                                <input class="btn_1 full-width mb_5" type="submit" name="signup" value="Log In Now" >
                             </div>
                         </div>
 
