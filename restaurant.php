@@ -250,7 +250,7 @@ a.btn_1.gray:hover,
 								<div class="strip">
 							    <figure>
 							    	<!-- <span class="ribbon off">-30%</span> -->
-							        <img src="img/lazy-placeholder.png" data-src="img/food/item-1.jpg" class="img-fluid lazy" alt="">
+							        <img src="img/lazy-placeholder.png" data-src="<?php echo $value->photo;?>" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php?id=<?php echo $value->r_id;?>" class="strip_info">
 							            <small><?php echo $value->category; ?></small>
 							            <div class="item_title">
