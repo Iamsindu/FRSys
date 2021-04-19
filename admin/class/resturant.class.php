@@ -8,6 +8,23 @@ class resturant extends common
 	public $rowner_id, $admin_id;
 	public $r_id, $r_name, $category, $location, $rating;
 	public $search;
+	public function selectrestbyid()
+	{
+		$sql= "select * from rest where r_id='$this->r_id'";
+		return $this->select($sql);
+	}
+
+	public function selectrestbycategory()
+	{
+		$sql= "select category from rest_food where r_id='$this->r_id'";
+		return $this->select($sql);
+	}
+	public function selectre()
+	{
+		$sql= "select * from rest_food where r_id='$this->r_id'and category='$this->category'";
+		return $this->select($sql);
+	}
+
 	public function selectrest()
 	{
 		$sql= "select * from rest where r_name='$this->r_name'";
