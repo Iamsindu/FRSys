@@ -1,3 +1,7 @@
+<?PHP
+	require_once 'layout/sessions.php';
+	sessionhelper::checklogin();
+?>
 <?php
 	require_once 'layout/next_header.php';
 	require_once 'admin/class/common.class.php';
@@ -9,12 +13,11 @@
 	$top = new total;
 	If(isset($_POST['submit'])) {
 
-	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 		$search= $_POST['search_query'];
 			
 	
-		}
+		
 	 }
 	//  $search = "pizza";
 	 if(isset($_GET['submit'])){

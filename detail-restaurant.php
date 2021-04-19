@@ -1,3 +1,7 @@
+<?PHP
+	require_once 'layout/sessions.php';
+	sessionhelper::checklogin();
+?>
 <?php
 	require_once 'layout/next_header.php';
 	

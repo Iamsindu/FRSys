@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,8 +49,10 @@
 			</a>
 		</div>
 		<ul id="top_menu">
-			<li><a href="#sign-in-dialog" id="sign-in" class="login">Sign In</a></li>
-			<li><a href="wishlist.php" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+		<?php if(!isset($_SESSION['users']))
+		{?>
+			<li><a href="login.php" id="sign-in" class="login">Sign In</a></li>
+		<?php } ?>
 		</ul>
 		<!-- /top_menu -->
 		
@@ -68,6 +71,10 @@
 				<li><a href="restaurant.php"> Restaurant </a></li>
 				<li><a href="blog.php"> Blog </a></li>
 				<li><a href="contacts.php"> Contact </a></li>
+				<?php if(isset($_SESSION['users']))
+		{?>
+			<li><a href="logout.php"> <?php echo $_SESSION['users']; ?> </a></li>
+		<?php } ?>
 			</ul>
 		</nav>
 	</div>

@@ -1,8 +1,10 @@
 <?php
+	
 	require_once 'layout/header.php';
 	require_once 'admin/class/common.class.php';
 	require_once 'admin/class/popular.class.php';
 	$popular = new popular;
+	
 ?>
 	
 	<main>
@@ -28,7 +30,7 @@
 										</div>
 									</div> -->
 									<div class="col-lg-2">
-										<input type="submit" value="Search" name ="submit">
+										<input type="submit" value="Search" name="submit">
 									</div>
 								</div>
 								<!-- /row -->
