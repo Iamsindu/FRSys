@@ -90,8 +90,7 @@
 		
 			$ask =$user->insertuser();
 			if($ask==1){
-				echo "<script> alert('Created user Successfully') </script>";
-				echo '<script> window.location="login.php" </script>';
+				echo '<script> window.location="confirm.php" </script>';
 			} else {
 				if($comp!=0) {
 					echo "<script> alert('Sorry! Failed to create user.') </script>";
