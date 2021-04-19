@@ -231,7 +231,40 @@ a.btn_1.gray:hover,
 			
 				<div class="col-lg-9">
 					<div class="row">
+						
 						<?php
+								foreach ($result as $gift => $rating) {
+						$rest->r_name=$gift;
+						  $data = $rest->toppp($search);
+						   foreach($data as $value)
+						   { 	
+						
+								 ?>
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+							<div class="strip">
+							    <figure>
+							    	<!-- <span class="ribbon off">-30%</span> -->
+							        <img src="img/lazy-placeholder.png" data-src="<?php echo $value->photo; ?>" class="img-fluid lazy" alt="">
+							        <a href="detail-restaurant.php?id=<?php echo $value->r_id;?>" class="strip_info">
+							            <small><?php echo $value->category; ?></small>
+							            <div class="item_title">
+							                <h3><?php echo $value->r_name; ?></h3>
+							                <small><?php echo $value->location; ?></small>
+							            </div>
+							        </a>
+							    </figure>
+							    <ul>
+								<?php if($value->status=='OPEN') {?>
+							        <li><span class="take yes">Take away</span> <span class="deliv yes">Delivery</span></li>
+									<?php } else{ ?>
+										<li><span class="take yes">Take away</span> <span class="deliv no">Delivery</span></li>
+										<?php } ?>
+							        <li>
+							        	<div class="score"><strong><?php echo $value->rating*2; ?></strong></div>
+							        </li>
+							    </ul>
+							</div>
+						</div><?php }}
 						foreach ($result as $gift => $rating) {
 							//print_r($gift);
 						 
@@ -271,7 +304,11 @@ a.btn_1.gray:hover,
 							    </ul>
 								</div>
 							</div>
-						  <?php  }} }
+							
+						<?php } }?>
+
+						  <?php  }
+						  
 						  foreach ($result as $gift => $rating) {
 							$rest->r_name=$gift;
 						  $data = $rest->selectrest();
@@ -286,7 +323,7 @@ a.btn_1.gray:hover,
 							<div class="strip">
 							    <figure>
 							    	<!-- <span class="ribbon off">-30%</span> -->
-							        <img src="img/lazy-placeholder.png" data-src="img/food/item-1.jpg" class="img-fluid lazy" alt="">
+							        <img src="img/lazy-placeholder.png" data-src="<?php echo $value->photo; ?>" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php?id=<?php echo $value->r_id;?>" class="strip_info">
 							            <small><?php echo $value->category; ?></small>
 							            <div class="item_title">
@@ -319,7 +356,7 @@ a.btn_1.gray:hover,
 							<div class="strip">
 							    <figure>
 							    	<!-- <span class="ribbon off">-30%</span> -->
-							        <img src="img/lazy-placeholder.png" data-src="img/food/item-1.jpg" class="img-fluid lazy" alt="">
+							        <img src="img/lazy-placeholder.png" data-src="<?php echo $value->photo; ?>" class="img-fluid lazy" alt="">
 							        <a href="detail-restaurant.php?id=<?php echo $value->r_id;?>" class="strip_info">
 							            <small><?php echo $value->category; ?></small>
 							            <div class="item_title">
