@@ -13,7 +13,11 @@ class resturant extends common
 		$sql= "select * from rest where r_id='$this->r_id'";
 		return $this->select($sql);
 	}
-
+	public function toppp($search)
+	{
+		$sql= "select * from rest where r_name='$this->r_name'and category='$search' order by rating desc limit 2";
+		return $this->select($sql);
+	}
 	public function selectrestbycategory()
 	{
 		$sql= "select category from rest_food where r_id='$this->r_id'";
