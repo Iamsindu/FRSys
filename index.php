@@ -19,7 +19,7 @@
 								<div class="row no-gutters custom-search-input">
 									<div class="col-lg-10">
 										<div class="form-group">
-											<input class="form-control" type="text" placeholder="What are you looking for..." name="search_query" required>
+											<input class="form-control" type="text" placeholder="What are you looking for..." name="search_query">
 											<i class="icon_search"></i>
 										</div>
 									</div>
@@ -130,7 +130,7 @@
 			                    <small><?php echo $value->category ?></small>
 			                    <div class="item_title">
 			                        <h3><?php echo $value->foodname ?></h3>
-			                        <small><?php echo $value->location ?></small>
+			                        <small><?php echo $value->loaction ?></small>
 			                    </div>
 			                </a>
 			            </figure>
@@ -155,8 +155,8 @@
 				<div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.2)">
 					<div>
 						<small>foogra</small>
-						<h3>More than 1000 Restaurants</h3>
-						<p>Order foods easily from our restaurants.</p>
+						<h3>More than 3000 Restaurants</h3>
+						<p>Order food from our restaurants easly at the best price</p>
 						<a href="resturant.php" class="btn_1">View All</a>
 					</div>
 				</div>
@@ -168,8 +168,7 @@
 				<div class="col-12">
 					<div class="main_title version_2">
 						<span><em></em></span>
-						<h2>Our Very Best Deals</h2>
-						<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+						<h2>Our Best Deals</h2>
 						<a href="#0">View All</a>
 					</div>
 				</div>
@@ -197,36 +196,6 @@
 								</a>
 							</li>
 							<?php } ?>
-							<!-- <li>
-								<a href="detail-restaurant.php">
-									<figure>
-										<img src="img/location_list_placeholder.png" data-src="img/location_list_2.jpg" alt="" class="lazy">
-									</figure>
-									<div class="score"><strong>8.0</strong></div>
-									<em>Mexican</em>
-									<h3>Alliance</h3>
-									<small>27 Old Gloucester St, 4563</small>
-									<ul>
-										<li><span class="ribbon off">-40%</span></li>
-										<li>Average price $30</li>
-									</ul>
-								</a>
-							</li>
-							<li>
-								<a href="detail-restaurant.php">
-									<figure>
-										<img src="img/location_list_placeholder.png" data-src="img/location_list_3.jpg" alt="" class="lazy">
-									</figure>
-									<div class="score"><strong>9.0</strong></div>
-									<em>Sushi - Japanese</em>
-									<h3>Sushi Gold</h3>
-									<small>Old Shire Ln EN9 3RX</small>
-									<ul>
-										<li><span class="ribbon off">-25%</span></li>
-										<li>Average price $20</li>
-									</ul>
-								</a>
-							</li> -->
 						</ul>
 					</div>
 				</div>
