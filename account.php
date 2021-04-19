@@ -1,10 +1,10 @@
 <?php
 	require_once 'layout/next_header.php';
-	require_once '../class/common.class.php';
-	require_once '../class/user.class.php'
+	require_once 'admin/class/common.class.php';
+	require_once 'admin/class/user.class.php';
     
-	$name = $password = $email_id = $phone_no = "";
-	$user =new user;
+	
+	$user =new users;
 	$err[1]=$err[2]=$err[3]=$err[4]="";
 
 	function test_input($info) {
