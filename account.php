@@ -3,7 +3,7 @@
 	require_once 'admin/class/common.class.php';
 	require_once 'admin/class/user.class.php';
     
-	
+	$name = $password = $email_id = $phone_no = "";
 	$user =new users;
 	$err[1]=$err[2]=$err[3]=$err[4]="";
 
@@ -21,7 +21,7 @@
 			if (empty($_POST["name"])) {
 				$err[1] = "Name is required";
 			} else {
-				$username = test_input($_POST["username"]);
+				$username = test_input($_POST["name"]);
 				if (!preg_match("/^[a-zA-Z]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/",$name)) {
 					$err[1] = "Must begin with letters and only _,- and letters are allowed";
 				}
@@ -67,11 +67,11 @@
 		
 			$ask =$user->insertuser();
 			if($ask==1){
-				echo "<script> alert('Inserted user Successfully') </script>";
+				echo "<script> alert('Created user Successfully') </script>";
 				echo '<script> window.location="confirm.php" </script>';
 			} else {
 				if($comp!=0) {
-					echo "<script> alert('Sorry! Failed to insert user.') </script>";
+					echo "<script> alert('Sorry! Failed to create user.') </script>";
 				} else {
 					echo "<script> alert('Duplicate user value. Please insert unique user!') </script>";
 				}
@@ -116,7 +116,7 @@
 						
 						<div class="form-group text-center row m-t-20">
                             <div class="col-12">
-                                <button class="btn_1 full-width mb_5" type="submit" name="signup">Sign up Now</button>
+                                <input class="btn_1 full-width mb_5" type="submit" name="signup" value="Sign Up Now" >
                             </div>
                         </div>
 
