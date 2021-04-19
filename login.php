@@ -41,7 +41,7 @@
               {
                 sessionhelper::set('users',$users->username);
                 
-                 echo "<script> window.location='confirm.php' </script>";
+                 echo "<script> window.location='index.php' </script>";
                 
               } 
              else
