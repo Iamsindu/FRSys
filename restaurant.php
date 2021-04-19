@@ -16,6 +16,19 @@
 	
 		}
 	 }
+	//  $search = "pizza";
+	 if(isset($_GET['submit'])){
+		
+			$search = $_GET['query'];
+		
+	 }
+	 else
+	 {	
+		if($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$search = $_GET['id'];
+		}
+	 }
+	 
 	 //$_GET['id'];
 ?>
 <style>
@@ -47,14 +60,16 @@ a.btn_1.gray:hover,
 		       	 		</div>
 		        		<h1>Search For "<?php echo $search; ?>"</h1>
 		    		</div>
-					<form method="GET" action ="">
+					
 		    		<div class="col-xl-4 col-lg-5 col-md-5">
 		    			<div class="search_bar_list">
-							<input type="text" class="form-control" placeholder="Search again..." value="Momo">
-							<input type="submit" value="Search">
+						<form method="GET" action ="">
+							<input type="text" class="form-control" name="query" placeholder="Search again..." value="<?php echo $search; ?>">
+							<input type="submit" value="Search" name="submit">
+							</form>
 						</div>
 		    		</div>
-					</form>
+					
 		    	</div>
 		    	<!-- /row -->		       
 		    </div>
@@ -222,8 +237,8 @@ a.btn_1.gray:hover,
 							$data = $rest->selectrest();
 
 							foreach($data as $value)
-						{ 	$has1 = $top->check1($value->r_id,'burger');
-							$has2 = $top->check2($value->r_id,'yomari');
+						{ 	$has1 = $top->check1($value->r_id,$search);
+							$has2 = $top->check2($value->r_id,$search);
 						   if ($has2 || $has1)
 						   { 
 
@@ -258,8 +273,8 @@ a.btn_1.gray:hover,
 							$rest->r_name=$gift;
 						  $data = $rest->selectrest();
 						   foreach($data as $value)
-						   { 	$has1 = $top->check1($value->r_id,'burger');
-							   $has2 = $top->check2($value->r_id,'yomari');
+						   { 	$has1 = $top->check1($value->r_id,$search);
+							   $has2 = $top->check2($value->r_id,$search);
 							  if ($has2 || $has1)
 							  { } else{
 						  
