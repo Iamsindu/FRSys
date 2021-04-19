@@ -7,16 +7,16 @@
 	$rest = new resturant;
 	
 	$top = new total;
-	// If(isset($_POST['submit'])) {
+	If(isset($_POST['submit'])) {
 
-	// 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
-	// 		echo $_POST['search_query'];
-	// 		echo "<br>";
+		$search= $_POST['search_query'];
+			
 	
-	// 	}
-	// }
-	// echo $_GET['id'];
+		}
+	 }
+	 //$_GET['id'];
 ?>
 <style>
 	a.btn_1.gray,
@@ -45,14 +45,16 @@ a.btn_1.gray:hover,
 				                <li>Page active</li>
 				            </ul>
 		       	 		</div>
-		        		<h1>Search For "Momo"</h1>
+		        		<h1>Search For "<?php echo $search; ?>"</h1>
 		    		</div>
+					<form method="GET" action ="">
 		    		<div class="col-xl-4 col-lg-5 col-md-5">
 		    			<div class="search_bar_list">
 							<input type="text" class="form-control" placeholder="Search again..." value="Momo">
 							<input type="submit" value="Search">
 						</div>
 		    		</div>
+					</form>
 		    	</div>
 		    	<!-- /row -->		       
 		    </div>
@@ -216,12 +218,16 @@ a.btn_1.gray:hover,
 							//print_r($gift);
 						 
 							$rest->r_name=$gift;
+							//$rest->category='yomari';
 							$data = $rest->selectrest();
+
 							foreach($data as $value)
 						{ 	$has1 = $top->check1($value->r_id,'burger');
 							$has2 = $top->check2($value->r_id,'yomari');
 						   if ($has2 || $has1)
-						   { ?>
+						   { 
+
+						    ?>
 							<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
 								<div class="strip">
 							    <figure>
@@ -247,8 +253,10 @@ a.btn_1.gray:hover,
 							    </ul>
 								</div>
 							</div>
-						  <?php }
-						   else{ } }
+						  <?php  }} }
+						  foreach ($result as $gift => $rating) {
+							$rest->r_name=$gift;
+						  $data = $rest->selectrest();
 						   foreach($data as $value)
 						   { 	$has1 = $top->check1($value->r_id,'burger');
 							   $has2 = $top->check2($value->r_id,'yomari');
@@ -282,8 +290,39 @@ a.btn_1.gray:hover,
 							</div>
 						</div>
 						<?php } } }
+						foreach ($result as $gift => $rating) {
+						$rest->r_name=$gift;
+						  $data = $rest->toprest();
+						   foreach($data as $value)
+						   { 	
 						
 								 ?>
+						<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+							<div class="strip">
+							    <figure>
+							    	<!-- <span class="ribbon off">-30%</span> -->
+							        <img src="img/lazy-placeholder.png" data-src="img/food/item-1.jpg" class="img-fluid lazy" alt="">
+							        <a href="detail-restaurant.php?id=<?php echo $value->r_id;?>" class="strip_info">
+							            <small><?php echo $value->category; ?></small>
+							            <div class="item_title">
+							                <h3><?php echo $value->r_name; ?></h3>
+							                <small><?php echo $value->location; ?></small>
+							            </div>
+							        </a>
+							    </figure>
+							    <ul>
+								<?php if($value->status=='OPEN') {?>
+							        <li><span class="take yes">Take away</span> <span class="deliv yes">Delivery</span></li>
+									<?php } else{ ?>
+										<li><span class="take yes">Take away</span> <span class="deliv no">Delivery</span></li>
+										<?php } ?>
+							        <li>
+							        	<div class="score"><strong><?php echo $value->rating*2; ?></strong></div>
+							        </li>
+							    </ul>
+							</div>
+						</div>
+						<?php } }?>
 						<!-- /strip grid -->
 						
 						<!-- /strip grid -->

@@ -13,6 +13,12 @@ class resturant extends common
 		$sql= "select * from rest where r_name='$this->r_name'";
 		return $this->select($sql);
 	}
+	public function toprest()
+	{
+		$sql= "select * from rest where r_name='$this->r_name' order by rating desc limit 5";
+		return $this->select($sql);
+	}
+
 	public function topp()
 	{
 		$sql= "select * from rest order by rating Desc limit 6";
