@@ -8,7 +8,7 @@
 	require_once 'admin/class/common.class.php';
 	require_once 'admin/class/resturant.class.php';
 	$resturant = new resturant;
-	$resturant->r_id=1;
+	$resturant->r_id=$_GET['id'];
 	
 ?>
 	

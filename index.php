@@ -130,7 +130,7 @@
 			                    <small><?php echo $value->category ?></small>
 			                    <div class="item_title">
 			                        <h3><?php echo $value->foodname ?></h3>
-			                        <small><?php echo $value->location ?></small>
+			                        <small><?php echo $value->loaction ?></small>
 			                    </div>
 			                </a>
 			            </figure>
