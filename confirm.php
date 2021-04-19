@@ -1,7 +1,8 @@
 <?php
 	require_once 'layout/next_header.php';
+
 ?>
-	
+	<meta http-equiv="refresh" content="0.5; URL=index.php">
 	<main class="bg_gray pattern">
 		
 		<div class="container margin_60_40">
@@ -10,8 +11,8 @@
 		        	<div class="box_booking_2">
 		                <div class="head">
 		                    <div class="title">
-		                    <h3>Pizzeria da Alfredo</h3>
-		                    27 Old Gloucester St, 4530 - <a href="https://www.google.com/maps/dir//Assistance+%E2%80%93+H%C3%B4pitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/data=!4m15!1m6!3m5!1s0x47e66e1de36f4147:0xb6615b4092e0351f!2sAssistance+Publique+-+H%C3%B4pitaux+de+Paris+(AP-HP)+-+Si%C3%A8ge!8m2!3d48.8568376!4d2.3504305!4m7!1m0!1m5!1m1!1s0x47e67031f8c20147:0xa6a9af76b1e2d899!2m2!1d2.3504327!2d48.8568361" target="blank">Get directions</a>
+		                    <h3>Thank You</h3>
+		                   
 		                </div>
 		                </div>
 		                <!-- /head -->
@@ -25,8 +26,8 @@
 										</g>
 									</svg>
 								</div>
-								<h3>Booking Confirmed!</h3>
-								<p>Sit an meis aliquam, cetero inermis.</p>
+								<h3>Account Registered!</h3>
+								<p></p>
 							</div>
 		                </div>
 		            </div>
