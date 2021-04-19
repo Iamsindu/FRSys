@@ -90,7 +90,10 @@
 		
 			$ask =$user->insertuser();
 			if($ask==1){
+<<<<<<< HEAD
 				echo "<script> alert('Created user Successfully') </script>";
+=======
+>>>>>>> 34d4c5260d98ff701ce1c0043b7d334ec65803ed
 				echo '<script> window.location="confirm.php" </script>';
 			} else {
 				if($comp!=0) {

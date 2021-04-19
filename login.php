@@ -1,5 +1,5 @@
 <?php 
-		require_once 'layout/next_header.php';
+	require_once 'layout/next_header.php';
     require_once 'admin/class/common.class.php';
     require_once 'admin/class/user.class.php';
     require_once 'admin/class/session.class.php';
