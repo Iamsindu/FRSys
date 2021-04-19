@@ -28,7 +28,7 @@
 			}
 
 			if (empty($_POST["username"])) {
-				$err[2] = "UserName is required";
+				$err[2] = "Username is required";
 			} else {
 				$username = test_input($_POST["username"]);
 				if (!preg_match("/^[a-zA-Z]+([a-zA-Z0-9](_|-| )[a-zA-Z0-9])*[a-zA-Z0-9]+$/",$username)) {
@@ -91,7 +91,7 @@
 			$ask =$user->insertuser();
 			if($ask==1){
 				echo "<script> alert('Created user Successfully') </script>";
-				echo '<script> window.location="confirm.php" </script>';
+				echo '<script> window.location="login.php" </script>';
 			} else {
 				if($comp!=0) {
 					echo "<script> alert('Sorry! Failed to create user.') </script>";
