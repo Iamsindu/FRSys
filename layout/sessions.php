@@ -21,9 +21,9 @@ class sessionhelper
 	static function checklogin()
 	{
 		self::init();
-		if(!isset($_SESSION['admin']))
+		if(!isset($_SESSION['users']))
 		{
-			header('location:index.php');
+			header('location:login.php');
 		}
 		
 		// else if(!isset($_SESSION['editor']))

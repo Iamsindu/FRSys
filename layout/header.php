@@ -1,3 +1,4 @@
+<?php require_once 'sessions.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,10 +51,14 @@
 			</a>
 		</div>
 		<ul id="top_menu">
-			<!-- <li><a href="login.php" id="sign-in" class="login">Sign In</a></li> -->
+		<?php if(!isset($_SESSION['users']))
+		{?>
+			<li><a href="login.php"  class="login">Sign In</a></li>
+		<?php } ?>
+			<!--  -->
 			
 			<!-- <li><a href="logout.php"   title="User" >User</a></li> -->
-			<li><a href="wishlist.php" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+			<!-- <li><a href="wishlist.php" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
 		</ul>
 		<!-- /top_menu -->
 
@@ -72,7 +77,11 @@
 				<li><a href="restaurant.php"> Restaurant </a></li>
 				<li><a href="blog.php"> Blog </a></li>
 				<li><a href="contacts.php"> Contact </a></li>
-				<li><a href="logout.php"> User </a></li>
+				<?php if(isset($_SESSION['users']))
+		{?>
+			<li><a href="logout.php"> <?php echo $_SESSION['users']; ?> </a></li>
+		<?php } ?>
+				
 			</ul>
 		</nav>
 	</div>
