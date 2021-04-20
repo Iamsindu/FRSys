@@ -29,7 +29,7 @@ class food extends common
  	public function insertfood()
  	{
 
-		$sql ="insert into food(fname,dsc,vg_nvg,date)values('$this->fname','$this->dsc','$this->vg_nvg','$this->date')";
+		$sql ="insert into food(fname,dsc,vg_nvg)values('$this->fname','$this->dsc','$this->vg_nvg')";
  		return $this->insert($sql);
  	}
 
@@ -92,20 +92,20 @@ class food extends common
 
 	public function select_restaurantfood_byid()
  	{
- 		$sql = "select * from rest_food where rest_id = '$this->rest_id' ";
+ 		$sql = "select * from rfood where rest_id = '$this->rest_id' ";
  		return $this->select($sql);
  	}
 
  	public function insert_restfood()
  	{
 
-		$sql ="insert into rest_food(food_id,rest_id)values('$this->food_id','$this->rest_id')";
+		$sql ="insert into rfood(food_id,rest_id)values('$this->food_id','$this->rest_id')";
  		return $this->insert($sql);
  	}
 
  	public function delete_restfood()
  	{
- 		$sql = "delete from rest_food where food_id = '$this->food_id' ";
+ 		$sql = "delete from rfood where food_id = '$this->food_id' ";
  		return $this->delete($sql);
  	}
 
