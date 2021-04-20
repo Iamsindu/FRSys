@@ -5,7 +5,7 @@
         require_once 'layout/header.php';
         $resturant=new resturant;
         $category =  new category;
-        $resturant->rest_id=3;
+        $resturant->rest_id=2;
 ?>
                     <!-- Top Bar End -->
 

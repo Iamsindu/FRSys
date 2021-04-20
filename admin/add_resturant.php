@@ -69,11 +69,11 @@
                 $delivery = test_input($_POST["delivery"]);
             }
 
-            if (empty($_POST["takeaway"])) {
-                $err[7] = "Take Away option must be entered.";
-            } else {
-                $takeaway = test_input($_POST["takeaway"]);
-            }
+            // if (empty($_POST["takeaway"])) {
+            //     $err[7] = "Take Away option must be entered.";
+            // } else {
+            //     $takeaway = test_input($_POST["takeaway"]);
+            // }
 
             if (empty($_POST["dsc"])) {
                 $err[8] = "Description must be entered.";
@@ -84,14 +84,13 @@
         }
 
 	
-		if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="" && $err[5]=="" && $err[6] == "" && $err[7]=="")  {
+		if($err[1]=="" && $err[2]=="" && $err[3]=="" &&  $err[4]=="" && $err[5]=="" && $err[6] == "" && $err[8]=="")  {
             
             $resturant->rest_name=$rest_name;
             $resturant->email_id=$email_id;
             $resturant->phone_no=$phone_no;
             $resturant->status=$status;
             $resturant->delivery=$delivery;
-            $resturant->takeaway=$takeaway;
             $open_time=date_create($open_time);
             $close_time=date_create($close_time);
             $resturant->open_time=date_format($open_time,"H:i:s");
@@ -198,7 +197,7 @@
                                  </select>
                                  <span class="error"> <?php echo $err[6]; ?> </span>
                              </div>
-                             <div class="form-group">
+                             <!-- <div class="form-group">
                                  <h6 class="text-muted fw-400">Takeaway</h6>
                                  <select class="select2 form-control custom-select" style="width: 100%; height:36px;"
                                      name="takeaway">
@@ -207,7 +206,7 @@
                                      <option value="2">No</option>
                                  </select>
                                  <span class="error"> <?php echo $err[7]; ?> </span>
-                             </div>
+                             </div> -->
                              <div class="form-group">
                                  <h6 class="text-muted fw-400">Description</h6>
                                  <div>

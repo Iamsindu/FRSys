@@ -60,7 +60,7 @@ class resturant extends common
 //////////////////// Restaurant database///////////////	
 	public function insertrestaurant()
 	{
-		$sql ="insert into restaurant(rest_name,phone_no,email_id,status,open_time,close_time,delivery,takeaway,dsc)values('$this->rest_name','$this->phone_no','$this->email_id','$this->status','$this->open_time','$this->close_time','$this->delivery', '$this->takeaway','$this->dsc')";
+		$sql ="insert into restaurant(rest_name,phone_no,email_id,status,open_time,close_time,delivery,dsc)values('$this->rest_name','$this->phone_no','$this->email_id','$this->status','$this->open_time','$this->close_time','$this->delivery','$this->dsc')";
 		return $this->insert($sql);
 	}
 
