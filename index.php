@@ -3,7 +3,17 @@
 	require_once 'layout/header.php';
 	require_once 'admin/class/common.class.php';
 	require_once 'admin/class/popular.class.php';
+	$err = "";
 	$popular = new popular;
+	$arr = array('momo','burger','choila','thukpa','kheer','yomari','bakery','sadeko','newari kaja','sukuti','taas','baji','aalu dam','jholmomo');
+	if(isset($_POST['submit'])){
+		if(in_array($_POST['search_query'],$arr)){
+			echo '<script> window.location.href = "restaurant.php?id='.$_POST['search_query'].'"; </script>';
+		}
+		else {
+			$err = "Oops! We could not understand what you mean, try rephrasing the query";
+		}
+	}
 	
 ?>
 	
@@ -15,12 +25,15 @@
 						<div class="col-xl-9 col-lg-10 col-md-8">
 							<h1>Discover &amp; Book</h1>
 							<p>The best restaurants at the best price</p>
-							<form method="post" action="restaurant.php">
+							<form method="post" action="">
 								<div class="row no-gutters custom-search-input">
 									<div class="col-lg-10">
 										<div class="form-group">
 											<input class="form-control" type="text" placeholder="What are you looking for..." name="search_query">
 											<i class="icon_search"></i>
+											<?php if(isset($err)){ ?>
+											<span class="error" style="color:red; "> <?php echo $err;?></span>
+											<?php } ?>
 										</div>
 									</div>
 									<!-- <div class="col-lg-6">

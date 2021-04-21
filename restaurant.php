@@ -11,14 +11,14 @@
 	$rest = new resturant;
 	
 	$top = new total;
-	If(isset($_POST['submit'])) {
+	// If(isset($_POST['submit'])) {
 
 	
-		$search= $_POST['search_query'];
+	// 	$search= $_POST['search_query'];
 			
 	
 		
-	 }
+	//  }
 	//  $search = "pizza";
 	 if(isset($_GET['submit'])){
 		

@@ -1,5 +1,5 @@
 <?php 
-class resturant extends common
+class searches extends common
 {
 	public $rest_id, $rest_name, $phone_no, $email_id, $status, $open_time, $close_time, $delivery,$takeaway,$dsc;
 	public $location_id, $city, $street;
@@ -18,9 +18,9 @@ class resturant extends common
 		$sql= "select * from rest where r_name='$this->r_name' order by rating desc limit 5";
 		return $this->select($sql);
 	}
-    public function insertrestaurant()
+    public function search()
 	{
-		$sql ="insert into restaurant(rest_name,phone_no,email_id,status,open_time,close_time,delivery,takeaway,dsc)values('$this->rest_name','$this->phone_no','$this->email_id','$this->status','$this->open_time','$this->close_time','$this->delivery', '$this->takeaway','$this->dsc')";
-		return $this->insert($sql);
+		$sql= "select search from search";
+		return $this->select($sql);
 	}
 }
