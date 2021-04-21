@@ -1,6 +1,10 @@
 <?php
      require_once 'class/session.class.php';
      sessionhelper::checklogin();
+     require_once 'class/common.class.php';
+    require_once 'class/admin.class.php';
+    $check = new admin;
+    $see = $check->checkrole($_SESSION['admin']);
  ?>
 <!DOCTYPE html>
 <html>
@@ -74,13 +78,16 @@
                         <li class="menu-title">Main</li>
 
                         <li>
-                            <a href="index.php" class="waves-effect">
+                            <a href="dashboard.php" class="waves-effect">
                                 <i class="mdi mdi-airplay"></i>
-                                <span> Dashboard <span
-                                        class="badge badge-pill badge-primary float-right">7</span></span>
+                                <span> Dashboard <!-- <span
+                                        class="badge badge-pill badge-primary float-right">7</span>--></span>
                             </a>
                         </li>
-
+                        <?php
+                               
+                               if($see[0]->role=='Admin'){
+                           ?>
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-circle"></i> <span>
                                     Admin </span> <span class="float-right"><i
@@ -92,14 +99,15 @@
                                     <li><a href="advanced-rangeslider.html">Range Slider</a></li> -->
                             </ul>
                         </li>
+                        <?php } ?>
 
-                        <li class="has_sub">
+                        <!-- <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user-o"></i> <span> User
                                 </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="show_user.php">Show User</a></li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li class="menu-title">Components</li>
 
@@ -108,9 +116,16 @@
                                     Restaurant </span> <span class="float-right"><i
                                         class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
+                            <?php
+                               
+                                if($see[0]->role=='Admin'){
+                            ?>
                                 <li><a href="add_resturant.php">Add Restaurant</a></li>
                                 <li><a href="show_resturant.php">Show Restaurant</a></li>
-                                <li><a href="show_resturant_users.php">Show Users Restaurant</a></li>
+                                <!-- <li><a href="show_resturant_users.php">Show Users Restaurant</a></li> -->
+                                <?php } else {?>
+                                    <li><a href="show_resturant_users.php">Show Users Restaurant</a></li> 
+                                    <?php } ?>
                             </ul>
                         </li>
 
@@ -126,19 +141,19 @@
                             </ul>
                         </li>
 
-                        <li class="has_sub">
+                        <!-- <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-menu"></i><span> Menu
                                 </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="add_menu.php">Add Menu</a></li>
                                 <li><a href="show_menu.php">Show Menu</a></li>
-                                <!-- <li><a href="charts-chartist.html">Chartist Chart</a></li>
+                                <li><a href="charts-chartist.html">Chartist Chart</a></li>
                                     <li><a href="charts-chartjs.html">Chartjs Chart</a></li>
                                     <li><a href="charts-flot.html">Flot Chart</a></li>
                                     <li><a href="charts-c3.html">C3 Chart</a></li>
-                                    <li><a href="charts-other.html">Jquery Knob Chart</a></li> -->
+                                    <li><a href="charts-other.html">Jquery Knob Chart</a></li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-pencil"></i> <span>
@@ -155,19 +170,19 @@
                             </ul>
                         </li>
 
-                        <li class="has_sub">
+                        <!-- <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-percent"></i><span>
                                     Discount </span> <span class="float-right"><i
                                         class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="add_discount.php">Add Discount</a></li>
                                 <li><a href="show_discount.php">Show Discount</a></li>
-                                <!-- <li><a href="tables-datatable.html">Data Table</a></li>
+                                <li><a href="tables-datatable.html">Data Table</a></li>
                                     <li><a href="tables-responsive.html">Responsive Table</a></li>
-                                    <li><a href="tables-editable.html">Editable Table</a></li> -->
+                                    <li><a href="tables-editable.html">Editable Table</a></li>
                             </ul>
-                        </li>
-                        <li class="has_sub">
+                        </li> -->
+                        <!-- <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-plus"></i><span>Add
                                     Items</span> <span class="float-right"><i
                                         class="mdi mdi-chevron-right"></i></span></a>
@@ -176,8 +191,8 @@
                                 <li><a href="add_special_item.php">Add Special Item</a></li>
 
                             </ul>
-                        </li>
-                        <li class="has_sub">
+                        </li> -->
+                        <!-- <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-table"></i><span> Bill
                                 </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
@@ -185,10 +200,10 @@
 
 
                             </ul>
-                        </li>
+                        </li> -->
 
 
-                        <li class="menu-title">Extra</li>
+                        <!-- <li class="menu-title">Extra</li>
 
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i
@@ -212,7 +227,7 @@
                                 <li><a href="pages-404.php">Error 404</a></li>
                                 <li><a href="pages-500.php">Error 500</a></li>
                             </ul>
-                        </li>
+                        </li> -->
 
                     </ul>
                 </div>
@@ -235,13 +250,13 @@
 
                         <ul class="list-inline float-right mb-0">
                             <!-- language-->
-                            <li class="list-inline-item dropdown notification-list hide-phone">
-                                <a class="nav-link dropdown-toggle arrow-none waves-effect text-white"
+                            <!-- <li class="list-inline-item dropdown notification-list hide-phone"> -->
+                                <!-- <a class="nav-link dropdown-toggle arrow-none waves-effect text-white"
                                     data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                                     aria-expanded="false">
                                     English <img src="assets/images/flags/us_flag.jpg" class="ml-2" height="16"
                                         alt="" />
-                                </a>
+                                </a> -->
                                 <!-- <div class="dropdown-menu dropdown-menu-right language-switch">
                                     <a class="dropdown-item" href="#"><img src="assets/images/flags/italy_flag.jpg"
                                             alt="" height="16" /><span> Italian </span></a>
@@ -252,7 +267,7 @@
                                     <a class="dropdown-item" href="#"><img src="assets/images/flags/russia_flag.jpg"
                                             alt="" height="16" /><span> Russian </span></a>
                                 </div> -->
-                            </li>
+                            <!-- </li> -->
                             <!-- <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown"
                                     href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -320,7 +335,7 @@
 
                         </ul>
 
-                        <ul class="list-inline menu-left mb-0">
+                        <!-- <ul class="list-inline menu-left mb-0">
                             <li class="float-left">
                                 <button class="button-menu-mobile open-left waves-light waves-effect">
                                     <i class="mdi mdi-menu"></i>
@@ -332,7 +347,7 @@
                                     <a href=""><i class="fa fa-search"></i></a>
                                 </form>
                             </li>
-                        </ul>
+                        </ul> -->
 
                         <div class="clearfix"></div>
 

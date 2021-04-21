@@ -12,5 +12,10 @@ class orders extends common
 		$sql ="insert into orders(rest_id, user_id, quantity, total_price, order_date)values('$this->rest_id', '$this->food_id', '$this->quantity', '$this->total_price', '$this->order_date')";
 		return $this->insert($sql);
 	}
+	public function count()
+	{
+		$sql= "select COUNT(*) as count from orders ";
+		return $this->select($sql);
+	}
 } 
 ?>

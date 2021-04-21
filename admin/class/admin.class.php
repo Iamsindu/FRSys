@@ -7,6 +7,11 @@ class admin extends common
 		$sql="select * from admin ";
 		return $this->select($sql);
 	}
+	public function checkrole($uname)
+	{
+		$sql="select role from admin where username='$uname'";
+		return $this->select($sql);
+	}
 
 	public function insertadmin()
 	{

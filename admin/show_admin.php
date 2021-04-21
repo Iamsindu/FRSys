@@ -59,7 +59,7 @@ $admin = new admin;
                             </thead>
                             <tbody>
                                 <?php 
-								$admin= new admin;
+								
 								$data = $admin->selectadmin();
 								$n=1;
 								foreach ($data as $value)

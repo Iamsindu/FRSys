@@ -26,6 +26,7 @@ class sessionhelper
 			header('location:index.php');
 		}
 		
+		
 		// else if(!isset($_SESSION['editor']))
 		// {
 		// 	header('location:index2.php');

@@ -149,8 +149,7 @@
                                      name="role">
                                      <option disabled selected>Select</option>
                                      <option>Admin</option>
-                                     <option>Editor</option>
-                                     <option>User</option>
+                                     <option>Owner</option>
                                  </select>
                                  <span class="error"> <?php echo $err[4]; ?> </span>
                              </div>

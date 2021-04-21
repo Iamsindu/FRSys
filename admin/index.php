@@ -2,6 +2,7 @@
     require_once 'class/common.class.php';
     require_once 'class/admin.class.php';
     require_once 'class/session.class.php';
+    //sessionhelper::checklogin();
     $admin=new admin;
     if(isset($_POST['login']))
     {
@@ -32,17 +33,17 @@
             else
             {
                 //echo $res[0]->username;
+                $role=$res[0]->role;
              $salt=$res[0]->salt;
              $ipassword=$res[0]->password;
              $newpassword=sha1($salt.$password);
              //echo $ipassword."<br>".$newpassword;
              if($newpassword==$ipassword)    
               {
-                sessionhelper::set('admin',$admin->username);
+                    sessionhelper::set('admin',$admin->username);
+                    echo "<script> window.location='dashboard.php' </script>";
+                }
                 
-                 echo "<script> window.location='dashboard.php' </script>";
-                
-              } 
              else
              {
                 echo "<script>alert('Admin Credentials doesnot match')</script>";

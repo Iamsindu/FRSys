@@ -1,6 +1,19 @@
  <!-- Loader -->
         <?php 
             require_once 'layout/header.php';
+            require_once 'class/common.class.php';
+            require_once 'class/resturant.class.php';
+            require_once 'class/user.class.php';
+            require_once 'class/orders.class.php';
+            $rest = new resturant ;
+            $user = new users;
+            $order = new orders;
+            $count1= $rest->count();
+            $count2= $user->count();
+            $count3 = $order->count();
+            $resturant = $count1[0]->count;
+            $users = $count2[0]->count;
+            $orders = $count3[0]->count;
             ?>
                     <!-- Top Bar End -->
 
@@ -26,7 +39,7 @@
                                     
                             <div class="row">
                                 <!-- Column -->
-                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                <div class="col-md-6 col-lg-6 col-xl-4">
                                     <div class="card m-b-30">
                                         <div class="card-body">
                                             <div class="d-flex flex-row">
@@ -37,8 +50,8 @@
                                                 </div>
                                                 <div class="col-9 align-self-center text-center">
                                                     <div class="m-l-10">
-                                                        <h5 class="mt-0 round-inner">700</h5>
-                                                        <p class="mb-2 text-muted"> Total Visits</p>                                                                 
+                                                        <h5 class="mt-0 round-inner"><?php echo $resturant; ?></h5>
+                                                        <p class="mb-2 text-muted"> Total Resturants</p>                                                                 
                                                     </div>
                                                 </div>
                                                 <!-- <div class="col-3 align-self-end align-self-center">
@@ -50,7 +63,7 @@
                                 </div>
                                 <!-- Column -->
                                 <!-- Column -->
-                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                <div class="col-md-6 col-lg-6 col-xl-4">
                                     <div class="card m-b-30">
                                         <div class="card-body">
                                             <div class="d-flex flex-row">
@@ -61,8 +74,8 @@
                                                 </div>
                                                 <div class="col-9 text-center align-self-center">
                                                     <div class="m-l-10 ">
-                                                        <h5 class="mt-0 round-inner">62</h5>
-                                                        <p class="mb-0 text-muted">New Users</p>
+                                                        <h5 class="mt-0 round-inner"><?php echo $users; ?></h5>
+                                                        <p class="mb-0 text-muted">Total Users</p>
                                                     </div>
                                                 </div>
                                                <!--  <div class="col-3 align-self-end align-self-center">
@@ -74,7 +87,7 @@
                                 </div>
                                 <!-- Column -->
                                 <!-- Column -->
-                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                <div class="col-md-6 col-lg-6 col-xl-4">
                                     <div class="card m-b-30">
                                         <div class="card-body">
                                             <div class="d-flex flex-row">
@@ -85,7 +98,7 @@
                                                 </div>
                                                 <div class="col-9 align-self-center text-center">
                                                     <div class="m-l-10 ">
-                                                        <h5 class="mt-0 round-inner">14</h5>
+                                                        <h5 class="mt-0 round-inner"><?php echo $orders; ?></h5>
                                                         <p class="mb-0 text-muted">New Orders</p>
                                                     </div>
                                                 </div>
@@ -98,7 +111,7 @@
                                 </div>
                                 <!-- Column -->
                                 <!-- Column -->
-                                <div class="col-md-6 col-lg-6 col-xl-3">
+                                <!-- <div class="col-md-6 col-lg-6 col-xl-3">
                                     <div class="card m-b-30">
                                         <div class="card-body">
                                             <div class="d-flex flex-row">
@@ -112,18 +125,18 @@
                                                         <h5 class="mt-0 round-inner">RS.3241</h5>
                                                         <p class="mb-0 text-muted">Total Sales</p>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <!-- <div class="col-3 align-self-end align-self-center">
                                                     <h6 class="m-0 float-right text-center text-success"> <i class="mdi mdi-arrow-up"></i> <span>2.35%</span></h6>
                                                 </div> -->
-                                            </div>
+                                            <!-- </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- Column -->
                             </div>
                             <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xl-8">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
                                     <!-- <div class="card m-b-30">
                                         <div class="card-body">
                                             <h5 class="header-title pb-3 mt-0">Overview</h5>
@@ -131,7 +144,7 @@
                                         </div>
                                     </div> -->
                                 </div>
-                                 <div class="col-md-12 col-lg-12 col-xl-4">
+                                 <div class="col-md-12 col-lg-12 col-xl-12">
                                     <div class="card bg-white m-b-30">
                                         <div class="card-body new-user">
                                                 <h5 class="header-title mt-0 ">New Users</h5>
@@ -241,89 +254,9 @@
                                 
                             </div>
 
+                           
                             <div class="row">
-                                
-                                <div class="col-md-12 col-lg-12 col-xl-12">
-                                    <div class="row">
-                                        <div class="col-6">
-                                    <div class="card bg-info m-b-30">
-                                        <div class="card-body">
-                                            <div id="verticalCarousel" class="carousel slide vertical" data-ride="carousel">
-                                                <!-- Carousel items -->
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <div class="row d-flex justify-content-center text-center">
-                                                            <div class="col-sm-12 carousel-icon">
-                                                                <i class="fa fa-twitter text-white pt-3"></i>
-                                                            </div>
-                                                            <div class="col-6 text-white">                                                                
-                                                                <h2>3k</h2>
-                                                                <p class="">Followers</p>                                                                
-                                                            </div>
-                                                            <div class="col-6 text-white">                                                                
-                                                                <h2>4k</h2>
-                                                                <p class="">Tweets</p>                                                               
-                                                            </div>
-                                                        </div>
-                                                    </div>
-        
-                                                    <div class="carousel-item">
-                                                        <div class="row d-flex justify-content-center">
-                                                            <div class="col-sm-12 carousel-icon text-center">
-                                                                <i class="fa fa-twitter text-white pt-3"></i>
-                                                            </div>
-                                                            <div class="col-sm-10 mx-auto text-white text-center">
-                                                                <p>Lorem Ipsum is simply dummy text of the <span class="warning">#TWITTER</span> and typesetting industry. A description list is perfect for defining terms.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>                                            
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-6">
-                                    <div class="card bg-primary ">
-                                        <div class="card-body">
-                                            <div id="verticalCarousel2" class="carousel slide" data-ride="carousel">
-                                                <!-- Carousel items -->
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <div class="row d-flex justify-content-center">
-                                                            <div class="col-lg-12 carousel-icon text-center">
-                                                                <i class="fa fa-facebook text-white pt-3"></i>
-                                                            </div>
-                                                            <div class="col-sm-10 mx-auto text-white text-center">
-                                                                <p>Lorem Ipsum is simply dummy text of the <mark> FACEBOOK </mark> and typesetting industry.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <div class="row d-flex justify-content-center text-white text-center">
-                                                            <div class="col-sm-12 carousel-icon">
-                                                                <i class="fa fa-facebook text-white pt-3"></i>
-                                                            </div>
-                                                            <div class="col-6">                                                                
-                                                                <h2>54k</h2>
-                                                                <p class="">Followers</p>                                                               
-                                                            </div>
-                                                            <div class="col-6">                                                                
-                                                                <h2>44k</h2>
-                                                                <p class="">Posts</p>                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                                                                           
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xl-6 align-self-center">
+                                <div class="col-md-12 col-lg-12 col-xl-12 align-self-center">
                                     <div class="card bg-white m-b-30">
                                         <div class="card-body new-user">
                                             <h5 class="header-title mb-4 mt-0">Resturant Review</h5>
@@ -449,130 +382,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-12 col-xl-6 align-self-center">
-                                    <div class="card bg-white m-b-30">
-                                        <div class="card-body new-user">
-                                            <h5 class="header-title mb-4 mt-0">Food Review</h5>
-                                            <div class="table-responsive">
-                                              <ul class="list-unstyled mb-0 pr-3"  id="boxscroll2" tabindex="1" style=" overflow: hidden; outline: none; ">
-                                                <li class="p-3">
-                                                    <div class="media">
-                                                        <div class="thumb float-left">
-                                                            <a href="#">
-                                                                <img class=" rounded-circle" src="assets/images/users/food4.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <p class="media-heading mb-0"> Thupka
-                                                                <!-- <i class="fa fa-circle text-success mr-1 pull-right"></i> -->
-                                                            </p>
-                                                            <!-- <small class="pull-right text-muted">Now</small> -->
-                                                            <small class="text-muted">Need more choices, and in the morning should open before 7.30.- <b>Pragati Sharma</b>  </small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                 <li class="p-3">
-                                                    <div class="media">
-                                                        <div class="thumb float-left">
-                                                            <a href="#">
-                                                                <img class=" rounded-circle" src="assets/images/users/food4.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <p class="media-heading mb-0"> Spaghetti
-                                                                <!-- <i class="fa fa-circle text-success mr-1 pull-right"></i> -->
-                                                            </p>
-                                                            <!-- <small class="pull-right text-muted">Now</small> -->
-                                                            <small class="text-muted"> It was really delicious taste with great quality, everything had unique taste. - <b>Astha Sharma</b> </small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                          <li class="p-3">
-                                                    <div class="media">
-                                                        <div class="thumb float-left">
-                                                            <a href="#">
-                                                                <img class=" rounded-circle" src="assets/images/users/food4.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">                                                    
-                                                            <p class="media-heading mb-0">Daal Bhaat
-                                                                <!-- <i class="fa fa-circle text-danger mr-1 pull-right"></i> -->
-                                                            </p>
-                                                            <!-- <small class="pull-right text-muted">10 min ago</small> -->
-                                                            <small class="text-muted">It was our first experience having this dish, and although a bit dry, it tasted great. - <b>Shweta Sherchan</b> </small>                                                   
-                                                        </div>
-                                                    </div>
-                                                </li> 
-                                                <li class="p-3">
-                                                    <div class="media">
-                                                        <div class="thumb float-left">
-                                                            <a href="#">
-                                                                <img class=" rounded-circle" src="assets/images/users/food4.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <p class="media-heading mb-0">Choila
-                                                                <!-- <i class="fa fa-circle text-success mr-1 pull-right"></i> -->
-                                                            </p>
-                                                            <!-- <small class="pull-right text-muted">Now</small> -->
-                                                            <small class="text-muted">Good quantity served per portion. Service as also good.Would recommend it definitely. - <b>Robin Sharma</b></small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="p-3">
-                                                    <div class="media">
-                                                        <div class="thumb float-left">
-                                                            <a href="#">
-                                                                <img class=" rounded-circle" src="assets/images/users/food4.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <p class="media-heading mb-0">Ruby T. Curd 
-                                                                <!-- <i class="fa fa-circle text-danger mr-1 pull-right"></i> -->
-                                                            </p>
-                                                            <!-- <small class="pull-right text-muted">36 min ago</small> -->
-                                                            <small class="text-muted">New Zealand</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="p-3">
-                                                    <div class="media">
-                                                        <div class="thumb float-left">
-                                                            <a href="#">
-                                                                <img class=" rounded-circle" src="assets/images/users/food4.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <p class="media-heading mb-0">Robert N. Carlile 
-                                                                <!-- <i class="fa fa-circle text-success mr-1 pull-right"></i> -->
-                                                            </p>
-                                                            <small class="pull-right text-muted">Now</small>
-                                                            <small class="text-muted">India</small>
-                                                        </div>
-                                                    </div>
-                                                </li> 
-                                                <li class="p-3">
-                                                    <div class="media">
-                                                        <div class="thumb float-left">
-                                                            <a href="#">
-                                                                <img class=" rounded-circle" src="assets/images/users/food4.jpg" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <p class="media-heading mb-0">Sandy M. Gray
-                                                                <!-- <i class="fa fa-circle text-danger mr-1 pull-right"></i> -->
-                                                            </p>
-                                                            <!-- <small class="pull-right text-muted">58 min ago</small> -->
-                                                            <small class="text-muted">Australia</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                              
                             </div>  
 

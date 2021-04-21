@@ -6,6 +6,11 @@
  		$sql = "select * from users";
  		return $this->select($sql);
 	}
+	public function count()
+	{
+		$sql= "select COUNT(*) as count from users ";
+		return $this->select($sql);
+	}
 	 
  	public function selectusers_byusername()
 	{
