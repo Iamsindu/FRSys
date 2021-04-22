@@ -6,7 +6,7 @@ class resturant extends common
 	public $rphoto_id, $photo;
 	public $restcat_id,$cat_id;
 	public $rowner_id, $admin_id;
-	public $r_id, $r_name, $category, $location, $rating;
+	public $r_id, $r_name, $category, $location, $rating,$restfood_id;
 	public $search;
 	public function selectrestbyid()
 	{
@@ -20,12 +20,17 @@ class resturant extends common
 	}
 	public function selectrestbycategory()
 	{
-		$sql= "select category from rest_food where r_id='$this->r_id'";
+		$sql= "select DISTINCT category from rest_food where r_id='$this->r_id'";
 		return $this->select($sql);
 	}
 	public function selectre()
 	{
 		$sql= "select * from rest_food where r_id='$this->r_id'and category='$this->category'";
+		return $this->select($sql);
+	}
+	public function selectfood()
+	{
+		$sql= "select * from rest_food where restfood_id='$this->restfood_id'";
 		return $this->select($sql);
 	}
 

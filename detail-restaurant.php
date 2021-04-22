@@ -1,14 +1,40 @@
 <?PHP
-	require_once 'layout/sessions.php';
-	sessionhelper::checklogin();
+	// require_once 'layout/sessions.php';
+	// sessionhelper::checklogin();
 ?>
 <?php
 	require_once 'layout/next_header.php';
 	
 	require_once 'admin/class/common.class.php';
 	require_once 'admin/class/resturant.class.php';
+	require_once 'admin/class/carts.class.php';
+	$cart = new cart;
 	$resturant = new resturant;
-	$resturant->r_id=$_GET['id'];
+	//$resturant->r_id=$_GET['id'];
+	$resturant->r_id=3;
+	if(isset($_POST['submit']))
+	{
+		$resturant->restfood_id = $_POST['food_id'];
+		$cart->r_id=$resturant->r_id;
+		$cart->user_id=21;
+		$cart->quantity=1;
+		$cart->date =  date('Y-m-d');
+		 
+		$var = $resturant->selectfood();
+		foreach($var as $foo)
+		{
+			$cart->food_name=$foo->food_name;
+			$cart->price=$foo->price;
+		}
+		
+		$ask =$cart->insertcart();
+			if($ask==1){
+                echo "<script>alert(' $cart->food_name Added to Cart')</script>";
+			} else {
+				echo "<script>alert('Cannot Add to cart.')</script>";
+			}
+	}
+
 	
 ?>
 	
@@ -91,7 +117,12 @@
 													<th>
 														 Price
 													</th>
-													
+													<th>
+														 Quantity
+													</th>
+													<th>
+														Order
+													</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -100,7 +131,7 @@
 										$da= $resturant->selectre();
 										foreach ($da as $va)
 										{ 
-										?>
+										?><form method="post" >
 											<tr>
 												<td class="d-md-flex align-items-center">
 						                        	<figure><img src="<?php echo $va->photo; ?>" 
@@ -108,15 +139,23 @@
 													alt="thumb" class="lazy"></figure>
 						                        	<div class="flex-md-column">
 														<h4><?php echo $va->food_name; ?></h4>
-														<!-- <p>
-															Fuisset mentitum deleniti sit ea.
-														</p> -->
 													</div>
 												</td>
 												<td>
 													<strong><?php echo $va->price; ?></strong>
 												</td>
+												<td class="form-group">
+													<div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+														<span class="input-group-btn input-group-prepend"><button class="btn btn-primary bootstrap-touchpin-down" type="button">-</button></span>
+												<input id="demo0" type="text" value="55" name="demo0" data-bts-min="0" data-bts-max="100" data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100" data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500" data-bts-prefix="" data-bts-postfix="" data-bts-prefix-extra-class="" data-bts-postfix-extra-class="" data-bts-booster="true" data-bts-boostat="10" data-bts-max-boosted-step="false" data-bts-mousewheel="true" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default"/>
+												<span class="input-group-btn input-group-prepend"><button class="btn btn-primary bootstrap-touchpin-up" type="button">+</button></span>
+												</td>
+												<td class="options">
+												<input type="text" value="<?php echo $va->restfood_id; ?>" hidden name="food_id">
+													<input class="btn_1 small" type="submit" value="Add" name="submit">
+												</td>
 												</tr>
+										</form>
 												<?php	
                  						}
 										?>
@@ -124,9 +163,9 @@
 											
 											
 										</tbody>
-										<?php } ?>
-									</table>
 										
+									</table>
+									<?php } ?>
 											
 
 										
