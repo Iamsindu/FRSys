@@ -17,7 +17,7 @@
 		$resturant->restfood_id = $_POST['food_id'];
 		$cart->r_id=$resturant->r_id;
 		$cart->user_id=21;
-		$cart->quantity=1;
+		$cart->quantity=$_POST['quantity'];
 		$cart->date =  date('Y-m-d');
 		 
 		$var = $resturant->selectfood();
@@ -147,7 +147,7 @@
 												<td class="form-group">
 													<div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
 														<span class="input-group-btn input-group-prepend"><button class="btn btn-primary bootstrap-touchpin-down" type="button">-</button></span>
-												<input id="demo0" type="text" value="55" name="demo0" data-bts-min="0" data-bts-max="100" data-bts-init-val="" data-bts-step="1" data-bts-decimal="0" data-bts-step-interval="100" data-bts-force-step-divisibility="round" data-bts-step-interval-delay="500" data-bts-prefix="" data-bts-postfix="" data-bts-prefix-extra-class="" data-bts-postfix-extra-class="" data-bts-booster="true" data-bts-boostat="10" data-bts-max-boosted-step="false" data-bts-mousewheel="true" data-bts-button-down-class="btn btn-default" data-bts-button-up-class="btn btn-default"/>
+												<input id="demo0" type="text" value="2" name="quantity"/>
 												<span class="input-group-btn input-group-prepend"><button class="btn btn-primary bootstrap-touchpin-up" type="button">+</button></span>
 												</td>
 												<td class="options">

@@ -8,16 +8,21 @@ class cart extends common
 		return $this->insert($sql);
 	}
 
-	public function selectcategory()
+	public function select_cart()
 	{
-		$sql= "select * from cat";
+		$sql= "select * from carts where user_id='$this->user_id' and r_id='$this->r_id' and date=CURRENT_DATE";
 		return $this->select($sql);
 	}
 
-	public function selectcategorybyid()
+	public function selectcartbyid()
  	{
- 		$sql = "select * from cat where cat_id = '$this->cat_id' ";
+ 		$sql = "select * from cart where user_id = '$this->user_id' ";
  		return $this->select($sql);
+	}
+	public function  select_resturant()
+	{
+		$sql="select DISTINCT r_id from carts where user_id='$this->user_id'";
+		return $this->select($sql);
 	}
 	 
 	public function updatecategory()
