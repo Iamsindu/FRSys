@@ -2,9 +2,36 @@
 	require_once 'layout/next_header.php';
 	require_once 'admin/class/common.class.php';
 	require_once 'admin/class/user.class.php';
+	require_once 'admin/class/orders.class.php';
+	require_once 'admin/class/resturant.class.php';
+	$rest = new resturant;
+	$order = new orders;
 	$user= new users;
-	//$user->user_id=$_SESSION['users'];
-	$user->user_id=21;
+	
+	$order->user_id=$user->user_id=$_SESSION['users'];
+	// $order->user_id=$user->user_id=21;
+	$dat= $order->select_rest();
+	foreach($dat as $yyt)
+	{
+		$total = 0;
+		$order->r_id=$yyt->r_id;
+		$otk = $order->select_carts();
+		foreach($otk  as $tko)
+		{
+			$total+=($tko->quantity * $tko->price);
+		}
+		$order->total_price=$total;
+		$ask = $order->insertorder();
+		$rest->r_id=$yyt->r_id;
+		$rst = $rest->selectrestname();
+		if($ask==1){
+			echo "<script>alert('Order for ".$rst[0]->r_name." is Added')</script>";
+			
+		} else {
+			echo "<script>alert('Failed to Add order.')</script>";
+		}
+	}
+
 ?>
 <style> 
 input[type=submit]{
@@ -81,9 +108,6 @@ input[type=submit]{
 					    </div>
 					    <!-- /head -->
 					    <div class="main">
-					       
-					       
-					       
 					       
 					        <!--End row -->
 							<form action="https://www.sandbox.paypal.com/cgi-bin/webscr"  method="post">

@@ -5,8 +5,8 @@
 	require_once 'admin/class/resturant.class.php';
 	$cart = new cart;
 	$rest = new resturant;
-	//$cart->user_id = $_SESSION['users'];
-	$cart->user_id =21;
+	$cart->user_id = $_SESSION['users'];
+	// $cart->user_id =21;
 	$total = 0;
 	//$cart->date = date("Y-m-d");
 ?>

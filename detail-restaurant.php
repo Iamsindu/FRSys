@@ -1,6 +1,6 @@
 <?PHP
-	// require_once 'layout/sessions.php';
-	// sessionhelper::checklogin();
+	require_once 'layout/sessions.php';
+	sessionhelper::checklogin();
 ?>
 <?php
 	require_once 'layout/next_header.php';
@@ -10,8 +10,8 @@
 	require_once 'admin/class/carts.class.php';
 	$cart = new cart;
 	$resturant = new resturant;
-	//$resturant->r_id=$_GET['id'];
-	$resturant->r_id=3;
+	$resturant->r_id=$_GET['id'];
+	// $resturant->r_id=3;
 	if(isset($_POST['submit']))
 	{
 		$resturant->restfood_id = $_POST['food_id'];
@@ -145,10 +145,9 @@
 													<strong><?php echo $va->price; ?></strong>
 												</td>
 												<td class="form-group">
-													<div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-														<span class="input-group-btn input-group-prepend"><button class="btn btn-primary bootstrap-touchpin-down" type="button">-</button></span>
-												<input id="demo0" type="text" value="2" name="quantity"/>
-												<span class="input-group-btn input-group-prepend"><button class="btn btn-primary bootstrap-touchpin-up" type="button">+</button></span>
+													
+												<input  type="text" value="2" name="quantity"/>
+												
 												</td>
 												<td class="options">
 												<input type="text" value="<?php echo $va->restfood_id; ?>" hidden name="food_id">

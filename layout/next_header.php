@@ -1,4 +1,7 @@
-
+<?PHP
+	require_once 'layout/sessions.php';
+	sessionhelper::checklogin();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

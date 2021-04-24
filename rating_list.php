@@ -23,8 +23,8 @@ foreach($data as $value)
 
 
 $re = new Recommend;
-	 $result=$re->getRecommendations($matrix,3);
-	 
+	 $result=$re->getRecommendations($matrix,21);
+	 //print_r($result);
 
 /////////display
 //   foreach ($result as $gift => $rating) {
