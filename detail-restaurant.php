@@ -309,7 +309,7 @@
 		                                    <!-- /review_card -->
 		                                </div>
 		                                <!-- /reviews -->
-		                                <div class="text-right"><a href="leave-review.php" class="btn_1">Leave a review</a></div>
+		                                <div class="text-right"><a href="leave-review.php?id=<?php echo $resturant->r_id; ?>" class="btn_1">Leave a review</a></div>
 		                            </div>
 		                        </div>
 		                    </div>

@@ -15,7 +15,7 @@ class resturant extends common
 	}
 	public function toppp($search)
 	{
-		$sql= "select * from rest where category='$search' order by rating desc limit 3";
+		$sql= "select * from rest where category='$search' order by rating desc limit 5";
 		return $this->select($sql);
 	}
 	public function selectrestbycategory()
@@ -49,9 +49,9 @@ class resturant extends common
 		$sql= "select COUNT(*) as count from rest ";
 		return $this->select($sql);
 	}
-	public function toprest()
+	public function toprest($search)
 	{
-		$sql= "select * from rest order by rating desc limit 5";
+		$sql= "select * from rest where category !='$search' order by rating desc limit 8";
 		return $this->select($sql);
 	}
 

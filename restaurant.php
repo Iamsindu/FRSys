@@ -340,7 +340,7 @@ a.btn_1.gray:hover,
 							</div>
 						</div>
 						<?php }
-						  $data = $rest->toprest();
+						  $data = $rest->toprest($search);
 						   foreach($data as $value)
 						   { 	
 						
