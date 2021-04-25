@@ -19,9 +19,9 @@ class cart extends common
  		$sql = "select * from cart where user_id = '$this->user_id' ";
  		return $this->select($sql);
 	}
-	public function  select_resturant()
+	public function select_resturant()
 	{
-		$sql="select DISTINCT r_id from carts where user_id='$this->user_id'";
+		$sql="select DISTINCT r_id from carts where user_id='$this->user_id' and date=CURRENT_DATE";
 		return $this->select($sql);
 	}
 	 

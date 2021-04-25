@@ -146,7 +146,7 @@
 												</td>
 												<td class="form-group">
 													
-												<input  type="text" value="2" name="quantity"/>
+												<input  type="text" value="1" name="quantity"/>
 												
 												</td>
 												<td class="options">

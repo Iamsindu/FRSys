@@ -116,9 +116,9 @@
              if($newpassword==$ipassword)    
               {
                 sessionhelper::set('users',$users->username);
-             
+               
                 
-                 echo "<script> window.location='index.php' </script>";
+                 //echo "<script> window.location='index.php' </script>";
                 
               } 
              else

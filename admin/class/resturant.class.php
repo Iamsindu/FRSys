@@ -13,9 +13,9 @@ class resturant extends common
 		$sql= "select * from rest where r_id='$this->r_id'";
 		return $this->select($sql);
 	}
-	public function toppp($search)
+	public function toppp($search,$rrname)
 	{
-		$sql= "select * from rest where category='$search' order by rating desc limit 5";
+		$sql= "select * from rest where category='$search' and r_name!='$rrname' order by rating desc limit 5";
 		return $this->select($sql);
 	}
 	public function selectrestbycategory()
@@ -71,6 +71,12 @@ class resturant extends common
 		$sql= "select * from rsearch where r_id='$this->r_id' and search='$this->search'";
 		return $this->select($sql);
 	}
+	public function selectuser_id($uname)
+	{
+		$sql= "select user_id from users where username='$uname'";
+		return $this->select($sql);
+	}
+
 
 //////////////////// Restaurant database///////////////	
 	public function insertrestaurant()

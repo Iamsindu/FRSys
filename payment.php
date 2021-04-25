@@ -8,7 +8,8 @@
 	$order = new orders;
 	$user= new users;
 	
-	$order->user_id=$user->user_id=$_SESSION['users'];
+	$vault = $rest->selectuser_id($_SESSION['users']);
+	$order->user_id =$user->user_id = $vault[0]->user_id;
 	// $order->user_id=$user->user_id=21;
 	$dat= $order->select_rest();
 	foreach($dat as $yyt)

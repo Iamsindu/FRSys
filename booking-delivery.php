@@ -5,7 +5,9 @@
 	require_once 'admin/class/resturant.class.php';
 	$cart = new cart;
 	$rest = new resturant;
-	$cart->user_id = $_SESSION['users'];
+	$vault = $rest->selectuser_id($_SESSION['users']);
+	$cart->user_id = $vault[0]->user_id;
+	
 	// $cart->user_id =21;
 	$total = 0;
 	//$cart->date = date("Y-m-d");
@@ -23,7 +25,8 @@
 		                    
 		                </div>
 						<?php
-							$data = $cart->select_resturant(); 
+							$data = $cart->select_resturant();
+							$data[0]->r_id;
 							foreach($data as $value){
 								$rest->r_id=$value->r_id;
 								$rst = $rest->selectrestname();

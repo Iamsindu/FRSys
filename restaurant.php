@@ -11,6 +11,7 @@
 	$rest = new resturant;
 	
 	$top = new total;
+	$iid = "NULL";
 	// If(isset($_POST['submit'])) {
 
 	
@@ -242,6 +243,7 @@ a.btn_1.gray:hover,
 							$rest->r_name=$gift;
 							//$rest->category='yomari';
 							$data = $rest->selectrest($search);
+							if($data){$iid=$rest->r_name;}
 
 							foreach($data as $value)
 						{ 
@@ -311,7 +313,7 @@ a.btn_1.gray:hover,
 						
 						<?php 
 						}}
-						$data = $rest->toppp($search);
+						$data = $rest->toppp($search,$iid);
 						foreach($data as $value)
 						{ ?>
 					    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
